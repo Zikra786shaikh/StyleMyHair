@@ -1,52 +1,436 @@
-{% extends "base.html" %}
 
-{% block title %}Choose Your Style{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
+<head>
 
-<div class="choose-screen">
+    <meta charset="UTF-8">
 
-    <a href="/" class="back-button">←</a>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <div class="choose-header">
-        <div class="logo">
-            Style<span>My</span>Hair
+    <title>StyleMyHair | Choose Your Style</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}?v=20"
+    >
+
+</head>
+
+
+<body class="choose-page">
+
+
+    <!-- =========================================
+         MAIN CHOOSE PAGE
+    ========================================== -->
+
+    <main class="choose-style-page">
+
+
+        <!-- =====================================
+             BACKGROUND
+        ====================================== -->
+
+        <div class="choose-background"></div>
+
+
+        <!-- =====================================
+             TOP BRAND
+        ====================================== -->
+
+        <header class="choose-header">
+
+            <a
+                href="{{ url_for('main.home') }}"
+                class="choose-logo"
+            >
+                Style<span>MyHair</span>
+            </a>
+
+        </header>
+
+
+        <!-- =====================================
+             MAIN CONTENT
+        ====================================== -->
+
+        <section class="choose-content">
+
+
+            <!-- LABEL -->
+
+            <div class="choose-label">
+
+                PERSONALIZE YOUR EXPERIENCE
+
+            </div>
+
+
+            <!-- HEADING -->
+
+            <h1>
+
+                Choose your
+                <span>style.</span>
+
+            </h1>
+
+
+            <!-- DESCRIPTION -->
+
+            <p class="choose-description">
+
+                Select your style to discover hairstyles
+                and looks curated for you.
+
+            </p>
+
+
+            <!-- =================================
+                 STYLE CARDS
+            ================================== -->
+
+            <div class="style-selection">
+
+
+                <!-- =================================
+                     MALE CARD
+                ================================== -->
+
+                <article
+                    class="style-card male-card"
+                    data-style="male"
+                >
+
+                    <div class="style-card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/choose-male.jpeg') }}"
+                            alt="Male hairstyle style"
+                        >
+
+                    </div>
+
+
+                    <div class="style-card-overlay"></div>
+
+
+                    <div class="style-card-content">
+
+                        <div class="style-card-small">
+
+                            FOR HIM
+
+                        </div>
+
+                        <h2>
+
+                            Male
+
+                        </h2>
+
+                        <p>
+
+                            Bold looks.
+                            Sharp styles.
+                            Your confidence.
+
+                        </p>
+
+                        <div class="style-card-arrow">
+
+                            →
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="selection-check">
+
+                        ✓
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================
+                     FEMALE CARD
+                ================================== -->
+
+                <article
+                    class="style-card female-card"
+                    data-style="female"
+                >
+
+                    <div class="style-card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/choose-female.jpeg') }}"
+                            alt="Female hairstyle style"
+                        >
+
+                    </div>
+
+
+                    <div class="style-card-overlay"></div>
+
+
+                    <div class="style-card-content">
+
+                        <div class="style-card-small">
+
+                            FOR HER
+
+                        </div>
+
+                        <h2>
+
+                            Female
+
+                        </h2>
+
+                        <p>
+
+                            Elegant looks.
+                            Beautiful styles.
+                            Your expression.
+
+                        </p>
+
+                        <div class="style-card-arrow">
+
+                            →
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="selection-check">
+
+                        ✓
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <!-- =================================
+                 CONTINUE
+            ================================== -->
+
+            <div class="choose-action">
+
+                <button
+                    type="button"
+                    class="choose-continue"
+                    id="chooseContinue"
+                    disabled
+                >
+
+                    <span id="continueText">
+                        SELECT YOUR STYLE
+                    </span>
+
+                    <b>
+                        →
+                    </b>
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================
+             BOTTOM TEXT
+        ====================================== -->
+
+        <div class="choose-bottom">
+
+            STYLEMYHAIR • DISCOVER WHAT SUITS YOU
+
         </div>
 
-        <h1>Choose your style</h1>
-        <p>We'll personalize your hairstyle experience.</p>
-    </div>
 
-    <div class="gender-cards">
+    </main>
 
-        <a href="{{ url_for('main.female_home') }}"
-           class="gender-card female-card">
 
-            <div class="model-placeholder">♀</div>
+    <!-- =========================================
+         CHOOSE STYLE JAVASCRIPT
+    ========================================== -->
 
-            <div class="gender-info">
-                <h2>Female</h2>
-                <p>Explore women's hairstyles</p>
-                <span>Continue →</span>
-            </div>
+    <script>
 
-        </a>
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
 
-        <a href="{{ url_for('main.male_home') }}"
-           class="gender-card male-card">
 
-            <div class="model-placeholder">♂</div>
+                const cards =
+                    document.querySelectorAll(
+                        ".style-card"
+                    );
 
-            <div class="gender-info">
-                <h2>Male</h2>
-                <p>Explore men's hairstyles</p>
-                <span>Continue →</span>
-            </div>
 
-        </a>
+                const continueButton =
+                    document.getElementById(
+                        "chooseContinue"
+                    );
 
-    </div>
 
-</div>
+                const continueText =
+                    document.getElementById(
+                        "continueText"
+                    );
 
-{% endblock %}
+
+                let selectedStyle = null;
+
+
+                cards.forEach(
+                    function (card) {
+
+
+                        card.addEventListener(
+                            "click",
+                            function () {
+
+
+                                /*
+                                 * Remove previous selection
+                                 */
+
+                                cards.forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "selected"
+                                        );
+
+                                    }
+                                );
+
+
+                                /*
+                                 * Select clicked card
+                                 */
+
+                                card.classList.add(
+                                    "selected"
+                                );
+
+
+                                selectedStyle =
+                                    card.dataset.style;
+
+
+                                /*
+                                 * Activate button
+                                 */
+
+                                continueButton.disabled =
+                                    false;
+
+
+                                /*
+                                 * Change button text
+                                 */
+
+                                if (
+                                    selectedStyle ===
+                                    "male"
+                                ) {
+
+                                    continueText.textContent =
+                                        "CONTINUE WITH MALE";
+
+                                }
+                                else {
+
+                                    continueText.textContent =
+                                        "CONTINUE WITH FEMALE";
+
+                                }
+
+
+                                /*
+                                 * Change page theme
+                                 */
+
+                                document.body.classList.remove(
+                                    "male-selected",
+                                    "female-selected"
+                                );
+
+
+                                document.body.classList.add(
+                                    selectedStyle +
+                                    "-selected"
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /*
+                 * Continue button
+                 */
+
+                continueButton.addEventListener(
+                    "click",
+                    function () {
+
+
+                        if (!selectedStyle) {
+                            return;
+                        }
+
+
+                        /*
+                         * Open corresponding
+                         * hairstyle page.
+                         */
+
+                        if (
+                            selectedStyle ===
+                            "male"
+                        ) {
+
+                            window.location.href =
+                                "{{ url_for('main.male') }}";
+
+                        }
+                        else {
+
+                            window.location.href =
+                                "{{ url_for('main.female') }}";
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

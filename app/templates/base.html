@@ -1,142 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{% block title %}StyleMyHair{% endblock %}</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/style.css') }}">
+    <title>
+        {% block title %}StyleMyHair{% endblock %}
+    </title>
+
+    <!-- MAIN CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    {% block extra_css %}{% endblock %}
+
 </head>
 
-<body>
 
-    <div class="app-shell">
+<body class="{% if request.endpoint in ['main.home', 'main.choose_style'] %}public-page{% else %}app-page{% endif %}">
 
-        <!-- Desktop Sidebar -->
+
+    {% if request.endpoint not in ['main.home', 'main.choose_style'] %}
+
+        <!-- =========================
+             APPLICATION TOPBAR
+        ========================== -->
+
+        <header class="topbar">
+
+            <div class="mobile-brand">
+                Style<span>MyHair</span>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button
+                    type="button"
+                    class="theme-button"
+                    id="themeToggle"
+                >
+                    🌙
+                </button>
+
+                <button
+                    type="button"
+                    class="profile-button"
+                >
+                    👤
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             APPLICATION SIDEBAR
+        ========================== -->
+
         <aside class="sidebar">
 
             <div class="brand">
-                <span class="brand-main">Style</span><span class="brand-accent">My</span><span class="brand-main">Hair</span>
+
+                <span class="brand-main">
+                    Style
+                </span>
+
+                <span class="brand-accent">
+                    MyHair
+                </span>
+
             </div>
+
 
             <nav class="desktop-nav">
 
-                <a href="/" class="nav-item active">
+                <a href="#" class="nav-item">
                     <span>⌂</span>
                     <span>Home</span>
                 </a>
 
                 <a href="#" class="nav-item">
-                    <span>⌕</span>
-                    <span>Explore</span>
-                </a>
-
-                <a href="#" class="nav-item">
-                    <span>✦</span>
+                    <span>✨</span>
                     <span>Try On</span>
                 </a>
 
                 <a href="#" class="nav-item">
-                    <span>♡</span>
-                    <span>StyleMe</span>
+                    <span>🎨</span>
+                    <span>Hair Colors</span>
                 </a>
 
                 <a href="#" class="nav-item">
-                    <span>♥</span>
-                    <span>Saved</span>
+                    <span>♡</span>
+                    <span>Favorites</span>
                 </a>
 
             </nav>
 
-            <div class="sidebar-bottom">
-
-                <a href="#" class="nav-item">
-                    <span>◯</span>
-                    <span>Profile</span>
-                </a>
-
-            </div>
-
         </aside>
 
-
-        <!-- Main Application -->
-        <main class="main-area">
-
-            <header class="topbar">
-
-                <div class="mobile-brand">
-                    Style<span>My</span>Hair
-                </div>
-
-                <div class="topbar-search">
-                    <span>⌕</span>
-                    <input
-                        type="text"
-                        placeholder="Search hairstyles, colors, accessories..."
-                    >
-                </div>
-
-                <div class="topbar-actions">
-
-                    <button class="theme-button" id="themeToggle">
-                        ◐
-                    </button>
-
-                    <button class="profile-button">
-                        ◯
-                    </button>
-
-                </div>
-
-            </header>
-
-            <section class="page-content">
-
-                {% block content %}
-                {% endblock %}
-
-            </section>
-
-        </main>
-
-    </div>
+    {% endif %}
 
 
-    <!-- Mobile Navigation -->
-    <nav class="mobile-nav">
+    <!-- =========================
+         PAGE CONTENT
+    ========================== -->
 
-        <a href="/">
-            <span>⌂</span>
-            <small>Home</small>
-        </a>
+    <main
+        class="{% if request.endpoint in ['main.home', 'main.choose_style'] %}public-content{% else %}app-content{% endif %}"
+    >
 
-        <a href="#">
-            <span>⌕</span>
-            <small>Explore</small>
-        </a>
+        {% block content %}
+        {% endblock %}
 
-        <a href="#">
-            <span>✦</span>
-            <small>Try On</small>
-        </a>
-
-        <a href="#">
-            <span>♡</span>
-            <small>StyleMe</small>
-        </a>
-
-        <a href="#">
-            <span>♥</span>
-            <small>Saved</small>
-        </a>
-
-    </nav>
+    </main>
 
 
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    {% if request.endpoint not in ['main.home', 'main.choose_style'] %}
+
+        <!-- MOBILE NAV -->
+
+        <nav class="mobile-nav">
+
+            <a href="#">
+                <span>⌂</span>
+                <small>Home</small>
+            </a>
+
+            <a href="#">
+                <span>✨</span>
+                <small>Try On</small>
+            </a>
+
+            <a href="#">
+                <span>♡</span>
+                <small>Saved</small>
+            </a>
+
+            <a href="#">
+                <span>👤</span>
+                <small>Profile</small>
+            </a>
+
+        </nav>
+
+    {% endif %}
+
+
+    {% block scripts %}
+    {% endblock %}
 
 </body>
+
 </html>

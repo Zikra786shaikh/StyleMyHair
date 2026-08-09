@@ -13,11 +13,14 @@ def choose_style():
     return render_template("choose-style.html")
 
 
-@main.route("/home/female")
-def female_home():
-    return render_template("female-home.html")
+@main.route("/male")
+def male():
+    return render_template("male.html")
 
 
-@main.route("/home/male")
-def male_home():
-    return render_template("male-home.html")
+@main.route("/female")
+def female():
+    return render_template("female.html")
+@main.route("/female/try-on")
+def female_try_on():
+    return render_template("female_try_on.html")

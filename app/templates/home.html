@@ -1,33 +1,233 @@
-{% extends "base.html" %}
 
-{% block title %}StyleMyHair{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
+<head>
 
-<div class="welcome-screen">
+    <meta charset="UTF-8">
 
-    <div class="logo">
-        Style<span>My</span>Hair
-    </div>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <div class="welcome-content">
+    <title>StyleMyHair | Discover Your Style</title>
 
-        <h1>
-            Your Hair.<br>
-            Your Style.<br>
-            Your Choice.
-        </h1>
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}?v=12"
+    >
 
-        <p>
-            Explore. Try. Own.
-        </p>
+</head>
 
-        <a href="{{ url_for('main.choose_style') }}" class="start-button">
-            GET STARTED →
-        </a>
 
-    </div>
+<body class="main-home-body">
 
-</div>
 
-{% endblock %}
+    <!-- =========================================
+         MAIN HOME PAGE
+    ========================================== -->
+
+    <main class="main-home-page">
+
+
+        <!-- =========================================
+             DESKTOP BACKGROUND
+        ========================================== -->
+
+       <img
+    src="{{ url_for('static', filename='images/home-background-desktop.jpeg') }}"
+    alt="Desktop background"
+    class="main-home-desktop-background"
+    style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
+    "
+>
+
+        <!-- =========================================
+             MOBILE BACKGROUND SLIDESHOW
+        ========================================== -->
+
+        <div class="main-home-mobile-background">
+
+            <img
+                src="{{ url_for('static', filename='images/home-mobile-1.jpeg') }}"
+                alt=""
+                class="mobile-background-slide active"
+            >
+
+            <img
+                src="{{ url_for('static', filename='images/home-mobile-2.jpeg') }}"
+                alt=""
+                class="mobile-background-slide"
+            >
+
+            <img
+                src="{{ url_for('static', filename='images/home-mobile-3.jpeg') }}"
+                alt=""
+                class="mobile-background-slide"
+            >
+
+            <img
+                src="{{ url_for('static', filename='images/home-mobile-4.jpeg') }}"
+                alt=""
+                class="mobile-background-slide"
+            >
+
+            <img
+                src="{{ url_for('static', filename='images/home-mobile-5.jpeg') }}"
+                alt=""
+                class="mobile-background-slide"
+            >
+
+            <img
+                src="{{ url_for('static', filename='images/home-mobile-6.jpeg') }}"
+                alt=""
+                class="mobile-background-slide"
+            >
+
+        </div>
+
+
+        <!-- =========================================
+             SOFT OVERLAY
+        ========================================== -->
+
+        <div class="main-home-overlay"></div>
+
+
+        <!-- =========================================
+             CENTER CONTENT
+        ========================================== -->
+
+        <section class="main-home-content">
+
+
+            <!-- LOGO -->
+
+            <div class="main-home-logo">
+
+                Style<span>My</span>Hair
+
+            </div>
+
+
+            <!-- SMALL LABEL -->
+
+            <div class="main-home-label">
+
+                YOUR STYLE • YOUR CHOICE
+
+            </div>
+
+
+            <!-- HEADING -->
+
+            <h1>
+
+                <span>Discover</span>
+                your <span>perfect</span> style.
+
+            </h1>
+
+
+            <!-- DESCRIPTION -->
+
+            <p>
+
+                Explore hairstyles, discover new looks,
+                and find the style that feels like you.
+
+            </p>
+
+
+            <!-- GET STARTED -->
+
+            <a
+                href="{{ url_for('main.choose_style') }}"
+                class="main-home-button"
+            >
+
+                <span>GET STARTED</span>
+
+                <b>→</b>
+
+            </a>
+
+
+        </section>
+
+
+        <!-- =========================================
+             BOTTOM TEXT
+        ========================================== -->
+
+        <div class="main-home-bottom">
+
+            SEE IT • TRY IT • LOVE IT
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =========================================
+         MOBILE BACKGROUND SLIDESHOW SCRIPT
+    ========================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const slides =
+                    document.querySelectorAll(
+                        ".mobile-background-slide"
+                    );
+
+                let currentSlide = 0;
+
+                const slideDuration = 4000;
+
+
+                function showNextSlide() {
+
+                    slides[currentSlide]
+                        .classList.remove("active");
+
+
+                    currentSlide =
+                        (currentSlide + 1)
+                        % slides.length;
+
+
+                    slides[currentSlide]
+                        .classList.add("active");
+
+                }
+
+
+                setInterval(
+                    showNextSlide,
+                    slideDuration
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
+
