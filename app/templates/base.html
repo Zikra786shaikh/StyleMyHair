@@ -12,8 +12,129 @@
 
 <body>
 
-    {% block content %}
-    {% endblock %}
+    <div class="app-shell">
+
+        <!-- Desktop Sidebar -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <span class="brand-main">Style</span><span class="brand-accent">My</span><span class="brand-main">Hair</span>
+            </div>
+
+            <nav class="desktop-nav">
+
+                <a href="/" class="nav-item active">
+                    <span>⌂</span>
+                    <span>Home</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>⌕</span>
+                    <span>Explore</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>✦</span>
+                    <span>Try On</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>♡</span>
+                    <span>StyleMe</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>♥</span>
+                    <span>Saved</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <a href="#" class="nav-item">
+                    <span>◯</span>
+                    <span>Profile</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Application -->
+        <main class="main-area">
+
+            <header class="topbar">
+
+                <div class="mobile-brand">
+                    Style<span>My</span>Hair
+                </div>
+
+                <div class="topbar-search">
+                    <span>⌕</span>
+                    <input
+                        type="text"
+                        placeholder="Search hairstyles, colors, accessories..."
+                    >
+                </div>
+
+                <div class="topbar-actions">
+
+                    <button class="theme-button" id="themeToggle">
+                        ◐
+                    </button>
+
+                    <button class="profile-button">
+                        ◯
+                    </button>
+
+                </div>
+
+            </header>
+
+            <section class="page-content">
+
+                {% block content %}
+                {% endblock %}
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+
+        <a href="/">
+            <span>⌂</span>
+            <small>Home</small>
+        </a>
+
+        <a href="#">
+            <span>⌕</span>
+            <small>Explore</small>
+        </a>
+
+        <a href="#">
+            <span>✦</span>
+            <small>Try On</small>
+        </a>
+
+        <a href="#">
+            <span>♡</span>
+            <small>StyleMe</small>
+        </a>
+
+        <a href="#">
+            <span>♥</span>
+            <small>Saved</small>
+        </a>
+
+    </nav>
+
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
