@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}StyleMyHair{% endblock %}
+
+{% block content %}
+
+<div class="welcome-screen">
+
+    <div class="logo">
+        Style<span>My</span>Hair
+    </div>
+
+    <div class="welcome-content">
+
+        <h1>
+            Your Hair.<br>
+            Your Style.<br>
+            Your Choice.
+        </h1>
+
+        <p>
+            Explore. Try. Own.
+        </p>
+
+        <a href="{{ url_for('main.choose_style') }}" class="start-button">
+            GET STARTED →
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

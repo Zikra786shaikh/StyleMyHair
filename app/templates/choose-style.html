@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Choose Your Style{% endblock %}
+
+{% block content %}
+
+<div class="choose-screen">
+
+    <a href="/" class="back-button">←</a>
+
+    <div class="choose-header">
+        <div class="logo">
+            Style<span>My</span>Hair
+        </div>
+
+        <h1>Choose your style</h1>
+        <p>We'll personalize your hairstyle experience.</p>
+    </div>
+
+    <div class="gender-cards">
+
+        <a href="{{ url_for('main.female_home') }}"
+           class="gender-card female-card">
+
+            <div class="model-placeholder">♀</div>
+
+            <div class="gender-info">
+                <h2>Female</h2>
+                <p>Explore women's hairstyles</p>
+                <span>Continue →</span>
+            </div>
+
+        </a>
+
+        <a href="{{ url_for('main.male_home') }}"
+           class="gender-card male-card">
+
+            <div class="model-placeholder">♂</div>
+
+            <div class="gender-info">
+                <h2>Male</h2>
+                <p>Explore men's hairstyles</p>
+                <span>Continue →</span>
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

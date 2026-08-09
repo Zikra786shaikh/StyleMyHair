@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: #f7f9fc;
+    color: #111827;
+}
+
+.welcome-screen {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 30px;
+}
+
+.logo {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 45px;
+}
+
+.logo span {
+    color: #1769e0;
+}
+
+.welcome-screen h1 {
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.05;
+    margin-bottom: 20px;
+}
+
+.welcome-screen p {
+    font-size: 20px;
+    color: #667085;
+    margin-bottom: 35px;
+}
+
+.start-button {
+    border: none;
+    background: #1769e0;
+    color: white;
+
+    padding: 16px 32px;
+    border-radius: 12px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 25px rgba(23, 105, 224, 0.20);
+
+    transition: 0.2s ease;
+}
+
+.start-button:hover {
+    transform: translateY(-2px);
+}
+/* ================================
+   CHOOSE STYLE
+================================ */
+
+.choose-screen {
+    min-height: 100vh;
+    padding: 35px;
+    background: #f7f9fc;
+}
+
+.back-button {
+    text-decoration: none;
+    color: #111827;
+    font-size: 28px;
+}
+
+.choose-header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.choose-header .logo {
+    margin-bottom: 25px;
+}
+
+.choose-header h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.choose-header p {
+    color: #667085;
+}
+
+.gender-cards {
+    max-width: 850px;
+    margin: 45px auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.gender-card {
+    min-height: 480px;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+
+    transition: transform 0.25s ease;
+}
+
+.gender-card:hover {
+    transform: translateY(-6px);
+}
+
+.female-card {
+    background: linear-gradient(
+        145deg,
+        #ffd7e7,
+        #f05c91
+    );
+}
+
+.male-card {
+    background: linear-gradient(
+        145deg,
+        #172554,
+        #2563eb
+    );
+}
+
+.model-placeholder {
+    height: 330px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 150px;
+    color: rgba(255,255,255,0.8);
+}
+
+.gender-info {
+    color: white;
+    padding: 25px;
+}
+
+.gender-info h2 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.gender-info p {
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.gender-info span {
+    font-weight: 700;
+}
+
+@media (max-width: 700px) {
+
+    .choose-screen {
+        padding: 20px;
+    }
+
+    .gender-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .gender-card {
+        min-height: 400px;
+    }
+
+    .model-placeholder {
+        height: 270px;
+    }
+}
+/* ROUGH HOME */
+
+.rough-home {
+    min-height: 100vh;
+    padding: 50px;
+}
+
+.female-home {
+    background: #fff1f6;
+}
+
+.male-home {
+    background: #eef4ff;
+}
+
+.rough-home h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.rough-home h2 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.home-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.home-actions button {
+    border: none;
+    padding: 14px 22px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.rough-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.rough-cards div {
+    min-height: 180px;
+    border-radius: 20px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+@media (max-width: 700px) {
+
+    .rough-home {
+        padding: 25px;
+    }
+
+    .rough-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
