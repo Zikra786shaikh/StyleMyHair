@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,6 +128,7 @@
         <button
             class="side-link active"
             data-scroll="heroSection"
+            type="button"
         >
 
             <span>⌂</span>
@@ -139,6 +141,7 @@
         <button
             class="side-link"
             data-scroll="stylesSection"
+            type="button"
         >
 
             <span>✂</span>
@@ -151,6 +154,7 @@
         <button
             class="side-link"
             data-scroll="eventSection"
+            type="button"
         >
 
             <span>⚡</span>
@@ -163,6 +167,7 @@
         <button
             class="side-link"
             data-scroll="accessoriesSection"
+            type="button"
         >
 
             <span>◈</span>
@@ -175,6 +180,7 @@
         <button
             class="side-link"
             data-scroll="productsSection"
+            type="button"
         >
 
             <span>◆</span>
@@ -187,6 +193,7 @@
         <button
             class="side-link"
             data-scroll="favoritesSection"
+            type="button"
         >
 
             <span>♥</span>
@@ -206,6 +213,7 @@
         <button
             class="side-link"
             id="salonButton"
+            type="button"
         >
 
             <span>✂</span>
@@ -218,6 +226,7 @@
         <button
             class="side-link"
             id="hospitalButton"
+            type="button"
         >
 
             <span>✚</span>
@@ -253,60 +262,70 @@
                 class="theme-dot graphite active"
                 data-theme="graphite"
                 title="Graphite"
+                type="button"
             ></button>
 
             <button
                 class="theme-dot navy"
                 data-theme="navy"
                 title="Navy"
+                type="button"
             ></button>
 
             <button
                 class="theme-dot steel"
                 data-theme="steel"
                 title="Steel"
+                type="button"
             ></button>
 
             <button
                 class="theme-dot ocean"
                 data-theme="ocean"
                 title="Ocean"
+                type="button"
             ></button>
 
             <button
                 class="theme-dot emerald"
                 data-theme="emerald"
                 title="Emerald"
+                type="button"
             ></button>
 
             <button
                 class="theme-dot forest"
                 data-theme="forest"
                 title="Forest"
+                type="button"
             ></button>
 
             <button
                 class="theme-dot burgundy"
                 data-theme="burgundy"
                 title="Burgundy"
+                type="button"
             ></button>
 
             <button
                 class="theme-dot copper"
                 data-theme="copper"
                 title="Copper"
+                type="button"
             ></button>
 
             <button
                 class="theme-dot charcoal"
                 data-theme="charcoal"
                 title="Charcoal"
+                type="button"
             ></button>
 
             <button
                 class="theme-dot midnight"
                 data-theme="midnight"
                 title="Midnight"
+                type="button"
             ></button>
 
         </div>
@@ -364,7 +383,6 @@
     ================================================== -->
 
     <header class="male-topbar">
-
 
         <button
             class="mobile-menu"
@@ -468,7 +486,6 @@
 
         <div class="hero-content">
 
-
             <div class="hero-badge">
                 <span></span>
                 MEN'S COLLECTION 2026
@@ -478,7 +495,10 @@
             <h1>
 
                 Own Your
-                <strong>Signature Style.</strong>
+
+                <strong>
+                    Signature Style.
+                </strong>
 
             </h1>
 
@@ -497,6 +517,7 @@
                 <button
                     class="primary-button"
                     id="exploreButton"
+                    type="button"
                 >
 
                     Explore Styles
@@ -509,6 +530,7 @@
                 <button
                     class="secondary-button"
                     id="randomStyleButton"
+                    type="button"
                 >
 
                     ✦ Surprise Me
@@ -551,7 +573,7 @@
         </div>
 
 
-        <!-- PHOTO PLACEHOLDER -->
+        <!-- HERO IMAGE -->
 
         <div class="hero-visual">
 
@@ -562,17 +584,11 @@
 
             <div class="male-photo-placeholder">
 
-                <div class="photo-icon">
-                    👨
-                </div>
-
-                <span>
-                    YOUR MODEL PHOTO
-                </span>
-
-                <small>
-                    Add image later
-                </small>
+                <img
+                    src="{{ url_for('static', filename='images/hero-male.jpg') }}"
+                    alt="StyleMyHair Men's Hero Model"
+                    class="hero-male-image"
+                >
 
             </div>
 
@@ -632,10 +648,10 @@
 
         <div class="quick-grid">
 
-
             <button
                 class="quick-card"
                 data-scroll="stylesSection"
+                type="button"
             >
 
                 <div class="quick-icon">
@@ -658,6 +674,7 @@
             <button
                 class="quick-card"
                 id="quickSalon"
+                type="button"
             >
 
                 <div class="quick-icon">
@@ -680,6 +697,7 @@
             <button
                 class="quick-card"
                 data-scroll="productsSection"
+                type="button"
             >
 
                 <div class="quick-icon">
@@ -702,6 +720,7 @@
             <button
                 class="quick-card"
                 data-scroll="eventSection"
+                type="button"
             >
 
                 <div class="quick-icon">
@@ -748,10 +767,9 @@
             <button
                 class="view-all"
                 id="viewAllStyles"
+                type="button"
             >
-
                 View All →
-
             </button>
 
         </div>
@@ -762,6 +780,7 @@
             <button
                 class="filter-button active"
                 data-filter="all"
+                type="button"
             >
                 All
             </button>
@@ -769,6 +788,7 @@
             <button
                 class="filter-button"
                 data-filter="short"
+                type="button"
             >
                 Short
             </button>
@@ -776,6 +796,7 @@
             <button
                 class="filter-button"
                 data-filter="medium"
+                type="button"
             >
                 Medium
             </button>
@@ -783,6 +804,7 @@
             <button
                 class="filter-button"
                 data-filter="long"
+                type="button"
             >
                 Long
             </button>
@@ -790,6 +812,7 @@
             <button
                 class="filter-button"
                 data-filter="fade"
+                type="button"
             >
                 Fade
             </button>
@@ -797,6 +820,7 @@
             <button
                 class="filter-button"
                 data-filter="classic"
+                type="button"
             >
                 Classic
             </button>
@@ -810,6 +834,8 @@
         >
 
 
+            <!-- TEXTURED CROP -->
+
             <article
                 class="style-card"
                 data-category="fade"
@@ -818,18 +844,20 @@
 
                 <div class="style-image">
 
-                    <div class="image-placeholder">
+                    <img
+                        src="{{ url_for('static', filename='images/textured-crop.jpg') }}"
+                        alt="Textured Crop hairstyle"
+                        loading="lazy"
+                    >
 
-                        <span>01</span>
-
-                        <div>PHOTO</div>
-
-                    </div>
+                    <div class="style-image-overlay"></div>
 
 
                     <button
                         class="favorite-button"
                         data-style="Textured Crop"
+                        type="button"
+                        aria-label="Favorite Textured Crop"
                     >
                         ♡
                     </button>
@@ -855,6 +883,7 @@
                     <button
                         class="try-style"
                         data-style="Textured Crop"
+                        type="button"
                     >
                         Try
                     </button>
@@ -864,6 +893,8 @@
             </article>
 
 
+            <!-- LOW FADE -->
+
             <article
                 class="style-card"
                 data-category="fade"
@@ -872,18 +903,20 @@
 
                 <div class="style-image">
 
-                    <div class="image-placeholder">
+                    <img
+                        src="{{ url_for('static', filename='images/low-fade.jpg') }}"
+                        alt="Low Fade hairstyle"
+                        loading="lazy"
+                    >
 
-                        <span>02</span>
-
-                        <div>PHOTO</div>
-
-                    </div>
+                    <div class="style-image-overlay"></div>
 
 
                     <button
                         class="favorite-button"
                         data-style="Low Fade"
+                        type="button"
+                        aria-label="Favorite Low Fade"
                     >
                         ♡
                     </button>
@@ -904,6 +937,7 @@
                     <button
                         class="try-style"
                         data-style="Low Fade"
+                        type="button"
                     >
                         Try
                     </button>
@@ -913,6 +947,8 @@
             </article>
 
 
+            <!-- BUZZ CUT -->
+
             <article
                 class="style-card"
                 data-category="short"
@@ -921,18 +957,20 @@
 
                 <div class="style-image">
 
-                    <div class="image-placeholder">
+                    <img
+                        src="{{ url_for('static', filename='images/buzz-cut.jpg') }}"
+                        alt="Buzz Cut hairstyle"
+                        loading="lazy"
+                    >
 
-                        <span>03</span>
-
-                        <div>PHOTO</div>
-
-                    </div>
+                    <div class="style-image-overlay"></div>
 
 
                     <button
                         class="favorite-button"
                         data-style="Buzz Cut"
+                        type="button"
+                        aria-label="Favorite Buzz Cut"
                     >
                         ♡
                     </button>
@@ -953,6 +991,7 @@
                     <button
                         class="try-style"
                         data-style="Buzz Cut"
+                        type="button"
                     >
                         Try
                     </button>
@@ -962,6 +1001,8 @@
             </article>
 
 
+            <!-- MODERN QUIFF -->
+
             <article
                 class="style-card"
                 data-category="medium"
@@ -970,21 +1011,24 @@
 
                 <div class="style-image">
 
-                    <div class="image-placeholder">
+                    <img
+                        src="{{ url_for('static', filename='images/modern-quiff.jpg') }}"
+                        alt="Modern Quiff hairstyle"
+                        loading="lazy"
+                    >
 
-                        <span>04</span>
-
-                        <div>PHOTO</div>
-
-                    </div>
+                    <div class="style-image-overlay"></div>
 
 
                     <button
                         class="favorite-button"
                         data-style="Modern Quiff"
+                        type="button"
+                        aria-label="Favorite Modern Quiff"
                     >
                         ♡
                     </button>
+
 
                     <div class="style-tag">
                         POPULAR
@@ -1006,6 +1050,7 @@
                     <button
                         class="try-style"
                         data-style="Modern Quiff"
+                        type="button"
                     >
                         Try
                     </button>
@@ -1015,6 +1060,8 @@
             </article>
 
 
+            <!-- CLASSIC SIDE PART -->
+
             <article
                 class="style-card"
                 data-category="classic"
@@ -1023,18 +1070,20 @@
 
                 <div class="style-image">
 
-                    <div class="image-placeholder">
+                    <img
+                        src="{{ url_for('static', filename='images/classic-side-part.jpg') }}"
+                        alt="Classic Side Part hairstyle"
+                        loading="lazy"
+                    >
 
-                        <span>05</span>
-
-                        <div>PHOTO</div>
-
-                    </div>
+                    <div class="style-image-overlay"></div>
 
 
                     <button
                         class="favorite-button"
                         data-style="Classic Side Part"
+                        type="button"
+                        aria-label="Favorite Classic Side Part"
                     >
                         ♡
                     </button>
@@ -1055,6 +1104,7 @@
                     <button
                         class="try-style"
                         data-style="Classic Side Part"
+                        type="button"
                     >
                         Try
                     </button>
@@ -1064,6 +1114,8 @@
             </article>
 
 
+            <!-- FLOW HAIR -->
+
             <article
                 class="style-card"
                 data-category="long"
@@ -1072,18 +1124,20 @@
 
                 <div class="style-image">
 
-                    <div class="image-placeholder">
+                    <img
+                        src="{{ url_for('static', filename='images/flow-hair.jpg') }}"
+                        alt="Flow Hair hairstyle"
+                        loading="lazy"
+                    >
 
-                        <span>06</span>
-
-                        <div>PHOTO</div>
-
-                    </div>
+                    <div class="style-image-overlay"></div>
 
 
                     <button
                         class="favorite-button"
                         data-style="Flow Hair"
+                        type="button"
+                        aria-label="Favorite Flow Hair"
                     >
                         ♡
                     </button>
@@ -1104,6 +1158,7 @@
                     <button
                         class="try-style"
                         data-style="Flow Hair"
+                        type="button"
                     >
                         Try
                     </button>
@@ -1147,6 +1202,7 @@
                     <button
                         class="primary-button"
                         id="cameraButton"
+                        type="button"
                     >
                         ◉ Camera
                     </button>
@@ -1154,6 +1210,7 @@
                     <button
                         class="secondary-button"
                         id="uploadButton"
+                        type="button"
                     >
                         ↑ Upload Photo
                     </button>
@@ -1164,6 +1221,14 @@
 
 
             <div class="preview-image">
+
+                <img
+                    id="previewImage"
+                    src="{{ url_for('static', filename='images/textured-crop.jpg') }}"
+                    alt="Selected hairstyle preview"
+                >
+
+                <div class="preview-image-overlay"></div>
 
                 <div class="preview-placeholder">
 
@@ -1207,10 +1272,20 @@
         <div class="event-grid">
 
 
+            <!-- WEDDING -->
+
             <article class="event-card wedding">
 
                 <div class="event-image">
-                    <span>PHOTO</span>
+
+                    <img
+                        src="{{ url_for('static', filename='images/event-wedding.jpg') }}"
+                        alt="Wedding Ready men's hairstyle"
+                        loading="lazy"
+                    >
+
+                    <div class="event-image-overlay"></div>
+
                 </div>
 
                 <div class="event-content">
@@ -1227,6 +1302,7 @@
                     <button
                         class="event-button"
                         data-style="Wedding Ready"
+                        type="button"
                     >
                         Explore →
                     </button>
@@ -1236,10 +1312,20 @@
             </article>
 
 
+            <!-- PARTY -->
+
             <article class="event-card party">
 
                 <div class="event-image">
-                    <span>PHOTO</span>
+
+                    <img
+                        src="{{ url_for('static', filename='images/event-party.jpg') }}"
+                        alt="Party Mode men's hairstyle"
+                        loading="lazy"
+                    >
+
+                    <div class="event-image-overlay"></div>
+
                 </div>
 
                 <div class="event-content">
@@ -1256,6 +1342,7 @@
                     <button
                         class="event-button"
                         data-style="Party Mode"
+                        type="button"
                     >
                         Explore →
                     </button>
@@ -1265,10 +1352,20 @@
             </article>
 
 
+            <!-- OFFICE -->
+
             <article class="event-card office">
 
                 <div class="event-image">
-                    <span>PHOTO</span>
+
+                    <img
+                        src="{{ url_for('static', filename='images/event-office.jpg') }}"
+                        alt="Office Sharp men's hairstyle"
+                        loading="lazy"
+                    >
+
+                    <div class="event-image-overlay"></div>
+
                 </div>
 
                 <div class="event-content">
@@ -1285,6 +1382,7 @@
                     <button
                         class="event-button"
                         data-style="Office Sharp"
+                        type="button"
                     >
                         Explore →
                     </button>
@@ -1325,80 +1423,136 @@
 
             <article class="accessory-card">
 
-                <div class="accessory-icon">
-                    🕶
+                <div class="accessory-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/accessory-eyewear.jpg') }}"
+                        alt="Men's eyewear"
+                        loading="lazy"
+                    >
+
                 </div>
 
-                <h3>Eyewear</h3>
+                <div class="accessory-info">
 
-                <p>
-                    Complete your face shape
-                    with the right frame.
-                </p>
+                    <span class="accessory-category">
+                        ACCESSORY
+                    </span>
 
-                <button>
-                    Explore →
-                </button>
+                    <h3>Eyewear</h3>
+
+                    <p>
+                        Complete your face shape
+                        with the right frame.
+                    </p>
+
+                    <button type="button">
+                        Explore →
+                    </button>
+
+                </div>
 
             </article>
 
 
             <article class="accessory-card">
 
-                <div class="accessory-icon">
-                    🧢
+                <div class="accessory-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/accessory-caps.jpg') }}"
+                        alt="Men's caps and hats"
+                        loading="lazy"
+                    >
+
                 </div>
 
-                <h3>Caps & Hats</h3>
+                <div class="accessory-info">
 
-                <p>
-                    Casual accessories for
-                    everyday styling.
-                </p>
+                    <span class="accessory-category">
+                        ACCESSORY
+                    </span>
 
-                <button>
-                    Explore →
-                </button>
+                    <h3>Caps & Hats</h3>
+
+                    <p>
+                        Casual accessories for
+                        everyday styling.
+                    </p>
+
+                    <button type="button">
+                        Explore →
+                    </button>
+
+                </div>
 
             </article>
 
 
             <article class="accessory-card">
 
-                <div class="accessory-icon">
-                    ⌚
+                <div class="accessory-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/accessory-watches.jpg') }}"
+                        alt="Men's watches"
+                        loading="lazy"
+                    >
+
                 </div>
 
-                <h3>Watches</h3>
+                <div class="accessory-info">
 
-                <p>
-                    Add a refined finishing
-                    detail to your outfit.
-                </p>
+                    <span class="accessory-category">
+                        ACCESSORY
+                    </span>
 
-                <button>
-                    Explore →
-                </button>
+                    <h3>Watches</h3>
+
+                    <p>
+                        Add a refined finishing
+                        detail to your outfit.
+                    </p>
+
+                    <button type="button">
+                        Explore →
+                    </button>
+
+                </div>
 
             </article>
 
 
             <article class="accessory-card">
 
-                <div class="accessory-icon">
-                    💼
+                <div class="accessory-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/accessory-extras.jpg') }}"
+                        alt="Men's style accessories"
+                        loading="lazy"
+                    >
+
                 </div>
 
-                <h3>Style Extras</h3>
+                <div class="accessory-info">
 
-                <p>
-                    Discover accessories that
-                    match your complete look.
-                </p>
+                    <span class="accessory-category">
+                        STYLE
+                    </span>
 
-                <button>
-                    Explore →
-                </button>
+                    <h3>Style Extras</h3>
+
+                    <p>
+                        Discover accessories that
+                        match your complete look.
+                    </p>
+
+                    <button type="button">
+                        Explore →
+                    </button>
+
+                </div>
 
             </article>
 
@@ -1442,7 +1596,13 @@
             <article class="product-card">
 
                 <div class="product-image">
-                    PRODUCT
+
+                    <img
+                        src="{{ url_for('static', filename='images/product-matte-clay.jpg') }}"
+                        alt="Matte Clay hair product"
+                        loading="lazy"
+                    >
+
                 </div>
 
                 <div class="product-info">
@@ -1455,7 +1615,7 @@
                         Texture • Hold • Matte Finish
                     </p>
 
-                    <button>
+                    <button type="button">
                         Discover →
                     </button>
 
@@ -1467,7 +1627,13 @@
             <article class="product-card">
 
                 <div class="product-image">
-                    PRODUCT
+
+                    <img
+                        src="{{ url_for('static', filename='images/product-shampoo.jpg') }}"
+                        alt="Daily Shampoo hair product"
+                        loading="lazy"
+                    >
+
                 </div>
 
                 <div class="product-info">
@@ -1480,7 +1646,7 @@
                         Clean • Fresh • Everyday
                     </p>
 
-                    <button>
+                    <button type="button">
                         Discover →
                     </button>
 
@@ -1492,7 +1658,13 @@
             <article class="product-card">
 
                 <div class="product-image">
-                    PRODUCT
+
+                    <img
+                        src="{{ url_for('static', filename='images/product-serum.jpg') }}"
+                        alt="Hair Serum"
+                        loading="lazy"
+                    >
+
                 </div>
 
                 <div class="product-info">
@@ -1505,7 +1677,7 @@
                         Smooth • Shine • Protection
                     </p>
 
-                    <button>
+                    <button type="button">
                         Discover →
                     </button>
 
@@ -1517,7 +1689,13 @@
             <article class="product-card">
 
                 <div class="product-image">
-                    PRODUCT
+
+                    <img
+                        src="{{ url_for('static', filename='images/product-sea-salt.jpg') }}"
+                        alt="Sea Salt Spray"
+                        loading="lazy"
+                    >
+
                 </div>
 
                 <div class="product-info">
@@ -1530,7 +1708,7 @@
                         Volume • Texture • Natural
                     </p>
 
-                    <button>
+                    <button type="button">
                         Discover →
                     </button>
 
@@ -1568,6 +1746,7 @@
             <button
                 class="nearby-card"
                 id="nearbySalon"
+                type="button"
             >
 
                 <div class="nearby-icon">
@@ -1595,6 +1774,7 @@
             <button
                 class="nearby-card"
                 id="nearbyHospital"
+                type="button"
             >
 
                 <div class="nearby-icon hospital">
@@ -1724,6 +1904,7 @@
         <button
             class="modal-close"
             id="modalClose"
+            type="button"
         >
             ×
         </button>
@@ -1741,14 +1922,21 @@
         </p>
 
 
-        <div class="modal-placeholder">
-            PHOTO PREVIEW
+        <div class="modal-image">
+
+            <img
+                id="modalImage"
+                src="{{ url_for('static', filename='images/textured-crop.jpg') }}"
+                alt="Selected hairstyle"
+            >
+
         </div>
 
 
         <button
             class="primary-button modal-button"
             id="modalDone"
+            type="button"
         >
             Continue
         </button>
@@ -1765,3 +1953,4 @@
 </body>
 
 </html>
+

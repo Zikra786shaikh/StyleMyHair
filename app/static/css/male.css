@@ -3431,3 +3431,787 @@ a {
     }
 
 }
+.male-photo-placeholder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-male-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+/* =====================================================
+   STYLEMYHAIR
+   UNIVERSAL IMAGE SYSTEM
+   ===================================================== */
+
+
+/* =====================================================
+   1. HERO MALE IMAGE
+   ===================================================== */
+
+.male-photo-placeholder {
+
+    width: 280px;
+    height: 380px;
+
+    position: relative;
+
+    z-index: 2;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius:
+        30px 30px 80px 80px;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--surface-3),
+            var(--surface)
+        );
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        var(--shadow);
+}
+
+
+/* Actual hero image */
+
+.hero-male-image {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center top;
+
+    transition:
+        transform .5s ease,
+        filter .5s ease;
+}
+
+
+/* Hero image hover */
+
+.male-photo-placeholder:hover .hero-male-image {
+
+    transform: scale(1.04);
+
+}
+
+
+/* Hide placeholder content when image exists */
+
+.male-photo-placeholder:has(.hero-male-image)
+.photo-icon,
+
+.male-photo-placeholder:has(.hero-male-image)
+> span,
+
+.male-photo-placeholder:has(.hero-male-image)
+> small {
+
+    display: none;
+
+}
+
+
+/* =====================================================
+   2. GENERAL IMAGE RESET
+   ===================================================== */
+
+.style-image img,
+.event-image img,
+.product-image img,
+.preview-image img,
+.modal-placeholder img {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+}
+
+
+/* =====================================================
+   3. STYLE CARDS
+   Textured Crop / Flawless Cut / Low Fade etc.
+   ===================================================== */
+
+.style-image {
+
+    height: 280px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--surface-3),
+            var(--surface-2)
+        );
+}
+
+
+/* Actual hairstyle image */
+
+.style-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform .4s ease,
+        filter .4s ease;
+}
+
+
+/* Zoom when hovering */
+
+.style-card:hover .style-image img {
+
+    transform: scale(1.06);
+
+}
+
+
+/* Image dark overlay */
+
+.style-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 55%,
+            rgba(0,0,0,.35)
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* Keep buttons/tags above image */
+
+.style-image .favorite-button,
+.style-image .style-tag {
+
+    z-index: 3;
+
+}
+
+
+/* =====================================================
+   4. STYLE CARD IMAGE PLACEHOLDER
+   ===================================================== */
+
+.image-placeholder {
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--muted);
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--surface-3),
+            var(--surface-2)
+        );
+}
+
+
+/* Hide placeholder if real image exists */
+
+.style-image:has(img)
+.image-placeholder {
+
+    display: none;
+
+}
+
+
+/* =====================================================
+   5. EVENT LOOK IMAGES
+   ===================================================== */
+
+.event-image {
+
+    height: 210px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--surface-3),
+            var(--surface-2)
+        );
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+/* Event actual image */
+
+.event-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform .4s ease;
+}
+
+
+/* Hover */
+
+.event-card:hover .event-image img {
+
+    transform: scale(1.05);
+
+}
+
+
+/* Event image overlay */
+
+.event-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 50%,
+            rgba(0,0,0,.35)
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   6. PRODUCT IMAGES
+   ===================================================== */
+
+.product-image {
+
+    height: 190px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        var(--surface-2);
+
+    color:
+        var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* Product actual image */
+
+.product-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform .4s ease;
+}
+
+
+/* Product hover */
+
+.product-card:hover .product-image img {
+
+    transform: scale(1.06);
+
+}
+
+
+/* =====================================================
+   7. PREVIEW IMAGE
+   ===================================================== */
+
+.preview-image {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle,
+            color-mix(
+                in srgb,
+                var(--primary) 18%,
+                transparent
+            ),
+            transparent 65%
+        ),
+
+        var(--surface-3);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* Actual preview image */
+
+.preview-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+}
+
+
+/* Hide preview placeholder if image exists */
+
+.preview-image:has(img)
+.preview-placeholder {
+
+    display: none;
+
+}
+
+
+/* =====================================================
+   8. ACCESSORY IMAGES
+   ===================================================== */
+
+
+/* If your accessory card contains an image */
+
+.accessory-image {
+
+    width: 100%;
+    height: 180px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background:
+        var(--surface-2);
+}
+
+
+/* Accessory actual image */
+
+.accessory-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+
+    transition:
+        transform .4s ease;
+}
+
+
+/* Hover */
+
+.accessory-card:hover .accessory-image img {
+
+    transform: scale(1.06);
+
+}
+
+
+/* =====================================================
+   9. ACCESSORY IMAGE PLACEHOLDER
+   ===================================================== */
+
+.accessory-image:has(img)
+.accessory-icon {
+
+    display: none;
+
+}
+
+
+/* =====================================================
+   10. FAVORITE BUTTON OVER IMAGE
+   ===================================================== */
+
+.favorite-button {
+
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    z-index: 5;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,0,0,.45);
+
+    backdrop-filter:
+        blur(10px);
+
+    color: white;
+
+    font-size: 18px;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+
+.favorite-button:hover {
+
+    transform:
+        scale(1.1);
+
+    background:
+        rgba(0,0,0,.65);
+
+}
+
+
+/* =====================================================
+   11. STYLE TAG OVER IMAGE
+   ===================================================== */
+
+.style-tag {
+
+    position: absolute;
+
+    left: 12px;
+    top: 12px;
+
+    z-index: 5;
+
+    padding:
+        6px 9px;
+
+    background:
+        var(--primary);
+
+    color: white;
+
+    border-radius: 6px;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   12. IMAGE LOADING / EMPTY STATE
+   ===================================================== */
+
+.style-image img,
+.event-image img,
+.product-image img,
+.accessory-image img,
+.preview-image img,
+.hero-male-image {
+
+    background:
+        var(--surface-3);
+}
+
+
+/* =====================================================
+   13. IMAGE ERROR STATE
+   ===================================================== */
+
+img {
+
+    max-width: 100%;
+}
+
+
+/* =====================================================
+   14. MOBILE IMAGE SIZES
+   ===================================================== */
+
+@media (max-width: 800px) {
+
+    .male-photo-placeholder {
+
+        width: 270px;
+        height: 370px;
+
+    }
+
+
+    .style-image {
+
+        height: 300px;
+
+    }
+
+
+    .event-image {
+
+        height: 230px;
+
+    }
+
+
+    .product-image {
+
+        height: 220px;
+
+    }
+
+
+    .accessory-image {
+
+        height: 220px;
+
+    }
+
+}
+
+
+/* =====================================================
+   15. SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 560px) {
+
+    .male-photo-placeholder {
+
+        width: 250px;
+        height: 350px;
+
+    }
+
+
+    .style-image {
+
+        height: 320px;
+
+    }
+
+
+    .event-image {
+
+        height: 240px;
+
+    }
+
+
+    .product-image {
+
+        height: 230px;
+
+    }
+
+
+    .accessory-image {
+
+        height: 230px;
+
+    }
+
+}
+
+
+/* =====================================================
+   16. IMAGE POSITION OPTIONS
+   ===================================================== */
+
+/* Use these classes when a hairstyle needs
+   a different crop position */
+
+.image-top {
+
+    object-position: center top !important;
+
+}
+
+
+.image-center {
+
+    object-position: center center !important;
+
+}
+
+
+.image-bottom {
+
+    object-position: center bottom !important;
+
+}
+
+
+/* =====================================================
+   17. PORTRAIT HAIRSTYLE IMAGES
+   ===================================================== */
+
+.portrait-image {
+
+    object-fit: cover !important;
+
+    object-position: center top !important;
+
+}
+
+
+/* =====================================================
+   18. CONTAIN IMAGE
+   Useful for products/accessories with
+   white backgrounds or transparent PNGs
+   ===================================================== */
+
+.contain-image {
+
+    object-fit: contain !important;
+
+    padding: 15px;
+
+}
+
+
+/* =====================================================
+   19. PREMIUM IMAGE EFFECT
+   ===================================================== */
+
+.style-image,
+.event-image,
+.product-image,
+.accessory-image,
+.preview-image,
+.male-photo-placeholder {
+
+    isolation: isolate;
+
+}
+
+
+/* =====================================================
+   20. SMOOTH IMAGE RENDERING
+   ===================================================== */
+
+.style-image img,
+.event-image img,
+.product-image img,
+.accessory-image img,
+.preview-image img,
+.hero-male-image {
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+
+}
