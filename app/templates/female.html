@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-theme="rose">
 
 <head>
 
-```
+
 <meta charset="UTF-8">
 
 <meta
@@ -12,344 +12,505 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>
-    StyleMyHair | Female Styles
-</title>
+<meta
+    name="description"
+    content="StyleMyHair Female Style Studio - Discover hairstyles, haircuts, accessories and beauty looks."
+>
+
+<title>StyleMyHair | Female Style Studio</title>
 
 
 <!-- =====================================================
-     MAIN STYLE
+     GOOGLE FONT
 ====================================================== -->
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
     rel="stylesheet"
-    href="{{ url_for('static', filename='css/style.css') }}?v=40"
 >
 
 
 <!-- =====================================================
-     FEMALE PAGE STYLE
+     FEMALE CSS
 ====================================================== -->
 
 <link
     rel="stylesheet"
-    href="{{ url_for('static', filename='css/female.css') }}?v=40"
+    href="{{ url_for('static', filename='css/female.css') }}?v=101"
 >
-```
+
 
 </head>
 
 <body class="female-page">
 
-<!-- =========================================================
+
+
+
+<!-- =====================================================
      BACKGROUND
-========================================================= -->
+====================================================== -->
 
 <div class="female-background"></div>
 
-<!-- =========================================================
-     MOBILE SIDEBAR OVERLAY
-========================================================= -->
+<div class="background-orb orb-one"></div>
+<div class="background-orb orb-two"></div>
+
+
+<!-- =====================================================
+     MOBILE OVERLAY
+====================================================== -->
 
 <div
-    class="female-sidebar-overlay"
-    id="femaleSidebarOverlay"
+    class="sidebar-overlay"
+    id="sidebarOverlay"
 ></div>
 
-<!-- =========================================================
-     DESKTOP / MOBILE SIDEBAR
-========================================================= -->
+
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
 
 <aside
     class="female-sidebar"
     id="femaleSidebar"
 >
 
-```
-<!-- =====================================================
-     SIDEBAR LOGO
-====================================================== -->
-
-<a
-    href="{{ url_for('main.female') }}"
-    class="female-sidebar-logo"
->
-
-    <span class="logo-main">
-        Style
-    </span>
-
-    <span class="logo-accent">
-        MyHair
-    </span>
-
-</a>
-
-
-<!-- =====================================================
-     NAVIGATION
-====================================================== -->
-
-<nav class="female-sidebar-nav">
-
-
-    <!-- HOME -->
+    <!-- LOGO -->
 
     <a
-        href="#home"
-        class="female-sidebar-item active"
+        href="{{ url_for('main.female') }}"
+        class="sidebar-logo"
     >
 
-        <span class="nav-icon">
-            ⌂
+        <span class="logo-style">
+            Style
         </span>
 
-        <span>
-            Home
+        <span class="logo-myhair">
+            MyHair
         </span>
 
     </a>
 
 
-    <!-- HAIR STYLES -->
+    <!-- USER MINI PROFILE -->
 
-    <a
-        href="#hairstyles"
-        class="female-sidebar-item"
-    >
+    <div class="sidebar-profile">
 
-        <span class="nav-icon">
-            ✦
-        </span>
-
-        <span>
-            Hair Styles
-        </span>
-
-    </a>
-
-
-    <!-- HAIR CUTTING -->
-
-    <a
-        href="#haircuts"
-        class="female-sidebar-item"
-    >
-
-        <span class="nav-icon">
-            ✂
-        </span>
-
-        <span>
-            Hair Cutting
-        </span>
-
-    </a>
-
-
-    <!-- ACCESSORIES -->
-
-    <a
-        href="#accessories"
-        class="female-sidebar-item"
-    >
-
-        <span class="nav-icon">
-            ♢
-        </span>
-
-        <span>
-            Hair Accessories
-        </span>
-
-    </a>
-
-
-    <!-- OCCASIONAL LOOKS -->
-
-    <a
-        href="#occasions"
-        class="female-sidebar-item"
-    >
-
-        <span class="nav-icon">
-            ✿
-        </span>
-
-        <span>
-            Occasional Looks
-        </span>
-
-    </a>
-
-
-    <!-- PRODUCTS -->
-
-    <a
-        href="#products"
-        class="female-sidebar-item"
-    >
-
-        <span class="nav-icon">
+        <div class="profile-avatar">
             ♡
-        </span>
+        </div>
 
-        <span>
-            Hair Products
-        </span>
+        <div class="profile-text">
 
-    </a>
+            <strong>
+                Style Explorer
+            </strong>
 
+            <span>
+                Female Studio
+            </span>
 
-    <!-- MY LOOKS -->
+        </div>
 
-    <a
-        href="#mylooks"
-        class="female-sidebar-item"
-    >
-
-        <span class="nav-icon">
-            ◉
-        </span>
-
-        <span>
-            My Looks
-        </span>
-
-    </a>
+    </div>
 
 
-    <!-- FAVORITES -->
+    <!-- MAIN NAVIGATION -->
 
-    <a
-        href="#favorites"
-        class="female-sidebar-item"
-    >
+    <nav class="sidebar-navigation">
 
-        <span class="nav-icon">
-            ♥
-        </span>
-
-        <span>
-            Favorites
-        </span>
-
-    </a>
+        <p class="nav-label">
+            DISCOVER
+        </p>
 
 
-    <!-- SALON -->
+        <a
+            href="#home"
+            class="sidebar-link active"
+        >
 
-    <a
-        href="#salon"
-        class="female-sidebar-item"
-    >
+            <span class="sidebar-icon">⌂</span>
 
-        <span class="nav-icon">
-            ⌖
-        </span>
+            <span>
+                Home
+            </span>
 
-        <span>
-            Nearest Salon
-        </span>
-
-    </a>
+        </a>
 
 
-    <!-- HOSPITAL -->
+        <a
+            href="#hairstyles"
+            class="sidebar-link"
+        >
 
-    <a
-        href="#hospital"
-        class="female-sidebar-item"
-    >
+            <span class="sidebar-icon">✦</span>
 
-        <span class="nav-icon">
-            +
-        </span>
+            <span>
+                Hair Styles
+            </span>
 
-        <span>
-            Nearest Hospital
-        </span>
-
-    </a>
+        </a>
 
 
-</nav>
+        <a
+            href="#haircuts"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">✂</span>
+
+            <span>
+                Hair Cutting
+            </span>
+
+        </a>
 
 
-<!-- =====================================================
-     SIDEBAR BOTTOM
-====================================================== -->
+        <a
+            href="#accessories"
+            class="sidebar-link"
+        >
 
-<div class="female-sidebar-bottom">
+            <span class="sidebar-icon">◇</span>
 
+            <span>
+                Accessories
+            </span>
 
-    <a
-        href="#settings"
-        class="female-sidebar-item"
-    >
-
-        <span class="nav-icon">
-            ⚙
-        </span>
-
-        <span>
-            Settings
-        </span>
-
-    </a>
+        </a>
 
 
-    <a
-        href="#help"
-        class="female-sidebar-item"
-    >
+        <a
+            href="#occasions"
+            class="sidebar-link"
+        >
 
-        <span class="nav-icon">
-            ?
-        </span>
+            <span class="sidebar-icon">✿</span>
 
-        <span>
-            Help & Support
-        </span>
+            <span>
+                Occasional Looks
+            </span>
 
-    </a>
+        </a>
 
 
-</div>
-```
+        <a
+            href="#products"
+            class="sidebar-link"
+        >
 
-</aside>
+            <span class="sidebar-icon">♡</span>
 
-<!-- =========================================================
-     MAIN APPLICATION
-========================================================= -->
+            <span>
+                Hair Products
+            </span>
 
-<div class="female-app">
+        </a>
 
-```
-<!-- =====================================================
-     TOP HEADER
-====================================================== -->
 
-<header class="female-header">
+        <p class="nav-label nav-label-space">
+            MY SPACE
+        </p>
+
+
+        <a
+            href="#mylooks"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">◉</span>
+
+            <span>
+                My Looks
+            </span>
+
+        </a>
+
+
+        <a
+            href="#favorites"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">♥</span>
+
+            <span>
+                Favorites
+            </span>
+
+        </a>
+
+
+        <a
+            href="#salon"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">⌖</span>
+
+            <span>
+                Nearest Salon
+            </span>
+
+        </a>
+
+
+        <a
+            href="#hospital"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">+</span>
+
+            <span>
+                Nearest Hospital
+            </span>
+
+        </a>
+
+    </nav>
 
 
     <!-- =================================================
-         LEFT HEADER AREA
+         COLOR CUSTOMIZATION
     ================================================== -->
 
-    <div class="female-header-left">
+    <div class="theme-panel">
+
+        <div class="theme-panel-heading">
+
+            <div>
+
+                <span class="theme-small-label">
+                    PERSONALIZE
+                </span>
+
+                <strong>
+                    App Colour
+                </strong>
+
+            </div>
+
+            <span class="palette-icon">
+                ✦
+            </span>
+
+        </div>
 
 
-        <!-- =================================================
-             MOBILE HAMBURGER BUTTON
-        ================================================== -->
+        <p class="theme-description">
+            Choose a colour that feels like you.
+        </p>
+
+
+        <div
+            class="theme-colors"
+            id="themeColors"
+        >
+
+            <button
+                type="button"
+                class="theme-color active"
+                data-theme="rose"
+                title="Rose"
+                aria-label="Rose theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="lavender"
+                title="Lavender"
+                aria-label="Lavender theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="peach"
+                title="Peach"
+                aria-label="Peach theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="sky"
+                title="Sky Blue"
+                aria-label="Sky blue theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="mint"
+                title="Mint"
+                aria-label="Mint theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="sage"
+                title="Sage"
+                aria-label="Sage theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="butter"
+                title="Butter"
+                aria-label="Butter theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="coral"
+                title="Coral"
+                aria-label="Coral theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="plum"
+                title="Plum"
+                aria-label="Plum theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="ocean"
+                title="Ocean"
+                aria-label="Ocean theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="cocoa"
+                title="Cocoa"
+                aria-label="Cocoa theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="midnight"
+                title="Midnight"
+                aria-label="Midnight theme"
+            >
+                <span></span>
+            </button>
+
+        </div>
+
+
+        <div class="selected-theme-name">
+
+            <span id="selectedThemeName">
+                Rose
+            </span>
+
+            theme
+
+        </div>
+
+    </div>
+
+
+    <!-- SIDEBAR FOOTER -->
+
+    <div class="sidebar-footer">
+
+        <a
+            href="#settings"
+            class="sidebar-footer-link"
+        >
+            ⚙
+            Settings
+        </a>
+
+        <a
+            href="#help"
+            class="sidebar-footer-link"
+        >
+            ?
+            Help & Support
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN APPLICATION
+====================================================== -->
+
+<div class="female-app">
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <header class="female-header">
+
+
+        <!-- MOBILE MENU -->
 
         <button
             type="button"
-            class="female-menu-button"
-            id="femaleMenuButton"
-            aria-label="Open navigation menu"
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            aria-label="Open navigation"
             aria-expanded="false"
         >
 
@@ -360,13 +521,11 @@
         </button>
 
 
-        <!-- =================================================
-             MOBILE LOGO
-        ================================================== -->
+        <!-- MOBILE LOGO -->
 
         <a
             href="{{ url_for('main.female') }}"
-            class="female-mobile-logo"
+            class="mobile-logo"
         >
 
             Style<span>MyHair</span>
@@ -374,2844 +533,1942 @@
         </a>
 
 
-    </div>
+        <!-- HEADER TITLE -->
 
-
-    <!-- =================================================
-         DESKTOP HEADER TITLE
-    ================================================== -->
-
-    <div class="female-header-title">
-
-        <span>
-            FEMALE STYLE STUDIO
-        </span>
-
-        <h1>
-            Discover your look.
-        </h1>
-
-    </div>
-
-
-    <!-- =================================================
-         HEADER ACTIONS
-    ================================================== -->
-
-    <div class="female-header-actions">
-
-
-        <!-- SEARCH -->
-
-        <button
-            type="button"
-            class="female-header-button"
-            title="Search"
-            id="headerSearchButton"
-        >
-
-            ⌕
-
-        </button>
-
-
-        <!-- THEME -->
-
-        <button
-            type="button"
-            class="female-header-button"
-            id="themeToggle"
-            title="Change theme"
-        >
-
-            ☼
-
-        </button>
-
-
-        <!-- PROFILE -->
-
-        <button
-            type="button"
-            class="female-profile-button"
-            title="My Profile"
-        >
+        <div class="header-title">
 
             <span>
-                ♡
+                FEMALE STYLE STUDIO
             </span>
 
-        </button>
-
-
-    </div>
-
-
-</header>
-
-
-<!-- =========================================================
-     MAIN CONTENT
-========================================================= -->
-
-<main class="female-main">
-
-
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
-
-    <section
-        class="female-hero"
-        id="home"
-    >
-
-
-        <!-- HERO CONTENT -->
-
-        <div class="female-hero-content">
-
-
-            <div class="female-eyebrow">
-
-                FEMALE STYLE COLLECTION
-
-            </div>
-
-
-            <h2>
-
-                Your hair.
-                <br>
-
-                Your
-                <span>
-                    signature.
-                </span>
-
-            </h2>
-
-
-            <p>
-
-                Explore hairstyles, haircuts, accessories,
-                products and complete looks designed to
-                help you discover your personal style.
-
-            </p>
-
-
-            <!-- HERO BUTTONS -->
-
-            <div class="female-hero-actions">
-
-
-                <a
-                    href="#hairstyles"
-                    class="female-primary-button"
-                >
-
-                    EXPLORE STYLES
-
-                    <b>
-                        ↓
-                    </b>
-
-                </a>
-
-
-                <a
-                    href="#find-style"
-                    class="female-secondary-button"
-                >
-
-                    Find Your Style
-
-                </a>
-
-
-            </div>
-
+            <h1>
+                Discover your look.
+            </h1>
 
         </div>
 
 
-        <!-- =================================================
-             HERO VISUAL
-        ================================================== -->
+        <!-- HEADER ACTIONS -->
 
-        <div class="female-hero-visual">
+        <div class="header-actions">
 
-
-            <!-- MAIN HERO IMAGE -->
-
-            <div class="female-hero-image-main">
-
-                <img
-                    src="{{ url_for('static', filename='images/female-hero-1.jpg') }}"
-                    alt="Female hairstyle"
-                >
-
-            </div>
-
-
-            <!-- SECOND HERO IMAGE -->
-
-            <div class="female-hero-image-small">
-
-                <img
-                    src="{{ url_for('static', filename='images/female-hero-2.jpg') }}"
-                    alt="Elegant hairstyle"
-                >
-
-            </div>
-
-
-            <!-- GLOW -->
-
-            <div class="female-hero-glow"></div>
-
-
-            <!-- DECORATIONS -->
-
-            <div class="female-hero-flower flower-one">
-                ✿
-            </div>
-
-            <div class="female-hero-flower flower-two">
-                ❀
-            </div>
-
-            <div class="female-hero-flower flower-three">
-                ✽
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =====================================================
-         SEARCH
-    ====================================================== -->
-
-    <section class="female-tools">
-
-
-        <div class="female-search">
-
-            <span>
+            <button
+                type="button"
+                class="header-icon-button"
+                id="headerSearchButton"
+                title="Search"
+                aria-label="Search"
+            >
                 ⌕
-            </span>
-
-            <input
-                type="text"
-                id="hairstyleSearch"
-                placeholder="Search hairstyles, cuts, looks..."
-                autocomplete="off"
-            >
-
-        </div>
-
-
-        <button
-            type="button"
-            class="female-filter-button"
-            id="showFilters"
-        >
-
-            ☷
-
-            <span>
-                Filters
-            </span>
-
-        </button>
-
-
-    </section>
-
-
-    <!-- =====================================================
-         QUICK CATEGORY STRIP
-    ====================================================== -->
-
-    <section class="female-quick-categories">
-
-
-        <a href="#hairstyles">
-
-            <span>
-                ✦
-            </span>
-
-            Hair Styles
-
-        </a>
-
-
-        <a href="#haircuts">
-
-            <span>
-                ✂
-            </span>
-
-            Hair Cuts
-
-        </a>
-
-
-        <a href="#accessories">
-
-            <span>
-                ♢
-            </span>
-
-            Accessories
-
-        </a>
-
-
-        <a href="#occasions">
-
-            <span>
-                ✿
-            </span>
-
-            Occasions
-
-        </a>
-
-
-        <a href="#products">
-
-            <span>
-                ♡
-            </span>
-
-            Products
-
-        </a>
-
-
-    </section>
-
-
-    <!-- =====================================================
-         FIND YOUR STYLE
-    ====================================================== -->
-
-    <section
-        class="female-find-style"
-        id="find-style"
-    >
-
-
-        <div class="female-find-style-content">
-
-
-            <span class="section-label">
-                PERSONALIZED DISCOVERY
-            </span>
-
-
-            <h2>
-
-                Find the style
-                <span>
-                    made for you.
-                </span>
-
-            </h2>
-
-
-            <p>
-
-                Tell us about your hair, face shape,
-                preferred length and personality.
-                StyleMyHair can help you discover
-                looks that match you.
-
-            </p>
+            </button>
 
 
             <button
                 type="button"
-                class="female-discovery-button"
+                class="header-icon-button"
+                id="darkModeButton"
+                title="Toggle dark mode"
+                aria-label="Toggle dark mode"
             >
-
-                FIND MY STYLE
-
-                <b>
-                    →
-                </b>
-
+                ☼
             </button>
 
 
-        </div>
-
-
-        <div class="female-find-style-decoration">
-
-            <span>
-                ✦
-            </span>
-
-            <span>
-                ✿
-            </span>
-
-            <span>
-                ♡
-            </span>
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =====================================================
-         HAIR STYLES
-    ====================================================== -->
-
-    <section
-        class="female-section"
-        id="hairstyles"
-    >
-
-
-        <div class="female-section-heading">
-
-
-            <div>
-
-                <span>
-                    CURATED COLLECTION
-                </span>
-
-                <h2>
-                    Hair Styles
-                </h2>
-
-                <p>
-                    Explore looks for every length,
-                    texture and personality.
-                </p>
-
-            </div>
-
-
-            <a
-                href="#hairstyles"
-                class="female-view-all"
+            <button
+                type="button"
+                class="header-profile"
+                title="My Profile"
+                aria-label="My Profile"
             >
-
-                View all
-                →
-
-            </a>
-
+                ♡
+            </button>
 
         </div>
+
+    </header>
+
+
+   
+        <!-- =====================================================
+     PAGE BACK BUTTON
+====================================================== -->
+
+<div class="page-back-wrapper">
+
+    <button
+        type="button"
+        class="page-back-button"
+        id="pageBackButton"
+        aria-label="Go back to previous page"
+    >
+        <span class="back-arrow">←</span>
+        <span class="back-text">Back</span>
+    </button>
+
+</div>
+ <!-- =================================================
+         MAIN
+    ================================================== -->
+
+    <main class="female-main">
+
 
 
         <!-- =================================================
-             CATEGORY FILTERS
+             HERO
         ================================================== -->
 
-        <div class="female-category-list">
+        <section
+            class="female-hero"
+            id="home"
+        >
+
+            <div class="hero-copy">
+
+                <span class="hero-eyebrow">
+                    YOUR STYLE • YOUR CHOICE
+                </span>
 
 
-            <button
-                class="female-category active"
-                data-category="all"
-                type="button"
-            >
-                All Styles
-            </button>
+                <h2>
+
+                    Discover the
+
+                    <span>
+                        look
+                    </span>
+
+                    that feels like you.
+
+                </h2>
 
 
-            <button
-                class="female-category"
-                data-category="short"
-                type="button"
-            >
-                Short
-            </button>
+                <p>
+
+                    Explore hairstyles, cuts, accessories
+                    and complete beauty looks — then find
+                    the style you want to make your own.
+
+                </p>
 
 
-            <button
-                class="female-category"
-                data-category="medium"
-                type="button"
-            >
-                Medium
-            </button>
+                <div class="hero-buttons">
+
+                    <a
+                        href="#hairstyles"
+                        class="primary-button"
+                    >
+
+                        Explore Styles
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
 
 
-            <button
-                class="female-category"
-                data-category="long"
-                type="button"
-            >
-                Long
-            </button>
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="heroFindStyle"
+                    >
+
+                        ✦
+
+                        Find My Style
+
+                    </button>
+
+                </div>
 
 
-            <button
-                class="female-category"
-                data-category="curly"
-                type="button"
-            >
-                Curly
-            </button>
+                <div class="hero-stats">
+
+                    <div>
+
+                        <strong>
+                            100+
+                        </strong>
+
+                        <span>
+                            Styles
+                        </span>
+
+                    </div>
 
 
-            <button
-                class="female-category"
-                data-category="wavy"
-                type="button"
-            >
-                Wavy
-            </button>
+                    <div>
+
+                        <strong>
+                            20+
+                        </strong>
+
+                        <span>
+                            Categories
+                        </span>
+
+                    </div>
 
 
-            <button
-                class="female-category"
-                data-category="straight"
-                type="button"
-            >
-                Straight
-            </button>
+                    <div>
+
+                        <strong>
+                            AI
+                        </strong>
+
+                        <span>
+                            Try-On
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
 
 
-            <button
-                class="female-category"
-                data-category="braids"
-                type="button"
-            >
-                Braids
-            </button>
+            <!-- HERO VISUAL -->
+
+            <div class="hero-visual">
+
+                <div class="hero-glow"></div>
 
 
-        </div>
+                <div class="hero-main-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/female-hero-1.jpg') }}"
+                        alt="Elegant female hairstyle"
+                    >
+
+                </div>
+
+
+                <div class="hero-small-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/female-hero-2.jpg') }}"
+                        alt="Beautiful hairstyle"
+                    >
+
+                </div>
+
+
+                <div class="hero-floating-card card-top">
+
+                    <span class="floating-icon">
+                        ✦
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Trending
+                        </strong>
+
+                        <small>
+                            This season
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-floating-card card-bottom">
+
+                    <span class="heart-symbol">
+                        ♥
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Your Style
+                        </strong>
+
+                        <small>
+                            Make it yours
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <span class="hero-decoration decoration-one">
+                    ✿
+                </span>
+
+                <span class="hero-decoration decoration-two">
+                    ✦
+                </span>
+
+                <span class="hero-decoration decoration-three">
+                    ❀
+                </span>
+
+            </div>
+
+        </section>
 
 
         <!-- =================================================
-             STYLE GRID
+             SEARCH TOOLBAR
         ================================================== -->
 
-        <div
-            class="female-style-grid"
-            id="styleGrid"
-        >
+        <section class="style-tools">
 
-
-            <!-- =================================================
-                 LONG LAYERS
-            ================================================== -->
-
-            <article
-                class="female-style-card"
-                data-category="long"
-                data-name="Long Layers"
-            >
-
-
-                <div class="female-style-image">
-
-
-                    <div class="female-card-gallery">
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-long-layers-1.jpg') }}"
-                            alt="Long Layers hairstyle"
-                            class="gallery-image active"
-                        >
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-long-layers-2.jpg') }}"
-                            alt="Long Layers hairstyle side view"
-                            class="gallery-image"
-                        >
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-long-layers-3.jpg') }}"
-                            alt="Long Layers hairstyle back view"
-                            class="gallery-image"
-                        >
-
-
-                    </div>
-
-
-                    <button
-                        class="female-gallery-next"
-                        type="button"
-                        aria-label="Next Long Layers image"
-                    >
-                        →
-                    </button>
-
-
-                    <button
-                        class="female-favorite"
-                        type="button"
-                        aria-label="Save Long Layers"
-                    >
-                        ♡
-                    </button>
-
-
-                    <div class="female-style-tag">
-                        TRENDING
-                    </div>
-
-
-                </div>
-
-
-                <div class="female-style-info">
-
-
-                    <div>
-
-                        <h3>
-                            Long Layers
-                        </h3>
-
-                        <p>
-                            Long · Soft · Elegant
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        href="{{ url_for('main.female_try_on') }}?style=long-layers"
-                        class="female-try-button"
-                    >
-
-                        TRY ON
-
-                        <span>
-                            →
-                        </span>
-
-                    </a>
-
-
-                </div>
-
-
-            </article>
-
-
-            <!-- =================================================
-                 MODERN BOB
-            ================================================== -->
-
-            <article
-                class="female-style-card"
-                data-category="short"
-                data-name="Modern Bob"
-            >
-
-
-                <div class="female-style-image">
-
-
-                    <div class="female-card-gallery">
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-modern-bob-1.jpg') }}"
-                            alt="Modern Bob hairstyle"
-                            class="gallery-image active"
-                        >
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-modern-bob-2.jpg') }}"
-                            alt="Modern Bob hairstyle side view"
-                            class="gallery-image"
-                        >
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-modern-bob-3.jpg') }}"
-                            alt="Modern Bob hairstyle back view"
-                            class="gallery-image"
-                        >
-
-
-                    </div>
-
-
-                    <button
-                        class="female-gallery-next"
-                        type="button"
-                        aria-label="Next Modern Bob image"
-                    >
-                        →
-                    </button>
-
-
-                    <button
-                        class="female-favorite"
-                        type="button"
-                        aria-label="Save Modern Bob"
-                    >
-                        ♡
-                    </button>
-
-
-                </div>
-
-
-                <div class="female-style-info">
-
-
-                    <div>
-
-                        <h3>
-                            Modern Bob
-                        </h3>
-
-                        <p>
-                            Short · Chic · Modern
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        href="{{ url_for('main.female_try_on') }}?style=modern-bob"
-                        class="female-try-button"
-                    >
-
-                        TRY ON
-
-                        <span>
-                            →
-                        </span>
-
-                    </a>
-
-
-                </div>
-
-
-            </article>
-
-
-            <!-- =================================================
-                 SOFT WAVES
-            ================================================== -->
-
-            <article
-                class="female-style-card"
-                data-category="wavy"
-                data-name="Soft Waves"
-            >
-
-
-                <div class="female-style-image">
-
-
-                    <div class="female-card-gallery">
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-soft-waves-1.jpg') }}"
-                            alt="Soft Waves hairstyle"
-                            class="gallery-image active"
-                        >
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-soft-waves-2.jpg') }}"
-                            alt="Soft Waves hairstyle side view"
-                            class="gallery-image"
-                        >
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-soft-waves-3.jpg') }}"
-                            alt="Soft Waves hairstyle back view"
-                            class="gallery-image"
-                        >
-
-
-                    </div>
-
-
-                    <button
-                        class="female-gallery-next"
-                        type="button"
-                        aria-label="Next Soft Waves image"
-                    >
-                        →
-                    </button>
-
-
-                    <button
-                        class="female-favorite"
-                        type="button"
-                        aria-label="Save Soft Waves"
-                    >
-                        ♡
-                    </button>
-
-
-                </div>
-
-
-                <div class="female-style-info">
-
-
-                    <div>
-
-                        <h3>
-                            Soft Waves
-                        </h3>
-
-                        <p>
-                            Medium · Wavy · Romantic
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        href="{{ url_for('main.female_try_on') }}?style=soft-waves"
-                        class="female-try-button"
-                    >
-
-                        TRY ON
-
-                        <span>
-                            →
-                        </span>
-
-                    </a>
-
-
-                </div>
-
-
-            </article>
-
-
-            <!-- =================================================
-                 DEFINED CURLS
-            ================================================== -->
-
-            <article
-                class="female-style-card"
-                data-category="curly"
-                data-name="Defined Curls"
-            >
-
-
-                <div class="female-style-image">
-
-
-                    <div class="female-card-gallery">
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-defined-curls-1.jpg') }}"
-                            alt="Defined Curls hairstyle"
-                            class="gallery-image active"
-                        >
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-defined-curls-2.jpg') }}"
-                            alt="Defined Curls hairstyle side view"
-                            class="gallery-image"
-                        >
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-defined-curls-3.jpg') }}"
-                            alt="Defined Curls hairstyle back view"
-                            class="gallery-image"
-                        >
-
-
-                    </div>
-
-
-                    <button
-                        class="female-gallery-next"
-                        type="button"
-                        aria-label="Next Defined Curls image"
-                    >
-                        →
-                    </button>
-
-
-                    <button
-                        class="female-favorite"
-                        type="button"
-                        aria-label="Save Defined Curls"
-                    >
-                        ♡
-                    </button>
-
-
-                </div>
-
-
-                <div class="female-style-info">
-
-
-                    <div>
-
-                        <h3>
-                            Defined Curls
-                        </h3>
-
-                        <p>
-                            Long · Curly · Natural
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        href="{{ url_for('main.female_try_on') }}?style=defined-curls"
-                        class="female-try-button"
-                    >
-
-                        TRY ON
-
-                        <span>
-                            →
-                        </span>
-
-                    </a>
-
-
-                </div>
-
-
-            </article>
-
-
-            <!-- =================================================
-                 ELEGANT BRAIDS
-            ================================================== -->
-
-            <article
-                class="female-style-card"
-                data-category="braids"
-                data-name="Elegant Braids"
-            >
-
-
-                <div class="female-style-image">
-
-
-                    <div class="female-card-gallery">
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-braids-1.jpg') }}"
-                            alt="Elegant Braids hairstyle"
-                            class="gallery-image active"
-                        >
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-braids-2.jpg') }}"
-                            alt="Elegant Braids hairstyle side view"
-                            class="gallery-image"
-                        >
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-braids-3.jpg') }}"
-                            alt="Elegant Braids hairstyle back view"
-                            class="gallery-image"
-                        >
-
-
-                    </div>
-
-
-                    <button
-                        class="female-gallery-next"
-                        type="button"
-                        aria-label="Next Elegant Braids image"
-                    >
-                        →
-                    </button>
-
-
-                    <button
-                        class="female-favorite"
-                        type="button"
-                        aria-label="Save Elegant Braids"
-                    >
-                        ♡
-                    </button>
-
-
-                </div>
-
-
-                <div class="female-style-info">
-
-
-                    <div>
-
-                        <h3>
-                            Elegant Braids
-                        </h3>
-
-                        <p>
-                            Long · Braided · Elegant
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        href="{{ url_for('main.female_try_on') }}?style=elegant-braids"
-                        class="female-try-button"
-                    >
-
-                        TRY ON
-
-                        <span>
-                            →
-                        </span>
-
-                    </a>
-
-
-                </div>
-
-
-            </article>
-
-
-            <!-- =================================================
-                 CLASSIC UPDO
-            ================================================== -->
-
-            <article
-                class="female-style-card"
-                data-category="medium"
-                data-name="Classic Updo"
-            >
-
-
-                <div class="female-style-image">
-
-
-                    <div class="female-card-gallery">
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-classic-updo-1.jpg') }}"
-                            alt="Classic Updo hairstyle"
-                            class="gallery-image active"
-                        >
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-classic-updo-2.jpg') }}"
-                            alt="Classic Updo hairstyle side view"
-                            class="gallery-image"
-                        >
-
-
-                        <img
-                            src="{{ url_for('static', filename='images/female-classic-updo-3.jpg') }}"
-                            alt="Classic Updo hairstyle back view"
-                            class="gallery-image"
-                        >
-
-
-                    </div>
-
-
-                    <button
-                        class="female-gallery-next"
-                        type="button"
-                        aria-label="Next Classic Updo image"
-                    >
-                        →
-                    </button>
-
-
-                    <button
-                        class="female-favorite"
-                        type="button"
-                        aria-label="Save Classic Updo"
-                    >
-                        ♡
-                    </button>
-
-
-                </div>
-
-
-                <div class="female-style-info">
-
-
-                    <div>
-
-                        <h3>
-                            Classic Updo
-                        </h3>
-
-                        <p>
-                            Medium · Updo · Classic
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        href="{{ url_for('main.female_try_on') }}?style=classic-updo"
-                        class="female-try-button"
-                    >
-
-                        TRY ON
-
-                        <span>
-                            →
-                        </span>
-
-                    </a>
-
-
-                </div>
-
-
-            </article>
-
-
-        </div>
-
-
-        <!-- NO RESULTS -->
-
-        <div
-            class="female-no-results"
-            id="noResults"
-        >
-
-            <div>
-                ♡
-            </div>
-
-            <h3>
-                No styles found
-            </h3>
-
-            <p>
-                Try another hairstyle or category.
-            </p>
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =====================================================
-         HAIR CUTTING
-    ====================================================== -->
-
-    <section
-        class="female-section"
-        id="haircuts"
-    >
-
-
-        <div class="female-section-heading">
-
-
-            <div>
+            <div class="search-box">
 
                 <span>
-                    CUT & SHAPE
+                    ⌕
                 </span>
 
-                <h2>
-                    Hair Cutting Styles
-                </h2>
-
-                <p>
-                    From soft layers to bold transformations.
-                </p>
-
-            </div>
-
-
-            <a
-                href="#haircuts"
-                class="female-view-all"
-            >
-
-                Explore →
-
-            </a>
-
-
-        </div>
-
-
-        <div class="female-feature-grid">
-
-
-            <article class="female-feature-card">
-
-
-                <img
-                    src="{{ url_for('static', filename='images/haircut-layers.jpg') }}"
-                    alt="Layered haircut"
+                <input
+                    type="text"
+                    id="styleSearch"
+                    placeholder="Search hairstyles, cuts, looks..."
+                    autocomplete="off"
                 >
 
-
-                <div>
-
-                    <span>
-                        CLASSIC
-                    </span>
-
-                    <h3>
-                        Layered Cuts
-                    </h3>
-
-                    <p>
-                        Movement, volume and softness.
-                    </p>
-
-                </div>
-
-
-            </article>
-
-
-            <article class="female-feature-card">
-
-
-                <img
-                    src="{{ url_for('static', filename='images/haircut-bob.jpg') }}"
-                    alt="Bob haircut"
+                <button
+                    type="button"
+                    id="clearSearch"
+                    aria-label="Clear search"
                 >
-
-
-                <div>
-
-                    <span>
-                        MODERN
-                    </span>
-
-                    <h3>
-                        Bob Cuts
-                    </h3>
-
-                    <p>
-                        Clean, confident and contemporary.
-                    </p>
-
-                </div>
-
-
-            </article>
-
-
-            <article class="female-feature-card">
-
-
-                <img
-                    src="{{ url_for('static', filename='images/haircut-bangs.jpg') }}"
-                    alt="Bangs haircut"
-                >
-
-
-                <div>
-
-                    <span>
-                        TRENDING
-                    </span>
-
-                    <h3>
-                        Bangs & Fringes
-                    </h3>
-
-                    <p>
-                        Frame your face with personality.
-                    </p>
-
-                </div>
-
-
-            </article>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =====================================================
-         HAIR ACCESSORIES
-    ====================================================== -->
-
-    <section
-        class="female-section"
-        id="accessories"
-    >
-
-
-        <div class="female-section-heading">
-
-
-            <div>
-
-                <span>
-                    COMPLETE THE LOOK
-                </span>
-
-                <h2>
-                    Hair Accessories
-                </h2>
-
-                <p>
-                    Small details that transform your hairstyle.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="female-mini-grid">
-
-
-            <article class="female-mini-card">
-
-
-                <img
-                    src="{{ url_for('static', filename='images/accessory-clips.jpg') }}"
-                    alt="Hair clips"
-                >
-
-
-                <h3>
-                    Hair Clips
-                </h3>
-
-
-                <span>
-                    Explore →
-                </span>
-
-
-            </article>
-
-
-            <article class="female-mini-card">
-
-
-                <img
-                    src="{{ url_for('static', filename='images/accessory-headbands.jpg') }}"
-                    alt="Headbands"
-                >
-
-
-                <h3>
-                    Headbands
-                </h3>
-
-
-                <span>
-                    Explore →
-                </span>
-
-
-            </article>
-
-
-            <article class="female-mini-card">
-
-
-                <img
-                    src="{{ url_for('static', filename='images/accessory-scrunchies.jpg') }}"
-                    alt="Scrunchies"
-                >
-
-
-                <h3>
-                    Scrunchies
-                </h3>
-
-
-                <span>
-                    Explore →
-                </span>
-
-
-            </article>
-
-
-            <article class="female-mini-card">
-
-
-                <img
-                    src="{{ url_for('static', filename='images/accessory-jewellery.jpg') }}"
-                    alt="Hair jewellery"
-                >
-
-
-                <h3>
-                    Hair Jewellery
-                </h3>
-
-
-                <span>
-                    Explore →
-                </span>
-
-
-            </article>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =====================================================
-         OCCASIONAL LOOKS
-    ====================================================== -->
-
-    <section
-        class="female-occasion-section"
-        id="occasions"
-    >
-
-
-        <div class="female-section-heading">
-
-
-            <div>
-
-                <span>
-                    STYLE FOR EVERY MOMENT
-                </span>
-
-                <h2>
-                    Occasional Looks
-                </h2>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="female-occasion-grid">
-
-
-            <article class="female-occasion-card wedding">
-
-
-                <img
-                    src="{{ url_for('static', filename='images/occasion-wedding.jpg') }}"
-                    alt="Wedding hairstyle"
-                >
-
-
-                <div>
-
-                    <span>
-                        SPECIAL DAY
-                    </span>
-
-                    <h3>
-                        Wedding Looks
-                    </h3>
-
-                    <p>
-                        Elegant styles for unforgettable moments.
-                    </p>
-
-                </div>
-
-
-            </article>
-
-
-            <article class="female-occasion-card party">
-
-
-                <img
-                    src="{{ url_for('static', filename='images/occasion-party.jpg') }}"
-                    alt="Party hairstyle"
-                >
-
-
-                <div>
-
-                    <span>
-                        NIGHT OUT
-                    </span>
-
-                    <h3>
-                        Party Looks
-                    </h3>
-
-                    <p>
-                        Glamorous styles with personality.
-                    </p>
-
-                </div>
-
-
-            </article>
-
-
-            <article class="female-occasion-card casual">
-
-
-                <img
-                    src="{{ url_for('static', filename='images/occasion-casual.jpg') }}"
-                    alt="Casual hairstyle"
-                >
-
-
-                <div>
-
-                    <span>
-                        EVERYDAY
-                    </span>
-
-                    <h3>
-                        Casual Looks
-                    </h3>
-
-                    <p>
-                        Effortless styles for everyday life.
-                    </p>
-
-                </div>
-
-
-            </article>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =====================================================
-         HAIR PRODUCTS
-    ====================================================== -->
-
-    <section
-        class="female-section"
-        id="products"
-    >
-
-
-        <div class="female-section-heading">
-
-
-            <div>
-
-                <span>
-                    HAIR CARE
-                </span>
-
-                <h2>
-                    Hair Products
-                </h2>
-
-                <p>
-                    Discover products that can support your hair goals.
-                </p>
-
-            </div>
-
-
-            <a
-                href="#products"
-                class="female-view-all"
-            >
-
-                View products →
-
-            </a>
-
-
-        </div>
-
-
-        <div class="female-product-grid">
-
-
-            <article class="female-product-card">
-
-
-                <img
-                    src="{{ url_for('static', filename='images/product-shampoo.jpg') }}"
-                    alt="Hair shampoo"
-                >
-
-
-                <div>
-
-                    <span>
-                        CLEANSE
-                    </span>
-
-                    <h3>
-                        Shampoos
-                    </h3>
-
-                    <p>
-                        Explore hair cleansing options.
-                    </p>
-
-                </div>
-
-
-            </article>
-
-
-            <article class="female-product-card">
-
-
-                <img
-                    src="{{ url_for('static', filename='images/product-conditioner.jpg') }}"
-                    alt="Hair conditioner"
-                >
-
-
-                <div>
-
-                    <span>
-                        NOURISH
-                    </span>
-
-                    <h3>
-                        Conditioners
-                    </h3>
-
-                    <p>
-                        Keep your hair soft and manageable.
-                    </p>
-
-                </div>
-
-
-            </article>
-
-
-            <article class="female-product-card">
-
-
-                <img
-                    src="{{ url_for('static', filename='images/product-serum.jpg') }}"
-                    alt="Hair serum"
-                >
-
-
-                <div>
-
-                    <span>
-                        FINISH
-                    </span>
-
-                    <h3>
-                        Hair Serums
-                    </h3>
-
-                    <p>
-                        Add shine and finishing care.
-                    </p>
-
-                </div>
-
-
-            </article>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =====================================================
-         MY LOOKS
-    ====================================================== -->
-
-    <section
-        class="female-mylooks"
-        id="mylooks"
-    >
-
-
-        <div class="female-mylooks-content">
-
-
-            <span>
-                YOUR PERSONAL STYLE LIBRARY
-            </span>
-
-
-            <h2>
-                My Looks
-            </h2>
-
-
-            <p>
-
-                Save hairstyles you love,
-                compare your favorites and
-                build your own personal collection.
-
-            </p>
-
-
-            <button
-                type="button"
-                class="female-outline-button"
-            >
-
-                OPEN MY LOOKS
-
-                <span>
-                    →
-                </span>
-
-            </button>
-
-
-        </div>
-
-
-        <div class="female-mylooks-visual">
-
-
-            <div class="look-placeholder">
-                +
-            </div>
-
-
-            <div class="look-placeholder">
-                +
-            </div>
-
-
-            <div class="look-placeholder">
-                +
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =====================================================
-         FAVORITES
-    ====================================================== -->
-
-    <section
-        class="female-section"
-        id="favorites"
-    >
-
-
-        <div class="female-section-heading">
-
-
-            <div>
-
-                <span>
-                    SAVED FOR LATER
-                </span>
-
-                <h2>
-                    Your Favorites
-                </h2>
-
-                <p>
-                    Hairstyles you don't want to lose.
-                </p>
+                    ×
+                </button>
 
             </div>
 
 
             <button
                 type="button"
-                class="female-view-all"
+                class="filter-button"
+                id="filterButton"
             >
 
-                View favorites →
+                ☷
+
+                <span>
+                    Filters
+                </span>
 
             </button>
 
-
-        </div>
-
-
-        <div class="female-favorite-empty">
+        </section>
 
 
-            <div>
-                ♡
-            </div>
+        <!-- =================================================
+             QUICK CATEGORIES
+        ================================================== -->
+
+        <section class="quick-categories">
+
+            <a href="#hairstyles">
+                <span>✦</span>
+                Styles
+            </a>
+
+            <a href="#haircuts">
+                <span>✂</span>
+                Cuts
+            </a>
+
+            <a href="#accessories">
+                <span>◇</span>
+                Accessories
+            </a>
+
+            <a href="#occasions">
+                <span>✿</span>
+                Occasions
+            </a>
+
+            <a href="#products">
+                <span>♡</span>
+                Products
+            </a>
+
+        </section>
 
 
-            <h3>
-                Your favorite styles will appear here.
-            </h3>
+        <!-- =================================================
+             FIND YOUR STYLE
+        ================================================== -->
 
-
-            <p>
-                Tap the heart on any hairstyle to save it.
-            </p>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =====================================================
-         SALON + HOSPITAL
-    ====================================================== -->
-
-    <section class="female-nearby-section">
-
-
-        <!-- SALON -->
-
-        <article
-            class="female-nearby-card"
-            id="salon"
+        <section
+            class="find-style-banner"
+            id="find-style"
         >
 
-
-            <div class="female-nearby-icon">
-                ⌖
-            </div>
-
-
-            <div>
+            <div class="find-style-content">
 
                 <span>
-                    FIND NEARBY
+                    PERSONALIZED DISCOVERY
                 </span>
 
                 <h2>
-                    Nearest Salon
+
+                    Find the style
+
+                    <em>
+                        made for you.
+                    </em>
+
                 </h2>
 
                 <p>
 
-                    Discover salons around your location
-                    for your next transformation.
+                    Answer a few simple questions about
+                    your hair, length and preferences and
+                    discover styles that match your personality.
 
                 </p>
 
-
                 <button
                     type="button"
-                    class="female-small-button"
+                    class="find-style-button"
+                    id="findStyleButton"
                 >
 
-                    FIND A SALON
-                    →
+                    FIND MY STYLE
+
+                    <span>
+                        →
+                    </span>
 
                 </button>
 
-
             </div>
 
 
-        </article>
+            <div class="find-style-decoration">
+
+                <span>✦</span>
+                <span>✿</span>
+                <span>♡</span>
+
+            </div>
+
+        </section>
 
 
-        <!-- HOSPITAL -->
+        <!-- =================================================
+             HAIRSTYLES
+        ================================================== -->
 
-        <article
-            class="female-nearby-card medical"
-            id="hospital"
+        <section
+            class="content-section"
+            id="hairstyles"
         >
 
+            <div class="section-heading">
 
-            <div class="female-nearby-icon">
-                +
+                <div>
+
+                    <span>
+                        CURATED COLLECTION
+                    </span>
+
+                    <h2>
+                        Hair Styles
+                    </h2>
+
+                    <p>
+                        Find inspiration for every mood,
+                        length and personality.
+                    </p>
+
+                </div>
+
+                <div
+                    class="result-count"
+                    id="resultCount"
+                >
+                    6 styles
+                </div>
+
             </div>
 
 
-            <div>
+            <!-- CATEGORY FILTERS -->
+
+            <div
+                class="category-filter"
+                id="categoryFilter"
+            >
+
+                <button
+                    type="button"
+                    class="category-button active"
+                    data-category="all"
+                >
+                    All
+                </button>
+
+                <button
+                    type="button"
+                    class="category-button"
+                    data-category="short"
+                >
+                    Short
+                </button>
+
+                <button
+                    type="button"
+                    class="category-button"
+                    data-category="medium"
+                >
+                    Medium
+                </button>
+
+                <button
+                    type="button"
+                    class="category-button"
+                    data-category="long"
+                >
+                    Long
+                </button>
+
+                <button
+                    type="button"
+                    class="category-button"
+                    data-category="curly"
+                >
+                    Curly
+                </button>
+
+                <button
+                    type="button"
+                    class="category-button"
+                    data-category="wavy"
+                >
+                    Wavy
+                </button>
+
+                <button
+                    type="button"
+                    class="category-button"
+                    data-category="straight"
+                >
+                    Straight
+                </button>
+
+                <button
+                    type="button"
+                    class="category-button"
+                    data-category="braids"
+                >
+                    Braids
+                </button>
+
+            </div>
+
+
+            <!-- STYLE GRID -->
+
+            <div
+                class="style-grid"
+                id="styleGrid"
+            >
+
+
+                <!-- LONG LAYERS -->
+
+                <article
+                    class="style-card"
+                    data-category="long"
+                    data-name="Long Layers"
+                >
+
+                    <div class="style-card-image">
+
+                        <div class="gallery">
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-long-layers-1.jpg') }}"
+                                alt="Long Layers"
+                                class="gallery-image active"
+                            >
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-long-layers-2.jpg') }}"
+                                alt="Long Layers side"
+                                class="gallery-image"
+                            >
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-long-layers-3.jpg') }}"
+                                alt="Long Layers back"
+                                class="gallery-image"
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="gallery-next"
+                            aria-label="Next image"
+                        >
+                            →
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="favorite-button"
+                            aria-label="Save Long Layers"
+                            aria-pressed="false"
+                        >
+                            ♡
+                        </button>
+
+
+                        <span class="style-badge">
+                            TRENDING
+                        </span>
+
+                    </div>
+
+
+                    <div class="style-card-content">
+
+                        <div>
+
+                            <h3>
+                                Long Layers
+                            </h3>
+
+                            <p>
+                                Long · Soft · Elegant
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('main.female_try_on') }}?style=long-layers"
+                            class="try-button"
+                        >
+                            Try On
+                            →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MODERN BOB -->
+
+                <article
+                    class="style-card"
+                    data-category="short"
+                    data-name="Modern Bob"
+                >
+
+                    <div class="style-card-image">
+
+                        <div class="gallery">
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-modern-bob-1.jpg') }}"
+                                alt="Modern Bob"
+                                class="gallery-image active"
+                            >
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-modern-bob-2.jpg') }}"
+                                alt="Modern Bob side"
+                                class="gallery-image"
+                            >
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-modern-bob-3.jpg') }}"
+                                alt="Modern Bob back"
+                                class="gallery-image"
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="gallery-next"
+                            aria-label="Next image"
+                        >
+                            →
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="favorite-button"
+                            aria-label="Save Modern Bob"
+                            aria-pressed="false"
+                        >
+                            ♡
+                        </button>
+
+                    </div>
+
+
+                    <div class="style-card-content">
+
+                        <div>
+
+                            <h3>
+                                Modern Bob
+                            </h3>
+
+                            <p>
+                                Short · Chic · Modern
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('main.female_try_on') }}?style=modern-bob"
+                            class="try-button"
+                        >
+                            Try On
+                            →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- SOFT WAVES -->
+
+                <article
+                    class="style-card"
+                    data-category="wavy"
+                    data-name="Soft Waves"
+                >
+
+                    <div class="style-card-image">
+
+                        <div class="gallery">
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-soft-waves-1.jpg') }}"
+                                alt="Soft Waves"
+                                class="gallery-image active"
+                            >
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-soft-waves-2.jpg') }}"
+                                alt="Soft Waves side"
+                                class="gallery-image"
+                            >
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-soft-waves-3.jpg') }}"
+                                alt="Soft Waves back"
+                                class="gallery-image"
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="gallery-next"
+                            aria-label="Next image"
+                        >
+                            →
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="favorite-button"
+                            aria-label="Save Soft Waves"
+                            aria-pressed="false"
+                        >
+                            ♡
+                        </button>
+
+                    </div>
+
+
+                    <div class="style-card-content">
+
+                        <div>
+
+                            <h3>
+                                Soft Waves
+                            </h3>
+
+                            <p>
+                                Medium · Wavy · Romantic
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('main.female_try_on') }}?style=soft-waves"
+                            class="try-button"
+                        >
+                            Try On
+                            →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- DEFINED CURLS -->
+
+                <article
+                    class="style-card"
+                    data-category="curly"
+                    data-name="Defined Curls"
+                >
+
+                    <div class="style-card-image">
+
+                        <div class="gallery">
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-defined-curls-1.jpg') }}"
+                                alt="Defined Curls"
+                                class="gallery-image active"
+                            >
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-defined-curls-2.jpg') }}"
+                                alt="Defined Curls side"
+                                class="gallery-image"
+                            >
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-defined-curls-3.jpg') }}"
+                                alt="Defined Curls back"
+                                class="gallery-image"
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="gallery-next"
+                            aria-label="Next image"
+                        >
+                            →
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="favorite-button"
+                            aria-label="Save Defined Curls"
+                            aria-pressed="false"
+                        >
+                            ♡
+                        </button>
+
+                    </div>
+
+
+                    <div class="style-card-content">
+
+                        <div>
+
+                            <h3>
+                                Defined Curls
+                            </h3>
+
+                            <p>
+                                Long · Curly · Natural
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('main.female_try_on') }}?style=defined-curls"
+                            class="try-button"
+                        >
+                            Try On
+                            →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ELEGANT BRAIDS -->
+
+                <article
+                    class="style-card"
+                    data-category="braids"
+                    data-name="Elegant Braids"
+                >
+
+                    <div class="style-card-image">
+
+                        <div class="gallery">
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-braids-1.jpg') }}"
+                                alt="Elegant Braids"
+                                class="gallery-image active"
+                            >
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-braids-2.jpg') }}"
+                                alt="Elegant Braids side"
+                                class="gallery-image"
+                            >
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-braids-3.jpg') }}"
+                                alt="Elegant Braids back"
+                                class="gallery-image"
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="gallery-next"
+                            aria-label="Next image"
+                        >
+                            →
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="favorite-button"
+                            aria-label="Save Elegant Braids"
+                            aria-pressed="false"
+                        >
+                            ♡
+                        </button>
+
+                    </div>
+
+
+                    <div class="style-card-content">
+
+                        <div>
+
+                            <h3>
+                                Elegant Braids
+                            </h3>
+
+                            <p>
+                                Long · Braided · Elegant
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('main.female_try_on') }}?style=elegant-braids"
+                            class="try-button"
+                        >
+                            Try On
+                            →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CLASSIC UPDO -->
+
+                <article
+                    class="style-card"
+                    data-category="medium"
+                    data-name="Classic Updo"
+                >
+
+                    <div class="style-card-image">
+
+                        <div class="gallery">
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-classic-updo-1.jpg') }}"
+                                alt="Classic Updo"
+                                class="gallery-image active"
+                            >
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-classic-updo-2.jpg') }}"
+                                alt="Classic Updo side"
+                                class="gallery-image"
+                            >
+
+                            <img
+                                src="{{ url_for('static', filename='images/female-classic-updo-3.jpg') }}"
+                                alt="Classic Updo back"
+                                class="gallery-image"
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="gallery-next"
+                            aria-label="Next image"
+                        >
+                            →
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="favorite-button"
+                            aria-label="Save Classic Updo"
+                            aria-pressed="false"
+                        >
+                            ♡
+                        </button>
+
+                    </div>
+
+
+                    <div class="style-card-content">
+
+                        <div>
+
+                            <h3>
+                                Classic Updo
+                            </h3>
+
+                            <p>
+                                Medium · Updo · Classic
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('main.female_try_on') }}?style=classic-updo"
+                            class="try-button"
+                        >
+                            Try On
+                            →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <!-- NO RESULTS -->
+
+            <div
+                class="no-results"
+                id="noResults"
+            >
+
+                <div>
+                    ♡
+                </div>
+
+                <h3>
+                    No styles found
+                </h3>
+
+                <p>
+                    Try another search or category.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             HAIR CUTTING
+        ================================================== -->
+
+        <section
+            class="content-section"
+            id="haircuts"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span>
+                        CUT & SHAPE
+                    </span>
+
+                    <h2>
+                        Hair Cutting
+                    </h2>
+
+                    <p>
+                        Transform your look with the right shape.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+                <article class="feature-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/haircut-layers.jpg') }}"
+                        alt="Layered haircut"
+                    >
+
+                    <div class="feature-overlay">
+
+                        <span>
+                            CLASSIC
+                        </span>
+
+                        <h3>
+                            Layered Cuts
+                        </h3>
+
+                        <p>
+                            Movement, volume and softness.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="feature-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/haircut-bob.jpg') }}"
+                        alt="Bob haircut"
+                    >
+
+                    <div class="feature-overlay">
+
+                        <span>
+                            MODERN
+                        </span>
+
+                        <h3>
+                            Bob Cuts
+                        </h3>
+
+                        <p>
+                            Clean, confident and contemporary.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="feature-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/haircut-bangs.jpg') }}"
+                        alt="Bangs haircut"
+                    >
+
+                    <div class="feature-overlay">
+
+                        <span>
+                            TRENDING
+                        </span>
+
+                        <h3>
+                            Bangs & Fringes
+                        </h3>
+
+                        <p>
+                            Frame your face with personality.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ACCESSORIES
+        ================================================== -->
+
+        <section
+            class="content-section"
+            id="accessories"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span>
+                        COMPLETE THE LOOK
+                    </span>
+
+                    <h2>
+                        Hair Accessories
+                    </h2>
+
+                    <p>
+                        Little details can make a big difference.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="mini-grid">
+
+                <article class="mini-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/accessory-clips.jpg') }}"
+                        alt="Hair clips"
+                    >
+
+                    <div>
+
+                        <h3>
+                            Hair Clips
+                        </h3>
+
+                        <span>
+                            Explore →
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <article class="mini-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/accessory-headbands.jpg') }}"
+                        alt="Headbands"
+                    >
+
+                    <div>
+
+                        <h3>
+                            Headbands
+                        </h3>
+
+                        <span>
+                            Explore →
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <article class="mini-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/accessory-scrunchies.jpg') }}"
+                        alt="Scrunchies"
+                    >
+
+                    <div>
+
+                        <h3>
+                            Scrunchies
+                        </h3>
+
+                        <span>
+                            Explore →
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <article class="mini-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/accessory-jewellery.jpg') }}"
+                        alt="Hair jewellery"
+                    >
+
+                    <div>
+
+                        <h3>
+                            Hair Jewellery
+                        </h3>
+
+                        <span>
+                            Explore →
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             OCCASIONS
+        ================================================== -->
+
+        <section
+            class="content-section"
+            id="occasions"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span>
+                        STYLE FOR EVERY MOMENT
+                    </span>
+
+                    <h2>
+                        Occasional Looks
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="occasion-grid">
+
+                <article class="occasion-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/occasion-wedding.jpg') }}"
+                        alt="Wedding hairstyle"
+                    >
+
+                    <div>
+
+                        <span>
+                            SPECIAL DAY
+                        </span>
+
+                        <h3>
+                            Wedding Looks
+                        </h3>
+
+                        <p>
+                            Elegant styles for unforgettable moments.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="occasion-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/occasion-party.jpg') }}"
+                        alt="Party hairstyle"
+                    >
+
+                    <div>
+
+                        <span>
+                            NIGHT OUT
+                        </span>
+
+                        <h3>
+                            Party Looks
+                        </h3>
+
+                        <p>
+                            Glamorous styles with personality.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="occasion-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/occasion-casual.jpg') }}"
+                        alt="Casual hairstyle"
+                    >
+
+                    <div>
+
+                        <span>
+                            EVERYDAY
+                        </span>
+
+                        <h3>
+                            Casual Looks
+                        </h3>
+
+                        <p>
+                            Effortless styles for everyday life.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PRODUCTS
+        ================================================== -->
+
+        <section
+            class="content-section"
+            id="products"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span>
+                        HAIR CARE
+                    </span>
+
+                    <h2>
+                        Hair Products
+                    </h2>
+
+                    <p>
+                        Discover products for your hair routine.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-grid">
+
+                <article class="product-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/product-shampoo.jpg') }}"
+                        alt="Shampoo"
+                    >
+
+                    <div>
+
+                        <span>
+                            CLEANSE
+                        </span>
+
+                        <h3>
+                            Shampoos
+                        </h3>
+
+                        <p>
+                            Explore hair cleansing options.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/product-conditioner.jpg') }}"
+                        alt="Conditioner"
+                    >
+
+                    <div>
+
+                        <span>
+                            NOURISH
+                        </span>
+
+                        <h3>
+                            Conditioners
+                        </h3>
+
+                        <p>
+                            Keep your hair soft and manageable.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/product-serum.jpg') }}"
+                        alt="Hair serum"
+                    >
+
+                    <div>
+
+                        <span>
+                            FINISH
+                        </span>
+
+                        <h3>
+                            Hair Serums
+                        </h3>
+
+                        <p>
+                            Add shine and finishing care.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             MY LOOKS
+        ================================================== -->
+
+        <section
+            class="my-looks-section"
+            id="mylooks"
+        >
+
+            <div class="my-looks-copy">
 
                 <span>
-                    HAIR & WELLNESS
+                    YOUR PERSONAL STYLE LIBRARY
                 </span>
 
                 <h2>
-                    Nearest Hospital
+                    My Looks
                 </h2>
 
                 <p>
 
-                    Quickly locate nearby medical facilities
-                    when you need professional care.
+                    Save the hairstyles you love,
+                    compare your favorites and create
+                    your own personal collection.
 
                 </p>
 
-
                 <button
                     type="button"
-                    class="female-small-button"
+                    class="outline-button"
+                    id="myLooksButton"
                 >
 
-                    FIND NEARBY
-                    →
+                    OPEN MY LOOKS
+
+                    <span>
+                        →
+                    </span>
 
                 </button>
-
 
             </div>
 
 
-        </article>
+            <div class="looks-placeholder-grid">
+
+                <div>
+                    +
+                </div>
+
+                <div>
+                    +
+                </div>
+
+                <div>
+                    +
+                </div>
+
+            </div>
+
+        </section>
 
 
-    </section>
+        <!-- =================================================
+             FAVORITES
+        ================================================== -->
+
+        <section
+            class="content-section"
+            id="favorites"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span>
+                        SAVED FOR LATER
+                    </span>
+
+                    <h2>
+                        Your Favorites
+                    </h2>
+
+                    <p>
+                        Keep your favourite inspiration close.
+                    </p>
+
+                </div>
+
+            </div>
 
 
-    <!-- =====================================================
-         FINAL DISCOVERY
-    ====================================================== -->
+            <div
+                class="favorites-empty"
+                id="favoritesEmpty"
+            >
 
-    <section class="female-final-discovery">
+                <div class="empty-heart">
+                    ♡
+                </div>
+
+                <h3>
+                    Your favorite styles will appear here.
+                </h3>
+
+                <p>
+                    Tap the heart on any hairstyle to save it.
+                </p>
+
+            </div>
+
+        </section>
 
 
-        <div>
+        <!-- =================================================
+             NEARBY
+        ================================================== -->
 
+        <section class="nearby-section">
+
+            <article
+                class="nearby-card"
+                id="salon"
+            >
+
+                <div class="nearby-icon">
+                    ⌖
+                </div>
+
+                <div>
+
+                    <span>
+                        FIND NEARBY
+                    </span>
+
+                    <h2>
+                        Nearest Salon
+                    </h2>
+
+                    <p>
+                        Discover salons around your location.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="salonButton"
+                        class="small-button"
+                    >
+                        FIND A SALON →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="nearby-card medical"
+                id="hospital"
+            >
+
+                <div class="nearby-icon">
+                    +
+                </div>
+
+                <div>
+
+                    <span>
+                        HAIR & WELLNESS
+                    </span>
+
+                    <h2>
+                        Nearest Hospital
+                    </h2>
+
+                    <p>
+                        Quickly locate nearby medical facilities.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="hospitalButton"
+                        class="small-button"
+                    >
+                        FIND NEARBY →
+                    </button>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =================================================
+             FINAL CTA
+        ================================================== -->
+
+        <section class="final-discovery">
 
             <span>
                 STYLEMYHAIR
             </span>
 
-
             <h2>
 
                 Your style
                 <br>
-
                 starts here.
 
             </h2>
 
-
             <p>
-
-                Discover it.
-                Try it.
-                Make it yours.
-
+                Discover it. Try it. Make it yours.
             </p>
-
 
             <a
                 href="#hairstyles"
-                class="female-primary-button"
+                class="primary-button"
             >
-
-                EXPLORE HAIRSTYLES
-
-                <b>
-                    →
-                </b>
-
+                Explore Hairstyles
+                →
             </a>
 
-
-        </div>
-
-
-    </section>
+        </section>
 
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
 
-    <footer class="female-footer">
+        <footer class="female-footer">
 
+            <div class="footer-logo">
 
-        <div class="female-footer-logo">
+                Style<span>MyHair</span>
 
-            Style<span>MyHair</span>
+            </div>
 
-        </div>
-
-
-        <p>
-
-            Discover your style.
-            Make it yours.
-
-        </p>
+            <p>
+                Discover your style. Make it yours.
+            </p>
 
 
-        <div class="female-footer-links">
+            <div class="footer-links">
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#hairstyles">
+                    Styles
+                </a>
+
+                <a href="#products">
+                    Products
+                </a>
+
+                <a href="#mylooks">
+                    My Looks
+                </a>
+
+                <a href="#favorites">
+                    Favorites
+                </a>
+
+            </div>
 
 
-            <a href="#home">
-                Home
-            </a>
+            <small>
+                © 2026 StyleMyHair. All rights reserved.
+            </small>
 
+        </footer>
 
-            <a href="#hairstyles">
-                Hair Styles
-            </a>
-
-
-            <a href="#products">
-                Products
-            </a>
-
-
-            <a href="#mylooks">
-                My Looks
-            </a>
-
-
-            <a href="#favorites">
-                Favorites
-            </a>
-
-
-        </div>
-
-
-        <small>
-
-            © 2026 StyleMyHair.
-            All rights reserved.
-
-        </small>
-
-
-    </footer>
-
-
-</main>
-
+    </main>
 
 </div>
 
-<!-- =========================================================
-     MOBILE BOTTOM NAVIGATION
-========================================================= -->
 
-<nav class="female-mobile-nav">
+<!-- =====================================================
+     MOBILE BOTTOM NAV
+====================================================== -->
 
+<nav class="mobile-bottom-nav">
 
-<a
-    href="#home"
-    class="active"
->
+    <a
+        href="#home"
+        class="active"
+    >
 
-    <span>
-        ⌂
-    </span>
+        <span>⌂</span>
 
-    <small>
-        Home
-    </small>
+        <small>
+            Home
+        </small>
 
-</a>
+    </a>
 
 
-<a href="#hairstyles">
+    <a href="#hairstyles">
 
-    <span>
-        ✦
-    </span>
+        <span>✦</span>
 
-    <small>
-        Styles
-    </small>
+        <small>
+            Styles
+        </small>
 
-</a>
+    </a>
 
 
-<a href="#find-style">
+    <a href="#find-style">
 
-    <span>
-        ✧
-    </span>
+        <span>✧</span>
 
-    <small>
-        Find
-    </small>
+        <small>
+            Find
+        </small>
 
-</a>
+    </a>
 
 
-<a href="#favorites">
+    <a href="#favorites">
 
-    <span>
-        ♡
-    </span>
+        <span>♡</span>
 
-    <small>
-        Saved
-    </small>
+        <small>
+            Saved
+        </small>
 
-</a>
+    </a>
 
 
-<a href="#mylooks">
+    <a href="#mylooks">
 
-    <span>
-        ◉
-    </span>
+        <span>◉</span>
 
-    <small>
-        My Looks
-    </small>
+        <small>
+            Looks
+        </small>
 
-</a>
-
+    </a>
 
 </nav>
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
+
+<!-- =====================================================
+     FEMALE JAVASCRIPT
+====================================================== -->
+
+<script
+    src="{{ url_for('static', filename='js/female.js') }}?v=101"
+></script>
+
+
+<!-- =====================================================
+     BACK BUTTON FALLBACK
+     
+     This is intentionally placed AFTER female.js.
+     If female.js does not already control the button,
+     this guarantees that the button has a working action.
+====================================================== -->
 
 <script>
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const pageBackButton =
+            document.getElementById("pageBackButton");
 
 
-        /* =====================================================
-           MOBILE SIDEBAR
-        ====================================================== */
-
-        const menuButton =
-            document.getElementById(
-                "femaleMenuButton"
-            );
-
-
-        const sidebar =
-            document.getElementById(
-                "femaleSidebar"
-            );
-
-
-        const sidebarOverlay =
-            document.getElementById(
-                "femaleSidebarOverlay"
-            );
-
-
-        function openSidebar() {
-
-            if (sidebar) {
-
-                sidebar.classList.add(
-                    "mobile-open"
-                );
-
-            }
-
-
-            if (sidebarOverlay) {
-
-                sidebarOverlay.classList.add(
-                    "show"
-                );
-
-            }
-
-
-            if (menuButton) {
-
-                menuButton.classList.add(
-                    "active"
-                );
-
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
-
-            }
-
-
-            document.body.classList.add(
-                "sidebar-open"
-            );
-
+        if (!pageBackButton) {
+            return;
         }
 
 
-        function closeSidebar() {
+        pageBackButton.addEventListener("click", function () {
 
-            if (sidebar) {
+            /*
+             * If there is browser history,
+             * return to the previous page.
+             */
 
-                sidebar.classList.remove(
-                    "mobile-open"
-                );
+            if (window.history.length > 1) {
 
-            }
-
-
-            if (sidebarOverlay) {
-
-                sidebarOverlay.classList.remove(
-                    "show"
-                );
-
-            }
-
-
-            if (menuButton) {
-
-                menuButton.classList.remove(
-                    "active"
-                );
-
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            }
-
-
-            document.body.classList.remove(
-                "sidebar-open"
-            );
-
-        }
-
-
-        if (menuButton) {
-
-            menuButton.addEventListener(
-                "click",
-                function () {
-
-
-                    const isOpen =
-                        sidebar &&
-                        sidebar.classList.contains(
-                            "mobile-open"
-                        );
-
-
-                    if (isOpen) {
-
-                        closeSidebar();
-
-                    } else {
-
-                        openSidebar();
-
-                    }
-
-                }
-            );
-
-        }
-
-
-        if (sidebarOverlay) {
-
-            sidebarOverlay.addEventListener(
-                "click",
-                closeSidebar
-            );
-
-        }
-
-
-        /* =====================================================
-           CLOSE SIDEBAR AFTER NAVIGATION
-        ====================================================== */
-
-        const sidebarLinks =
-            document.querySelectorAll(
-                ".female-sidebar-item"
-            );
-
-
-        sidebarLinks.forEach(
-            function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function () {
-
-                        if (
-                            window.innerWidth <= 1100
-                        ) {
-
-                            closeSidebar();
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           CATEGORY FILTER
-        ====================================================== */
-
-        const categories =
-            document.querySelectorAll(
-                ".female-category"
-            );
-
-
-        const cards =
-            document.querySelectorAll(
-                ".female-style-card"
-            );
-
-
-        const searchInput =
-            document.getElementById(
-                "hairstyleSearch"
-            );
-
-
-        const resultCount =
-            document.getElementById(
-                "resultCount"
-            );
-
-
-        const noResults =
-            document.getElementById(
-                "noResults"
-            );
-
-
-        let selectedCategory = "all";
-
-
-        function filterStyles() {
-
-
-            if (!searchInput) {
+                window.history.back();
 
                 return;
-
             }
 
 
-            const search =
-                searchInput.value
-                    .toLowerCase()
-                    .trim();
+            /*
+             * Fallback:
+             * if this page was opened directly,
+             * return to the StyleMyHair home page.
+             */
 
+            window.location.href =
+                "{{ url_for('main.home') }}";
 
-            let visibleCount = 0;
+        });
 
-
-            cards.forEach(
-                function (card) {
-
-
-                    const category =
-                        card.dataset.category;
-
-
-                    const name =
-                        card.dataset.name
-                            .toLowerCase();
-
-
-                    const categoryMatch =
-                        selectedCategory === "all"
-                        ||
-                        category === selectedCategory;
-
-
-                    const searchMatch =
-                        name.includes(search);
-
-
-                    if (
-                        categoryMatch &&
-                        searchMatch
-                    ) {
-
-                        card.style.display = "";
-
-                        visibleCount++;
-
-                    } else {
-
-                        card.style.display = "none";
-
-                    }
-
-                }
-            );
-
-
-            if (resultCount) {
-
-                resultCount.textContent =
-                    visibleCount +
-                    (
-                        visibleCount === 1
-                            ? " style"
-                            : " styles"
-                    );
-
-            }
-
-
-            if (noResults) {
-
-                if (visibleCount === 0) {
-
-                    noResults.classList.add(
-                        "show"
-                    );
-
-                } else {
-
-                    noResults.classList.remove(
-                        "show"
-                    );
-
-                }
-
-            }
-
-        }
-
-
-        categories.forEach(
-            function (categoryButton) {
-
-
-                categoryButton.addEventListener(
-                    "click",
-                    function () {
-
-
-                        categories.forEach(
-                            function (button) {
-
-                                button.classList.remove(
-                                    "active"
-                                );
-
-                            }
-                        );
-
-
-                        this.classList.add(
-                            "active"
-                        );
-
-
-                        selectedCategory =
-                            this.dataset.category;
-
-
-                        filterStyles();
-
-                    }
-                );
-
-            }
-        );
-
-
-        if (searchInput) {
-
-            searchInput.addEventListener(
-                "input",
-                filterStyles
-            );
-
-        }
-
-
-        /* =====================================================
-           FAVORITES
-        ====================================================== */
-
-        const favoriteButtons =
-            document.querySelectorAll(
-                ".female-favorite"
-            );
-
-
-        favoriteButtons.forEach(
-            function (button) {
-
-
-                button.addEventListener(
-                    "click",
-                    function (event) {
-
-
-                        event.preventDefault();
-
-                        event.stopPropagation();
-
-
-                        this.classList.toggle(
-                            "saved"
-                        );
-
-
-                        this.textContent =
-                            this.classList.contains(
-                                "saved"
-                            )
-                                ? "♥"
-                                : "♡";
-
-                    }
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           MULTIPLE IMAGE GALLERY
-        ====================================================== */
-
-        const styleCards =
-            document.querySelectorAll(
-                ".female-style-card"
-            );
-
-
-        styleCards.forEach(
-            function (card) {
-
-
-                const images =
-                    card.querySelectorAll(
-                        ".gallery-image"
-                    );
-
-
-                const nextButton =
-                    card.querySelector(
-                        ".female-gallery-next"
-                    );
-
-
-                if (
-                    images.length <= 1
-                    ||
-                    !nextButton
-                ) {
-
-                    return;
-
-                }
-
-
-                let currentImage = 0;
-
-
-                nextButton.addEventListener(
-                    "click",
-                    function (event) {
-
-
-                        event.preventDefault();
-
-                        event.stopPropagation();
-
-
-                        images[
-                            currentImage
-                        ].classList.remove(
-                            "active"
-                        );
-
-
-                        currentImage =
-                            (
-                                currentImage + 1
-                            )
-                            %
-                            images.length;
-
-
-                        images[
-                            currentImage
-                        ].classList.add(
-                            "active"
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           DARK / LIGHT MODE
-        ====================================================== */
-
-        const themeButton =
-            document.getElementById(
-                "themeToggle"
-            );
-
-
-        const savedTheme =
-            localStorage.getItem(
-                "stylemyhair-theme"
-            );
-
-
-        if (
-            savedTheme === "dark"
-        ) {
-
-            document.body.classList.add(
-                "female-dark"
-            );
-
-        }
-
-
-        if (themeButton) {
-
-
-            if (
-                document.body.classList.contains(
-                    "female-dark"
-                )
-            ) {
-
-                themeButton.textContent = "☾";
-
-            } else {
-
-                themeButton.textContent = "☼";
-
-            }
-
-
-            themeButton.addEventListener(
-                "click",
-                function () {
-
-
-                    document.body.classList.toggle(
-                        "female-dark"
-                    );
-
-
-                    const isDark =
-                        document.body.classList.contains(
-                            "female-dark"
-                        );
-
-
-                    localStorage.setItem(
-                        "stylemyhair-theme",
-                        isDark
-                            ? "dark"
-                            : "light"
-                    );
-
-
-                    this.textContent =
-                        isDark
-                            ? "☾"
-                            : "☼";
-
-                }
-            );
-
-        }
-
-
-        /* =====================================================
-           HEADER SEARCH BUTTON
-        ====================================================== */
-
-        const headerSearch =
-            document.getElementById(
-                "headerSearchButton"
-            );
-
-
-        if (headerSearch) {
-
-
-            headerSearch.addEventListener(
-                "click",
-                function () {
-
-
-                    if (searchInput) {
-
-                        searchInput.focus();
-
-
-                        searchInput.scrollIntoView(
-                            {
-                                behavior: "smooth",
-                                block: "center"
-                            }
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-
-
-        /* =====================================================
-           MOBILE BOTTOM NAV ACTIVE STATE
-        ====================================================== */
-
-        const mobileLinks =
-            document.querySelectorAll(
-                ".female-mobile-nav a"
-            );
-
-
-        mobileLinks.forEach(
-            function (link) {
-
-
-                link.addEventListener(
-                    "click",
-                    function () {
-
-
-                        mobileLinks.forEach(
-                            function (item) {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            }
-                        );
-
-
-                        this.classList.add(
-                            "active"
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           ESCAPE KEY CLOSES MOBILE SIDEBAR
-        ====================================================== */
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-
-                if (
-                    event.key === "Escape"
-                ) {
-
-                    closeSidebar();
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           RESIZE SAFETY
-        ====================================================== */
-
-        window.addEventListener(
-            "resize",
-            function () {
-
-
-                if (
-                    window.innerWidth > 1100
-                ) {
-
-                    closeSidebar();
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           INITIAL FILTER
-        ====================================================== */
-
-        filterStyles();
-
-
-    }
-
-);
+    });
 
 </script>
+```
 
 </body>
 

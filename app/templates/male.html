@@ -1,31 +1,1767 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Male Home - StyleMyHair{% endblock %}
+<head>
 
-{% block content %}
+    <meta charset="UTF-8">
 
-<div class="rough-home male-home">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <h1>StyleMyHair</h1>
+    <title>StyleMyHair | Men's Style</title>
 
-    <p>Male Hairstyle Home</p>
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/male.css') }}"
+    >
 
-    <div class="home-actions">
-        <button>Explore Hairstyles</button>
-        <button>Try On</button>
-        <button>StyleMe</button>
-        <button>Saved</button>
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body data-theme="graphite">
+
+
+<!-- =====================================================
+     MOBILE OVERLAY
+====================================================== -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>
+
+
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+
+<aside
+    class="male-sidebar"
+    id="maleSidebar"
+>
+
+    <div class="sidebar-top">
+
+        <div class="brand">
+
+            <div class="brand-symbol">
+                SM
+            </div>
+
+            <div class="brand-text">
+
+                <strong>StyleMyHair</strong>
+
+                <span>MEN'S STUDIO</span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="mobile-close"
+            id="mobileClose"
+            type="button"
+        >
+            ×
+        </button>
+
     </div>
 
-    <h2>Trending Hairstyles</h2>
 
-    <div class="rough-cards">
-        <div>Mid Fade</div>
-        <div>French Crop</div>
-        <div>Textured Crop</div>
-        <div>Quiff</div>
+    <!-- PROFILE -->
+
+    <div class="sidebar-profile">
+
+        <div class="profile-avatar">
+            👤
+        </div>
+
+        <div class="profile-info">
+
+            <strong>My Profile</strong>
+
+            <span>Style Explorer</span>
+
+        </div>
+
+        <button
+            class="profile-arrow"
+            type="button"
+            id="profileButton"
+        >
+            →
+        </button>
+
+    </div>
+
+
+    <!-- MAIN NAVIGATION -->
+
+    <nav class="sidebar-navigation">
+
+        <span class="nav-heading">
+            EXPLORE
+        </span>
+
+
+        <button
+            class="side-link active"
+            data-scroll="heroSection"
+        >
+
+            <span>⌂</span>
+
+            <label>Dashboard</label>
+
+        </button>
+
+
+        <button
+            class="side-link"
+            data-scroll="stylesSection"
+        >
+
+            <span>✂</span>
+
+            <label>Hairstyles</label>
+
+        </button>
+
+
+        <button
+            class="side-link"
+            data-scroll="eventSection"
+        >
+
+            <span>⚡</span>
+
+            <label>Event Looks</label>
+
+        </button>
+
+
+        <button
+            class="side-link"
+            data-scroll="accessoriesSection"
+        >
+
+            <span>◈</span>
+
+            <label>Accessories</label>
+
+        </button>
+
+
+        <button
+            class="side-link"
+            data-scroll="productsSection"
+        >
+
+            <span>◆</span>
+
+            <label>Hair Products</label>
+
+        </button>
+
+
+        <button
+            class="side-link"
+            data-scroll="favoritesSection"
+        >
+
+            <span>♥</span>
+
+            <label>Favorites</label>
+
+            <b id="favoriteCount">0</b>
+
+        </button>
+
+
+        <span class="nav-heading second-heading">
+            SERVICES
+        </span>
+
+
+        <button
+            class="side-link"
+            id="salonButton"
+        >
+
+            <span>✂</span>
+
+            <label>Nearest Salon</label>
+
+        </button>
+
+
+        <button
+            class="side-link"
+            id="hospitalButton"
+        >
+
+            <span>✚</span>
+
+            <label>Nearest Hospital</label>
+
+        </button>
+
+    </nav>
+
+
+    <!-- THEME -->
+
+    <div class="theme-panel">
+
+        <div class="theme-title">
+
+            <span>THEME</span>
+
+            <small id="themeName">
+                Graphite
+            </small>
+
+        </div>
+
+
+        <div
+            class="theme-grid"
+            id="themeGrid"
+        >
+
+            <button
+                class="theme-dot graphite active"
+                data-theme="graphite"
+                title="Graphite"
+            ></button>
+
+            <button
+                class="theme-dot navy"
+                data-theme="navy"
+                title="Navy"
+            ></button>
+
+            <button
+                class="theme-dot steel"
+                data-theme="steel"
+                title="Steel"
+            ></button>
+
+            <button
+                class="theme-dot ocean"
+                data-theme="ocean"
+                title="Ocean"
+            ></button>
+
+            <button
+                class="theme-dot emerald"
+                data-theme="emerald"
+                title="Emerald"
+            ></button>
+
+            <button
+                class="theme-dot forest"
+                data-theme="forest"
+                title="Forest"
+            ></button>
+
+            <button
+                class="theme-dot burgundy"
+                data-theme="burgundy"
+                title="Burgundy"
+            ></button>
+
+            <button
+                class="theme-dot copper"
+                data-theme="copper"
+                title="Copper"
+            ></button>
+
+            <button
+                class="theme-dot charcoal"
+                data-theme="charcoal"
+                title="Charcoal"
+            ></button>
+
+            <button
+                class="theme-dot midnight"
+                data-theme="midnight"
+                title="Midnight"
+            ></button>
+
+        </div>
+
+    </div>
+
+
+    <!-- BOTTOM CONTROLS -->
+
+    <div class="sidebar-bottom">
+
+        <button
+            class="bottom-control"
+            id="modeToggle"
+            type="button"
+        >
+
+            <span id="modeIcon">
+                ☀
+            </span>
+
+            <label id="modeText">
+                Light Mode
+            </label>
+
+        </button>
+
+
+        <button
+            class="bottom-control"
+            id="settingsButton"
+            type="button"
+        >
+
+            <span>⚙</span>
+
+            <label>Settings</label>
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
+
+<main class="male-main">
+
+
+    <!-- =================================================
+         TOP BAR
+    ================================================== -->
+
+    <header class="male-topbar">
+
+
+        <button
+            class="mobile-menu"
+            id="mobileMenu"
+            type="button"
+        >
+            ☰
+        </button>
+
+
+        <a
+            href="{{ url_for('main.home') }}"
+            class="back-button"
+        >
+
+            <span>←</span>
+
+            <label>Back</label>
+
+        </a>
+
+
+        <div class="topbar-title">
+
+            <span>MEN'S STYLE STUDIO</span>
+
+            <strong>Find Your Signature Look</strong>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+            <button
+                class="top-icon"
+                id="searchButton"
+                type="button"
+            >
+                ⌕
+            </button>
+
+            <button
+                class="top-profile"
+                id="topProfile"
+                type="button"
+            >
+                👤
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         SEARCH PANEL
+    ================================================== -->
+
+    <div
+        class="search-panel"
+        id="searchPanel"
+    >
+
+        <div class="search-box">
+
+            <span>⌕</span>
+
+            <input
+                type="text"
+                id="styleSearch"
+                placeholder="Search hairstyles, looks, products..."
+            >
+
+            <button
+                id="closeSearch"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section
+        class="male-hero"
+        id="heroSection"
+    >
+
+        <div class="hero-background-grid"></div>
+
+        <div class="hero-glow hero-glow-one"></div>
+
+        <div class="hero-glow hero-glow-two"></div>
+
+
+        <div class="hero-content">
+
+
+            <div class="hero-badge">
+                <span></span>
+                MEN'S COLLECTION 2026
+            </div>
+
+
+            <h1>
+
+                Own Your
+                <strong>Signature Style.</strong>
+
+            </h1>
+
+
+            <p>
+
+                Discover hairstyles, grooming ideas,
+                accessories and complete looks designed
+                around your personality.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <button
+                    class="primary-button"
+                    id="exploreButton"
+                >
+
+                    Explore Styles
+
+                    <span>→</span>
+
+                </button>
+
+
+                <button
+                    class="secondary-button"
+                    id="randomStyleButton"
+                >
+
+                    ✦ Surprise Me
+
+                </button>
+
+            </div>
+
+
+            <div class="hero-stats">
+
+                <div>
+
+                    <strong>120+</strong>
+
+                    <span>Styles</span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>25+</strong>
+
+                    <span>Looks</span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>10</strong>
+
+                    <span>Themes</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO PLACEHOLDER -->
+
+        <div class="hero-visual">
+
+            <div class="visual-ring"></div>
+
+            <div class="visual-ring ring-two"></div>
+
+
+            <div class="male-photo-placeholder">
+
+                <div class="photo-icon">
+                    👨
+                </div>
+
+                <span>
+                    YOUR MODEL PHOTO
+                </span>
+
+                <small>
+                    Add image later
+                </small>
+
+            </div>
+
+
+            <div class="floating-style-card card-top">
+
+                <span>✂</span>
+
+                <div>
+
+                    <strong>Trending</strong>
+
+                    <small>Textured Crop</small>
+
+                </div>
+
+            </div>
+
+
+            <div class="floating-style-card card-bottom">
+
+                <span>★</span>
+
+                <div>
+
+                    <strong>Popular</strong>
+
+                    <small>Low Fade</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         QUICK ACTIONS
+    ================================================== -->
+
+    <section class="quick-actions-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span>QUICK ACCESS</span>
+
+                <h2>Everything You Need</h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="quick-grid">
+
+
+            <button
+                class="quick-card"
+                data-scroll="stylesSection"
+            >
+
+                <div class="quick-icon">
+                    ✂
+                </div>
+
+                <div>
+
+                    <strong>Haircuts</strong>
+
+                    <span>Find your next cut</span>
+
+                </div>
+
+                <b>→</b>
+
+            </button>
+
+
+            <button
+                class="quick-card"
+                id="quickSalon"
+            >
+
+                <div class="quick-icon">
+                    ◉
+                </div>
+
+                <div>
+
+                    <strong>Nearest Salon</strong>
+
+                    <span>Find grooming nearby</span>
+
+                </div>
+
+                <b>→</b>
+
+            </button>
+
+
+            <button
+                class="quick-card"
+                data-scroll="productsSection"
+            >
+
+                <div class="quick-icon">
+                    ◆
+                </div>
+
+                <div>
+
+                    <strong>Hair Products</strong>
+
+                    <span>Build your routine</span>
+
+                </div>
+
+                <b>→</b>
+
+            </button>
+
+
+            <button
+                class="quick-card"
+                data-scroll="eventSection"
+            >
+
+                <div class="quick-icon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <strong>Event Looks</strong>
+
+                    <span>Dress for the occasion</span>
+
+                </div>
+
+                <b>→</b>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         STYLE SECTION
+    ================================================== -->
+
+    <section
+        class="content-section"
+        id="stylesSection"
+    >
+
+        <div class="section-heading">
+
+            <div>
+
+                <span>DISCOVER</span>
+
+                <h2>Signature Hairstyles</h2>
+
+            </div>
+
+
+            <button
+                class="view-all"
+                id="viewAllStyles"
+            >
+
+                View All →
+
+            </button>
+
+        </div>
+
+
+        <div class="filter-row">
+
+            <button
+                class="filter-button active"
+                data-filter="all"
+            >
+                All
+            </button>
+
+            <button
+                class="filter-button"
+                data-filter="short"
+            >
+                Short
+            </button>
+
+            <button
+                class="filter-button"
+                data-filter="medium"
+            >
+                Medium
+            </button>
+
+            <button
+                class="filter-button"
+                data-filter="long"
+            >
+                Long
+            </button>
+
+            <button
+                class="filter-button"
+                data-filter="fade"
+            >
+                Fade
+            </button>
+
+            <button
+                class="filter-button"
+                data-filter="classic"
+            >
+                Classic
+            </button>
+
+        </div>
+
+
+        <div
+            class="style-grid"
+            id="styleGrid"
+        >
+
+
+            <article
+                class="style-card"
+                data-category="fade"
+                data-style="Textured Crop"
+            >
+
+                <div class="style-image">
+
+                    <div class="image-placeholder">
+
+                        <span>01</span>
+
+                        <div>PHOTO</div>
+
+                    </div>
+
+
+                    <button
+                        class="favorite-button"
+                        data-style="Textured Crop"
+                    >
+                        ♡
+                    </button>
+
+
+                    <div class="style-tag">
+                        TRENDING
+                    </div>
+
+                </div>
+
+
+                <div class="style-info">
+
+                    <div>
+
+                        <span>FADE</span>
+
+                        <h3>Textured Crop</h3>
+
+                    </div>
+
+                    <button
+                        class="try-style"
+                        data-style="Textured Crop"
+                    >
+                        Try
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="style-card"
+                data-category="fade"
+                data-style="Low Fade"
+            >
+
+                <div class="style-image">
+
+                    <div class="image-placeholder">
+
+                        <span>02</span>
+
+                        <div>PHOTO</div>
+
+                    </div>
+
+
+                    <button
+                        class="favorite-button"
+                        data-style="Low Fade"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+
+                <div class="style-info">
+
+                    <div>
+
+                        <span>FADE</span>
+
+                        <h3>Low Fade</h3>
+
+                    </div>
+
+                    <button
+                        class="try-style"
+                        data-style="Low Fade"
+                    >
+                        Try
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="style-card"
+                data-category="short"
+                data-style="Buzz Cut"
+            >
+
+                <div class="style-image">
+
+                    <div class="image-placeholder">
+
+                        <span>03</span>
+
+                        <div>PHOTO</div>
+
+                    </div>
+
+
+                    <button
+                        class="favorite-button"
+                        data-style="Buzz Cut"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+
+                <div class="style-info">
+
+                    <div>
+
+                        <span>SHORT</span>
+
+                        <h3>Buzz Cut</h3>
+
+                    </div>
+
+                    <button
+                        class="try-style"
+                        data-style="Buzz Cut"
+                    >
+                        Try
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="style-card"
+                data-category="medium"
+                data-style="Modern Quiff"
+            >
+
+                <div class="style-image">
+
+                    <div class="image-placeholder">
+
+                        <span>04</span>
+
+                        <div>PHOTO</div>
+
+                    </div>
+
+
+                    <button
+                        class="favorite-button"
+                        data-style="Modern Quiff"
+                    >
+                        ♡
+                    </button>
+
+                    <div class="style-tag">
+                        POPULAR
+                    </div>
+
+                </div>
+
+
+                <div class="style-info">
+
+                    <div>
+
+                        <span>MEDIUM</span>
+
+                        <h3>Modern Quiff</h3>
+
+                    </div>
+
+                    <button
+                        class="try-style"
+                        data-style="Modern Quiff"
+                    >
+                        Try
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="style-card"
+                data-category="classic"
+                data-style="Classic Side Part"
+            >
+
+                <div class="style-image">
+
+                    <div class="image-placeholder">
+
+                        <span>05</span>
+
+                        <div>PHOTO</div>
+
+                    </div>
+
+
+                    <button
+                        class="favorite-button"
+                        data-style="Classic Side Part"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+
+                <div class="style-info">
+
+                    <div>
+
+                        <span>CLASSIC</span>
+
+                        <h3>Side Part</h3>
+
+                    </div>
+
+                    <button
+                        class="try-style"
+                        data-style="Classic Side Part"
+                    >
+                        Try
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="style-card"
+                data-category="long"
+                data-style="Flow Hair"
+            >
+
+                <div class="style-image">
+
+                    <div class="image-placeholder">
+
+                        <span>06</span>
+
+                        <div>PHOTO</div>
+
+                    </div>
+
+
+                    <button
+                        class="favorite-button"
+                        data-style="Flow Hair"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+
+                <div class="style-info">
+
+                    <div>
+
+                        <span>LONG</span>
+
+                        <h3>Flow Hair</h3>
+
+                    </div>
+
+                    <button
+                        class="try-style"
+                        data-style="Flow Hair"
+                    >
+                        Try
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         STYLE PREVIEW
+    ================================================== -->
+
+    <section class="preview-section">
+
+        <div class="preview-panel">
+
+            <div class="preview-content">
+
+                <span>STYLE PREVIEW</span>
+
+                <h2 id="previewTitle">
+                    Choose a hairstyle
+                </h2>
+
+                <p id="previewDescription">
+
+                    Select any hairstyle above to
+                    preview it here. Your AI try-on
+                    experience can be connected later.
+
+                </p>
+
+
+                <div class="preview-actions">
+
+                    <button
+                        class="primary-button"
+                        id="cameraButton"
+                    >
+                        ◉ Camera
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        id="uploadButton"
+                    >
+                        ↑ Upload Photo
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="preview-image">
+
+                <div class="preview-placeholder">
+
+                    <span>AI</span>
+
+                    <small>
+                        PHOTO PREVIEW AREA
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         EVENT LOOKS
+    ================================================== -->
+
+    <section
+        class="content-section"
+        id="eventSection"
+    >
+
+        <div class="section-heading">
+
+            <div>
+
+                <span>STYLE FOR THE MOMENT</span>
+
+                <h2>Event Looks</h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="event-grid">
+
+
+            <article class="event-card wedding">
+
+                <div class="event-image">
+                    <span>PHOTO</span>
+                </div>
+
+                <div class="event-content">
+
+                    <span>FORMAL</span>
+
+                    <h3>Wedding Ready</h3>
+
+                    <p>
+                        Polished styles for weddings
+                        and special occasions.
+                    </p>
+
+                    <button
+                        class="event-button"
+                        data-style="Wedding Ready"
+                    >
+                        Explore →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="event-card party">
+
+                <div class="event-image">
+                    <span>PHOTO</span>
+                </div>
+
+                <div class="event-content">
+
+                    <span>NIGHT OUT</span>
+
+                    <h3>Party Mode</h3>
+
+                    <p>
+                        Modern, sharp and confident
+                        looks for the night.
+                    </p>
+
+                    <button
+                        class="event-button"
+                        data-style="Party Mode"
+                    >
+                        Explore →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="event-card office">
+
+                <div class="event-image">
+                    <span>PHOTO</span>
+                </div>
+
+                <div class="event-content">
+
+                    <span>PROFESSIONAL</span>
+
+                    <h3>Office Sharp</h3>
+
+                    <p>
+                        Clean and sophisticated
+                        everyday professional looks.
+                    </p>
+
+                    <button
+                        class="event-button"
+                        data-style="Office Sharp"
+                    >
+                        Explore →
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         ACCESSORIES
+    ================================================== -->
+
+    <section
+        class="content-section"
+        id="accessoriesSection"
+    >
+
+        <div class="section-heading">
+
+            <div>
+
+                <span>COMPLETE THE LOOK</span>
+
+                <h2>Accessories</h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="accessory-grid">
+
+
+            <article class="accessory-card">
+
+                <div class="accessory-icon">
+                    🕶
+                </div>
+
+                <h3>Eyewear</h3>
+
+                <p>
+                    Complete your face shape
+                    with the right frame.
+                </p>
+
+                <button>
+                    Explore →
+                </button>
+
+            </article>
+
+
+            <article class="accessory-card">
+
+                <div class="accessory-icon">
+                    🧢
+                </div>
+
+                <h3>Caps & Hats</h3>
+
+                <p>
+                    Casual accessories for
+                    everyday styling.
+                </p>
+
+                <button>
+                    Explore →
+                </button>
+
+            </article>
+
+
+            <article class="accessory-card">
+
+                <div class="accessory-icon">
+                    ⌚
+                </div>
+
+                <h3>Watches</h3>
+
+                <p>
+                    Add a refined finishing
+                    detail to your outfit.
+                </p>
+
+                <button>
+                    Explore →
+                </button>
+
+            </article>
+
+
+            <article class="accessory-card">
+
+                <div class="accessory-icon">
+                    💼
+                </div>
+
+                <h3>Style Extras</h3>
+
+                <p>
+                    Discover accessories that
+                    match your complete look.
+                </p>
+
+                <button>
+                    Explore →
+                </button>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         PRODUCTS
+    ================================================== -->
+
+    <section
+        class="content-section"
+        id="productsSection"
+    >
+
+        <div class="section-heading">
+
+            <div>
+
+                <span>GROOMING</span>
+
+                <h2>Hair Products</h2>
+
+            </div>
+
+            <button
+                class="view-all"
+                type="button"
+            >
+                View All →
+            </button>
+
+        </div>
+
+
+        <div class="product-grid">
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    PRODUCT
+                </div>
+
+                <div class="product-info">
+
+                    <span>STYLING</span>
+
+                    <h3>Matte Clay</h3>
+
+                    <p>
+                        Texture • Hold • Matte Finish
+                    </p>
+
+                    <button>
+                        Discover →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    PRODUCT
+                </div>
+
+                <div class="product-info">
+
+                    <span>CARE</span>
+
+                    <h3>Daily Shampoo</h3>
+
+                    <p>
+                        Clean • Fresh • Everyday
+                    </p>
+
+                    <button>
+                        Discover →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    PRODUCT
+                </div>
+
+                <div class="product-info">
+
+                    <span>GROOMING</span>
+
+                    <h3>Hair Serum</h3>
+
+                    <p>
+                        Smooth • Shine • Protection
+                    </p>
+
+                    <button>
+                        Discover →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    PRODUCT
+                </div>
+
+                <div class="product-info">
+
+                    <span>STYLING</span>
+
+                    <h3>Sea Salt Spray</h3>
+
+                    <p>
+                        Volume • Texture • Natural
+                    </p>
+
+                    <button>
+                        Discover →
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         NEARBY SERVICES
+    ================================================== -->
+
+    <section class="nearby-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span>AROUND YOU</span>
+
+                <h2>Nearby Services</h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="nearby-grid">
+
+
+            <button
+                class="nearby-card"
+                id="nearbySalon"
+            >
+
+                <div class="nearby-icon">
+                    ✂
+                </div>
+
+                <div>
+
+                    <span>FIND NEARBY</span>
+
+                    <strong>Salon / Barber</strong>
+
+                    <small>
+                        Discover grooming
+                        locations around you.
+                    </small>
+
+                </div>
+
+                <b>→</b>
+
+            </button>
+
+
+            <button
+                class="nearby-card"
+                id="nearbyHospital"
+            >
+
+                <div class="nearby-icon hospital">
+                    ✚
+                </div>
+
+                <div>
+
+                    <span>HEALTHCARE</span>
+
+                    <strong>Nearest Hospital</strong>
+
+                    <small>
+                        Quickly access nearby
+                        healthcare facilities.
+                    </small>
+
+                </div>
+
+                <b>→</b>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         FAVORITES
+    ================================================== -->
+
+    <section
+        class="content-section favorites-section"
+        id="favoritesSection"
+    >
+
+        <div class="section-heading">
+
+            <div>
+
+                <span>SAVED BY YOU</span>
+
+                <h2>Your Favorites</h2>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="favorites-empty"
+            id="favoritesEmpty"
+        >
+
+            <div>
+                ♥
+            </div>
+
+            <h3>No favorites yet</h3>
+
+            <p>
+                Tap the heart on any hairstyle
+                to save it here.
+            </p>
+
+        </div>
+
+
+        <div
+            class="favorites-list"
+            id="favoritesList"
+        ></div>
+
+    </section>
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <footer class="male-footer">
+
+        <div class="footer-brand">
+
+            <div class="brand-symbol">
+                SM
+            </div>
+
+            <div>
+
+                <strong>StyleMyHair</strong>
+
+                <span>MEN'S STYLE STUDIO</span>
+
+            </div>
+
+        </div>
+
+
+        <p>
+            Your style. Your choice. Your identity.
+        </p>
+
+
+        <span>
+            © 2026 StyleMyHair
+        </span>
+
+    </footer>
+
+
+</main>
+
+
+<!-- =====================================================
+     STYLE MODAL
+====================================================== -->
+
+<div
+    class="modal"
+    id="styleModal"
+>
+
+    <div class="modal-card">
+
+        <button
+            class="modal-close"
+            id="modalClose"
+        >
+            ×
+        </button>
+
+
+        <span>STYLE SELECTED</span>
+
+        <h2 id="modalTitle">
+            Textured Crop
+        </h2>
+
+        <p>
+            Your selected style is ready
+            for the future AI try-on experience.
+        </p>
+
+
+        <div class="modal-placeholder">
+            PHOTO PREVIEW
+        </div>
+
+
+        <button
+            class="primary-button modal-button"
+            id="modalDone"
+        >
+            Continue
+        </button>
+
     </div>
 
 </div>
 
-{% endblock %}
+
+<script
+    src="{{ url_for('static', filename='js/male.js') }}"
+></script>
+
+</body>
+
+</html>
