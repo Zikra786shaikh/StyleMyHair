@@ -21,3 +21,9 @@ def female_try_on():
 @main.route("/male")
 def male():
     return render_template("male.html")
+@main.route("/reels")
+def reels():
+    return render_template("reels.html")
+@main.route("/saved-reels")
+def saved_reels():
+    return render_template("saved_reels.html")
