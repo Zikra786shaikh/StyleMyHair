@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       GET SAVED REELS FROM BROWSER
+       GET SAVED REELS
     ===================================================== */
 
     function getSavedReels() {
@@ -31,45 +31,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       REEL INFORMATION
+       SAVE REELS
     ===================================================== */
 
-    const reelData = {
+    function saveReels(reels) {
 
-        reel1: {
-            title: "Textured Crop",
-            video: "/static/reels/reel1.mp4"
-        },
+        localStorage.setItem(
+            "savedReels",
+            JSON.stringify(reels)
+        );
 
-        reel2: {
-            title: "Low Fade",
-            video: "/static/reels/reel2.mp4"
-        },
-
-        reel3: {
-            title: "Modern Quiff",
-            video: "/static/reels/reel3.mp4"
-        }
-
-    };
+    }
 
 
     /* =====================================================
-       GET SAVED REELS
+       GET CURRENT SAVED REELS
     ===================================================== */
 
-    const savedReels = getSavedReels();
-
-
-    console.log(
-        "Saved reels:",
-        savedReels
-    );
-
-
-    /* =====================================================
-       SHOW SAVED COUNT
-    ===================================================== */
+    let savedReels =
+        getSavedReels();
 
     savedCount.textContent =
         savedReels.length;
@@ -93,79 +73,558 @@ document.addEventListener("DOMContentLoaded", function () {
 
     savedReels.forEach(function (reelId) {
 
-        const reel = reelData[reelId];
+        const number =
+            reelId.replace("reel", "");
 
 
-        /* If reel doesn't exist, skip it */
+        /* =================================================
+           CREATE REEL
+        ================================================= */
 
-        if (!reel) {
-            return;
-        }
+        const reel =
+            document.createElement("article");
 
-
-        /* CREATE REEL SECTION */
-
-        const reelElement =
-            document.createElement("section");
-
-        reelElement.className =
+        reel.className =
             "saved-reel";
 
 
-        /* CREATE VIDEO */
+        /* =================================================
+           REEL HTML
+        ================================================= */
 
-        const video =
-            document.createElement("video");
+        reel.innerHTML = `
 
-        video.src = reel.video;
-
-        video.controls = true;
-
-        video.playsInline = true;
-
-        video.loop = true;
-
-
-        /* CREATE INFORMATION */
-
-        const info =
-            document.createElement("div");
-
-        info.className =
-            "saved-info";
+            <video
+                class="saved-reel-video"
+                src="/static/reels/reel${number}.mp4"
+                loop
+                playsinline
+            ></video>
 
 
-        const title =
-            document.createElement("h2");
-
-        title.textContent =
-            reel.title;
+            <div class="video-overlay"></div>
 
 
-        const savedText =
-            document.createElement("p");
+            <!-- MUTE BUTTON -->
 
-        savedText.textContent =
-            "🔖 Saved Reel";
-
-
-        /* ADD CONTENT */
-
-        info.appendChild(title);
-
-        info.appendChild(savedText);
+            <button
+                class="mute-button"
+                type="button">
+                🔊
+            </button>
 
 
-        reelElement.appendChild(video);
+            <!-- REEL ACTIONS -->
 
-        reelElement.appendChild(info);
+            <div class="reel-actions">
+
+
+                <!-- LIKE -->
+
+                <button
+                    class="reel-action like-button"
+                    type="button">
+
+                    <span class="like-icon">
+                        ♡
+                    </span>
+
+                    <small>
+                        Like
+                    </small>
+
+                </button>
+
+
+                <!-- COMMENTS -->
+
+                <button
+                    class="reel-action comment-button"
+                    type="button">
+
+                    <span>
+                        💬
+                    </span>
+
+                    <small>
+                        Comments
+                    </small>
+
+                </button>
+
+
+                <!-- SHARE -->
+
+                <button
+                    class="reel-action share-button"
+                    type="button">
+
+                    <span>
+                        ↗
+                    </span>
+
+                    <small>
+                        Share
+                    </small>
+
+                </button>
+
+
+                <!-- SAVE / UNSAVE -->
+
+                <button
+                    class="reel-action save-button saved"
+                    type="button">
+
+                    <span>
+                        🔖
+                    </span>
+
+                    <small>
+                        Saved
+                    </small>
+
+                </button>
+
+            </div>
+
+
+            <!-- REEL INFORMATION -->
+
+            <div class="reel-info">
+
+
+                <div class="creator-row">
+
+                    <div class="creator-avatar">
+                        SM
+                    </div>
+
+                    <strong>
+                        @StyleMyHair
+                    </strong>
+
+                    <button
+                        class="follow-button"
+                        type="button">
+                        Follow
+                    </button>
+
+                </div>
+
+
+                <h2>
+                    Men's Hairstyle ${number}
+                </h2>
+
+
+                <p>
+                    Discover this stylish men's hairstyle.
+                    Find your perfect look with StyleMyHair.
+                </p>
+
+
+                <span class="hashtags">
+                    #menshair #hairstyle #haircut #StyleMyHair
+                </span>
+
+
+            </div>
+
+        `;
 
 
         savedContainer.appendChild(
-            reelElement
+            reel
+        );
+
+
+        /* =================================================
+           VIDEO
+        ================================================= */
+
+        const video =
+            reel.querySelector(
+                ".saved-reel-video"
+            );
+
+
+        /* =================================================
+           MUTE BUTTON
+        ================================================= */
+
+        const muteButton =
+            reel.querySelector(
+                ".mute-button"
+            );
+
+
+        muteButton.addEventListener(
+            "click",
+            function () {
+
+                video.muted =
+                    !video.muted;
+
+
+                if (video.muted) {
+
+                    muteButton.textContent =
+                        "🔇";
+
+                } else {
+
+                    muteButton.textContent =
+                        "🔊";
+
+                }
+
+            }
+        );
+
+
+        /* =================================================
+           LIKE BUTTON
+        ================================================= */
+
+        const likeButton =
+            reel.querySelector(
+                ".like-button"
+            );
+
+
+        const likeIcon =
+            reel.querySelector(
+                ".like-icon"
+            );
+
+
+        likeButton.addEventListener(
+            "click",
+            function () {
+
+                likeButton.classList.toggle(
+                    "liked"
+                );
+
+
+                if (
+                    likeButton.classList.contains(
+                        "liked"
+                    )
+                ) {
+
+                    likeIcon.textContent =
+                        "♥";
+
+                } else {
+
+                    likeIcon.textContent =
+                        "♡";
+
+                }
+
+            }
+        );
+
+
+        /* =================================================
+           SHARE BUTTON
+        ================================================= */
+
+        const shareButton =
+            reel.querySelector(
+                ".share-button"
+            );
+
+
+        shareButton.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    navigator.share
+                ) {
+
+                    navigator.share({
+
+                        title:
+                            "StyleMyHair Reel",
+
+                        text:
+                            "Check out this hairstyle on StyleMyHair!",
+
+                        url:
+                            window.location.href
+
+                    });
+
+                } else {
+
+                    navigator.clipboard.writeText(
+                        window.location.href
+                    );
+
+                    alert(
+                        "Reel link copied!"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =================================================
+           SAVE / UNSAVE BUTTON
+        ================================================= */
+
+        const saveButton =
+            reel.querySelector(
+                ".save-button"
+            );
+
+
+        saveButton.addEventListener(
+            "click",
+            function () {
+
+
+                /* GET LATEST SAVED LIST */
+
+                let currentSaved =
+                    getSavedReels();
+
+
+                /* CHECK IF CURRENT REEL IS SAVED */
+
+                const isSaved =
+                    currentSaved.includes(
+                        reelId
+                    );
+
+
+                /* =================================================
+                   UNSAVE
+                ================================================= */
+
+                if (isSaved) {
+
+
+                    currentSaved =
+                        currentSaved.filter(
+                            function (id) {
+
+                                return id !== reelId;
+
+                            }
+                        );
+
+
+                    /* UPDATE LOCAL STORAGE */
+
+                    saveReels(
+                        currentSaved
+                    );
+
+
+                    /* UPDATE BUTTON */
+
+                    saveButton.classList.remove(
+                        "saved"
+                    );
+
+
+                    saveButton.querySelector(
+                        "small"
+                    ).textContent =
+                        "Save";
+
+
+                    /* UPDATE COUNT */
+
+                    savedCount.textContent =
+                        currentSaved.length;
+
+
+                    /*
+                       REMOVE REEL FROM SAVED PAGE
+                    */
+
+                    reel.remove();
+
+
+                    /* =================================================
+                       IF NO SAVED REELS LEFT
+                    ================================================= */
+
+                    if (
+                        currentSaved.length === 0
+                    ) {
+
+                        emptyMessage.classList.add(
+                            "show"
+                        );
+
+                    }
+
+
+                    console.log(
+                        "Reel unsaved:",
+                        reelId
+                    );
+
+
+                    return;
+                }
+
+
+                /* =================================================
+                   SAVE AGAIN
+                ================================================= */
+
+                currentSaved.push(
+                    reelId
+                );
+
+
+                saveReels(
+                    currentSaved
+                );
+
+
+                saveButton.classList.add(
+                    "saved"
+                );
+
+
+                saveButton.querySelector(
+                    "small"
+                ).textContent =
+                    "Saved";
+
+
+                savedCount.textContent =
+                    currentSaved.length;
+
+
+                console.log(
+                    "Reel saved:",
+                    reelId
+                );
+
+            }
+        );
+
+
+        /* =================================================
+           FOLLOW BUTTON
+        ================================================= */
+
+        const followButton =
+            reel.querySelector(
+                ".follow-button"
+            );
+
+
+        followButton.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    followButton.textContent.trim() ===
+                    "Follow"
+                ) {
+
+                    followButton.textContent =
+                        "Following";
+
+                } else {
+
+                    followButton.textContent =
+                        "Follow";
+
+                }
+
+            }
+        );
+
+
+        /* =================================================
+           DOUBLE CLICK LIKE
+        ================================================= */
+
+        video.addEventListener(
+            "dblclick",
+            function () {
+
+                likeButton.classList.add(
+                    "liked"
+                );
+
+
+                likeIcon.textContent =
+                    "♥";
+
+            }
         );
 
     });
 
+
+    /* =====================================================
+       AUTO PLAY / PAUSE
+    ===================================================== */
+
+    const videos =
+        document.querySelectorAll(
+            ".saved-reel-video"
+        );
+
+
+    const observer =
+        new IntersectionObserver(
+            function (entries) {
+
+                entries.forEach(
+                    function (entry) {
+
+                        const video =
+                            entry.target;
+
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            video.play().catch(
+                                function () {}
+                            );
+
+                        } else {
+
+                            video.pause();
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.7
+            }
+        );
+
+
+    videos.forEach(
+        function (video) {
+
+            observer.observe(
+                video
+            );
+
+        }
+    );
 
 });

@@ -27,3 +27,6 @@ def reels():
 @main.route("/saved-reels")
 def saved_reels():
     return render_template("saved_reels.html")
+@main.route("/hairstyles")
+def hairstyles():
+    return render_template("hairstyles.html")

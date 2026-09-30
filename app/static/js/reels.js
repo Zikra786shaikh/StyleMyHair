@@ -1,46 +1,156 @@
 document.addEventListener("DOMContentLoaded", function () {
+
     console.log("REELS JS IS WORKING");
 
-    const reels = document.querySelectorAll(".reel");
+    /* =====================================================
+       CREATE 100 REELS
+    ===================================================== */
+
+    const reelsContainer =
+        document.getElementById("reelsContainer");
+
+    const TOTAL_REELS = 100;
+
+
+    for (let i = 1; i <= TOTAL_REELS; i++) {
+
+        const reel = document.createElement("article");
+
+        reel.className = "reel";
+
+        reel.innerHTML = `
+
+            <video 
+    class="reel-video" 
+    src="/static/reels/reel${i}.mp4" 
+    loop 
+    playsinline 
+></video>
+
+            <div class="video-overlay"></div>
+
+
+            <!-- MUTE -->
+<button class="mute-button"> 
+    🔊
+</button>
+
+
+            <!-- RIGHT SIDE -->
+
+            <div class="reel-actions">
+
+                <button class="reel-action like-button">
+
+                    <span class="like-icon">♡</span>
+
+                    <small>Like</small>
+
+                </button>
+
+
+                <button class="reel-action comment-button">
+
+                    <span>💬</span>
+
+                    <small>
+                        <span class="comment-count">0</span>
+                        Comments
+                    </small>
+
+                </button>
+
+
+                <button class="reel-action share-button">
+
+                    <span>↗</span>
+
+                    <small>Share</small>
+
+                </button>
+
+
+                <button class="reel-action save-button">
+
+                    <span>🔖</span>
+
+                    <small>Save</small>
+
+                </button>
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div class="reel-info">
+
+                <div class="creator-row">
+
+                    <div class="creator-avatar">
+                        SM
+                    </div>
+
+                    <strong>@StyleMyHair</strong>
+
+                    <button class="follow-button">
+                        Follow
+                    </button>
+
+                </div>
+
+
+                <h2>
+                    Men's Hairstyle ${i}
+                </h2>
+
+
+                <p>
+                    Discover this stylish men's hairstyle.
+                    Find your perfect look with StyleMyHair.
+                </p>
+
+
+                <span class="hashtags">
+                    #menshair #hairstyle #haircut #StyleMyHair
+                </span>
+
+            </div>
+
+        `;
+
+        reelsContainer.appendChild(reel);
+
+    }
+
+
+    /* =====================================================
+       GET ALL REELS
+    ===================================================== */
+
+    const reels =
+        document.querySelectorAll(".reel");
 
 
     /* =====================================================
        REEL INFORMATION
     ===================================================== */
 
-    const reelData = [
+    const reelData = [];
 
-        {
-            id: "reel1",
-            title: "Textured Crop",
-            comments: [
-                "This haircut looks amazing!",
-                "Definitely trying this style.",
-                "The fade is so clean."
-            ]
-        },
+    for (let i = 1; i <= TOTAL_REELS; i++) {
 
-        {
-            id: "reel2",
-            title: "Low Fade",
-            comments: [
-                "Clean fade 🔥",
-                "This is perfect for everyday.",
-                "Love this look!"
-            ]
-        },
+        reelData.push({
 
-        {
-            id: "reel3",
-            title: "Modern Quiff",
-            comments: [
-                "The volume is perfect.",
-                "Great hairstyle!",
-                "Would look amazing for a party."
-            ]
-        }
+            id: "reel" + i,
 
-    ];
+            title: "Men's Hairstyle " + i,
+
+            comments: []
+
+        });
+
+    }
 
 
     /* =====================================================
@@ -74,15 +184,18 @@ document.addEventListener("DOMContentLoaded", function () {
             ) || "null"
         );
 
+
         if (savedComments) {
 
             return savedComments;
 
         }
 
+
         const reel = reelData.find(
             item => item.id === reelId
         );
+
 
         return reel ? reel.comments : [];
 
@@ -104,12 +217,16 @@ document.addEventListener("DOMContentLoaded", function () {
     ===================================================== */
 
     const observer = new IntersectionObserver(
+
         function (entries) {
 
             entries.forEach(function (entry) {
 
                 const video =
-                    entry.target.querySelector(".reel-video");
+                    entry.target.querySelector(
+                        ".reel-video"
+                    );
+
 
                 if (!video) return;
 
@@ -129,9 +246,11 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
         },
+
         {
             threshold: 0.7
         }
+
     );
 
 
@@ -157,7 +276,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     button.classList.toggle("liked");
 
                     const icon =
-                        button.querySelector(".like-icon");
+                        button.querySelector(
+                            ".like-icon"
+                        );
+
 
                     if (
                         button.classList.contains("liked")
@@ -178,61 +300,95 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-   SAVE REEL
-===================================================== */
+       SAVE REEL
+    ===================================================== */
 
-document
-    .querySelectorAll(".save-button")
-    .forEach(function (button, index) {
+    document
+        .querySelectorAll(".save-button")
+        .forEach(function (button, index) {
 
-        const reelId = "reel" + (index + 1);
+            const reelId =
+                "reel" + (index + 1);
 
-        /* CHECK IF ALREADY SAVED */
 
-        const savedReels = getSavedReels();
+            const savedReels =
+                getSavedReels();
 
-       if (savedReels.includes(reelId)) {
-    button.classList.add("saved");
-    button.querySelector("small").textContent = "Saved";
-}
 
-        /* CLICK SAVE */
+            if (
+                savedReels.includes(reelId)
+            ) {
 
-        button.addEventListener("click", function () {
+                button.classList.add("saved");
 
-            let saved = getSavedReels();
-if (saved.includes(reelId)) {
+                button.querySelector(
+                    "small"
+                ).textContent = "Saved";
 
-    /* REMOVE FROM SAVED */
+            }
 
-    saved = saved.filter(function (id) {
-        return id !== reelId;
-    });
 
-    button.classList.remove("saved");
+            button.addEventListener(
+                "click",
+                function () {
 
-    button.querySelector("small").textContent = "Save";
+                    let saved =
+                        getSavedReels();
 
-} else {
 
-    /* ADD TO SAVED */
+                    if (
+                        saved.includes(reelId)
+                    ) {
 
-    saved.push(reelId);
+                        saved =
+                            saved.filter(
+                                function (id) {
 
-    button.classList.add("saved");
+                                    return id !== reelId;
 
-    button.querySelector("small").textContent = "Saved";
-}
+                                }
+                            );
 
-            /* SAVE TO BROWSER */
 
-            saveReels(saved);
+                        button.classList.remove(
+                            "saved"
+                        );
 
-            console.log("Saved reels:", saved);
+
+                        button.querySelector(
+                            "small"
+                        ).textContent = "Save";
+
+
+                    } else {
+
+                        saved.push(reelId);
+
+
+                        button.classList.add(
+                            "saved"
+                        );
+
+
+                        button.querySelector(
+                            "small"
+                        ).textContent = "Saved";
+
+                    }
+
+
+                    saveReels(saved);
+
+
+                    console.log(
+                        "Saved reels:",
+                        saved
+                    );
+
+                }
+            );
 
         });
-
-    });
 
 
     /* =====================================================
@@ -244,25 +400,30 @@ if (saved.includes(reelId)) {
             "commentsPanel"
         );
 
+
     const commentsList =
         document.getElementById(
             "commentsList"
         );
+
 
     const commentsTotal =
         document.getElementById(
             "commentsTotal"
         );
 
+
     const commentInput =
         document.getElementById(
             "commentInput"
         );
 
+
     const postComment =
         document.getElementById(
             "postComment"
         );
+
 
     const closeComments =
         document.getElementById(
@@ -286,6 +447,7 @@ if (saved.includes(reelId)) {
             reel.querySelector(
                 ".comment-count"
             );
+
 
         if (countElement) {
 
@@ -331,6 +493,7 @@ if (saved.includes(reelId)) {
                             "div"
                         );
 
+
                     commentItem.className =
                         "comment-item";
 
@@ -340,8 +503,10 @@ if (saved.includes(reelId)) {
                             "div"
                         );
 
+
                     avatar.className =
                         "comment-avatar";
+
 
                     avatar.textContent =
                         "SM";
@@ -352,6 +517,7 @@ if (saved.includes(reelId)) {
                             "div"
                         );
 
+
                     content.className =
                         "comment-content";
 
@@ -360,6 +526,7 @@ if (saved.includes(reelId)) {
                         document.createElement(
                             "strong"
                         );
+
 
                     username.textContent =
                         "@StyleMyHair";
@@ -370,6 +537,7 @@ if (saved.includes(reelId)) {
                             "p"
                         );
 
+
                     text.textContent =
                         comment;
 
@@ -377,6 +545,7 @@ if (saved.includes(reelId)) {
                     content.appendChild(
                         username
                     );
+
 
                     content.appendChild(
                         text
@@ -386,6 +555,7 @@ if (saved.includes(reelId)) {
                     commentItem.appendChild(
                         avatar
                     );
+
 
                     commentItem.appendChild(
                         content
@@ -438,10 +608,7 @@ if (saved.includes(reelId)) {
 
     document
         .querySelectorAll(".comment-button")
-        .forEach(function (
-            button,
-            index
-        ) {
+        .forEach(function (button, index) {
 
             button.addEventListener(
                 "click",
@@ -451,6 +618,7 @@ if (saved.includes(reelId)) {
                         button.closest(
                             ".reel"
                         );
+
 
                     const reelId =
                         "reel" + (index + 1);
@@ -599,9 +767,7 @@ if (saved.includes(reelId)) {
 
                             });
 
-                        } catch (error) {
-
-                        }
+                        } catch (error) {}
 
                     } else {
 
@@ -609,6 +775,7 @@ if (saved.includes(reelId)) {
 
                             await navigator.clipboard
                                 .writeText(url);
+
 
                             alert(
                                 "Reel link copied!"
@@ -630,49 +797,42 @@ if (saved.includes(reelId)) {
         });
 
 
-    /* =====================================================
-       MUTE / UNMUTE
-    ===================================================== */
+   /* =====================================================
+   MUTE / UNMUTE
+===================================================== */
 
-    document
-        .querySelectorAll(".mute-button")
-        .forEach(function (button) {
+document
+    .querySelectorAll(".mute-button")
+    .forEach(function (button) {
 
-            button.addEventListener(
-                "click",
-                function () {
+        button.addEventListener(
+            "click",
+            function () {
 
-                    const reel =
-                        button.closest(
-                            ".reel"
-                        );
+                const reel =
+                    button.closest(".reel");
 
-                    const video =
-                        reel.querySelector(
-                            ".reel-video"
-                        );
+                const video =
+                    reel.querySelector(".reel-video");
 
 
-                    video.muted =
-                        !video.muted;
+                video.muted = !video.muted;
 
 
-                    if (video.muted) {
+                if (video.muted) {
 
-                        button.textContent =
-                            "🔇";
+                    button.textContent = "🔇";
 
-                    } else {
+                } else {
 
-                        button.textContent =
-                            "🔊";
-
-                    }
+                    button.textContent = "🔊";
 
                 }
-            );
 
-        });
+            }
+        );
+
+    });
 
 
     /* =====================================================
@@ -725,6 +885,7 @@ if (saved.includes(reelId)) {
                             ".like-button"
                         );
 
+
                     const icon =
                         reel.querySelector(
                             ".like-icon"
@@ -739,6 +900,7 @@ if (saved.includes(reelId)) {
                         likeButton.classList.add(
                             "liked"
                         );
+
 
                         icon.textContent =
                             "♥";
@@ -760,6 +922,7 @@ if (saved.includes(reelId)) {
 
             const reelId =
                 "reel" + (index + 1);
+
 
             const comments =
                 getComments(reelId);

@@ -17,7 +17,7 @@ body {
     font-family: Arial, sans-serif;
     background: #000;
     color: #fff;
-    min-height: 100vh;
+    overflow: hidden;
 }
 
 
@@ -38,7 +38,7 @@ body {
 
     padding: 0 25px;
 
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.65);
 
     z-index: 1000;
 }
@@ -64,16 +64,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    transition: 0.2s;
-}
-
-.back-button:hover {
-    background: rgba(255, 255, 255, 0.25);
 }
 
 
-/* HEADER TITLE */
+/* TITLE */
 
 .header-title {
     display: flex;
@@ -85,8 +79,8 @@ body {
 
 .header-title h1 {
     font-size: 24px;
-    font-weight: 700;
 }
+
 
 #savedCount {
     min-width: 28px;
@@ -113,9 +107,19 @@ body {
 ===================================================== */
 
 .saved-reels-container {
-    width: 100%;
 
-    padding-top: 70px;
+    width: 100%;
+    height: 100vh;
+
+    overflow-y: auto;
+
+    scroll-snap-type: y mandatory;
+
+    scrollbar-width: none;
+}
+
+.saved-reels-container::-webkit-scrollbar {
+    display: none;
 }
 
 
@@ -124,63 +128,264 @@ body {
 ===================================================== */
 
 .saved-reel {
+
     position: relative;
 
     width: 100%;
-    height: calc(100vh - 70px);
+    height: 100vh;
 
-    min-height: 600px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    scroll-snap-align: start;
 
     background: #000;
 
-    border-bottom: 1px solid #222;
-}
-
-
-/* VIDEO */
-
-.saved-reel video {
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    background: #000;
-
-    display: block;
+    overflow: hidden;
 }
 
 
 /* =====================================================
-   INFORMATION OVER VIDEO
+   PORTRAIT VIDEO
 ===================================================== */
 
-.saved-info {
+.saved-reel-video {
+
     position: absolute;
 
-    left: 25px;
-    bottom: 30px;
+    top: 0;
+    left: 50%;
 
-    z-index: 5;
+    transform: translateX(-50%);
 
-    max-width: 70%;
+    width: min(100vw, 56.25vh);
 
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    height: 100vh;
+
+    object-fit: cover;
+
+    background: #111;
 }
 
-.saved-info h2 {
-    font-size: 26px;
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.video-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.25),
+            transparent 25%,
+            transparent 60%,
+            rgba(0, 0, 0, 0.7)
+        );
+}
+
+
+/* =====================================================
+   MUTE BUTTON
+===================================================== */
+
+.mute-button {
+
+    position: absolute;
+
+    top: 90px;
+    right: calc(50% - min(28.125vw, 28.125vh));
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.reel-actions {
+
+    position: absolute;
+
+    right: calc(50% - min(28.125vw, 28.125vh));
+
+    bottom: 150px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    z-index: 10;
+}
+
+
+.reel-action {
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 4px;
+}
+
+
+.reel-action span {
+
+    font-size: 28px;
+
+    text-shadow:
+        0 2px 8px #000;
+}
+
+
+.reel-action small {
+
+    font-size: 11px;
+
+    text-shadow:
+        0 2px 8px #000;
+}
+
+
+.like-button.liked .like-icon {
+    color: red;
+}
+
+
+/* SAVED */
+
+.save-button.saved span {
+    color: #ffd700;
+}
+
+
+/* =====================================================
+   REEL INFORMATION
+===================================================== */
+
+.reel-info {
+
+    position: absolute;
+
+    left: calc(50% - min(28.125vw, 28.125vh));
+
+    bottom: 35px;
+
+    width: min(70vw, 500px);
+
+    z-index: 10;
+
+    text-shadow:
+        0 2px 8px #000;
+}
+
+
+.creator-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+
+.creator-avatar {
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    color: #000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: bold;
+
+    font-size: 12px;
+}
+
+
+.follow-button {
+
+    margin-left: 5px;
+
+    padding: 6px 12px;
+
+    border: 1px solid white;
+
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+.reel-info h2 {
+
+    font-size: 22px;
+
     margin-bottom: 8px;
 }
 
-.saved-info p {
+
+.reel-info p {
+
     font-size: 14px;
-    color: #ffd700;
-    font-weight: 600;
+
+    line-height: 1.4;
+
+    margin-bottom: 8px;
+}
+
+
+.hashtags {
+
+    font-size: 13px;
+
+    opacity: 0.9;
 }
 
 
@@ -189,57 +394,62 @@ body {
 ===================================================== */
 
 .empty-message {
+
     display: none;
 
     min-height: 100vh;
 
-    padding: 120px 20px 40px;
-
     text-align: center;
 
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 }
+
 
 .empty-message.show {
     display: flex;
 }
+
 
 .empty-icon {
     font-size: 60px;
     margin-bottom: 20px;
 }
 
+
 .empty-message h2 {
     font-size: 28px;
     margin-bottom: 10px;
 }
 
+
 .empty-message p {
     color: #aaa;
+
     font-size: 16px;
+
     margin-bottom: 25px;
 }
 
+
 .empty-message button {
+
     border: none;
 
     padding: 12px 22px;
 
     border-radius: 8px;
 
-    background: #fff;
-    color: #000;
+    background: white;
 
-    font-size: 15px;
+    color: black;
+
     font-weight: 600;
 
     cursor: pointer;
-}
-
-.empty-message button:hover {
-    background: #ddd;
 }
 
 
@@ -260,30 +470,40 @@ body {
         font-size: 24px;
     }
 
-    .header-title {
-        margin-left: 12px;
-    }
-
     .header-title h1 {
         font-size: 20px;
     }
 
-    .saved-reels-container {
-        padding-top: 60px;
+    .saved-reel-video {
+        width: 100vw;
+        height: 100vh;
     }
 
-    .saved-reel {
-        height: calc(100vh - 60px);
-        min-height: 500px;
+    .mute-button {
+
+        top: 75px;
+
+        right: 15px;
     }
 
-    .saved-info {
+    .reel-actions {
+
+        right: 15px;
+
+        bottom: 150px;
+    }
+
+    .reel-info {
+
         left: 18px;
-        bottom: 25px;
+
+        bottom: 30px;
+
+        width: calc(100% - 80px);
     }
 
-    .saved-info h2 {
-        font-size: 22px;
+    .reel-info h2 {
+        font-size: 20px;
     }
 
 }

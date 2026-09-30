@@ -33,6 +33,7 @@
             ←
         </a>
 
+
         <div class="reels-title">
 
             <strong>Reels</strong>
@@ -41,6 +42,7 @@
 
         </div>
 
+
         <div class="header-space"></div>
 
     </header>
@@ -48,365 +50,79 @@
 
     <!-- REELS -->
 
-    <main class="reels-container">
+    <!--
+        The 100 reels will be created automatically
+        by reels.js.
+    -->
 
+    <main
+        class="reels-container"
+        id="reelsContainer"
+    ></main>
 
-        <!-- REEL 1 -->
 
-        <article class="reel">
-
-            <video
-                class="reel-video"
-                src="{{ url_for('static', filename='reels/reel1.mp4') }}"
-                loop
-                muted
-                playsinline
-            ></video>
-
-
-            <div class="video-overlay"></div>
-
-
-            <!-- MUTE -->
-
-            <button class="mute-button">
-                🔇
-            </button>
-
-
-            <!-- RIGHT SIDE -->
-
-            <div class="reel-actions">
-
-                <button class="reel-action like-button">
-
-                    <span class="like-icon">♡</span>
-
-                    <small>Like</small>
-
-                </button>
-
-
-               <button class="reel-action comment-button">
-
-    <span>💬</span>
-
-    <small>
-        <span class="comment-count">0</span>
-        Comments
-    </small>
-
-</button>
-
-                <button class="reel-action share-button">
-
-                    <span>↗</span>
-
-                    <small>Share</small>
-
-                </button>
-
-
-                <button class="reel-action save-button">
-
-                    <span>🔖</span>
-
-                    <small>Save</small>
-
-                </button>
-
-            </div>
-
-
-            <!-- INFORMATION -->
-
-            <div class="reel-info">
-
-                <div class="creator-row">
-
-                    <div class="creator-avatar">
-                        SM
-                    </div>
-
-                    <strong>@StyleMyHair</strong>
-
-                    <button class="follow-button">
-                        Follow
-                    </button>
-
-                </div>
-
-
-                <h2>
-                    Textured Crop
-                </h2>
-
-
-                <p>
-                    A clean textured crop with a modern fade.
-                    Perfect for an effortless everyday look.
-                </p>
-
-
-                <span class="hashtags">
-                    #menshair #hairstyle #texturedcrop #fade
-                </span>
-
-            </div>
-
-        </article>
-
-
-        <!-- REEL 2 -->
-
-        <article class="reel">
-
-            <video
-                class="reel-video"
-                src="{{ url_for('static', filename='reels/reel2.mp4') }}"
-                loop
-                muted
-                playsinline
-            ></video>
-
-
-            <div class="video-overlay"></div>
-
-
-            <button class="mute-button">
-                🔇
-            </button>
-
-
-            <div class="reel-actions">
-
-                <button class="reel-action like-button">
-
-                    <span class="like-icon">♡</span>
-
-                    <small>Like</small>
-
-                </button>
-
-  <button class="reel-action comment-button">
-
-    <span>💬</span>
-
-    <small>
-        <span class="comment-count">0</span>
-        Comments
-    </small>
-
-</button>
-
-
-
-                <button class="reel-action share-button">
-
-                    <span>↗</span>
-
-                    <small>Share</small>
-
-                </button>
-
-
-                <button class="reel-action save-button">
-
-                    <span>🔖</span>
-
-                    <small>Save</small>
-
-                </button>
-
-            </div>
-
-
-            <div class="reel-info">
-
-                <div class="creator-row">
-
-                    <div class="creator-avatar">
-                        SM
-                    </div>
-
-                    <strong>@StyleMyHair</strong>
-
-                    <button class="follow-button">
-                        Follow
-                    </button>
-
-                </div>
-
-
-                <h2>
-                    Low Fade
-                </h2>
-
-
-                <p>
-                    Sharp sides with a clean low fade.
-                    A simple and stylish everyday haircut.
-                </p>
-
-
-                <span class="hashtags">
-                    #lowfade #menshair #barber #haircut
-                </span>
-
-            </div>
-
-        </article>
-
-
-        <!-- REEL 3 -->
-
-        <article class="reel">
-
-            <video
-                class="reel-video"
-                src="{{ url_for('static', filename='reels/reel3.mp4') }}"
-                loop
-                muted
-                playsinline
-            ></video>
-
-
-            <div class="video-overlay"></div>
-
-
-            <button class="mute-button">
-                🔇
-            </button>
-
-
-            <div class="reel-actions">
-
-                <button class="reel-action like-button">
-
-                    <span class="like-icon">♡</span>
-
-                    <small>Like</small>
-
-                </button>
-
-  <button class="reel-action comment-button">
-
-    <span>💬</span>
-
-    <small>
-        <span class="comment-count">0</span>
-        Comments
-    </small>
-
-</button>
-
-
-
-                <button class="reel-action share-button">
-
-                    <span>↗</span>
-
-                    <small>Share</small>
-
-                </button>
-
-
-                <button class="reel-action save-button">
-
-                    <span>🔖</span>
-
-                    <small>Save</small>
-
-                </button>
-
-            </div>
-
-
-            <div class="reel-info">
-
-                <div class="creator-row">
-
-                    <div class="creator-avatar">
-                        SM
-                    </div>
-
-                    <strong>@StyleMyHair</strong>
-
-                    <button class="follow-button">
-                        Follow
-                    </button>
-
-                </div>
-
-
-                <h2>
-                    Modern Quiff
-                </h2>
-
-
-                <p>
-                    Add volume and structure with this
-                    modern men's quiff.
-                </p>
-
-
-                <span class="hashtags">
-                    #quiff #mensstyle #grooming #hairstyle
-                </span>
-
-            </div>
-
-        </article>
-
-
-    </main>
-<!-- COMMENTS PANEL -->
-
-<div class="comments-panel" id="commentsPanel">
-
-    <div class="comments-header">
-
-        <strong>
-            Comments
-            <span id="commentsTotal">0</span>
-        </strong>
-
-        <button id="closeComments" type="button">
-            ×
-        </button>
-
-    </div>
-
+    <!-- COMMENTS PANEL -->
 
     <div
-        class="comments-list"
-        id="commentsList"
-    ></div>
+        class="comments-panel"
+        id="commentsPanel"
+    >
+
+        <div class="comments-header">
+
+            <strong>
+
+                Comments
+
+                <span id="commentsTotal">0</span>
+
+            </strong>
 
 
-    <div class="comment-input-area">
+            <button
+                id="closeComments"
+                type="button"
+            >
+                ×
+            </button>
 
-        <input
-            type="text"
-            id="commentInput"
-            placeholder="Add a comment..."
-            maxlength="300"
-        >
+        </div>
 
-        <button
-            id="postComment"
-            type="button"
-        >
-            Post
-        </button>
+
+        <div
+            class="comments-list"
+            id="commentsList"
+        ></div>
+
+
+        <div class="comment-input-area">
+
+            <input
+                type="text"
+                id="commentInput"
+                placeholder="Add a comment..."
+                maxlength="300"
+            >
+
+
+            <button
+                id="postComment"
+                type="button"
+            >
+                Post
+            </button>
+
+        </div>
 
     </div>
 
-</div>
+
+    <!-- JAVASCRIPT -->
 
     <script
         src="{{ url_for('static', filename='js/reels.js') }}"
     ></script>
+
 
 </body>
 
