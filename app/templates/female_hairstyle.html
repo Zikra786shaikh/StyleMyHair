@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="rose">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="StyleMyHair Female Hairstyle Studio - Explore hairstyles and try them on."
+    >
+
+    <title>StyleMyHair | Hairstyles</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- YOUR EXISTING FEMALE CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/female.css') }}?v=101"
+    >
+
+    <!-- HAIRSTYLE PAGE CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/female_hairstyle.css') }}?v=1"
+    >
+
+</head>
+
+
+<body class="female-page female-hairstyle-page">
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div class="female-background"></div>
+
+    <div class="background-orb orb-one"></div>
+    <div class="background-orb orb-two"></div>
+
+
+    <!-- =====================================================
+         MOBILE OVERLAY
+    ====================================================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside
+        class="female-sidebar"
+        id="femaleSidebar"
+    >
+
+        <!-- LOGO -->
+
+        <a
+            href="{{ url_for('main.female') }}"
+            class="sidebar-logo"
+        >
+
+            <span class="logo-style">
+                Style
+            </span>
+
+            <span class="logo-myhair">
+                MyHair
+            </span>
+
+        </a>
+
+
+        <!-- PROFILE -->
+
+        <div class="sidebar-profile">
+
+            <div class="profile-avatar">
+                ♡
+            </div>
+
+            <div class="profile-text">
+
+                <strong>
+                    Style Explorer
+                </strong>
+
+                <span>
+                    Female Studio
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-navigation">
+
+            <p class="nav-label">
+                DISCOVER
+            </p>
+
+
+            <a
+                href="{{ url_for('main.female') }}"
+                class="sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    ⌂
+                </span>
+
+                <span>
+                    Home
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.female_hairstyles') }}"
+                class="sidebar-link active"
+            >
+
+                <span class="sidebar-icon">
+                    ✦
+                </span>
+
+                <span>
+                    Hair Styles
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.haircuts') }}"
+                class="sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    ✂
+                </span>
+
+                <span>
+                    Hair Cutting
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.female') }}#accessories"
+                class="sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    ◇
+                </span>
+
+                <span>
+                    Accessories
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.female') }}#occasions"
+                class="sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    ✿
+                </span>
+
+                <span>
+                    Occasional Looks
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.female') }}#products"
+                class="sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    ♡
+                </span>
+
+                <span>
+                    Hair Products
+                </span>
+
+            </a>
+
+
+            <p class="nav-label nav-label-space">
+                MY SPACE
+            </p>
+
+
+            <a
+                href="{{ url_for('main.female') }}#mylooks"
+                class="sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    ◉
+                </span>
+
+                <span>
+                    My Looks
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.female') }}#favorites"
+                class="sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    ♥
+                </span>
+
+                <span>
+                    Favorites
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.female') }}#salon"
+                class="sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    ⌖
+                </span>
+
+                <span>
+                    Nearest Salon
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.female') }}#hospital"
+                class="sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    +
+                </span>
+
+                <span>
+                    Nearest Hospital
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- =================================================
+             THEME COLORS
+        ================================================== -->
+
+        <div class="theme-panel">
+
+            <div class="theme-panel-heading">
+
+                <div>
+
+                    <span class="theme-small-label">
+                        PERSONALIZE
+                    </span>
+
+                    <strong>
+                        App Colour
+                    </strong>
+
+                </div>
+
+                <span class="palette-icon">
+                    ✦
+                </span>
+
+            </div>
+
+
+            <p class="theme-description">
+                Choose a colour that feels like you.
+            </p>
+
+
+            <div
+                class="theme-colors"
+                id="themeColors"
+            >
+
+                <button type="button" class="theme-color active" data-theme="rose" title="Rose">
+                    <span></span>
+                </button>
+
+                <button type="button" class="theme-color" data-theme="lavender" title="Lavender">
+                    <span></span>
+                </button>
+
+                <button type="button" class="theme-color" data-theme="peach" title="Peach">
+                    <span></span>
+                </button>
+
+                <button type="button" class="theme-color" data-theme="sky" title="Sky Blue">
+                    <span></span>
+                </button>
+
+                <button type="button" class="theme-color" data-theme="mint" title="Mint">
+                    <span></span>
+                </button>
+
+                <button type="button" class="theme-color" data-theme="sage" title="Sage">
+                    <span></span>
+                </button>
+
+                <button type="button" class="theme-color" data-theme="butter" title="Butter">
+                    <span></span>
+                </button>
+
+                <button type="button" class="theme-color" data-theme="coral" title="Coral">
+                    <span></span>
+                </button>
+
+                <button type="button" class="theme-color" data-theme="plum" title="Plum">
+                    <span></span>
+                </button>
+
+                <button type="button" class="theme-color" data-theme="ocean" title="Ocean">
+                    <span></span>
+                </button>
+
+                <button type="button" class="theme-color" data-theme="cocoa" title="Cocoa">
+                    <span></span>
+                </button>
+
+                <button type="button" class="theme-color" data-theme="midnight" title="Midnight">
+                    <span></span>
+                </button>
+
+            </div>
+
+
+            <div class="selected-theme-name">
+
+                <span id="selectedThemeName">
+                    Rose
+                </span>
+
+                theme
+
+            </div>
+
+        </div>
+
+
+        <!-- SIDEBAR FOOTER -->
+
+        <div class="sidebar-footer">
+
+            <a
+                href="{{ url_for('main.female') }}#settings"
+                class="sidebar-footer-link"
+            >
+                ⚙
+                Settings
+            </a>
+
+            <a
+                href="{{ url_for('main.female') }}#help"
+                class="sidebar-footer-link"
+            >
+                ?
+                Help & Support
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         APPLICATION
+    ====================================================== -->
+
+    <div class="female-app">
+
+
+        <!-- =================================================
+             SAME FEMALE HEADER
+        ================================================== -->
+
+        <header class="female-header">
+
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open navigation"
+                aria-expanded="false"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <a
+                href="{{ url_for('main.female') }}"
+                class="mobile-logo"
+            >
+                Style<span>MyHair</span>
+            </a>
+
+
+            <div class="header-title">
+
+                <span>
+                    FEMALE STYLE STUDIO
+                </span>
+
+                <h1>
+                    Discover your look.
+                </h1>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <button
+                    type="button"
+                    class="header-icon-button"
+                    id="headerSearchButton"
+                    title="Search"
+                >
+                    ⌕
+                </button>
+
+
+                <button
+                    type="button"
+                    class="header-icon-button"
+                    id="darkModeButton"
+                    title="Toggle dark mode"
+                >
+                    ☼
+                </button>
+
+
+                <button
+                    type="button"
+                    class="header-profile"
+                    title="My Profile"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             BACK
+        ================================================== -->
+
+        <div class="page-back-wrapper">
+
+            <button
+                type="button"
+                class="page-back-button"
+                id="pageBackButton"
+            >
+
+                <span class="back-arrow">
+                    ←
+                </span>
+
+                <span class="back-text">
+                    Back
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             MAIN
+        ================================================== -->
+
+        <main class="female-main hairstyle-main">
+
+
+            <!-- =================================================
+                 HERO
+            ================================================== -->
+
+            <section class="hairstyle-hero">
+
+                <div class="hairstyle-hero-content">
+
+                    <span class="hairstyle-eyebrow">
+                        YOUR STYLE • YOUR CHOICE
+                    </span>
+
+                    <h2>
+                        Find your own
+                        <span>hairstyle.</span>
+                    </h2>
+
+                    <p>
+                        Explore beautiful hairstyles for every
+                        mood, occasion and personality — then
+                        try your favourite look on yourself.
+                    </p>
+
+
+                    <div class="hairstyle-hero-actions">
+
+                        <button
+                            type="button"
+                            class="hairstyle-primary-button"
+                            id="heroTryStyle"
+                        >
+                            ✦
+                            Try A Style
+                        </button>
+
+                        <button
+                            type="button"
+                            class="hairstyle-secondary-button"
+                            id="heroFindStyle"
+                        >
+                            Find My Style
+                            →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hairstyle-hero-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/female-hero-1.jpg') }}"
+                        alt="Female hairstyle"
+                    >
+
+                    <div class="hero-image-decoration">
+                        ♡
+                    </div>
+
+                </div>
+
+
+                <div class="hero-written-text">
+                    Own
+                    <br>
+                    Your
+                    <br>
+                    Hair
+                    <span>♥</span>
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 CATEGORY STRIP
+            ================================================== -->
+
+            <section class="hairstyle-category-strip">
+
+                <button type="button" class="hairstyle-category active" data-filter="all">
+                    <span>▦</span>
+                    <small>All</small>
+                </button>
+
+                <button type="button" class="hairstyle-category" data-filter="braids">
+                    <span>♒</span>
+                    <small>Braids</small>
+                </button>
+
+                <button type="button" class="hairstyle-category" data-filter="buns">
+                    <span>♙</span>
+                    <small>Buns</small>
+                </button>
+
+                <button type="button" class="hairstyle-category" data-filter="ponytail">
+                    <span>♧</span>
+                    <small>Ponytail</small>
+                </button>
+
+                <button type="button" class="hairstyle-category" data-filter="open">
+                    <span>♢</span>
+                    <small>Open Hair</small>
+                </button>
+
+                <button type="button" class="hairstyle-category" data-filter="short">
+                    <span>✂</span>
+                    <small>Short Hair</small>
+                </button>
+
+                <button type="button" class="hairstyle-category" data-filter="layered">
+                    <span>≋</span>
+                    <small>Layered</small>
+                </button>
+
+                <button type="button" class="hairstyle-category" data-filter="curly">
+                    <span>◎</span>
+                    <small>Curly</small>
+                </button>
+
+                <button type="button" class="hairstyle-category" data-filter="occasion">
+                    <span>♕</span>
+                    <small>Occasion</small>
+                </button>
+
+            </section>
+
+
+            <!-- =================================================
+                 DISCOVERY
+            ================================================== -->
+
+            <section class="hairstyle-discovery">
+
+
+                <!-- FILTER SIDEBAR -->
+
+                <aside class="hairstyle-filter-panel">
+
+                    <div class="filter-heading">
+
+                        <h3>
+                            Filter By
+                        </h3>
+
+                        <span>
+                            ✦
+                        </span>
+
+                    </div>
+
+
+                    <!-- LENGTH -->
+
+                    <div class="filter-group">
+
+                        <h4>
+                            ♧ Hair Length
+                        </h4>
+
+                        <div class="filter-options">
+
+                            <button class="filter-option active" data-filter="all">
+                                All
+                            </button>
+
+                            <button class="filter-option" data-filter="short">
+                                Short
+                            </button>
+
+                            <button class="filter-option" data-filter="medium">
+                                Medium
+                            </button>
+
+                            <button class="filter-option" data-filter="long">
+                                Long
+                            </button>
+
+                            <button class="filter-option" data-filter="extra-long">
+                                Extra Long
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TYPE -->
+
+                    <div class="filter-group">
+
+                        <h4>
+                            ♡ Hair Type
+                        </h4>
+
+                        <div class="filter-options">
+
+                            <button class="filter-option active" data-filter="all">
+                                All
+                            </button>
+
+                            <button class="filter-option" data-filter="straight">
+                                Straight
+                            </button>
+
+                            <button class="filter-option" data-filter="wavy">
+                                Wavy
+                            </button>
+
+                            <button class="filter-option" data-filter="curly">
+                                Curly
+                            </button>
+
+                            <button class="filter-option" data-filter="coily">
+                                Coily
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COLOR -->
+
+                    <div class="filter-group">
+
+                        <h4>
+                            ◉ Hair Color
+                        </h4>
+
+                        <div class="filter-options">
+
+                            <button class="filter-option active" data-filter="all">
+                                All
+                            </button>
+
+                            <button class="filter-option" data-filter="black">
+                                ● Black
+                            </button>
+
+                            <button class="filter-option" data-filter="brown">
+                                ● Brown
+                            </button>
+
+                            <button class="filter-option" data-filter="blonde">
+                                ● Blonde
+                            </button>
+
+                            <button class="filter-option" data-filter="red">
+                                ● Red
+                            </button>
+
+                            <button class="filter-option" data-filter="other">
+                                ● Other
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CUT -->
+
+                    <div class="filter-group">
+
+                        <h4>
+                            ✂ Hair Cutting Style
+                        </h4>
+
+                        <div class="filter-options">
+
+                            <button class="filter-option active" data-filter="all">
+                                All
+                            </button>
+
+                            <button class="filter-option" data-filter="layered">
+                                Layered
+                            </button>
+
+                            <button class="filter-option" data-filter="blunt">
+                                Blunt
+                            </button>
+
+                            <button class="filter-option" data-filter="bangs">
+                                Curtain Bangs
+                            </button>
+
+                            <button class="filter-option" data-filter="face-framing">
+                                Face Framing
+                            </button>
+
+                            <button class="filter-option" data-filter="bob">
+                                Bob
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="reset-filters"
+                        id="resetFilters"
+                    >
+                        ↻
+                        Reset Filters
+                    </button>
+
+                </aside>
+
+
+                <!-- =================================================
+                     RESULTS
+                ================================================== -->
+
+                <div class="hairstyle-results">
+
+
+                    <!-- SEARCH -->
+
+                    <div class="hairstyle-search-row">
+
+                        <div class="hairstyle-search">
+
+                            <span>
+                                ⌕
+                            </span>
+
+                            <input
+                                type="text"
+                                id="hairstyleSearch"
+                                placeholder="Search hairstyles..."
+                                autocomplete="off"
+                            >
+
+                            <button
+                                type="button"
+                                id="clearHairstyleSearch"
+                            >
+                                ×
+                            </button>
+
+                        </div>
+
+                        <span
+                            class="style-result-count"
+                            id="styleResultCount"
+                        >
+                            100+ styles
+                        </span>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         FEATURED / MAIN STYLE COLLECTIONS
+                    ================================================== -->
+
+                    {% set style_groups = [
+                        ("braids", "♒", "Braided Hair", "Braids"),
+                        ("buns", "♙", "Bun Hairstyles", "Buns"),
+                        ("ponytail", "♧", "Ponytail Hairstyles", "Ponytail"),
+                        ("open", "♢", "Open Hair Hairstyles", "Open Hair"),
+                        ("short", "✂", "Short Hair", "Short Hair"),
+                        ("layered", "≋", "Layered Hair", "Layered"),
+                        ("curly", "◎", "Curly Hairstyles", "Curly"),
+                        ("occasion", "♕", "Occasional Looks", "Occasion")
+                    ] %}
+
+
+                    {% for group in style_groups %}
+
+                    <section class="style-collection">
+
+                        <div class="collection-heading">
+
+                            <div>
+
+                                <span>
+                                    {{ group[1] }}
+                                </span>
+
+                                <h2>
+                                    {{ group[2] }}
+                                </h2>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="view-all-button"
+                                data-view="{{ group[0] }}"
+                            >
+                                View All →
+                            </button>
+
+                        </div>
+
+
+                        <div class="hairstyle-grid">
+
+                            {% for number in range(1, 5) %}
+
+                            <article
+                                class="hairstyle-card"
+                                data-type="{{ group[0] }}"
+                                data-name="{{ group[3] }} {{ number }}"
+                            >
+
+                                <div class="hairstyle-card-image">
+
+                                    <img
+                                        src="{{ url_for(
+                                            'static',
+                                            filename='images/female/hairstyles/' ~ group[0] ~ '/' ~ number ~ '.jpg'
+                                        ) }}"
+                                        alt="{{ group[3] }} {{ number }}"
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="hairstyle-favorite"
+                                        aria-label="Favorite {{ group[3] }} {{ number }}"
+                                    >
+                                        ♡
+                                    </button>
+
+                                </div>
+
+
+                                <div class="hairstyle-card-info">
+
+                                    <h3>
+                                        {{ group[3] }} {{ number }}
+                                    </h3>
+
+                                    <p>
+                                        {{ group[3] }} · Female Style
+                                    </p>
+
+                                    <a
+                                        href="{{ url_for('main.female_try_on') }}?style={{ group[0] }}-{{ number }}"
+                                        class="hairstyle-try"
+                                    >
+                                        Try On →
+                                    </a>
+
+                                </div>
+
+                            </article>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </section>
+
+                    {% endfor %}
+
+
+                    <!-- =================================================
+                         HAIR LENGTH
+                    ================================================== -->
+
+                    {% set length_groups = [
+                        ("short", "Short Hair"),
+                        ("medium", "Medium Hair"),
+                        ("long", "Long Hair"),
+                        ("extra-long", "Extra Long Hair")
+                    ] %}
+
+
+                    <section class="style-collection">
+
+                        <div class="collection-heading">
+
+                            <div>
+
+                                <span>♧</span>
+
+                                <h2>
+                                    Hair Length
+                                </h2>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="view-all-button"
+                            >
+                                View All →
+                            </button>
+
+                        </div>
+
+
+                        <div class="hairstyle-grid">
+
+                            {% for length in length_groups %}
+
+                                {% for number in range(1, 5) %}
+
+                                <article
+                                    class="hairstyle-card"
+                                    data-length="{{ length[0] }}"
+                                    data-name="{{ length[1] }} {{ number }}"
+                                >
+
+                                    <div class="hairstyle-card-image">
+
+                                        <img
+                                            src="{{ url_for(
+                                                'static',
+                                                filename='images/female/hairstyles/length/' ~ length[0] ~ '/' ~ number ~ '.jpg'
+                                            ) }}"
+                                            alt="{{ length[1] }}"
+                                        >
+
+                                        <button
+                                            type="button"
+                                            class="hairstyle-favorite"
+                                        >
+                                            ♡
+                                        </button>
+
+                                    </div>
+
+                                    <div class="hairstyle-card-info">
+
+                                        <h3>
+                                            {{ length[1] }} {{ number }}
+                                        </h3>
+
+                                        <p>
+                                            Hair Length · Female
+                                        </p>
+
+                                        <a
+                                            href="{{ url_for('main.female_try_on') }}?style={{ length[0] }}-length-{{ number }}"
+                                            class="hairstyle-try"
+                                        >
+                                            Try On →
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                                {% endfor %}
+
+                            {% endfor %}
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================================
+                         HAIR TYPE
+                    ================================================== -->
+
+                    {% set type_groups = [
+                        ("straight", "Straight Hair"),
+                        ("wavy", "Wavy Hair"),
+                        ("curly", "Curly Hair"),
+                        ("coily", "Coily Hair")
+                    ] %}
+
+
+                    <section class="style-collection">
+
+                        <div class="collection-heading">
+
+                            <div>
+
+                                <span>♡</span>
+
+                                <h2>
+                                    Hair Type
+                                </h2>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="view-all-button"
+                            >
+                                View All →
+                            </button>
+
+                        </div>
+
+
+                        <div class="hairstyle-grid">
+
+                            {% for hair_type in type_groups %}
+
+                                {% for number in range(1, 5) %}
+
+                                <article
+                                    class="hairstyle-card"
+                                    data-texture="{{ hair_type[0] }}"
+                                    data-name="{{ hair_type[1] }} {{ number }}"
+                                >
+
+                                    <div class="hairstyle-card-image">
+
+                                        <img
+                                            src="{{ url_for(
+                                                'static',
+                                                filename='images/female/hairstyles/type/' ~ hair_type[0] ~ '/' ~ number ~ '.jpg'
+                                            ) }}"
+                                            alt="{{ hair_type[1] }}"
+                                        >
+
+                                        <button
+                                            type="button"
+                                            class="hairstyle-favorite"
+                                        >
+                                            ♡
+                                        </button>
+
+                                    </div>
+
+                                    <div class="hairstyle-card-info">
+
+                                        <h3>
+                                            {{ hair_type[1] }} {{ number }}
+                                        </h3>
+
+                                        <p>
+                                            Natural Texture · Female
+                                        </p>
+
+                                        <a
+                                            href="{{ url_for('main.female_try_on') }}?style={{ hair_type[0] }}-{{ number }}"
+                                            class="hairstyle-try"
+                                        >
+                                            Try On →
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                                {% endfor %}
+
+                            {% endfor %}
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================================
+                         HAIR COLOR
+                    ================================================== -->
+
+                    {% set color_groups = [
+                        ("black", "Black Hair"),
+                        ("brown", "Brown Hair"),
+                        ("blonde", "Blonde Hair"),
+                        ("red", "Red Hair"),
+                        ("other", "Other Hair Color")
+                    ] %}
+
+
+                    <section class="style-collection">
+
+                        <div class="collection-heading">
+
+                            <div>
+
+                                <span>◉</span>
+
+                                <h2>
+                                    Hair Color
+                                </h2>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="view-all-button"
+                            >
+                                View All →
+                            </button>
+
+                        </div>
+
+
+                        <div class="hairstyle-grid">
+
+                            {% for hair_color in color_groups %}
+
+                                {% for number in range(1, 5) %}
+
+                                <article
+                                    class="hairstyle-card"
+                                    data-color="{{ hair_color[0] }}"
+                                    data-name="{{ hair_color[1] }} {{ number }}"
+                                >
+
+                                    <div class="hairstyle-card-image">
+
+                                        <img
+                                            src="{{ url_for(
+                                                'static',
+                                                filename='images/female/hairstyles/color/' ~ hair_color[0] ~ '/' ~ number ~ '.jpg'
+                                            ) }}"
+                                            alt="{{ hair_color[1] }}"
+                                        >
+
+                                        <button
+                                            type="button"
+                                            class="hairstyle-favorite"
+                                        >
+                                            ♡
+                                        </button>
+
+                                    </div>
+
+                                    <div class="hairstyle-card-info">
+
+                                        <h3>
+                                            {{ hair_color[1] }} {{ number }}
+                                        </h3>
+
+                                        <p>
+                                            Hair Color · Female
+                                        </p>
+
+                                        <a
+                                            href="{{ url_for('main.female_try_on') }}?style={{ hair_color[0] }}-{{ number }}"
+                                            class="hairstyle-try"
+                                        >
+                                            Try On →
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                                {% endfor %}
+
+                            {% endfor %}
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================================
+                         HAIR CUTTING
+                    ================================================== -->
+
+                    {% set cutting_groups = [
+                        ("layered", "Layered Cut"),
+                        ("blunt", "Blunt Cut"),
+                        ("bangs", "Curtain Bangs"),
+                        ("face-framing", "Face Framing"),
+                        ("bob", "Bob Cut")
+                    ] %}
+
+
+                    <section class="style-collection">
+
+                        <div class="collection-heading">
+
+                            <div>
+
+                                <span>✂</span>
+
+                                <h2>
+                                    Hair Cutting Styles
+                                </h2>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="view-all-button"
+                            >
+                                View All →
+                            </button>
+
+                        </div>
+
+
+                        <div class="hairstyle-grid">
+
+                            {% for cut in cutting_groups %}
+
+                                {% for number in range(1, 5) %}
+
+                                <article
+                                    class="hairstyle-card"
+                                    data-cut="{{ cut[0] }}"
+                                    data-name="{{ cut[1] }} {{ number }}"
+                                >
+
+                                    <div class="hairstyle-card-image">
+
+                                        <img
+                                            src="{{ url_for(
+                                                'static',
+                                                filename='images/female/hairstyles/cutting/' ~ cut[0] ~ '/' ~ number ~ '.jpg'
+                                            ) }}"
+                                            alt="{{ cut[1] }}"
+                                        >
+
+                                        <button
+                                            type="button"
+                                            class="hairstyle-favorite"
+                                        >
+                                            ♡
+                                        </button>
+
+                                    </div>
+
+                                    <div class="hairstyle-card-info">
+
+                                        <h3>
+                                            {{ cut[1] }} {{ number }}
+                                        </h3>
+
+                                        <p>
+                                            Hair Cutting · Female
+                                        </p>
+
+                                        <a
+                                            href="{{ url_for('main.female_try_on') }}?style={{ cut[0] }}-{{ number }}"
+                                            class="hairstyle-try"
+                                        >
+                                            Try On →
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                                {% endfor %}
+
+                            {% endfor %}
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================================
+                         NO RESULTS
+                    ================================================== -->
+
+                    <div
+                        class="hairstyle-no-results"
+                        id="hairstyleNoResults"
+                    >
+
+                        <div>
+                            ♡
+                        </div>
+
+                        <h3>
+                            No hairstyles found
+                        </h3>
+
+                        <p>
+                            Try another category or search.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 TRY ON CTA
+            ================================================== -->
+
+            <section class="hairstyle-try-cta">
+
+                <div>
+
+                    <span>
+                        ✦ STYLEME
+                    </span>
+
+                    <h2>
+                        See yourself
+                        <em>in a new style.</em>
+                    </h2>
+
+                    <p>
+                        Choose any hairstyle above and try
+                        it on using your own photo.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="styleMeButton"
+                >
+                    TRY ON YOURSELF
+                    →
+                </button>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         MOBILE BOTTOM NAV
+    ====================================================== -->
+
+    <nav class="mobile-bottom-nav">
+
+        <a href="{{ url_for('main.female') }}">
+
+            <span>⌂</span>
+
+            <small>
+                Home
+            </small>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('main.female_hairstyles') }}"
+            class="active"
+        >
+
+            <span>✦</span>
+
+            <small>
+                Styles
+            </small>
+
+        </a>
+
+
+        <a href="#find-style">
+
+            <span>✧</span>
+
+            <small>
+                Find
+            </small>
+
+        </a>
+
+
+        <a href="{{ url_for('main.female') }}#favorites">
+
+            <span>♡</span>
+
+            <small>
+                Saved
+            </small>
+
+        </a>
+
+
+        <a href="{{ url_for('main.female') }}#mylooks">
+
+            <span>◉</span>
+
+            <small>
+                Looks
+            </small>
+
+        </a>
+
+    </nav>
+
+
+    <!-- EXISTING FEMALE JS -->
+
+    <script
+        src="{{ url_for('static', filename='js/female.js') }}?v=101"
+    ></script>
+
+
+    <!-- HAIRSTYLE JS -->
+
+    <script
+        src="{{ url_for('static', filename='js/female_hairstyle.js') }}?v=1"
+    ></script>
+
+</body>
+
+</html>

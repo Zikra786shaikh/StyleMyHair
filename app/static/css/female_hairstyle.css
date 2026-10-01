@@ -1,0 +1,1137 @@
+/* =====================================================
+   STYLEMYHAIR
+   FEMALE HAIRSTYLE PAGE
+===================================================== */
+
+.female-hairstyle-page {
+    --hair-card-radius: 18px;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.hairstyle-main {
+    padding-top: 10px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hairstyle-hero {
+    position: relative;
+    min-height: 285px;
+    margin: 10px 0 22px;
+    padding: 34px 42px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            115deg,
+            var(--accent-light),
+            var(--surface)
+        );
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--accent) 18%,
+            transparent
+        );
+
+    box-shadow:
+        0 20px 60px
+        color-mix(
+            in srgb,
+            var(--accent) 10%,
+            transparent
+        );
+}
+
+
+.hairstyle-hero::before {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    right: -100px;
+    top: -140px;
+    border-radius: 50%;
+
+    background:
+        color-mix(
+            in srgb,
+            var(--accent) 12%,
+            transparent
+        );
+}
+
+
+.hairstyle-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+}
+
+
+.hairstyle-eyebrow {
+    display: inline-block;
+    margin-bottom: 10px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    color: var(--accent);
+}
+
+
+.hairstyle-hero h2 {
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+    font-size: clamp(38px, 4vw, 62px);
+    line-height: 1.05;
+
+    color: var(--text);
+}
+
+
+.hairstyle-hero h2 span {
+    color: var(--accent);
+}
+
+
+.hairstyle-hero p {
+    max-width: 560px;
+    margin: 16px 0 22px;
+
+    font-size: 15px;
+    line-height: 1.7;
+
+    color: var(--text-soft);
+}
+
+
+.hairstyle-hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+
+.hairstyle-primary-button,
+.hairstyle-secondary-button {
+    border: none;
+    border-radius: 999px;
+    padding: 13px 21px;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+
+.hairstyle-primary-button {
+    background: var(--accent);
+    color: white;
+
+    box-shadow:
+        0 10px 25px
+        color-mix(
+            in srgb,
+            var(--accent) 25%,
+            transparent
+        );
+}
+
+
+.hairstyle-secondary-button {
+    background: var(--surface);
+    color: var(--accent);
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--accent) 25%,
+            transparent
+        );
+}
+
+
+.hairstyle-primary-button:hover,
+.hairstyle-secondary-button:hover {
+    transform: translateY(-2px);
+}
+
+
+.hairstyle-hero-image {
+    position: relative;
+    justify-self: end;
+
+    width: min(100%, 390px);
+    height: 235px;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 18px 40px
+        rgba(50, 35, 40, 0.16);
+}
+
+
+.hairstyle-hero-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    object-fit: cover;
+}
+
+
+.hero-image-decoration {
+    position: absolute;
+    right: 16px;
+    top: 14px;
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.82);
+    color: var(--accent);
+
+    font-size: 20px;
+}
+
+
+.hero-written-text {
+    position: absolute;
+    right: 24px;
+    top: 20px;
+
+    z-index: 3;
+
+    font-family: "Playfair Display", serif;
+    font-size: 20px;
+    line-height: 1.05;
+    font-style: italic;
+
+    color: var(--accent);
+}
+
+
+.hero-written-text span {
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   CATEGORY STRIP
+===================================================== */
+
+.hairstyle-category-strip {
+    display: grid;
+    grid-template-columns: repeat(9, minmax(90px, 1fr));
+    gap: 9px;
+
+    margin-bottom: 22px;
+
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+
+.hairstyle-category-strip::-webkit-scrollbar {
+    display: none;
+}
+
+
+.hairstyle-category {
+    min-height: 76px;
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--accent) 9%,
+            var(--border)
+        );
+
+    border-radius: 17px;
+
+    background: var(--surface);
+
+    color: var(--text-soft);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+
+.hairstyle-category span {
+    font-size: 21px;
+    color: var(--accent);
+}
+
+
+.hairstyle-category small {
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+
+.hairstyle-category:hover,
+.hairstyle-category.active {
+    background:
+        color-mix(
+            in srgb,
+            var(--accent-light) 80%,
+            var(--surface)
+        );
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--accent) 28%,
+            transparent
+        );
+
+    color: var(--accent);
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   DISCOVERY
+===================================================== */
+
+.hairstyle-discovery {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 22px;
+    align-items: start;
+}
+
+
+/* =====================================================
+   FILTER PANEL
+===================================================== */
+
+.hairstyle-filter-panel {
+    position: sticky;
+    top: 100px;
+
+    padding: 20px;
+
+    border-radius: 22px;
+
+    background:
+        color-mix(
+            in srgb,
+            var(--surface) 94%,
+            var(--accent-light)
+        );
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--accent) 10%,
+            var(--border)
+        );
+}
+
+
+.filter-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+
+.filter-heading h3 {
+    margin: 0;
+
+    font-size: 17px;
+    color: var(--text);
+}
+
+
+.filter-heading span {
+    color: var(--accent);
+}
+
+
+.filter-group {
+    padding: 17px 0;
+
+    border-top: 1px solid
+        color-mix(
+            in srgb,
+            var(--accent) 9%,
+            var(--border)
+        );
+}
+
+
+.filter-group:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+
+.filter-group h4 {
+    margin: 0 0 11px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    color: var(--text);
+}
+
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+
+.filter-option {
+    padding: 7px 10px;
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--accent) 10%,
+            var(--border)
+        );
+
+    border-radius: 999px;
+
+    background: var(--surface);
+
+    color: var(--text-soft);
+
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+
+.filter-option:hover,
+.filter-option.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+
+.reset-filters {
+    width: 100%;
+
+    margin-top: 8px;
+    padding: 11px;
+
+    border-radius: 999px;
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--accent) 18%,
+            var(--border)
+        );
+
+    background: transparent;
+
+    color: var(--text-soft);
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.reset-filters:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+
+/* =====================================================
+   RESULTS
+===================================================== */
+
+.hairstyle-results {
+    min-width: 0;
+}
+
+
+.hairstyle-search-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 22px;
+}
+
+
+.hairstyle-search {
+    flex: 1;
+
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 0 14px;
+
+    border-radius: 14px;
+
+    background: var(--surface);
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--accent) 12%,
+            var(--border)
+        );
+}
+
+
+.hairstyle-search > span {
+    color: var(--accent);
+    font-size: 19px;
+}
+
+
+.hairstyle-search input {
+    flex: 1;
+
+    min-width: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 12px;
+}
+
+
+.hairstyle-search input::placeholder {
+    color: var(--text-muted);
+}
+
+
+.hairstyle-search button {
+    border: none;
+    background: transparent;
+
+    color: var(--text-muted);
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+
+.style-result-count {
+    flex-shrink: 0;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    color: var(--text-muted);
+}
+
+
+/* =====================================================
+   COLLECTION
+===================================================== */
+
+.style-collection {
+    margin-bottom: 32px;
+}
+
+
+.collection-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 13px;
+}
+
+
+.collection-heading > div {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+
+.collection-heading > div > span {
+    color: var(--accent);
+    font-size: 19px;
+}
+
+
+.collection-heading h2 {
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+
+    color: var(--text);
+}
+
+
+.view-all-button {
+    border: none;
+    background: transparent;
+
+    color: var(--accent);
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   HAIRSTYLE GRID
+===================================================== */
+
+.hairstyle-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+}
+
+
+.hairstyle-card {
+    min-width: 0;
+    overflow: hidden;
+
+    border-radius: var(--hair-card-radius);
+
+    background: var(--surface);
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--accent) 8%,
+            var(--border)
+        );
+
+    box-shadow:
+        0 7px 22px
+        color-mix(
+            in srgb,
+            var(--accent) 5%,
+            transparent
+        );
+
+    transition: 0.25s ease;
+}
+
+
+.hairstyle-card:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--accent) 22%,
+            transparent
+        );
+
+    box-shadow:
+        0 15px 35px
+        color-mix(
+            in srgb,
+            var(--accent) 12%,
+            transparent
+        );
+}
+
+
+.hairstyle-card-image {
+    position: relative;
+
+    height: 145px;
+
+    overflow: hidden;
+
+    background: var(--surface-soft);
+}
+
+
+.hairstyle-card-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+}
+
+
+.hairstyle-card:hover
+.hairstyle-card-image img {
+    transform: scale(1.045);
+}
+
+
+.hairstyle-favorite {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+
+    width: 29px;
+    height: 29px;
+
+    display: grid;
+    place-items: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.88);
+
+    color: var(--accent);
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+
+.hairstyle-favorite.saved {
+    background: var(--accent);
+    color: white;
+}
+
+
+.hairstyle-card-info {
+    padding: 11px;
+}
+
+
+.hairstyle-card-info h3 {
+    margin: 0 0 4px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    color: var(--text);
+}
+
+
+.hairstyle-card-info p {
+    margin: 0 0 9px;
+
+    font-size: 9px;
+
+    color: var(--text-muted);
+}
+
+
+.hairstyle-try {
+    display: block;
+
+    width: 100%;
+
+    padding: 8px 5px;
+
+    text-align: center;
+
+    border-radius: 999px;
+
+    background:
+        color-mix(
+            in srgb,
+            var(--accent-light) 90%,
+            var(--surface)
+        );
+
+    color: var(--accent);
+
+    text-decoration: none;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+
+.hairstyle-try:hover {
+    background: var(--accent);
+    color: white;
+}
+
+
+/* =====================================================
+   NO RESULTS
+===================================================== */
+
+.hairstyle-no-results {
+    display: none;
+
+    padding: 55px 20px;
+
+    text-align: center;
+
+    border-radius: 22px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+}
+
+
+.hairstyle-no-results.show {
+    display: block;
+}
+
+
+.hairstyle-no-results > div {
+    font-size: 35px;
+    color: var(--accent);
+}
+
+
+.hairstyle-no-results h3 {
+    margin: 10px 0 5px;
+
+    color: var(--text);
+}
+
+
+.hairstyle-no-results p {
+    margin: 0;
+
+    color: var(--text-soft);
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   TRY ON CTA
+===================================================== */
+
+.hairstyle-try-cta {
+    position: relative;
+
+    margin-top: 28px;
+    padding: 34px 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            120deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+
+    color: white;
+}
+
+
+.hairstyle-try-cta::after {
+    content: "✦";
+
+    position: absolute;
+    right: 30px;
+    top: -35px;
+
+    font-size: 150px;
+
+    opacity: 0.08;
+}
+
+
+.hairstyle-try-cta span {
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+
+.hairstyle-try-cta h2 {
+    margin: 7px 0;
+
+    font-family: "Playfair Display", serif;
+    font-size: 31px;
+}
+
+
+.hairstyle-try-cta h2 em {
+    font-style: normal;
+    opacity: 0.8;
+}
+
+
+.hairstyle-try-cta p {
+    margin: 0;
+
+    max-width: 520px;
+
+    font-size: 12px;
+    line-height: 1.6;
+
+    opacity: 0.88;
+}
+
+
+.hairstyle-try-cta button {
+    position: relative;
+    z-index: 2;
+
+    flex-shrink: 0;
+
+    padding: 13px 21px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: white;
+    color: var(--accent-dark);
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+
+.hairstyle-try-cta button:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+body.dark-mode .hairstyle-hero {
+    background:
+        linear-gradient(
+            115deg,
+            color-mix(
+                in srgb,
+                var(--accent) 12%,
+                var(--surface)
+            ),
+            var(--surface)
+        );
+}
+
+
+body.dark-mode .hairstyle-filter-panel,
+body.dark-mode .hairstyle-card,
+body.dark-mode .hairstyle-search {
+    background:
+        color-mix(
+            in srgb,
+            var(--surface) 96%,
+            var(--accent)
+        );
+}
+
+
+body.dark-mode .hairstyle-favorite {
+    background: rgba(25, 22, 25, 0.88);
+    color: var(--accent);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1250px) {
+
+    .hairstyle-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .hairstyle-category-strip {
+        grid-template-columns: repeat(9, minmax(85px, 1fr));
+    }
+
+}
+
+
+@media (max-width: 1050px) {
+
+    .hairstyle-discovery {
+        grid-template-columns: 190px minmax(0, 1fr);
+    }
+
+    .hairstyle-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .hairstyle-hero {
+        grid-template-columns: 1fr 0.8fr;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .hairstyle-hero {
+        grid-template-columns: 1fr;
+        padding: 28px;
+    }
+
+    .hairstyle-hero-image {
+        display: none;
+    }
+
+    .hero-written-text {
+        display: none;
+    }
+
+    .hairstyle-discovery {
+        grid-template-columns: 1fr;
+    }
+
+    .hairstyle-filter-panel {
+        position: static;
+    }
+
+    .hairstyle-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 560px) {
+
+    .hairstyle-main {
+        padding-bottom: 90px;
+    }
+
+    .hairstyle-hero {
+        margin-top: 5px;
+        padding: 24px 20px;
+        min-height: auto;
+    }
+
+    .hairstyle-hero h2 {
+        font-size: 36px;
+    }
+
+    .hairstyle-hero p {
+        font-size: 13px;
+    }
+
+    .hairstyle-category-strip {
+        display: flex;
+        gap: 8px;
+        padding-bottom: 4px;
+    }
+
+    .hairstyle-category {
+        flex: 0 0 82px;
+    }
+
+    .hairstyle-search-row {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .style-result-count {
+        align-self: flex-start;
+    }
+
+    .hairstyle-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .hairstyle-card-image {
+        height: 125px;
+    }
+
+    .hairstyle-card-info {
+        padding: 9px;
+    }
+
+    .hairstyle-card-info h3 {
+        font-size: 11px;
+    }
+
+    .hairstyle-card-info p {
+        font-size: 8px;
+    }
+
+    .hairstyle-try {
+        font-size: 9px;
+        padding: 7px 3px;
+    }
+
+    .hairstyle-try-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 27px 23px;
+    }
+
+    .hairstyle-try-cta h2 {
+        font-size: 26px;
+    }
+
+}

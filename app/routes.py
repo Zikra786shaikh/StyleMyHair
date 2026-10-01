@@ -14,6 +14,7 @@ def choose_style():
 @main.route("/female")
 def female():
     return render_template("female.html")
+    
 @main.route("/female/try-on")
 def female_try_on():
 
@@ -75,3 +76,6 @@ def haircuts():
 @main.route("/male/haircuts")
 def male_haircuts():
     return render_template("male_haircuts.html")
+@main.route("/female/hairstyle")
+def female_hairstyles():
+    return render_template("female_hairstyle.html")

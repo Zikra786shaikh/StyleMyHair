@@ -10,7 +10,7 @@
           href="{{ url_for('static', filename='css/male.css') }}">
 
     <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/haircuts.css') }}">
+          href="{{ url_for('static', filename='css/male_haircuts.css') }}">
 </head>
 
 <body class="male-page haircuts-page">
@@ -134,7 +134,7 @@
         </a>
 
 
-        <a href="{{ url_for('main.salon') }}"
+        <a href="{{ url_for('main.male') }}"
            class="sidebar-link">
 
             <span class="sidebar-icon">⌖</span>
@@ -143,7 +143,7 @@
         </a>
 
 
-        <a href="{{ url_for('main.hospital') }}"
+        <a href="{{ url_for('main.male') }}"
            class="sidebar-link">
 
             <span class="sidebar-icon">✚</span>
@@ -959,7 +959,6 @@
 </main>
 
 
-<script src="{{ url_for('static', filename='js/haircuts.js') }}"></script>
-
+<script src="{{ url_for('static', filename='js/male_haircuts.js') }}"></script>
 </body>
 </html>
