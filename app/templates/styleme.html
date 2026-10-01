@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StyleMyHair | StyleMe</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/styleme.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <!-- =========================================
+         TOP BAR
+    ========================================== -->
+
+    <header class="styleme-header">
+
+        <a
+            href="javascript:history.back()"
+            class="back-button"
+        >
+            ← Back to Hairstyles
+        </a>
+
+        <div class="styleme-brand">
+            <span>StyleMyHair</span>
+            <strong>STYLEME STUDIO</strong>
+        </div>
+
+        <div class="header-space"></div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN STYLEME AREA
+    ========================================== -->
+
+    <main class="styleme-page">
+
+        <!-- LEFT PANEL -->
+
+        <section class="styleme-intro">
+
+            <span class="eyebrow">
+                STYLEME
+            </span>
+
+            <h1>
+                Try it on<br>
+                <span>yourself.</span>
+            </h1>
+
+            <p>
+                Upload your photo or use your camera
+                to preview your selected hairstyle.
+            </p>
+
+
+            <div class="upload-actions">
+
+                <button
+                    type="button"
+                    id="cameraButton"
+                    class="primary-button"
+                >
+                    Use Camera
+                </button>
+
+                <button
+                    type="button"
+                    id="uploadButton"
+                    class="secondary-button"
+                >
+                    Upload Photo
+                </button>
+
+                <input
+                    type="file"
+                    id="photoInput"
+                    accept="image/png,image/jpeg,image/webp"
+                    hidden
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- CENTER PREVIEW -->
+
+        <section class="tryon-section">
+
+            <div
+                class="tryon-stage"
+                id="tryonStage"
+            >
+
+                <!-- Empty state -->
+
+                <div
+                    class="empty-preview"
+                    id="emptyPreview"
+                >
+
+                    <div class="preview-icon">
+                        ✦
+                    </div>
+
+                    <h2>
+                        Your preview will appear here
+                    </h2>
+
+                    <p>
+                        Upload a photo or use your camera
+                        to begin.
+                    </p>
+
+                </div>
+
+
+                <!-- User photo -->
+
+                <img
+                    id="userPhoto"
+                    class="user-photo"
+                    alt="Your hairstyle preview"
+                >
+
+
+                <!-- Hairstyle -->
+
+                <img
+                    id="hairstyleOverlay"
+                    class="hairstyle-overlay"
+                    alt="Selected hairstyle"
+                >
+
+
+                <!-- Camera -->
+
+                <div
+                    class="camera-container"
+                    id="cameraContainer"
+                >
+
+                    <video
+                        id="cameraVideo"
+                        autoplay
+                        playsinline
+                    ></video>
+
+                    <div class="camera-actions">
+
+                        <button
+                            type="button"
+                            id="captureButton"
+                        >
+                            Capture
+                        </button>
+
+                        <button
+                            type="button"
+                            id="closeCameraButton"
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT PANEL -->
+
+        <aside class="style-controls">
+
+            <span class="eyebrow">
+                SELECTED STYLE
+            </span>
+
+            <div class="selected-style-card">
+
+                <div class="style-thumbnail">
+                    <span>✦</span>
+                </div>
+
+                <div>
+
+                    <h2 id="selectedStyleName">
+                        {{ selected_style }}
+                    </h2>
+
+                    <p>
+                        Ready to try
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Controls -->
+
+            <div class="controls">
+
+                <h3>
+                    Adjust Style
+                </h3>
+
+
+                <label for="hairX">
+                    Horizontal
+                </label>
+
+                <input
+                    type="range"
+                    id="hairX"
+                    min="-200"
+                    max="200"
+                    value="0"
+                >
+
+
+                <label for="hairY">
+                    Vertical
+                </label>
+
+                <input
+                    type="range"
+                    id="hairY"
+                    min="-200"
+                    max="200"
+                    value="0"
+                >
+
+
+                <label for="hairScale">
+                    Size
+                </label>
+
+                <input
+                    type="range"
+                    id="hairScale"
+                    min="0.4"
+                    max="2"
+                    step="0.01"
+                    value="1"
+                >
+
+
+                <label for="hairRotation">
+                    Rotation
+                </label>
+
+                <input
+                    type="range"
+                    id="hairRotation"
+                    min="-20"
+                    max="20"
+                    value="0"
+                >
+
+            </div>
+
+
+            <button
+                type="button"
+                id="resetButton"
+                class="reset-button"
+            >
+                Reset Position
+            </button>
+
+        </aside>
+
+    </main>
+
+
+    <!-- =========================================
+         CAMERA MESSAGE
+    ========================================== -->
+
+    <div
+        class="styleme-message"
+        id="stylemeMessage"
+        aria-live="polite"
+    ></div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+   <script>
+    const selectedStyle = "{{ selected_style }}";
+    const selectedImage = "{{ selected_image }}";
+</script>
+
+<script
+    src="{{ url_for('static', filename='js/styleme.js') }}"
+></script>
+
+</body>
+</html>

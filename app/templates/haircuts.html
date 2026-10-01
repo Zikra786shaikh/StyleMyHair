@@ -1,0 +1,2626 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="rose">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StyleMyHair | Hair Cutting</title>
+
+    <!-- FEMALE HOMEPAGE CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/female.css') }}?v=101"
+    >
+
+    <!-- HAIRCUT PAGE CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/haircuts.css') }}?v=30"
+    >
+
+</head>
+
+
+<body class="female-page haircuts-page">
+
+
+<!-- =====================================================
+     BACKGROUND
+====================================================== -->
+
+<div class="female-background"></div>
+
+<div class="background-orb orb-one"></div>
+<div class="background-orb orb-two"></div>
+
+
+<!-- =====================================================
+     MOBILE SIDEBAR OVERLAY
+====================================================== -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<!-- =====================================================
+     FEMALE HOMEPAGE SIDEBAR
+====================================================== -->
+
+<aside
+    class="female-sidebar"
+    id="femaleSidebar"
+>
+
+
+    <!-- LOGO -->
+
+    <a
+        href="{{ url_for('main.female') }}"
+        class="sidebar-logo"
+    >
+
+        <span class="logo-style">
+            Style
+        </span>
+
+        <span class="logo-myhair">
+            MyHair
+        </span>
+
+    </a>
+
+
+    <!-- PROFILE -->
+
+    <div class="sidebar-profile">
+
+        <div class="profile-avatar">
+            ♡
+        </div>
+
+        <div class="profile-text">
+
+            <strong>
+                Style Explorer
+            </strong>
+
+            <span>
+                Female Studio
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-navigation">
+
+
+        <p class="nav-label">
+            DISCOVER
+        </p>
+
+
+        <a
+            href="{{ url_for('main.female') }}"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">
+                ⌂
+            </span>
+
+            <span>
+                Home
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('main.female') }}#hairstyles"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">
+                ✦
+            </span>
+
+            <span>
+                Hair Styles
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('main.haircuts') }}"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">
+                ✂
+            </span>
+
+            <span>
+                Hair Cutting
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('main.female') }}#accessories"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">
+                ◇
+            </span>
+
+            <span>
+                Accessories
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('main.female') }}#occasions"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">
+                ✿
+            </span>
+
+            <span>
+                Occasional Looks
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('main.female') }}#products"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">
+                ♡
+            </span>
+
+            <span>
+                Hair Products
+            </span>
+
+        </a>
+
+
+        <p class="nav-label nav-label-second">
+            YOUR SPACE
+        </p>
+
+
+        <a
+            href="{{ url_for('main.female') }}#mylooks"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">
+                ◎
+            </span>
+
+            <span>
+                My Looks
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('main.female') }}#favorites"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">
+                ♥
+            </span>
+
+            <span>
+                Favorites
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('main.female') }}#salon"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">
+                ⌖
+            </span>
+
+            <span>
+                Nearest Salon
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('main.female') }}#hospital"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">
+                +
+            </span>
+
+            <span>
+                Nearest Hospital
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('main.female') }}#settings"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">
+                ⚙
+            </span>
+
+            <span>
+                Settings
+            </span>
+
+        </a>
+
+    </nav>
+
+
+    <!-- THEME COLORS -->
+
+    <div class="theme-picker">
+
+        <p class="nav-label">
+            THEMES
+        </p>
+
+
+        <div class="theme-colors">
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="rose"
+                title="Rose"
+                aria-label="Rose theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="lavender"
+                title="Lavender"
+                aria-label="Lavender theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="peach"
+                title="Peach"
+                aria-label="Peach theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="sky"
+                title="Sky"
+                aria-label="Sky theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="mint"
+                title="Mint"
+                aria-label="Mint theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="sage"
+                title="Sage"
+                aria-label="Sage theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="butter"
+                title="Butter"
+                aria-label="Butter theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="coral"
+                title="Coral"
+                aria-label="Coral theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="plum"
+                title="Plum"
+                aria-label="Plum theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="ocean"
+                title="Ocean"
+                aria-label="Ocean theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="cocoa"
+                title="Cocoa"
+                aria-label="Cocoa theme"
+            >
+                <span></span>
+            </button>
+
+
+            <button
+                type="button"
+                class="theme-color"
+                data-theme="midnight"
+                title="Midnight"
+                aria-label="Midnight theme"
+            >
+                <span></span>
+            </button>
+
+        </div>
+
+
+        <div class="selected-theme-name">
+
+            <span id="selectedThemeName">
+                Rose
+            </span>
+
+            theme
+
+        </div>
+
+    </div>
+
+
+    <!-- SIDEBAR FOOTER -->
+
+    <div class="sidebar-footer">
+
+        <a
+            href="{{ url_for('main.female') }}#settings"
+            class="sidebar-footer-link"
+        >
+            ⚙
+            Settings
+        </a>
+
+        <a
+            href="{{ url_for('main.female') }}#help"
+            class="sidebar-footer-link"
+        >
+            ?
+            Help & Support
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     FEMALE APPLICATION
+====================================================== -->
+
+<div class="female-app">
+
+
+    <!-- =================================================
+         EXACT FEMALE HOMEPAGE HEADER
+    ================================================== -->
+
+    <header class="female-header">
+
+
+        <!-- MOBILE MENU -->
+
+        <button
+            type="button"
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <!-- MOBILE LOGO -->
+
+        <a
+            href="{{ url_for('main.female') }}"
+            class="mobile-logo"
+        >
+
+            Style<span>MyHair</span>
+
+        </a>
+
+
+        <!-- HEADER TITLE -->
+
+        <div class="header-title">
+
+            <span>
+                FEMALE STYLE STUDIO
+            </span>
+
+            <h1>
+                Discover your look.
+            </h1>
+
+        </div>
+
+
+        <!-- HEADER ACTIONS -->
+
+        <div class="header-actions">
+
+            <button
+                type="button"
+                class="header-icon-button"
+                id="headerSearchButton"
+                title="Search"
+                aria-label="Search"
+            >
+                ⌕
+            </button>
+
+
+            <button
+                type="button"
+                class="header-icon-button"
+                id="darkModeButton"
+                title="Toggle dark mode"
+                aria-label="Toggle dark mode"
+            >
+                ☼
+            </button>
+
+
+            <button
+                type="button"
+                class="header-profile"
+                title="My Profile"
+                aria-label="My Profile"
+            >
+                ♡
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         BACK BUTTON
+    ================================================== -->
+
+    <div class="page-back-wrapper">
+
+        <button
+            type="button"
+            class="page-back-button"
+            id="pageBackButton"
+            aria-label="Go back to previous page"
+        >
+
+            <span class="back-arrow">
+                ←
+            </span>
+
+            <span class="back-text">
+                Back
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN HAIRCUT PAGE
+    ================================================== -->
+
+    <main class="haircuts-main">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="haircut-hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    CUT • SHAPE • TRANSFORM
+                </span>
+
+                <h1>
+                    Discover Your
+                    <em>Perfect Haircut</em>
+                </h1>
+
+                <p>
+                    Explore haircuts by length, natural texture
+                    and face shape. Find the cut that feels
+                    made for you.
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <button
+                        type="button"
+                        class="hero-button"
+                        id="heroExplore"
+                    >
+                        EXPLORE HAIRCUTS
+                        <span>→</span>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="hero-secondary"
+                        id="heroClear"
+                    >
+                        Clear Filters
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="hero-image-wrapper">
+
+                    <img
+                        src="{{ url_for('static', filename='images/haircuts/hero.jpg') }}"
+                        alt="Haircut inspiration"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CHOOSE BY TEXTURE
+        ================================================== -->
+
+        <section
+            class="filter-section"
+            id="textureSection"
+        >
+
+            <div class="section-heading">
+
+                <span>
+                    FIND YOUR MATCH
+                </span>
+
+                <h2>
+                    Choose by Texture
+                </h2>
+
+                <p>
+                    Select your natural hair texture.
+                </p>
+
+            </div>
+
+
+            <div class="filter-options texture-options">
+
+
+                <button
+                    type="button"
+                    class="filter-button texture-filter"
+                    data-texture="straight"
+                >
+
+                    <span class="filter-icon">
+                        〰
+                    </span>
+
+                    <strong>
+                        Straight
+                    </strong>
+
+                    <small>
+                        Smooth & sleek
+                    </small>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button texture-filter"
+                    data-texture="wavy"
+                >
+
+                    <span class="filter-icon">
+                        ≋
+                    </span>
+
+                    <strong>
+                        Wavy
+                    </strong>
+
+                    <small>
+                        Soft movement
+                    </small>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button texture-filter"
+                    data-texture="curly"
+                >
+
+                    <span class="filter-icon">
+                        ◎
+                    </span>
+
+                    <strong>
+                        Curly
+                    </strong>
+
+                    <small>
+                        Defined curls
+                    </small>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button texture-filter"
+                    data-texture="coily"
+                >
+
+                    <span class="filter-icon">
+                        ✺
+                    </span>
+
+                    <strong>
+                        Coily
+                    </strong>
+
+                    <small>
+                        Natural volume
+                    </small>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CHOOSE BY FACE SHAPE
+        ================================================== -->
+
+        <section
+            class="filter-section"
+            id="faceShapeSection"
+        >
+
+            <div class="section-heading">
+
+                <span>
+                    FACE GUIDE
+                </span>
+
+                <h2>
+                    Choose by Face Shape
+                </h2>
+
+                <p>
+                    Explore cuts designed around your features.
+                </p>
+
+            </div>
+
+
+            <div class="filter-options face-options">
+
+
+                <button
+                    type="button"
+                    class="filter-button face-filter"
+                    data-face="oval"
+                >
+
+                    <span class="face-shape-icon oval">
+                        ◯
+                    </span>
+
+                    <strong>
+                        Oval
+                    </strong>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button face-filter"
+                    data-face="round"
+                >
+
+                    <span class="face-shape-icon round">
+                        ○
+                    </span>
+
+                    <strong>
+                        Round
+                    </strong>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button face-filter"
+                    data-face="square"
+                >
+
+                    <span class="face-shape-icon square">
+                        □
+                    </span>
+
+                    <strong>
+                        Square
+                    </strong>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button face-filter"
+                    data-face="heart"
+                >
+
+                    <span class="face-shape-icon heart">
+                        ♡
+                    </span>
+
+                    <strong>
+                        Heart
+                    </strong>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button face-filter"
+                    data-face="long"
+                >
+
+                    <span class="face-shape-icon long">
+                        ▯
+                    </span>
+
+                    <strong>
+                        Long
+                    </strong>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SEARCH + LENGTH FILTER
+        ================================================== -->
+
+        <section
+            class="haircut-explorer"
+            id="haircuts"
+        >
+
+
+            <div class="explorer-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        EXPLORE
+                    </span>
+
+                    <h2>
+                        Find Your Haircut
+                    </h2>
+
+                </div>
+
+
+                <div class="haircut-search">
+
+                    <span>
+                        ⌕
+                    </span>
+
+                    <input
+                        type="text"
+                        id="haircutSearch"
+                        placeholder="Search haircut..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- LENGTH BUTTONS -->
+
+            <div class="length-filters">
+
+                <button
+                    type="button"
+                    class="length-filter active"
+                    data-length="all"
+                >
+                    View All
+                </button>
+
+
+                <button
+                    type="button"
+                    class="length-filter"
+                    data-length="long"
+                >
+                    Long
+                </button>
+
+
+                <button
+                    type="button"
+                    class="length-filter"
+                    data-length="medium"
+                >
+                    Medium
+                </button>
+
+
+                <button
+                    type="button"
+                    class="length-filter"
+                    data-length="short"
+                >
+                    Short
+                </button>
+
+
+                <button
+                    type="button"
+                    class="length-filter"
+                    data-length="very-short"
+                >
+                    Very Short
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 LONG HAIRCUTS
+            ================================================== -->
+
+            <section
+                class="length-section"
+                data-length-section="long"
+            >
+
+                <div class="length-heading">
+
+                    <div>
+
+                        <span>
+                            01
+                        </span>
+
+                        <h3>
+                            Long Haircuts
+                        </h3>
+
+                    </div>
+
+                    <p>
+                        Flowing cuts with movement, layers and shape.
+                    </p>
+
+                </div>
+
+
+                <div class="haircut-grid">
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="long"
+                        data-texture="straight wavy"
+                        data-face="oval heart long"
+                        data-name="Long Layers"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/long-1.jpg') }}"
+                                alt="Long Layers"
+                            >
+
+                            <span class="length-tag">
+                                LONG
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Long Layers
+                            </h4>
+
+                            <p>
+                                Soft layers for natural movement.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Long%20Layers&image={{ url_for('static', filename='images/haircuts/long-1.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="long"
+                        data-texture="straight wavy"
+                        data-face="oval round heart"
+                        data-name="Long Curtain Layers"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/long-2.jpg') }}"
+                                alt="Long Curtain Layers"
+                            >
+
+                            <span class="length-tag">
+                                LONG
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Long Curtain Layers
+                            </h4>
+
+                            <p>
+                                Face-framing layers with a soft finish.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Long%20Curtain%20Layers&image={{ url_for('static', filename='images/haircuts/long-2.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="long"
+                        data-texture="wavy curly"
+                        data-face="oval heart long"
+                        data-name="Long Shag"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/long-3.jpg') }}"
+                                alt="Long Shag"
+                            >
+
+                            <span class="length-tag">
+                                LONG
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Long Shag
+                            </h4>
+
+                            <p>
+                                Textured layers for effortless volume.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Long%20Shag&image={{ url_for('static', filename='images/haircuts/long-3.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="long"
+                        data-texture="straight wavy"
+                        data-face="oval square heart"
+                        data-name="Long Blunt Cut"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/long-4.jpg') }}"
+                                alt="Long Blunt Cut"
+                            >
+
+                            <span class="length-tag">
+                                LONG
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Long Blunt Cut
+                            </h4>
+
+                            <p>
+                                Clean, polished and full-looking ends.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Long%20Blunt%20Cut&image={{ url_for('static', filename='images/haircuts/long-4.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 MEDIUM HAIRCUTS
+            ================================================== -->
+
+            <section
+                class="length-section"
+                data-length-section="medium"
+            >
+
+                <div class="length-heading">
+
+                    <div>
+
+                        <span>
+                            02
+                        </span>
+
+                        <h3>
+                            Medium Haircuts
+                        </h3>
+
+                    </div>
+
+                    <p>
+                        Balanced cuts that are easy to style every day.
+                    </p>
+
+                </div>
+
+
+                <div class="haircut-grid">
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="medium"
+                        data-texture="straight wavy"
+                        data-face="oval round heart"
+                        data-name="Textured Lob"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/medium-1.jpg') }}"
+                                alt="Textured Lob"
+                            >
+
+                            <span class="length-tag">
+                                MEDIUM
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Textured Lob
+                            </h4>
+
+                            <p>
+                                A modern shoulder-length silhouette.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Textured%20Lob&image={{ url_for('static', filename='images/haircuts/medium-1.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="medium"
+                        data-texture="straight wavy"
+                        data-face="oval square"
+                        data-name="Classic Shoulder Cut"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/medium-2.jpg') }}"
+                                alt="Classic Shoulder Cut"
+                            >
+
+                            <span class="length-tag">
+                                MEDIUM
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Classic Shoulder Cut
+                            </h4>
+
+                            <p>
+                                Elegant length with a clean shape.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Classic%20Shoulder%20Cut&image={{ url_for('static', filename='images/haircuts/medium-2.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="medium"
+                        data-texture="wavy curly"
+                        data-face="round heart oval"
+                        data-name="Layered Midi"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/medium-3.jpg') }}"
+                                alt="Layered Midi"
+                            >
+
+                            <span class="length-tag">
+                                MEDIUM
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Layered Midi
+                            </h4>
+
+                            <p>
+                                Lightweight layers with natural movement.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Layered%20Midi&image={{ url_for('static', filename='images/haircuts/medium-3.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="medium"
+                        data-texture="straight wavy curly"
+                        data-face="oval square heart"
+                        data-name="Modern Midi Bob"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/medium-4.jpg') }}"
+                                alt="Modern Midi Bob"
+                            >
+
+                            <span class="length-tag">
+                                MEDIUM
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Modern Midi Bob
+                            </h4>
+
+                            <p>
+                                Sharp shape with a sophisticated finish.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Modern%20Midi%20Bob&image={{ url_for('static', filename='images/haircuts/medium-4.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SHORT HAIRCUTS
+            ================================================== -->
+
+            <section
+                class="length-section"
+                data-length-section="short"
+            >
+
+                <div class="length-heading">
+
+                    <div>
+
+                        <span>
+                            03
+                        </span>
+
+                        <h3>
+                            Short Haircuts
+                        </h3>
+
+                    </div>
+
+                    <p>
+                        Fresh, modern cuts with personality.
+                    </p>
+
+                </div>
+
+
+                <div class="haircut-grid">
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="short"
+                        data-texture="straight wavy"
+                        data-face="oval heart square"
+                        data-name="French Bob"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/short-1.jpg') }}"
+                                alt="French Bob"
+                            >
+
+                            <span class="length-tag">
+                                SHORT
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                French Bob
+                            </h4>
+
+                            <p>
+                                Chic, structured and effortlessly elegant.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=French%20Bob&image={{ url_for('static', filename='images/haircuts/short-1.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="short"
+                        data-texture="straight wavy"
+                        data-face="round oval heart"
+                        data-name="Textured Bob"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/short-2.jpg') }}"
+                                alt="Textured Bob"
+                            >
+
+                            <span class="length-tag">
+                                SHORT
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Textured Bob
+                            </h4>
+
+                            <p>
+                                Soft texture and modern movement.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Textured%20Bob&image={{ url_for('static', filename='images/haircuts/short-2.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="short"
+                        data-texture="wavy curly"
+                        data-face="oval square"
+                        data-name="Short Shag"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/short-3.jpg') }}"
+                                alt="Short Shag"
+                            >
+
+                            <span class="length-tag">
+                                SHORT
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Short Shag
+                            </h4>
+
+                            <p>
+                                Choppy layers with a playful finish.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Short%20Shag&image={{ url_for('static', filename='images/haircuts/short-3.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="short"
+                        data-texture="straight wavy curly"
+                        data-face="oval round square"
+                        data-name="Layered Short Cut"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/short-4.jpg') }}"
+                                alt="Layered Short Cut"
+                            >
+
+                            <span class="length-tag">
+                                SHORT
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Layered Short Cut
+                            </h4>
+
+                            <p>
+                                Lightweight layers for everyday styling.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Layered%20Short%20Cut&image={{ url_for('static', filename='images/haircuts/short-4.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 VERY SHORT HAIRCUTS
+            ================================================== -->
+
+            <section
+                class="length-section"
+                data-length-section="very-short"
+            >
+
+                <div class="length-heading">
+
+                    <div>
+
+                        <span>
+                            04
+                        </span>
+
+                        <h3>
+                            Very Short Haircuts
+                        </h3>
+
+                    </div>
+
+                    <p>
+                        Confident, bold and easy-to-maintain styles.
+                    </p>
+
+                </div>
+
+
+                <div class="haircut-grid">
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="very-short"
+                        data-texture="straight wavy curly"
+                        data-face="oval square heart"
+                        data-name="Pixie Cut"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/very-short-1.jpg') }}"
+                                alt="Pixie Cut"
+                            >
+
+                            <span class="length-tag">
+                                VERY SHORT
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Pixie Cut
+                            </h4>
+
+                            <p>
+                                A timeless short silhouette with attitude.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Pixie%20Cut&image={{ url_for('static', filename='images/haircuts/very-short-1.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="very-short"
+                        data-texture="straight wavy"
+                        data-face="oval round"
+                        data-name="Soft Pixie"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/very-short-2.jpg') }}"
+                                alt="Soft Pixie"
+                            >
+
+                            <span class="length-tag">
+                                VERY SHORT
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Soft Pixie
+                            </h4>
+
+                            <p>
+                                A softer version of the classic pixie.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Soft%20Pixie&image={{ url_for('static', filename='images/haircuts/very-short-2.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="very-short"
+                        data-texture="straight wavy curly"
+                        data-face="oval square heart"
+                        data-name="Modern Crop"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/very-short-3.jpg') }}"
+                                alt="Modern Crop"
+                            >
+
+                            <span class="length-tag">
+                                VERY SHORT
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Modern Crop
+                            </h4>
+
+                            <p>
+                                Clean lines with a contemporary finish.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Modern%20Crop&image={{ url_for('static', filename='images/haircuts/very-short-3.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="haircut-card"
+                        data-length="very-short"
+                        data-texture="straight wavy"
+                        data-face="oval square round"
+                        data-name="Short Taper"
+                    >
+
+                        <div class="haircut-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/haircuts/very-short-4.jpg') }}"
+                                alt="Short Taper"
+                            >
+
+                            <span class="length-tag">
+                                VERY SHORT
+                            </span>
+
+                        </div>
+
+
+                        <div class="haircut-info">
+
+                            <h4>
+                                Short Taper
+                            </h4>
+
+                            <p>
+                                Sleek and precise with a tapered shape.
+                            </p>
+
+
+                            <a
+                                class="try-on-button"
+                                href="{{ url_for('main.styleme') }}?style=Short%20Taper&image={{ url_for('static', filename='images/haircuts/very-short-4.jpg') }}"
+                            >
+                                Try On
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 NO RESULTS
+            ================================================== -->
+
+            <div
+                class="no-results"
+                id="noResults"
+                hidden
+            >
+
+                <div class="no-results-icon">
+                    ✦
+                </div>
+
+                <h3>
+                    No matching haircuts
+                </h3>
+
+                <p>
+                    Try another length, texture or face shape.
+                </p>
+
+                <button
+                    type="button"
+                    id="resetFilters"
+                >
+                    Reset Filters
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BEFORE YOU CUT
+        ================================================== -->
+
+        <section class="before-cut-section">
+
+            <div class="section-heading">
+
+                <span>
+                    BEFORE YOU CUT
+                </span>
+
+                <h2>
+                    A Few Things To Consider
+                </h2>
+
+            </div>
+
+
+            <div class="tips-grid">
+
+
+                <article class="tip-card">
+
+                    <span>
+                        01
+                    </span>
+
+                    <h3>
+                        Your Face Shape
+                    </h3>
+
+                    <p>
+                        Consider how the haircut frames your
+                        natural facial proportions.
+                    </p>
+
+                </article>
+
+
+                <article class="tip-card">
+
+                    <span>
+                        02
+                    </span>
+
+                    <h3>
+                        Your Texture
+                    </h3>
+
+                    <p>
+                        Choose a cut that works with your natural
+                        hair instead of fighting it.
+                    </p>
+
+                </article>
+
+
+                <article class="tip-card">
+
+                    <span>
+                        03
+                    </span>
+
+                    <h3>
+                        Your Routine
+                    </h3>
+
+                    <p>
+                        Think about how much styling time you
+                        want to spend every morning.
+                    </p>
+
+                </article>
+
+
+                <article class="tip-card">
+
+                    <span>
+                        04
+                    </span>
+
+                    <h3>
+                        Try It First
+                    </h3>
+
+                    <p>
+                        Use StyleMe to preview your selected
+                        haircut before making the final decision.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FINAL CTA
+        ================================================== -->
+
+        <section class="haircut-final-cta">
+
+            <div>
+
+                <span>
+                    READY FOR A CHANGE?
+                </span>
+
+                <h2>
+                    See yourself with
+                    your next haircut.
+                </h2>
+
+                <p>
+                    Pick a haircut above and use Try On to
+                    preview the selected look.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="hero-button"
+                id="finalExplore"
+            >
+                EXPLORE HAIRCUTS
+                <span>→</span>
+            </button>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =================================================
+         MOBILE BOTTOM NAVIGATION
+    ================================================== -->
+
+    <nav class="mobile-bottom-nav">
+
+        <a
+            href="{{ url_for('main.female') }}"
+            class="mobile-nav-item"
+        >
+            <span>⌂</span>
+            <small>Home</small>
+        </a>
+
+
+        <a
+            href="{{ url_for('main.female') }}#hairstyles"
+            class="mobile-nav-item"
+        >
+            <span>✦</span>
+            <small>Styles</small>
+        </a>
+
+
+        <a
+            href="{{ url_for('main.haircuts') }}"
+            class="mobile-nav-item active"
+        >
+            <span>✂</span>
+            <small>Cutting</small>
+        </a>
+
+
+        <a
+            href="{{ url_for('main.female') }}#favorites"
+            class="mobile-nav-item"
+        >
+            <span>♥</span>
+            <small>Favorites</small>
+        </a>
+
+
+        <button
+            type="button"
+            class="mobile-nav-item"
+            id="mobileThemeButton"
+        >
+            <span>☼</span>
+            <small>Theme</small>
+        </button>
+
+    </nav>
+
+
+</div>
+
+
+<!-- =====================================================
+     FEMALE JAVASCRIPT
+====================================================== -->
+
+<script
+    src="{{ url_for('static', filename='js/female.js') }}?v=101"
+></script>
+
+
+<!-- =====================================================
+     HAIRCUT PAGE JAVASCRIPT
+====================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =================================================
+       ELEMENTS
+    ================================================= */
+
+    const lengthButtons =
+        document.querySelectorAll(".length-filter");
+
+    const textureButtons =
+        document.querySelectorAll(".texture-filter");
+
+    const faceButtons =
+        document.querySelectorAll(".face-filter");
+
+    const sections =
+        document.querySelectorAll(".length-section");
+
+    const cards =
+        document.querySelectorAll(".haircut-card");
+
+    const searchInput =
+        document.getElementById("haircutSearch");
+
+    const noResults =
+        document.getElementById("noResults");
+
+    const resetButton =
+        document.getElementById("resetFilters");
+
+    const heroExplore =
+        document.getElementById("heroExplore");
+
+    const finalExplore =
+        document.getElementById("finalExplore");
+
+    const heroClear =
+        document.getElementById("heroClear");
+
+
+    /* =================================================
+       FILTER STATE
+    ================================================= */
+
+    let selectedLength = "all";
+
+    let selectedTexture = "";
+
+    let selectedFace = "";
+
+    let searchText = "";
+
+
+    /* =================================================
+       NORMALIZE
+    ================================================= */
+
+    function normalize(value) {
+
+        return String(value || "")
+            .toLowerCase()
+            .trim();
+
+    }
+
+
+    /* =================================================
+       UPDATE CARDS
+    ================================================= */
+
+    function updateResults() {
+
+        let visibleCount = 0;
+
+
+        cards.forEach(function (card) {
+
+            const cardLength =
+                normalize(card.dataset.length);
+
+            const cardTexture =
+                normalize(card.dataset.texture);
+
+            const cardFace =
+                normalize(card.dataset.face);
+
+            const cardName =
+                normalize(card.dataset.name);
+
+
+            const lengthMatch =
+                selectedLength === "all" ||
+                cardLength === selectedLength;
+
+
+            const textureMatch =
+                !selectedTexture ||
+                cardTexture.includes(selectedTexture);
+
+
+            const faceMatch =
+                !selectedFace ||
+                cardFace.includes(selectedFace);
+
+
+            const searchMatch =
+                !searchText ||
+                cardName.includes(searchText);
+
+
+            const show =
+                lengthMatch &&
+                textureMatch &&
+                faceMatch &&
+                searchMatch;
+
+
+            if (show) {
+
+                card.style.display = "";
+
+                visibleCount++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        /* =============================================
+           SHOW / HIDE LENGTH SECTIONS
+        ============================================= */
+
+        sections.forEach(function (section) {
+
+            const sectionLength =
+                normalize(
+                    section.dataset.lengthSection
+                );
+
+
+            if (
+                selectedLength !== "all" &&
+                sectionLength !== selectedLength
+            ) {
+
+                section.style.display = "none";
+
+                return;
+
+            }
+
+
+            const visibleCards =
+                section.querySelectorAll(
+                    ".haircut-card:not([style*='display: none'])"
+                );
+
+
+            if (visibleCards.length === 0) {
+
+                section.style.display = "none";
+
+            } else {
+
+                section.style.display = "";
+
+            }
+
+        });
+
+
+        /* =============================================
+           NO RESULTS
+        ============================================= */
+
+        if (noResults) {
+
+            noResults.hidden =
+                visibleCount !== 0;
+
+        }
+
+    }
+
+
+    /* =================================================
+       LENGTH BUTTONS
+    ================================================= */
+
+    lengthButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            lengthButtons.forEach(function (item) {
+
+                item.classList.remove("active");
+
+            });
+
+
+            button.classList.add("active");
+
+
+            selectedLength =
+                normalize(button.dataset.length);
+
+
+            updateResults();
+
+        });
+
+    });
+
+
+    /* =================================================
+       TEXTURE BUTTONS
+    ================================================= */
+
+    textureButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            if (
+                selectedTexture ===
+                normalize(button.dataset.texture)
+            ) {
+
+                selectedTexture = "";
+
+                button.classList.remove("active");
+
+            } else {
+
+                textureButtons.forEach(function (item) {
+
+                    item.classList.remove("active");
+
+                });
+
+
+                button.classList.add("active");
+
+                selectedTexture =
+                    normalize(button.dataset.texture);
+
+            }
+
+
+            updateResults();
+
+        });
+
+    });
+
+
+    /* =================================================
+       FACE SHAPE BUTTONS
+    ================================================= */
+
+    faceButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            if (
+                selectedFace ===
+                normalize(button.dataset.face)
+            ) {
+
+                selectedFace = "";
+
+                button.classList.remove("active");
+
+            } else {
+
+                faceButtons.forEach(function (item) {
+
+                    item.classList.remove("active");
+
+                });
+
+
+                button.classList.add("active");
+
+                selectedFace =
+                    normalize(button.dataset.face);
+
+            }
+
+
+            updateResults();
+
+        });
+
+    });
+
+
+    /* =================================================
+       SEARCH
+    ================================================= */
+
+    if (searchInput) {
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                searchText =
+                    normalize(searchInput.value);
+
+                updateResults();
+
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       RESET
+    ================================================= */
+
+    function resetFilters() {
+
+
+        selectedLength = "all";
+
+        selectedTexture = "";
+
+        selectedFace = "";
+
+        searchText = "";
+
+
+        lengthButtons.forEach(function (button) {
+
+            button.classList.remove("active");
+
+        });
+
+
+        const allButton =
+            document.querySelector(
+                '.length-filter[data-length="all"]'
+            );
+
+
+        if (allButton) {
+
+            allButton.classList.add("active");
+
+        }
+
+
+        textureButtons.forEach(function (button) {
+
+            button.classList.remove("active");
+
+        });
+
+
+        faceButtons.forEach(function (button) {
+
+            button.classList.remove("active");
+
+        });
+
+
+        if (searchInput) {
+
+            searchInput.value = "";
+
+        }
+
+
+        updateResults();
+
+    }
+
+
+    if (resetButton) {
+
+        resetButton.addEventListener(
+            "click",
+            resetFilters
+        );
+
+    }
+
+
+    if (heroClear) {
+
+        heroClear.addEventListener(
+            "click",
+            resetFilters
+        );
+
+    }
+
+
+    /* =================================================
+       SCROLL TO HAIRCUTS
+    ================================================= */
+
+    function scrollToHaircuts() {
+
+        const target =
+            document.getElementById("haircuts");
+
+
+        if (target) {
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+    }
+
+
+    if (heroExplore) {
+
+        heroExplore.addEventListener(
+            "click",
+            scrollToHaircuts
+        );
+
+    }
+
+
+    if (finalExplore) {
+
+        finalExplore.addEventListener(
+            "click",
+            scrollToHaircuts
+        );
+
+    }
+
+
+    /* =================================================
+       BACK BUTTON
+    ================================================= */
+
+    const pageBackButton =
+        document.getElementById("pageBackButton");
+
+
+    if (pageBackButton) {
+
+        pageBackButton.addEventListener(
+            "click",
+            function () {
+
+                if (window.history.length > 1) {
+
+                    window.history.back();
+
+                    return;
+
+                }
+
+
+                window.location.href =
+                    "{{ url_for('main.female') }}";
+
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       INITIAL STATE
+    ================================================= */
+
+    updateResults();
+
+});
+
+</script>
+
+
+</body>
+
+</html>

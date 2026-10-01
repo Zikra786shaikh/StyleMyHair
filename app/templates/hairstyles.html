@@ -5,221 +5,326 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>StyleMyHair | Men's Hairstyles</title>
+    <title>StyleMyHair | Hairstyles</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/hairstyles.css') }}">
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/hairstyles.css') }}"
+    >
 
 </head>
 
 
 <body>
 
-<!-- =====================================================
-     TOP NAVIGATION
-====================================================== -->
-
-<header class="topbar">
-
-    <a href="{{ url_for('main.male') }}"
-       class="brand">
-
-        <span class="brand-menu">☰</span>
-
-        <strong>StyleMyHair</strong>
-
-        <span class="brand-symbol">✂</span>
-
-    </a>
+<div class="styles-page">
 
 
-    <div class="search-box">
+    <!-- ==================================================
+         TOP BAR
+    =================================================== -->
 
-        <span>⌕</span>
+    <header class="topbar">
 
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search hairstyles, styles, looks, products..."
-        >
+        <div class="topbar-left">
 
-    </div>
-
-
-    <div class="top-actions">
-
-        <button type="button">☼</button>
-
-        <button type="button">♡</button>
-
-        <button type="button">♙</button>
-
-    </div>
-
-</header>
-
-
-
-<!-- =====================================================
-     MAIN
-====================================================== -->
-
-<main class="page-container">
-
-
-    <!-- =================================================
-         HERO
-    ================================================== -->
-
-    <section class="hero">
-
-        <div class="hero-photo">
-
-            <img
-                src="{{ url_for('static', filename='images/hero-male.jpg') }}"
-                alt="Men's hairstyle"
+            <a
+                href="{{ url_for('main.male') }}"
+                class="back-link"
             >
+                <span>←</span>
+                <span>Male Studio</span>
+            </a>
 
         </div>
 
 
-        <div class="hero-content">
+        <div class="brand">
 
-            <span class="hero-small">
-                MEN'S HAIRSTYLE COLLECTION
+            <span class="brand-name">
+                StyleMyHair
             </span>
 
+            <span class="brand-label">
+                MEN'S STYLE EDIT
+            </span>
 
-            <h1>
-                Men’s Hairstyle
-                <br>
-                <span>(Find Your Own Style)</span>
-            </h1>
-
-
-            <p>
-                Different looks. Same you.
-                <br>
-                Your hair, your style, your vibe. ✨
-            </p>
+        </div>
 
 
-            <div class="hero-options">
+        <div class="topbar-right">
 
-                <div class="hero-option">
+            <button
+                type="button"
+                class="icon-button"
+                id="themeToggle"
+                aria-label="Toggle theme"
+            >
+                ◐
+            </button>
 
-                    <span>♟</span>
+        </div>
 
-                    <div>
-                        <strong>Explore</strong>
-                        <small>Trendy Styles</small>
-                    </div>
+    </header>
 
+
+
+    <!-- ==================================================
+         HERO
+    =================================================== -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-label">
+                    THE MEN'S STYLE EDIT
                 </div>
 
+                <h1>
+                    Find the haircut
+                    <br>
+                    <em>that feels like you.</em>
+                </h1>
 
-                <div class="hero-option">
-
-                    <span>◉</span>
-
-                    <div>
-                        <strong>See How It</strong>
-                        <small>Looks On You</small>
-                    </div>
-
-                </div>
-
-
-                <div class="hero-option">
-
-                    <span>✂</span>
-
-                    <div>
-                        <strong>Easy Filters</strong>
-                        <small>& Customization</small>
-                    </div>
-
-                </div>
+                <p>
+                    Explore modern cuts, classic styles, fades,
+                    textures and colors. Save your favourites
+                    and discover your next look.
+                </p>
 
 
-                <div class="hero-option">
+                <div class="hero-buttons">
 
-                    <span>♢</span>
+                    <a
+                        href="#collection"
+                        class="button button-primary"
+                    >
+                        Explore Collection
+                        <span>↓</span>
+                    </a>
 
-                    <div>
-                        <strong>Find Your</strong>
-                        <small>Perfect Look</small>
-                    </div>
+                    <a
+                        href="#find-style"
+                        class="button button-outline"
+                    >
+                        Find My Style
+                    </a>
 
                 </div>
 
             </div>
 
-        </div>
+
+            <div class="hero-visual">
+
+                <div class="hero-image-frame">
+
+                    <img
+                        src="{{ url_for('static', filename='images/male-hairstyles/hero.jpg') }}"
+                        alt="Men's hairstyle"
+                    >
+
+                </div>
 
 
-        <div class="hero-slogan">
+                <div class="hero-floating-card">
 
-            <span>Own</span>
-            <span>Your</span>
-            <span>Style</span>
+                    <span class="floating-small">
+                        TRENDING
+                    </span>
 
-            <b>♕</b>
+                    <strong>
+                        Textured Crop
+                    </strong>
 
-        </div>
+                    <span>
+                        Modern • Clean • Easy
+                    </span>
 
-    </section>
-
-
-
-    <!-- =================================================
-         CONTENT AREA
-    ================================================== -->
-
-    <section class="content-layout">
+                </div>
 
 
-        <!-- =================================================
-             FILTER SIDEBAR
-        ================================================== -->
+                <div class="hero-number">
+                    30+
+                </div>
 
-        <aside class="filters">
+            </div>
 
-            <h3>Filter By</h3>
+        </section>
 
 
-            <!-- HAIR LENGTH -->
 
-            <div class="filter-group">
+        <!-- ==================================================
+             STYLE NAVIGATION
+        =================================================== -->
 
-                <h4>✂ Hair Length</h4>
+        <section class="style-navigation">
 
-                <div class="filter-buttons">
+            <div class="nav-heading">
 
-                    <button class="filter-choice active"
-                            data-filter-group="length"
-                            data-value="all">
+                <span>
+                    DISCOVER
+                </span>
+
+                <h2>
+                    Browse by category
+                </h2>
+
+            </div>
+
+
+            <div class="category-tabs">
+
+                <button
+                    class="category-tab active"
+                    data-category="all"
+                >
+                    All Styles
+                </button>
+
+                <button
+                    class="category-tab"
+                    data-category="short"
+                >
+                    Short
+                </button>
+
+                <button
+                    class="category-tab"
+                    data-category="medium"
+                >
+                    Medium
+                </button>
+
+                <button
+                    class="category-tab"
+                    data-category="long"
+                >
+                    Long
+                </button>
+
+                <button
+                    class="category-tab"
+                    data-category="fade"
+                >
+                    Fades
+                </button>
+
+                <button
+                    class="category-tab"
+                    data-category="textured"
+                >
+                    Textured
+                </button>
+
+                <button
+                    class="category-tab"
+                    data-category="classic"
+                >
+                    Classic
+                </button>
+
+                <button
+                    class="category-tab"
+                    data-category="modern"
+                >
+                    Modern
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             SEARCH / FILTER BAR
+        =================================================== -->
+
+        <section class="control-bar">
+
+            <div class="search-wrapper">
+
+                <span>
+                    ⌕
+                </span>
+
+                <input
+                    type="text"
+                    id="styleSearch"
+                    placeholder="Search a hairstyle..."
+                >
+
+            </div>
+
+
+            <button
+                type="button"
+                class="filter-toggle"
+                id="filterToggle"
+            >
+                <span>☷</span>
+                Filters
+            </button>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             FILTER PANEL
+        =================================================== -->
+
+        <section
+            class="filter-panel"
+            id="filterPanel"
+        >
+
+            <div class="filter-block">
+
+                <h3>
+                    Hair Length
+                </h3>
+
+                <div class="filter-list">
+
+                    <button
+                        class="filter-option active"
+                        data-filter-type="length"
+                        data-filter-value="all"
+                    >
                         All
                     </button>
 
-                    <button class="filter-choice"
-                            data-filter-group="length"
-                            data-value="short">
+                    <button
+                        class="filter-option"
+                        data-filter-type="length"
+                        data-filter-value="short"
+                    >
                         Short
                     </button>
 
-                    <button class="filter-choice"
-                            data-filter-group="length"
-                            data-value="medium">
+                    <button
+                        class="filter-option"
+                        data-filter-type="length"
+                        data-filter-value="medium"
+                    >
                         Medium
                     </button>
 
-                    <button class="filter-choice"
-                            data-filter-group="length"
-                            data-value="long">
+                    <button
+                        class="filter-option"
+                        data-filter-type="length"
+                        data-filter-value="long"
+                    >
                         Long
                     </button>
 
@@ -228,1478 +333,1687 @@
             </div>
 
 
+            <div class="filter-block">
 
-            <!-- HAIR TYPE -->
+                <h3>
+                    Hair Texture
+                </h3>
 
-            <div class="filter-group">
+                <div class="filter-list">
 
-                <h4>♨ Hair Type</h4>
-
-                <div class="filter-buttons">
-
-                    <button class="filter-choice active"
-                            data-filter-group="type"
-                            data-value="all">
-                        All
-                    </button>
-
-                    <button class="filter-choice"
-                            data-filter-group="type"
-                            data-value="straight">
+                    <button
+                        class="filter-option"
+                        data-filter-type="texture"
+                        data-filter-value="straight"
+                    >
                         Straight
                     </button>
 
-                    <button class="filter-choice"
-                            data-filter-group="type"
-                            data-value="wavy">
+                    <button
+                        class="filter-option"
+                        data-filter-type="texture"
+                        data-filter-value="wavy"
+                    >
                         Wavy
                     </button>
 
-                    <button class="filter-choice"
-                            data-filter-group="type"
-                            data-value="curly">
+                    <button
+                        class="filter-option"
+                        data-filter-type="texture"
+                        data-filter-value="curly"
+                    >
                         Curly
                     </button>
 
-                    <button class="filter-choice"
-                            data-filter-group="type"
-                            data-value="coily">
-                        Coily
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- HAIR COLOR -->
-
-            <div class="filter-group">
-
-                <h4>◉ Hair Color</h4>
-
-                <div class="filter-buttons">
-
-                    <button class="filter-choice active"
-                            data-filter-group="color"
-                            data-value="all">
-                        All
-                    </button>
-
-                    <button class="filter-choice"
-                            data-filter-group="color"
-                            data-value="black">
-                        ● Black
-                    </button>
-
-                    <button class="filter-choice"
-                            data-filter-group="color"
-                            data-value="brown">
-                        ● Brown
-                    </button>
-
-                    <button class="filter-choice"
-                            data-filter-group="color"
-                            data-value="blonde">
-                        ● Blonde
-                    </button>
-
-                    <button class="filter-choice"
-                            data-filter-group="color"
-                            data-value="red">
-                        ● Red
-                    </button>
-
-                    <button class="filter-choice"
-                            data-filter-group="color"
-                            data-value="grey">
-                        ● Grey
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CUTTING STYLE -->
-
-            <div class="filter-group">
-
-                <h4>✂ Hair Cutting Style</h4>
-
-                <div class="filter-buttons">
-
-                    <button class="filter-choice active"
-                            data-filter-group="cut"
-                            data-value="all">
-                        All
-                    </button>
-
-                    <button class="filter-choice"
-                            data-filter-group="cut"
-                            data-value="fade">
-                        Fade
-                    </button>
-
-                    <button class="filter-choice"
-                            data-filter-group="cut"
-                            data-value="undercut">
-                        Undercut
-                    </button>
-
-                    <button class="filter-choice"
-                            data-filter-group="cut"
-                            data-value="layered">
-                        Layered
-                    </button>
-
-                    <button class="filter-choice"
-                            data-filter-group="cut"
-                            data-value="classic">
-                        Classic
-                    </button>
-
-                    <button class="filter-choice"
-                            data-filter-group="cut"
-                            data-value="textured">
+                    <button
+                        class="filter-option"
+                        data-filter-type="texture"
+                        data-filter-value="textured"
+                    >
                         Textured
                     </button>
 
-                    <button class="filter-choice"
-                            data-filter-group="cut"
-                            data-value="taper">
-                        Taper
+                </div>
+
+            </div>
+
+
+            <div class="filter-block">
+
+                <h3>
+                    Style Mood
+                </h3>
+
+                <div class="filter-list">
+
+                    <button
+                        class="filter-option"
+                        data-filter-type="mood"
+                        data-filter-value="classic"
+                    >
+                        Classic
+                    </button>
+
+                    <button
+                        class="filter-option"
+                        data-filter-type="mood"
+                        data-filter-value="modern"
+                    >
+                        Modern
+                    </button>
+
+                    <button
+                        class="filter-option"
+                        data-filter-type="mood"
+                        data-filter-value="bold"
+                    >
+                        Bold
                     </button>
 
                 </div>
 
             </div>
 
-
-            <button
-                class="reset-button"
-                id="resetFilters"
-                type="button"
-            >
-                ↻ Reset Filters
-            </button>
-
-        </aside>
+        </section>
 
 
 
-        <!-- =================================================
-             STYLES CONTENT
-        ================================================== -->
+        <!-- ==================================================
+             FEATURED
+        =================================================== -->
 
-        <div class="styles-area">
+        <section class="featured-section">
 
+            <div class="section-header">
 
-            <!-- TOP CATEGORIES -->
+                <div>
 
-            <div class="category-bar">
-
-                <button class="category active"
-                        data-category="all">
-                    <span>▦</span>
-                    All
-                </button>
-
-                <button class="category"
-                        data-category="short">
-                    ✂
-                    Short
-                </button>
-
-                <button class="category"
-                        data-category="medium">
-                    ◉
-                    Medium
-                </button>
-
-                <button class="category"
-                        data-category="long">
-                    ♒
-                    Long
-                </button>
-
-                <button class="category"
-                        data-category="fade">
-                    ✦
-                    Fade
-                </button>
-
-                <button class="category"
-                        data-category="undercut">
-                    ◆
-                    Undercut
-                </button>
-
-                <button class="category"
-                        data-category="curly">
-                    ♨
-                    Curly
-                </button>
-
-                <button class="category"
-                        data-category="crew">
-                    ●
-                    Crew Cut
-                </button>
-
-                <button class="category"
-                        data-category="buzz">
-                    ◈
-                    Buzz Cut
-                </button>
-
-                <button class="category"
-                        data-category="wavy">
-                    ≋
-                    Wavy
-                </button>
-
-                <button class="category"
-                        id="moreCategory">
-                    ⋯
-                    More
-                </button>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 FEATURED
-            ================================================== -->
-
-            <section class="style-section">
-
-                <div class="section-title">
+                    <span>
+                        EDITOR'S PICK
+                    </span>
 
                     <h2>
-                        ★ Featured Looks
+                        The cut everyone's talking about.
                     </h2>
 
-                    <button type="button">
-                        View All →
-                    </button>
-
                 </div>
 
-
-                <div class="style-grid">
-
-
-                    <!-- CARD 1 -->
-
-                    <article
-                        class="style-card"
-                        data-length="short"
-                        data-type="straight"
-                        data-color="brown"
-                        data-cut="fade"
-                        data-category="fade"
-                        data-style="Classic Fade"
-                    >
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/low-fade.jpg') }}"
-                                alt="Classic Fade"
-                            >
-
-                            <button
-                                class="favorite"
-                                data-style="Classic Fade"
-                                type="button"
-                            >
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Classic Fade</h3>
-
-                            <p>Classic • Versatile</p>
-
-                            <button
-                                class="try-button"
-                                data-style="Classic Fade"
-                                type="button"
-                            >
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <!-- CARD 2 -->
-
-                    <article
-                        class="style-card"
-                        data-length="medium"
-                        data-type="straight"
-                        data-color="brown"
-                        data-cut="textured"
-                        data-category="medium"
-                        data-style="Textured Quiff"
-                    >
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/modern-quiff.jpg') }}"
-                                alt="Textured Quiff"
-                            >
-
-                            <button
-                                class="favorite"
-                                data-style="Textured Quiff"
-                                type="button"
-                            >
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Textured Quiff</h3>
-
-                            <p>Stylish • Modern</p>
-
-                            <button
-                                class="try-button"
-                                data-style="Textured Quiff"
-                                type="button"
-                            >
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <!-- CARD 3 -->
-
-                    <article
-                        class="style-card"
-                        data-length="short"
-                        data-type="straight"
-                        data-color="black"
-                        data-cut="classic"
-                        data-category="buzz"
-                        data-style="Crew Cut"
-                    >
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/buzz-cut.jpg') }}"
-                                alt="Crew Cut"
-                            >
-
-                            <button
-                                class="favorite"
-                                data-style="Crew Cut"
-                                type="button"
-                            >
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Crew Cut</h3>
-
-                            <p>Simple • Sharp</p>
-
-                            <button
-                                class="try-button"
-                                data-style="Crew Cut"
-                                type="button"
-                            >
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <!-- CARD 4 -->
-
-                    <article
-                        class="style-card"
-                        data-length="medium"
-                        data-type="straight"
-                        data-color="brown"
-                        data-cut="undercut"
-                        data-category="undercut"
-                        data-style="Undercut"
-                    >
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/side-part.jpg') }}"
-                                alt="Undercut"
-                            >
-
-                            <button
-                                class="favorite"
-                                data-style="Undercut"
-                                type="button"
-                            >
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Undercut</h3>
-
-                            <p>Bold • Modern</p>
-
-                            <button
-                                class="try-button"
-                                data-style="Undercut"
-                                type="button"
-                            >
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <!-- CARD 5 -->
-
-                    <article
-                        class="style-card"
-                        data-length="medium"
-                        data-type="curly"
-                        data-color="brown"
-                        data-cut="textured"
-                        data-category="curly"
-                        data-style="Messy Hair"
-                    >
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/flow-hair.jpg') }}"
-                                alt="Messy Hair"
-                            >
-
-                            <button
-                                class="favorite"
-                                data-style="Messy Hair"
-                                type="button"
-                            >
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Messy Hair</h3>
-
-                            <p>Casual • Effortless</p>
-
-                            <button
-                                class="try-button"
-                                data-style="Messy Hair"
-                                type="button"
-                            >
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 SHORT
-            ================================================== -->
-
-            <section class="style-section">
-
-                <div class="section-title">
-
-                    <h2>✂ Short Hairstyles</h2>
-
-                    <button type="button">
-                        View All →
-                    </button>
-
-                </div>
-
-
-                <div class="style-grid">
-
-
-                    <article class="style-card"
-                             data-length="short"
-                             data-type="straight"
-                             data-color="black"
-                             data-cut="classic"
-                             data-category="buzz"
-                             data-style="Buzz Cut">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/buzz-cut.jpg') }}"
-                                alt="Buzz Cut"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Buzz Cut"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Buzz Cut</h3>
-
-                            <p>Minimal • Clean</p>
-
-                            <button class="try-button"
-                                    data-style="Buzz Cut"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="short"
-                             data-type="straight"
-                             data-color="black"
-                             data-cut="fade"
-                             data-category="fade"
-                             data-style="High Fade">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/low-fade.jpg') }}"
-                                alt="High Fade"
-                            >
-
-                            <button class="favorite"
-                                    data-style="High Fade"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>High Fade</h3>
-
-                            <p>Sharp • Modern</p>
-
-                            <button class="try-button"
-                                    data-style="High Fade"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="short"
-                             data-type="straight"
-                             data-color="black"
-                             data-cut="taper"
-                             data-category="fade"
-                             data-style="Taper Fade">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/low-fade.jpg') }}"
-                                alt="Taper Fade"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Taper Fade"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Taper Fade</h3>
-
-                            <p>Clean • Classic</p>
-
-                            <button class="try-button"
-                                    data-style="Taper Fade"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="short"
-                             data-type="straight"
-                             data-color="brown"
-                             data-cut="textured"
-                             data-category="short"
-                             data-style="French Crop">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/textured-crop.jpg') }}"
-                                alt="French Crop"
-                            >
-
-                            <button class="favorite"
-                                    data-style="French Crop"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>French Crop</h3>
-
-                            <p>Trendy • Low Maintenance</p>
-
-                            <button class="try-button"
-                                    data-style="French Crop"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="short"
-                             data-type="straight"
-                             data-color="black"
-                             data-cut="classic"
-                             data-category="short"
-                             data-style="Classic Cut">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/side-part.jpg') }}"
-                                alt="Classic Cut"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Classic Cut"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Classic Cut</h3>
-
-                            <p>Stylish • Simple</p>
-
-                            <button class="try-button"
-                                    data-style="Classic Cut"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 MEDIUM
-            ================================================== -->
-
-            <section class="style-section">
-
-                <div class="section-title">
-
-                    <h2>◉ Medium Hairstyles</h2>
-
-                    <button type="button">
-                        View All →
-                    </button>
-
-                </div>
-
-
-                <div class="style-grid">
-
-                    <article class="style-card"
-                             data-length="medium"
-                             data-type="straight"
-                             data-color="brown"
-                             data-cut="textured"
-                             data-category="medium"
-                             data-style="Quiff">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/modern-quiff.jpg') }}"
-                                alt="Quiff"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Quiff"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Quiff</h3>
-                            <p>Bold • Stylish</p>
-
-                            <button class="try-button"
-                                    data-style="Quiff"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="medium"
-                             data-type="straight"
-                             data-color="black"
-                             data-cut="classic"
-                             data-category="medium"
-                             data-style="Side Part">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/side-part.jpg') }}"
-                                alt="Side Part"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Side Part"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Side Part</h3>
-                            <p>Classic • Professional</p>
-
-                            <button class="try-button"
-                                    data-style="Side Part"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="medium"
-                             data-type="curly"
-                             data-color="brown"
-                             data-cut="layered"
-                             data-category="curly"
-                             data-style="Layered Cut">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/flow-hair.jpg') }}"
-                                alt="Layered Cut"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Layered Cut"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Layered Cut</h3>
-                            <p>Natural • Modern</p>
-
-                            <button class="try-button"
-                                    data-style="Layered Cut"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="medium"
-                             data-type="wavy"
-                             data-color="brown"
-                             data-cut="textured"
-                             data-category="wavy"
-                             data-style="Textured Fringe">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/textured-crop.jpg') }}"
-                                alt="Textured Fringe"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Textured Fringe"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Textured Fringe</h3>
-                            <p>Casual • Trendy</p>
-
-                            <button class="try-button"
-                                    data-style="Textured Fringe"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="medium"
-                             data-type="straight"
-                             data-color="black"
-                             data-cut="classic"
-                             data-category="classic"
-                             data-style="Slick Back">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/side-part.jpg') }}"
-                                alt="Slick Back"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Slick Back"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Slick Back</h3>
-                            <p>Formal • Clean</p>
-
-                            <button class="try-button"
-                                    data-style="Slick Back"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 LONG
-            ================================================== -->
-
-            <section class="style-section">
-
-                <div class="section-title">
-
-                    <h2>♒ Long Hairstyles</h2>
-
-                    <button type="button">
-                        View All →
-                    </button>
-
-                </div>
-
-
-                <div class="style-grid">
-
-                    <article class="style-card"
-                             data-length="long"
-                             data-type="straight"
-                             data-color="black"
-                             data-cut="fade"
-                             data-category="long"
-                             data-style="Low Fade">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/low-fade.jpg') }}"
-                                alt="Low Fade"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Low Fade"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Low Fade</h3>
-                            <p>Modern • Sharp</p>
-
-                            <button class="try-button"
-                                    data-style="Low Fade"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="long"
-                             data-type="straight"
-                             data-color="brown"
-                             data-cut="classic"
-                             data-category="long"
-                             data-style="Man Bun">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/flow-hair.jpg') }}"
-                                alt="Man Bun"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Man Bun"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Man Bun</h3>
-                            <p>Relaxed • Stylish</p>
-
-                            <button class="try-button"
-                                    data-style="Man Bun"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="long"
-                             data-type="wavy"
-                             data-color="brown"
-                             data-cut="layered"
-                             data-category="long"
-                             data-style="Long Layers">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/flow-hair.jpg') }}"
-                                alt="Long Layers"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Long Layers"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Long Layers</h3>
-                            <p>Bold • Unique</p>
-
-                            <button class="try-button"
-                                    data-style="Long Layers"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="long"
-                             data-type="wavy"
-                             data-color="brown"
-                             data-cut="layered"
-                             data-category="wavy"
-                             data-style="Half Up Half Down">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/flow-hair.jpg') }}"
-                                alt="Half Up Half Down"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Half Up Half Down"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Half Up Half Down</h3>
-                            <p>Stylish • Versatile</p>
-
-                            <button class="try-button"
-                                    data-style="Half Up Half Down"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="long"
-                             data-type="wavy"
-                             data-color="brown"
-                             data-cut="layered"
-                             data-category="wavy"
-                             data-style="Long Waves">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/flow-hair.jpg') }}"
-                                alt="Long Waves"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Long Waves"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Long Waves</h3>
-                            <p>Casual • Natural</p>
-
-                            <button class="try-button"
-                                    data-style="Long Waves"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 UNDERCUT
-            ================================================== -->
-
-            <section class="style-section">
-
-                <div class="section-title">
-
-                    <h2>◆ Undercut Hairstyles</h2>
-
-                    <button type="button">
-                        View All →
-                    </button>
-
-                </div>
-
-
-                <div class="style-grid">
-
-                    <article class="style-card"
-                             data-length="medium"
-                             data-type="straight"
-                             data-color="black"
-                             data-cut="undercut"
-                             data-category="undercut"
-                             data-style="Classic Undercut">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/side-part.jpg') }}"
-                                alt="Classic Undercut"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Classic Undercut"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Classic Undercut</h3>
-                            <p>Sharp • Timeless</p>
-
-                            <button class="try-button"
-                                    data-style="Classic Undercut"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="medium"
-                             data-type="straight"
-                             data-color="brown"
-                             data-cut="undercut"
-                             data-category="undercut"
-                             data-style="Disconnected Undercut">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/modern-quiff.jpg') }}"
-                                alt="Disconnected Undercut"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Disconnected Undercut"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Disconnected Undercut</h3>
-                            <p>Bold • Modern</p>
-
-                            <button class="try-button"
-                                    data-style="Disconnected Undercut"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="short"
-                             data-type="straight"
-                             data-color="black"
-                             data-cut="undercut"
-                             data-category="undercut"
-                             data-style="Side Undercut">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/low-fade.jpg') }}"
-                                alt="Side Undercut"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Side Undercut"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Side Undercut</h3>
-                            <p>Stylish • Clean</p>
-
-                            <button class="try-button"
-                                    data-style="Side Undercut"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="medium"
-                             data-type="straight"
-                             data-color="brown"
-                             data-cut="undercut"
-                             data-category="undercut"
-                             data-style="Undercut With Beard">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/side-part.jpg') }}"
-                                alt="Undercut With Beard"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Undercut With Beard"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Undercut With Beard</h3>
-                            <p>Rugged • Classy</p>
-
-                            <button class="try-button"
-                                    data-style="Undercut With Beard"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="style-card"
-                             data-length="long"
-                             data-type="wavy"
-                             data-color="brown"
-                             data-cut="undercut"
-                             data-category="undercut"
-                             data-style="Long Undercut">
-
-                        <div class="card-image">
-
-                            <img
-                                src="{{ url_for('static', filename='images/flow-hair.jpg') }}"
-                                alt="Long Undercut"
-                            >
-
-                            <button class="favorite"
-                                    data-style="Long Undercut"
-                                    type="button">
-                                ♡
-                            </button>
-
-                        </div>
-
-                        <div class="card-content">
-
-                            <h3>Long Undercut</h3>
-                            <p>Trendy • Versatile</p>
-
-                            <button class="try-button"
-                                    data-style="Long Undercut"
-                                    type="button">
-                                Try On →
-                            </button>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </section>
-
-
-            <div id="noResults" class="no-results">
-
-                <span>⌕</span>
-
-                <h3>No hairstyles found</h3>
-
-                <p>Try changing your filters or search.</p>
+                <a href="#collection">
+                    View collection →
+                </a>
 
             </div>
 
 
-        </div>
+            <article class="featured-card">
 
-    </section>
+                <div class="featured-image">
 
-</main>
+                    <img
+                        src="{{ url_for('static', filename='images/male-hairstyles/featured.jpg') }}"
+                        alt="Featured hairstyle"
+                    >
+
+                </div>
+
+
+                <div class="featured-content">
+
+                    <span class="featured-number">
+                        01
+                    </span>
+
+                    <div>
+
+                        <span class="mini-label">
+                            MODERN • TEXTURED
+                        </span>
+
+                        <h3>
+                            The Textured Crop
+                        </h3>
+
+                        <p>
+                            A sharp, effortless style combining
+                            clean sides with natural texture and
+                            controlled volume.
+                        </p>
+
+                        <div class="featured-details">
+
+                            <div>
+                                <span>Length</span>
+                                <strong>Short</strong>
+                            </div>
+
+                            <div>
+                                <span>Maintenance</span>
+                                <strong>Low</strong>
+                            </div>
+
+                            <div>
+                                <span>Vibe</span>
+                                <strong>Modern</strong>
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="button button-dark try-button"
+                        >
+                            Try This Style
+                            <span>→</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
 
 
 
-<!-- =====================================================
-     TRY ON MODAL
-====================================================== -->
+        <!-- ==================================================
+             COLLECTION
+        =================================================== -->
 
-<div class="modal"
-     id="tryModal">
+        <section
+            class="collection-section"
+            id="collection"
+        >
 
-    <div class="modal-box">
+            <div class="section-header">
 
-        <button
-            class="modal-close"
-            id="modalClose"
-            type="button">
-            ×
-        </button>
+                <div>
 
-        <span>STYLE SELECTED</span>
+                    <span>
+                        STYLE LIBRARY
+                    </span>
 
-        <h2 id="modalTitle">
-            Textured Crop
-        </h2>
+                    <h2>
+                        Explore hairstyles
+                    </h2>
 
-        <p>
-            This hairstyle is ready for the
-            future StyleMyHair try-on experience.
-        </p>
+                </div>
 
-        <div class="modal-image">
+                <span
+                    class="result-count"
+                    id="resultCount"
+                >
+                    30 styles
+                </span>
 
-            <img
-                id="modalImage"
-                src="{{ url_for('static', filename='images/textured-crop.jpg') }}"
-                alt="Selected hairstyle"
+            </div>
+
+
+            <div
+                class="style-grid"
+                id="styleGrid"
             >
 
+
+                <!-- 01 -->
+
+                <article
+                    class="style-card"
+                    data-length="short"
+                    data-texture="textured"
+                    data-mood="modern"
+                    data-category="short modern textured"
+                    data-name="textured crop"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/textured-crop.jpg') }}"
+                            alt="Textured Crop"
+                        >
+
+                        <button
+                            class="favorite"
+                            type="button"
+                        >
+                            ♡
+                        </button>
+
+                        <span class="card-tag">
+                            TRENDING
+                        </span>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            SHORT / TEXTURED
+                        </span>
+
+                        <h3>
+                            Textured Crop
+                        </h3>
+
+                        <button
+                            type="button"
+                            class="card-action"
+                        >
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 02 -->
+
+                <article
+                    class="style-card"
+                    data-length="short"
+                    data-texture="straight"
+                    data-mood="modern"
+                    data-category="short modern fade"
+                    data-name="low fade"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/low-fade.jpg') }}"
+                            alt="Low Fade"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            SHORT / FADE
+                        </span>
+
+                        <h3>
+                            Low Fade
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 03 -->
+
+                <article
+                    class="style-card"
+                    data-length="short"
+                    data-texture="straight"
+                    data-mood="modern"
+                    data-category="short modern fade"
+                    data-name="mid fade"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/mid-fade.jpg') }}"
+                            alt="Mid Fade"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            SHORT / FADE
+                        </span>
+
+                        <h3>
+                            Mid Fade
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 04 -->
+
+                <article
+                    class="style-card"
+                    data-length="short"
+                    data-texture="straight"
+                    data-mood="bold"
+                    data-category="short modern fade"
+                    data-name="high fade"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/high-fade.jpg') }}"
+                            alt="High Fade"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            SHORT / FADE
+                        </span>
+
+                        <h3>
+                            High Fade
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 05 -->
+
+                <article
+                    class="style-card"
+                    data-length="short"
+                    data-texture="straight"
+                    data-mood="classic"
+                    data-category="short classic"
+                    data-name="crew cut"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/crew-cut.jpg') }}"
+                            alt="Crew Cut"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            SHORT / CLASSIC
+                        </span>
+
+                        <h3>
+                            Crew Cut
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 06 -->
+
+                <article
+                    class="style-card"
+                    data-length="short"
+                    data-texture="straight"
+                    data-mood="bold"
+                    data-category="short modern"
+                    data-name="buzz cut"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/buzz-cut.jpg') }}"
+                            alt="Buzz Cut"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            SHORT / MODERN
+                        </span>
+
+                        <h3>
+                            Buzz Cut
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 07 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="straight"
+                    data-mood="modern"
+                    data-category="medium modern"
+                    data-name="classic quiff"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/classic-quiff.jpg') }}"
+                            alt="Classic Quiff"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / MODERN
+                        </span>
+
+                        <h3>
+                            Classic Quiff
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 08 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="straight"
+                    data-mood="classic"
+                    data-category="medium classic"
+                    data-name="pompadour"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/pompadour.jpg') }}"
+                            alt="Pompadour"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / CLASSIC
+                        </span>
+
+                        <h3>
+                            Pompadour
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 09 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="straight"
+                    data-mood="classic"
+                    data-category="medium classic"
+                    data-name="side part"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/side-part.jpg') }}"
+                            alt="Side Part"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / CLASSIC
+                        </span>
+
+                        <h3>
+                            Side Part
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 10 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="textured"
+                    data-mood="modern"
+                    data-category="medium modern textured"
+                    data-name="messy fringe"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/messy-fringe.jpg') }}"
+                            alt="Messy Fringe"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / TEXTURED
+                        </span>
+
+                        <h3>
+                            Messy Fringe
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 11 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="wavy"
+                    data-mood="modern"
+                    data-category="medium modern textured"
+                    data-name="wavy top"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/wavy-top.jpg') }}"
+                            alt="Wavy Top"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / WAVY
+                        </span>
+
+                        <h3>
+                            Wavy Top
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 12 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="straight"
+                    data-mood="bold"
+                    data-category="medium modern"
+                    data-name="undercut"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/undercut.jpg') }}"
+                            alt="Undercut"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / MODERN
+                        </span>
+
+                        <h3>
+                            Undercut
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 13 -->
+
+                <article
+                    class="style-card"
+                    data-length="short"
+                    data-texture="straight"
+                    data-mood="modern"
+                    data-category="short modern"
+                    data-name="caesar cut"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/caesar-cut.jpg') }}"
+                            alt="Caesar Cut"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            SHORT / MODERN
+                        </span>
+
+                        <h3>
+                            Caesar Cut
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 14 -->
+
+                <article
+                    class="style-card"
+                    data-length="short"
+                    data-texture="straight"
+                    data-mood="classic"
+                    data-category="short classic"
+                    data-name="ivy league"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/ivy-league.jpg') }}"
+                            alt="Ivy League"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            SHORT / CLASSIC
+                        </span>
+
+                        <h3>
+                            Ivy League
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 15 -->
+
+                <article
+                    class="style-card"
+                    data-length="short"
+                    data-texture="straight"
+                    data-mood="bold"
+                    data-category="short fade modern"
+                    data-name="skin fade"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/skin-fade.jpg') }}"
+                            alt="Skin Fade"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            SHORT / FADE
+                        </span>
+
+                        <h3>
+                            Skin Fade
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 16 -->
+
+                <article
+                    class="style-card"
+                    data-length="short"
+                    data-texture="textured"
+                    data-mood="bold"
+                    data-category="short modern textured"
+                    data-name="spiky hair"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/spiky-hair.jpg') }}"
+                            alt="Spiky Hair"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            SHORT / TEXTURED
+                        </span>
+
+                        <h3>
+                            Spiky Hair
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 17 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="straight"
+                    data-mood="classic"
+                    data-category="medium classic"
+                    data-name="slick back"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/slick-back.jpg') }}"
+                            alt="Slick Back"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / CLASSIC
+                        </span>
+
+                        <h3>
+                            Slick Back
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 18 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="wavy"
+                    data-mood="modern"
+                    data-category="medium modern textured"
+                    data-name="bro flow"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/bro-flow.jpg') }}"
+                            alt="Bro Flow"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / WAVY
+                        </span>
+
+                        <h3>
+                            Bro Flow
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 19 -->
+
+                <article
+                    class="style-card"
+                    data-length="long"
+                    data-texture="wavy"
+                    data-mood="modern"
+                    data-category="long modern textured"
+                    data-name="long waves"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/long-waves.jpg') }}"
+                            alt="Long Waves"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            LONG / WAVY
+                        </span>
+
+                        <h3>
+                            Long Waves
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 20 -->
+
+                <article
+                    class="style-card"
+                    data-length="long"
+                    data-texture="straight"
+                    data-mood="modern"
+                    data-category="long modern"
+                    data-name="long straight"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/long-straight.jpg') }}"
+                            alt="Long Straight"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            LONG / STRAIGHT
+                        </span>
+
+                        <h3>
+                            Long Straight
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 21 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="curly"
+                    data-mood="modern"
+                    data-category="medium modern textured"
+                    data-name="curly top"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/curly-top.jpg') }}"
+                            alt="Curly Top"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / CURLY
+                        </span>
+
+                        <h3>
+                            Curly Top
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 22 -->
+
+                <article
+                    class="style-card"
+                    data-length="short"
+                    data-texture="straight"
+                    data-mood="modern"
+                    data-category="short fade modern"
+                    data-name="taper fade"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/taper-fade.jpg') }}"
+                            alt="Taper Fade"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            SHORT / FADE
+                        </span>
+
+                        <h3>
+                            Taper Fade
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 23 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="straight"
+                    data-mood="classic"
+                    data-category="medium classic"
+                    data-name="comb over"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/comb-over.jpg') }}"
+                            alt="Comb Over"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / CLASSIC
+                        </span>
+
+                        <h3>
+                            Comb Over
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 24 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="textured"
+                    data-mood="modern"
+                    data-category="medium modern textured"
+                    data-name="textured fringe"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/textured-fringe.jpg') }}"
+                            alt="Textured Fringe"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / TEXTURED
+                        </span>
+
+                        <h3>
+                            Textured Fringe
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 25 -->
+
+                <article
+                    class="style-card"
+                    data-length="short"
+                    data-texture="straight"
+                    data-mood="modern"
+                    data-category="short modern"
+                    data-name="french crop"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/french-crop.jpg') }}"
+                            alt="French Crop"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            SHORT / MODERN
+                        </span>
+
+                        <h3>
+                            French Crop
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 26 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="straight"
+                    data-mood="bold"
+                    data-category="medium modern"
+                    data-name="faux hawk"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/faux-hawk.jpg') }}"
+                            alt="Faux Hawk"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / BOLD
+                        </span>
+
+                        <h3>
+                            Faux Hawk
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 27 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="curly"
+                    data-mood="modern"
+                    data-category="medium modern textured"
+                    data-name="curly fringe"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/curly-fringe.jpg') }}"
+                            alt="Curly Fringe"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / CURLY
+                        </span>
+
+                        <h3>
+                            Curly Fringe
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 28 -->
+
+                <article
+                    class="style-card"
+                    data-length="long"
+                    data-texture="straight"
+                    data-mood="classic"
+                    data-category="long classic"
+                    data-name="man bun"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/man-bun.jpg') }}"
+                            alt="Man Bun"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            LONG / CLASSIC
+                        </span>
+
+                        <h3>
+                            Man Bun
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 29 -->
+
+                <article
+                    class="style-card"
+                    data-length="long"
+                    data-texture="wavy"
+                    data-mood="modern"
+                    data-category="long modern textured"
+                    data-name="layered long"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/layered-long.jpg') }}"
+                            alt="Layered Long"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            LONG / WAVY
+                        </span>
+
+                        <h3>
+                            Layered Long
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 30 -->
+
+                <article
+                    class="style-card"
+                    data-length="medium"
+                    data-texture="textured"
+                    data-mood="bold"
+                    data-category="medium modern textured"
+                    data-name="modern mullet"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/male-hairstyles/modern-mullet.jpg') }}"
+                            alt="Modern Mullet"
+                        >
+
+                        <button class="favorite" type="button">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <span>
+                            MEDIUM / BOLD
+                        </span>
+
+                        <h3>
+                            Modern Mullet
+                        </h3>
+
+                        <button class="card-action" type="button">
+                            Try Style →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <div
+                class="no-results"
+                id="noResults"
+            >
+
+                <div>
+                    〆
+                </div>
+
+                <h3>
+                    No styles found
+                </h3>
+
+                <p>
+                    Try another hairstyle or remove some filters.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+     HAIR LENGTH
+====================================================== -->
+
+<div class="filter-group hairstyle-filter-group">
+
+    <div class="filter-heading">
+        <span class="filter-icon">✂</span>
+
+        <div>
+            <h3>Hair Length</h3>
+            <p>Choose the length that suits your style</p>
         </div>
+    </div>
+
+    <div class="hair-length-options">
 
         <button
-            id="modalDone"
-            class="modal-button"
-            type="button">
-            Continue
+            type="button"
+            class="hair-length-option active"
+            data-length="all"
+        >
+            <span class="length-name">All Lengths</span>
+            <span class="length-description">
+                Explore everything
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="hair-length-option"
+            data-length="very-short"
+        >
+            <span class="length-name">Very Short</span>
+            <span class="length-description">
+                Buzz & ultra-short cuts
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="hair-length-option"
+            data-length="short"
+        >
+            <span class="length-name">Short</span>
+            <span class="length-description">
+                Clean & sharp styles
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="hair-length-option"
+            data-length="short-medium"
+        >
+            <span class="length-name">Short-Medium</span>
+            <span class="length-description">
+                Easy everyday styles
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="hair-length-option"
+            data-length="medium"
+        >
+            <span class="length-name">Medium</span>
+            <span class="length-description">
+                Versatile modern looks
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="hair-length-option"
+            data-length="medium-long"
+        >
+            <span class="length-name">Medium-Long</span>
+            <span class="length-description">
+                More volume & movement
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="hair-length-option"
+            data-length="long"
+        >
+            <span class="length-name">Long</span>
+            <span class="length-description">
+                Flowing longer styles
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="hair-length-option"
+            data-length="extra-long"
+        >
+            <span class="length-name">Extra Long</span>
+            <span class="length-description">
+                Maximum length
+            </span>
         </button>
 
     </div>
@@ -1708,7 +2022,389 @@
 
 
 
-<script src="{{ url_for('static', filename='js/hairstyles.js') }}"></script>
+        <!-- ==================================================
+             HAIR TEXTURE
+        =================================================== -->
+
+        <section class="texture-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span>
+                        TEXTURE
+                    </span>
+
+                    <h2>
+                        Work with your natural texture.
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="texture-grid">
+
+                <button
+                    class="texture-card"
+                    data-texture-choice="straight"
+                >
+
+                    <span class="texture-symbol">
+                        ─
+                    </span>
+
+                    <strong>
+                        Straight
+                    </strong>
+
+                    <small>
+                        Smooth & clean
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="texture-card"
+                    data-texture-choice="wavy"
+                >
+
+                    <span class="texture-symbol">
+                        ≋
+                    </span>
+
+                    <strong>
+                        Wavy
+                    </strong>
+
+                    <small>
+                        Natural movement
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="texture-card"
+                    data-texture-choice="curly"
+                >
+
+                    <span class="texture-symbol">
+                        ∿
+                    </span>
+
+                    <strong>
+                        Curly
+                    </strong>
+
+                    <small>
+                        Defined volume
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="texture-card"
+                    data-texture-choice="textured"
+                >
+
+                    <span class="texture-symbol">
+                        ⋮
+                    </span>
+
+                    <strong>
+                        Textured
+                    </strong>
+
+                    <small>
+                        Strong character
+                    </small>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             HAIR COLORS
+        =================================================== -->
+
+        <section class="color-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span>
+                        COLOR STUDIO
+                    </span>
+
+                    <h2>
+                        Change the tone.
+                    </h2>
+
+                    <p>
+                        Explore shades that can transform
+                        the personality of a hairstyle.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="color-grid">
+
+                <button class="color-item">
+
+                    <span class="color-dot natural-black"></span>
+
+                    <strong>
+                        Natural Black
+                    </strong>
+
+                    <small>
+                        Timeless
+                    </small>
+
+                </button>
+
+
+                <button class="color-item">
+
+                    <span class="color-dot dark-brown"></span>
+
+                    <strong>
+                        Dark Brown
+                    </strong>
+
+                    <small>
+                        Warm
+                    </small>
+
+                </button>
+
+
+                <button class="color-item">
+
+                    <span class="color-dot chocolate"></span>
+
+                    <strong>
+                        Chocolate
+                    </strong>
+
+                    <small>
+                        Rich
+                    </small>
+
+                </button>
+
+
+                <button class="color-item">
+
+                    <span class="color-dot caramel"></span>
+
+                    <strong>
+                        Caramel
+                    </strong>
+
+                    <small>
+                        Bright
+                    </small>
+
+                </button>
+
+
+                <button class="color-item">
+
+                    <span class="color-dot blonde"></span>
+
+                    <strong>
+                        Blonde
+                    </strong>
+
+                    <small>
+                        Bold
+                    </small>
+
+                </button>
+
+
+                <button class="color-item">
+
+                    <span class="color-dot silver"></span>
+
+                    <strong>
+                        Silver
+                    </strong>
+
+                    <small>
+                        Statement
+                    </small>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             FACE SHAPE
+        =================================================== -->
+
+        <section class="face-section">
+
+            <div class="face-content">
+
+                <span>
+                    PERSONALIZED DISCOVERY
+                </span>
+
+                <h2>
+                    Your face shape
+                    can guide your style.
+                </h2>
+
+                <p>
+                    Different cuts work differently with
+                    different face shapes. Explore styles
+                    based on the features you want to highlight.
+                </p>
+
+
+                <div class="face-options">
+
+                    <button>
+                        Oval
+                    </button>
+
+                    <button>
+                        Round
+                    </button>
+
+                    <button>
+                        Square
+                    </button>
+
+                    <button>
+                        Heart
+                    </button>
+
+                    <button>
+                        Diamond
+                    </button>
+
+                    <button>
+                        Oblong
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="face-visual">
+
+                <div class="face-circle">
+
+                    <span>
+                        FACE
+                    </span>
+
+                    <strong>
+                        SHAPE
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             FIND YOUR STYLE
+        =================================================== -->
+
+        <section
+            class="find-style"
+            id="find-style"
+        >
+
+            <div>
+
+                <span>
+                    STYLEME
+                </span>
+
+                <h2>
+                    Ready to see
+                    yourself differently?
+                </h2>
+
+                <p>
+                    Pick a hairstyle and continue to our
+                    try-on experience.
+                </p>
+
+                <a
+                    href="{{ url_for('main.male') }}"
+                    class="button button-light"
+                >
+                    Start Your Style Journey
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+
+    <footer class="footer">
+
+        <div>
+
+            <strong>
+                StyleMyHair
+            </strong>
+
+            <span>
+                YOUR STYLE • YOUR CHOICE
+            </span>
+
+        </div>
+
+
+        <a href="{{ url_for('main.male') }}">
+            ← Back to Male Studio
+        </a>
+
+    </footer>
+
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='js/hairstyles.js') }}"
+></script>
 
 </body>
 

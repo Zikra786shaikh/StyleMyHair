@@ -1,687 +1,799 @@
-/* =====================================================
-   STYLEMYHAIR HAIRSTYLES PAGE
-===================================================== */
+/* =========================================================
+   STYLEMYHAIR
+   MEN'S HAIRSTYLES PAGE
+========================================================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
 
+document.addEventListener("DOMContentLoaded", function () {
 
-        const cards =
-            Array.from(
-                document.querySelectorAll(
-                    ".style-card"
-                )
-            );
 
+    /* =====================================================
+       ELEMENTS
+    ====================================================== */
 
-        const filterButtons =
-            document.querySelectorAll(
-                ".filter-choice"
-            );
+    const searchInput =
+        document.getElementById("styleSearch");
 
+    const styleCards =
+        document.querySelectorAll(".style-card");
 
-        const categories =
-            document.querySelectorAll(
-                ".category"
-            );
+    const resultCount =
+        document.getElementById("resultCount");
 
+    const noResults =
+        document.getElementById("noResults");
 
-        const searchInput =
-            document.getElementById(
-                "searchInput"
-            );
+    const filterToggle =
+        document.getElementById("filterToggle");
 
+    const filterPanel =
+        document.getElementById("filterPanel");
 
-        const resetButton =
-            document.getElementById(
-                "resetFilters"
-            );
+    const categoryTabs =
+        document.querySelectorAll(".category-tab");
 
+    const favoriteButtons =
+        document.querySelectorAll(".favorite");
 
-        const noResults =
-            document.getElementById(
-                "noResults"
-            );
 
+    const textureCards =
+        document.querySelectorAll(".texture-card");
 
-        const modal =
-            document.getElementById(
-                "tryModal"
-            );
+    const faceButtons =
+        document.querySelectorAll(".face-options button");
 
+    const colorItems =
+        document.querySelectorAll(".color-item");
 
-        const modalTitle =
-            document.getElementById(
-                "modalTitle"
-            );
+    const themeToggle =
+        document.getElementById("themeToggle");
 
 
-        const modalImage =
-            document.getElementById(
-                "modalImage"
-            );
+    /* =====================================================
+       STATE
+    ====================================================== */
 
+    let currentCategory = "all";
 
-        const modalClose =
-            document.getElementById(
-                "modalClose"
-            );
+    let currentLength = "all";
 
+    let currentTexture = "all";
 
-        const modalDone =
-            document.getElementById(
-                "modalDone"
-            );
+    let currentMood = "all";
 
 
-        let filters = {
 
-            length: "all",
+    /* =====================================================
+       FILTER PANEL
+    ====================================================== */
 
-            type: "all",
+    if (filterToggle && filterPanel) {
 
-            color: "all",
+        filterToggle.addEventListener(
+            "click",
+            function () {
 
-            cut: "all",
+                filterPanel.classList.toggle("open");
 
-            category: "all"
+            }
+        );
 
-        };
+    }
 
 
 
-        /* =================================================
-           APPLY FILTERS
-        ================================================== */
+    /* =====================================================
+       CATEGORY FILTER
+    ====================================================== */
 
-        function applyFilters() {
+    categoryTabs.forEach(function (tab) {
 
-            const search =
-                searchInput
-                    ? searchInput.value
-                        .trim()
-                        .toLowerCase()
-                    : "";
+        tab.addEventListener(
+            "click",
+            function () {
 
+                categoryTabs.forEach(
+                    function (item) {
 
-            let visibleCount = 0;
-
-
-            cards.forEach(
-                function (card) {
-
-                    const length =
-                        card.dataset.length;
-
-                    const type =
-                        card.dataset.type;
-
-                    const color =
-                        card.dataset.color;
-
-                    const cut =
-                        card.dataset.cut;
-
-                    const category =
-                        card.dataset.category;
-
-                    const style =
-                        card.dataset.style
-                            .toLowerCase();
-
-
-                    const lengthMatch =
-                        filters.length === "all" ||
-                        length === filters.length;
-
-
-                    const typeMatch =
-                        filters.type === "all" ||
-                        type === filters.type;
-
-
-                    const colorMatch =
-                        filters.color === "all" ||
-                        color === filters.color;
-
-
-                    const cutMatch =
-                        filters.cut === "all" ||
-                        cut === filters.cut;
-
-
-                    const categoryMatch =
-                        filters.category === "all" ||
-                        category === filters.category ||
-                        category === "short" ||
-                        category === "medium" ||
-                        category === "long";
-
-
-                    const searchMatch =
-                        search === "" ||
-                        style.includes(search);
-
-
-                    if (
-                        lengthMatch &&
-                        typeMatch &&
-                        colorMatch &&
-                        cutMatch &&
-                        categoryMatch &&
-                        searchMatch
-                    ) {
-
-                        card.classList.remove(
-                            "hidden"
-                        );
-
-                        visibleCount++;
-
-                    } else {
-
-                        card.classList.add(
-                            "hidden"
-                        );
+                        item.classList.remove("active");
 
                     }
+                );
+
+
+                tab.classList.add("active");
+
+
+                currentCategory =
+                    tab.dataset.category;
+
+
+                applyFilters();
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+       FILTER OPTIONS
+    ====================================================== */
+
+    const filterOptions =
+        document.querySelectorAll(".filter-option");
+
+
+    filterOptions.forEach(function (option) {
+
+        option.addEventListener(
+            "click",
+            function () {
+
+                const type =
+                    option.dataset.filterType;
+
+                const value =
+                    option.dataset.filterValue;
+
+
+                document
+                    .querySelectorAll(
+                        `.filter-option[data-filter-type="${type}"]`
+                    )
+                    .forEach(function (item) {
+
+                        item.classList.remove("active");
+
+                    });
+
+
+                option.classList.add("active");
+
+
+                if (type === "length") {
+
+                    currentLength = value;
 
                 }
-            );
 
 
-            if (visibleCount === 0) {
+                if (type === "texture") {
 
-                noResults.classList.add(
-                    "show"
+                    currentTexture = value;
+
+                }
+
+
+                if (type === "mood") {
+
+                    currentMood = value;
+
+                }
+
+
+                applyFilters();
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+       SEARCH
+    ====================================================== */
+
+    if (searchInput) {
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                applyFilters();
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       APPLY FILTERS
+    ====================================================== */
+
+    function applyFilters() {
+
+        const searchTerm =
+            searchInput
+                ? searchInput.value
+                    .toLowerCase()
+                    .trim()
+                : "";
+
+
+        let visibleCount = 0;
+
+
+        styleCards.forEach(function (card) {
+
+            const name =
+                (
+                    card.dataset.name || ""
+                ).toLowerCase();
+
+
+            const category =
+                (
+                    card.dataset.category || ""
+                ).toLowerCase();
+
+
+            const length =
+                (
+                    card.dataset.length || ""
+                ).toLowerCase();
+
+
+            const texture =
+                (
+                    card.dataset.texture || ""
+                ).toLowerCase();
+
+
+            const mood =
+                (
+                    card.dataset.mood || ""
+                ).toLowerCase();
+
+
+            const matchesSearch =
+                !searchTerm ||
+                name.includes(searchTerm) ||
+                category.includes(searchTerm);
+
+
+            const matchesCategory =
+                currentCategory === "all" ||
+                category.includes(
+                    currentCategory
                 );
+
+
+            const matchesLength =
+                currentLength === "all" ||
+                length === currentLength;
+
+
+            const matchesTexture =
+                currentTexture === "all" ||
+                texture === currentTexture;
+
+
+            const matchesMood =
+                currentMood === "all" ||
+                mood === currentMood;
+
+
+            const visible =
+                matchesSearch &&
+                matchesCategory &&
+                matchesLength &&
+                matchesTexture &&
+                matchesMood;
+
+
+            if (visible) {
+
+                card.style.display = "";
+
+                visibleCount++;
 
             } else {
 
-                noResults.classList.remove(
-                    "show"
-                );
+                card.style.display = "none";
 
             }
+
+        });
+
+
+        if (resultCount) {
+
+            resultCount.textContent =
+                `${visibleCount} style${visibleCount === 1 ? "" : "s"}`;
 
         }
 
 
+        if (noResults) {
 
-        /* =================================================
-           LEFT FILTER BUTTONS
-        ================================================== */
-
-        filterButtons.forEach(
-            function (button) {
-
-                button.addEventListener(
-                    "click",
-                    function () {
-
-                        const group =
-                            this.dataset.filterGroup;
-
-                        const value =
-                            this.dataset.value;
-
-
-                        document
-                            .querySelectorAll(
-                                `[data-filter-group="${group}"]`
-                            )
-                            .forEach(
-                                function (item) {
-
-                                    item.classList.remove(
-                                        "active"
-                                    );
-
-                                }
-                            );
-
-
-                        this.classList.add(
-                            "active"
-                        );
-
-
-                        filters[group] =
-                            value;
-
-
-                        applyFilters();
-
-                    }
-                );
-
-            }
-        );
-
-
-
-        /* =================================================
-           TOP CATEGORY BUTTONS
-        ================================================== */
-
-        categories.forEach(
-            function (button) {
-
-                button.addEventListener(
-                    "click",
-                    function () {
-
-                        if (
-                            this.id ===
-                            "moreCategory"
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        categories.forEach(
-                            function (item) {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            }
-                        );
-
-
-                        this.classList.add(
-                            "active"
-                        );
-
-
-                        filters.category =
-                            this.dataset.category ||
-                            "all";
-
-
-                        applyFilters();
-
-                    }
-                );
-
-            }
-        );
-
-
-
-        /* =================================================
-           SEARCH
-        ================================================== */
-
-        if (searchInput) {
-
-            searchInput.addEventListener(
-                "input",
-                function () {
-
-                    applyFilters();
-
-                }
+            noResults.classList.toggle(
+                "show",
+                visibleCount === 0
             );
 
         }
-
-
-
-        /* =================================================
-           RESET
-        ================================================== */
-
-        if (resetButton) {
-
-            resetButton.addEventListener(
-                "click",
-                function () {
-
-                    filters = {
-
-                        length: "all",
-
-                        type: "all",
-
-                        color: "all",
-
-                        cut: "all",
-
-                        category: "all"
-
-                    };
-
-
-                    filterButtons.forEach(
-                        function (button) {
-
-                            button.classList.remove(
-                                "active"
-                            );
-
-                        }
-                    );
-
-
-                    document
-                        .querySelector(
-                            '[data-filter-group="length"][data-value="all"]'
-                        )
-                        .classList.add(
-                            "active"
-                        );
-
-
-                    document
-                        .querySelector(
-                            '[data-filter-group="type"][data-value="all"]'
-                        )
-                        .classList.add(
-                            "active"
-                        );
-
-
-                    document
-                        .querySelector(
-                            '[data-filter-group="color"][data-value="all"]'
-                        )
-                        .classList.add(
-                            "active"
-                        );
-
-
-                    document
-                        .querySelector(
-                            '[data-filter-group="cut"][data-value="all"]'
-                        )
-                        .classList.add(
-                            "active"
-                        );
-
-
-                    categories.forEach(
-                        function (button) {
-
-                            button.classList.remove(
-                                "active"
-                            );
-
-                        }
-                    );
-
-
-                    document
-                        .querySelector(
-                            '[data-category="all"]'
-                        )
-                        .classList.add(
-                            "active"
-                        );
-
-
-                    if (searchInput) {
-
-                        searchInput.value =
-                            "";
-
-                    }
-
-
-                    applyFilters();
-
-                }
-            );
-
-        }
-
-
-
-        /* =================================================
-           FAVORITES
-        ================================================== */
-
-        let favorites =
-            JSON.parse(
-                localStorage.getItem(
-                    "stylemyhair-hairstyle-favorites"
-                )
-            ) || [];
-
-
-        const favoriteButtons =
-            document.querySelectorAll(
-                ".favorite"
-            );
-
-
-        function updateFavorites() {
-
-            favoriteButtons.forEach(
-                function (button) {
-
-                    const style =
-                        button.dataset.style;
-
-
-                    if (
-                        favorites.includes(
-                            style
-                        )
-                    ) {
-
-                        button.classList.add(
-                            "liked"
-                        );
-
-                        button.textContent =
-                            "♥";
-
-                    } else {
-
-                        button.classList.remove(
-                            "liked"
-                        );
-
-                        button.textContent =
-                            "♡";
-
-                    }
-
-                }
-            );
-
-        }
-
-
-        favoriteButtons.forEach(
-            function (button) {
-
-                button.addEventListener(
-                    "click",
-                    function (event) {
-
-                        event.stopPropagation();
-
-
-                        const style =
-                            this.dataset.style;
-
-
-                        if (
-                            favorites.includes(
-                                style
-                            )
-                        ) {
-
-                            favorites =
-                                favorites.filter(
-                                    function (item) {
-
-                                        return item !==
-                                            style;
-
-                                    }
-                                );
-
-                        } else {
-
-                            favorites.push(
-                                style
-                            );
-
-                        }
-
-
-                        localStorage.setItem(
-                            "stylemyhair-hairstyle-favorites",
-                            JSON.stringify(
-                                favorites
-                            )
-                        );
-
-
-                        updateFavorites();
-
-                    }
-                );
-
-            }
-        );
-
-
-        updateFavorites();
-
-
-
-        /* =================================================
-           TRY ON
-        ================================================== */
-
-        const tryButtons =
-            document.querySelectorAll(
-                ".try-button"
-            );
-
-
-        tryButtons.forEach(
-            function (button) {
-
-                button.addEventListener(
-                    "click",
-                    function () {
-
-                        const style =
-                            this.dataset.style;
-
-
-                        const card =
-                            this.closest(
-                                ".style-card"
-                            );
-
-
-                        const image =
-                            card.querySelector(
-                                "img"
-                            );
-
-
-                        modalTitle.textContent =
-                            style;
-
-
-                        modalImage.src =
-                            image.src;
-
-
-                        modalImage.alt =
-                            style;
-
-
-                        modal.classList.add(
-                            "open"
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-
-        /* =================================================
-           CLOSE MODAL
-        ================================================== */
-
-        function closeModal() {
-
-            modal.classList.remove(
-                "open"
-            );
-
-        }
-
-
-        modalClose.addEventListener(
-            "click",
-            closeModal
-        );
-
-
-        modalDone.addEventListener(
-            "click",
-            closeModal
-        );
-
-
-        modal.addEventListener(
-            "click",
-            function (event) {
-
-                if (
-                    event.target ===
-                    modal
-                ) {
-
-                    closeModal();
-
-                }
-
-            }
-        );
-
-
-        /* =================================================
-           ESC KEY
-        ================================================== */
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key === "Escape"
-                ) {
-
-                    closeModal();
-
-                }
-
-            }
-        );
-
-
-        /* =================================================
-           INITIAL
-        ================================================== */
-
-        applyFilters();
 
     }
-);
+
+
+
+    /* =====================================================
+       FAVORITES
+    ====================================================== */
+
+    favoriteButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                button.classList.toggle("saved");
+
+
+                if (
+                    button.classList.contains("saved")
+                ) {
+
+                    button.textContent = "♥";
+
+                } else {
+
+                    button.textContent = "♡";
+
+                }
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+       TRY STYLE BUTTONS
+    ====================================================== */
+
+    const tryButtons =
+        document.querySelectorAll(
+            ".card-action, .try-button"
+        );
+
+
+    tryButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const card =
+                    button.closest(".style-card");
+
+
+                if (card) {
+
+                    const styleName =
+                        card.dataset.name;
+
+
+                    showMessage(
+                        `Selected: ${formatName(styleName)}`
+                    );
+
+                } else {
+
+                    showMessage(
+                        "Style selected — Try-On will be connected next."
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+   HAIR LENGTH SELECTION
+====================================================== */
+
+const hairLengthOptions =
+    document.querySelectorAll(".hair-length-option");
+
+
+hairLengthOptions.forEach(function (option) {
+
+    option.addEventListener(
+        "click",
+        function () {
+
+            const selectedLength =
+                option.dataset.length;
+
+
+            /* -----------------------------
+               ACTIVE BUTTON
+            ----------------------------- */
+
+            hairLengthOptions.forEach(
+                function (item) {
+
+                    item.classList.remove("active");
+
+                }
+            );
+
+
+            option.classList.add("active");
+
+
+            /* -----------------------------
+               UPDATE LENGTH
+            ----------------------------- */
+
+            currentLength =
+                selectedLength;
+
+
+            /* -----------------------------
+               SYNC FILTER PANEL
+            ----------------------------- */
+
+            document
+                .querySelectorAll(
+                    '.filter-option[data-filter-type="length"]'
+                )
+                .forEach(function (item) {
+
+                    item.classList.toggle(
+                        "active",
+                        item.dataset.filterValue === selectedLength
+                    );
+
+                });
+
+
+            /* -----------------------------
+               APPLY FILTER
+            ----------------------------- */
+
+            applyFilters();
+
+
+            /* -----------------------------
+               SCROLL TO COLLECTION
+            ----------------------------- */
+
+            document
+                .getElementById("collection")
+                ?.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+    );
+
+});
+
+
+
+    /* =====================================================
+       TEXTURE CARDS
+    ====================================================== */
+
+    textureCards.forEach(function (card) {
+
+        card.addEventListener(
+            "click",
+            function () {
+
+                const texture =
+                    card.dataset.textureChoice;
+
+
+                currentTexture = texture;
+
+
+                document
+                    .querySelectorAll(
+                        '.filter-option[data-filter-type="texture"]'
+                    )
+                    .forEach(function (item) {
+
+                        item.classList.toggle(
+                            "active",
+                            item.dataset.filterValue === texture
+                        );
+
+                    });
+
+
+                applyFilters();
+
+
+                document
+                    .getElementById("collection")
+                    ?.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+       FACE SHAPE
+    ====================================================== */
+
+    faceButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                faceButtons.forEach(
+                    function (item) {
+
+                        item.classList.remove(
+                            "selected"
+                        );
+
+                    }
+                );
+
+
+                button.classList.add(
+                    "selected"
+                );
+
+
+                showMessage(
+                    `${button.textContent.trim()} face styles will be personalized next.`
+                );
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+       COLOR SELECTION
+    ====================================================== */
+
+    colorItems.forEach(function (item) {
+
+        item.addEventListener(
+            "click",
+            function () {
+
+                colorItems.forEach(
+                    function (color) {
+
+                        color.classList.remove(
+                            "selected"
+                        );
+
+                    }
+                );
+
+
+                item.classList.add(
+                    "selected"
+                );
+
+
+                const colorName =
+                    item.querySelector(
+                        "strong"
+                    );
+
+
+                if (colorName) {
+
+                    showMessage(
+                        `${colorName.textContent.trim()} selected.`
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+       THEME
+    ====================================================== */
+
+    if (themeToggle) {
+
+        themeToggle.addEventListener(
+            "click",
+            function () {
+
+                document.body.classList.toggle(
+                    "light"
+                );
+
+
+                const isLight =
+                    document.body.classList.contains(
+                        "light"
+                    );
+
+
+                localStorage.setItem(
+                    "smh-theme",
+                    isLight
+                        ? "light"
+                        : "dark"
+                );
+
+            }
+        );
+
+
+        const savedTheme =
+            localStorage.getItem(
+                "smh-theme"
+            );
+
+
+        if (savedTheme === "light") {
+
+            document.body.classList.add(
+                "light"
+            );
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       MESSAGE
+    ====================================================== */
+
+    function showMessage(message) {
+
+        let toast =
+            document.querySelector(
+                ".style-toast"
+            );
+
+
+        if (!toast) {
+
+            toast =
+                document.createElement(
+                    "div"
+                );
+
+            toast.className =
+                "style-toast";
+
+
+            toast.style.position =
+                "fixed";
+
+            toast.style.bottom =
+                "25px";
+
+            toast.style.left =
+                "50%";
+
+            toast.style.transform =
+                "translateX(-50%)";
+
+            toast.style.zIndex =
+                "9999";
+
+            toast.style.padding =
+                "13px 20px";
+
+            toast.style.background =
+                "#d6c4a2";
+
+            toast.style.color =
+                "#111";
+
+            toast.style.fontSize =
+                "11px";
+
+            toast.style.letterSpacing =
+                "0.08em";
+
+            toast.style.boxShadow =
+                "0 15px 40px rgba(0,0,0,.35)";
+
+
+            document.body.appendChild(
+                toast
+            );
+
+        }
+
+
+        toast.textContent =
+            message;
+
+
+        toast.style.opacity =
+            "1";
+
+
+        clearTimeout(
+            toast.timeout
+        );
+
+
+        toast.timeout =
+            setTimeout(
+                function () {
+
+                    toast.style.opacity =
+                        "0";
+
+                },
+                2200
+            );
+
+    }
+
+
+
+    /* =====================================================
+       FORMAT NAME
+    ====================================================== */
+
+    function formatName(name) {
+
+        if (!name) {
+
+            return "Hairstyle";
+
+        }
+
+
+        return name
+            .split(" ")
+            .map(function (word) {
+
+                return word
+                    .charAt(0)
+                    .toUpperCase() +
+                    word.slice(1);
+
+            })
+            .join(" ");
+
+    }
+
+
+
+    /* =====================================================
+       INITIAL FILTER
+    ====================================================== */
+
+    applyFilters();
+
+});

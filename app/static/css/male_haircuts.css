@@ -1,0 +1,695 @@
+/* =====================================================
+   STYLEMYHAIR
+   MALE HAIRCUT PAGE
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body.haircuts-page {
+    margin: 0;
+    background: #090b0d;
+    color: #f5f1e9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =====================================================
+   MAIN AREA
+===================================================== */
+
+.haircuts-page .male-main {
+    margin-left: 270px;
+    padding: 105px 38px 60px;
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.haircuts-hero {
+    position: relative;
+    min-height: 280px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 45px 55px;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8, 10, 12, .98) 0%,
+            rgba(8, 10, 12, .88) 48%,
+            rgba(8, 10, 12, .45) 100%
+        ),
+        url("../images/male/haircut-hero.jpg")
+        center / cover no-repeat;
+
+    border: 1px solid rgba(214, 196, 162, .18);
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 650px;
+}
+
+
+.hero-label {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: #d6c4a2;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+
+.hero-content h1 {
+    margin: 0;
+
+    font-size: clamp(38px, 5vw, 68px);
+
+    line-height: 1.05;
+
+    font-weight: 700;
+}
+
+
+.hero-content h1 span {
+    color: #d6c4a2;
+}
+
+
+.hero-content p {
+    max-width: 520px;
+
+    margin-top: 20px;
+
+    color: #aaa;
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+.hero-decoration {
+    position: absolute;
+
+    right: 7%;
+    bottom: 25px;
+
+    font-size: 120px;
+
+    color: rgba(214, 196, 162, .08);
+
+    transform: rotate(-15deg);
+}
+
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.haircuts-heading {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 30px;
+
+    margin-top: 55px;
+}
+
+
+.section-label {
+    color: #d6c4a2;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.haircuts-heading h2 {
+    margin: 8px 0;
+
+    font-size: 36px;
+}
+
+
+.haircuts-heading p {
+    margin: 0;
+
+    color: #898989;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.haircut-search {
+    width: 300px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 13px 17px;
+
+    border: 1px solid #292d31;
+
+    border-radius: 50px;
+
+    background: #111417;
+}
+
+
+.haircut-search span {
+    color: #d6c4a2;
+    font-size: 22px;
+}
+
+
+.haircut-search input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 14px;
+}
+
+
+.haircut-search input::placeholder {
+    color: #707070;
+}
+
+
+/* =====================================================
+   FILTERS
+===================================================== */
+
+.haircut-filters {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin: 30px 0 55px;
+}
+
+
+.filter-button {
+    padding: 11px 24px;
+
+    border: 1px solid #30343a;
+
+    border-radius: 50px;
+
+    background: #111417;
+
+    color: #999;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition:
+        .25s ease;
+}
+
+
+.filter-button:hover {
+    border-color: #d6c4a2;
+    color: #d6c4a2;
+}
+
+
+.filter-button.active {
+    background: #d6c4a2;
+
+    border-color: #d6c4a2;
+
+    color: #101010;
+}
+
+
+/* =====================================================
+   LENGTH SECTION
+===================================================== */
+
+.haircut-length-section {
+    margin-bottom: 75px;
+
+    scroll-margin-top: 120px;
+}
+
+
+.length-title {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #25282c;
+}
+
+
+.length-title > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.length-title span {
+    color: #d6c4a2;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.length-title h2 {
+    margin: 0;
+
+    font-size: 24px;
+}
+
+
+.length-title p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   CARD GRID
+===================================================== */
+
+.haircut-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.haircut-card {
+    overflow: hidden;
+
+    border: 1px solid #25292d;
+
+    border-radius: 18px;
+
+    background: #111417;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.haircut-card:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(214, 196, 162, .55);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, .35);
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.haircut-image {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 4.7;
+
+    overflow: hidden;
+
+    background: #181a1d;
+}
+
+
+.haircut-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform .5s ease;
+}
+
+
+.haircut-card:hover
+.haircut-image img {
+    transform: scale(1.05);
+}
+
+
+/* =====================================================
+   FAVORITE
+===================================================== */
+
+.favorite-btn {
+    position: absolute;
+
+    top: 13px;
+    right: 13px;
+
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.55);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    backdrop-filter: blur(8px);
+
+    transition: .25s ease;
+}
+
+
+.favorite-btn:hover,
+.favorite-btn.active {
+    background: #d6c4a2;
+
+    border-color: #d6c4a2;
+
+    color: #111;
+}
+
+
+/* =====================================================
+   CARD INFO
+===================================================== */
+
+.haircut-info {
+    padding: 18px;
+}
+
+
+.haircut-category {
+    color: #d6c4a2;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.haircut-info h3 {
+    margin: 7px 0;
+
+    font-size: 18px;
+}
+
+
+.haircut-info p {
+    min-height: 38px;
+
+    margin: 0 0 17px;
+
+    color: #858585;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   TRY ON
+===================================================== */
+
+.try-on-button {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 11px;
+
+    border: 1px solid #8d7958;
+
+    border-radius: 30px;
+
+    color: #d6c4a2;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: .25s ease;
+}
+
+
+.try-on-button:hover {
+    background: #d6c4a2;
+
+    color: #111;
+
+    border-color: #d6c4a2;
+}
+
+
+.try-on-button span {
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   NO RESULTS
+===================================================== */
+
+.no-results {
+    display: none;
+
+    padding: 70px 20px;
+
+    text-align: center;
+
+    color: #777;
+}
+
+
+.no-results div {
+    margin-bottom: 15px;
+
+    font-size: 45px;
+
+    color: #d6c4a2;
+}
+
+
+.no-results h3 {
+    margin: 0 0 8px;
+
+    color: white;
+}
+
+
+.no-results p {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+.mobile-menu-button {
+    display: none;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1300px) {
+
+    .haircut-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 1000px) {
+
+    .haircuts-page .male-main {
+        margin-left: 0;
+
+        padding:
+            100px
+            25px
+            50px;
+    }
+
+    .haircut-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .haircuts-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .haircut-search {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .haircuts-page .male-main {
+        padding:
+            90px
+            15px
+            40px;
+    }
+
+
+    .haircuts-hero {
+        min-height: 330px;
+
+        padding: 30px 25px;
+    }
+
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+
+    .hero-decoration {
+        display: none;
+    }
+
+
+    .haircuts-heading {
+        margin-top: 40px;
+    }
+
+
+    .haircuts-heading h2 {
+        font-size: 28px;
+    }
+
+
+    .haircut-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .length-title {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+
+    .haircut-filters {
+        gap: 8px;
+    }
+
+
+    .filter-button {
+        padding:
+            9px
+            16px;
+
+        font-size: 12px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .haircut-image {
+        aspect-ratio: 1 / 1;
+    }
+
+    .haircut-info {
+        padding: 16px;
+    }
+
+}

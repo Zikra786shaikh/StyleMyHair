@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StyleMyHair | Male Haircuts</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/male.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/haircuts.css') }}">
+</head>
+
+<body class="male-page haircuts-page">
+
+<!-- =====================================================
+     MOBILE MENU BUTTON
+===================================================== -->
+
+<button class="mobile-menu-button" id="mobileMenuButton">
+    ☰
+</button>
+
+
+<!-- =====================================================
+     HEADER
+     Same male-page style
+===================================================== -->
+
+<header class="male-topbar">
+
+    <div class="male-logo">
+        <a href="{{ url_for('main.male') }}">
+            StyleMyHair
+        </a>
+    </div>
+
+    <div class="male-page-title">
+        <span>MALE STYLE STUDIO</span>
+        <strong>Discover your look.</strong>
+    </div>
+
+    <div class="male-header-actions">
+
+        <button class="theme-button" id="themeButton">
+            ☀
+        </button>
+
+        <button class="notification-button">
+            ♡
+        </button>
+
+        <div class="male-profile">
+            <div class="profile-avatar">
+                Z
+            </div>
+
+            <span>Zikra</span>
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="maleSidebar" id="maleSidebar">
+
+    <div class="sidebar-brand">
+        <span class="sidebar-brand-icon">✦</span>
+        <span>StyleMyHair</span>
+    </div>
+
+
+    <nav class="male-sidebar-nav">
+
+        <a href="{{ url_for('main.male') }}"
+           class="sidebar-link">
+
+            <span class="sidebar-icon">⌂</span>
+            <span>Home</span>
+
+        </a>
+
+
+        <a href="{{ url_for('main.hairstyles') }}"
+           class="sidebar-link">
+
+            <span class="sidebar-icon">✦</span>
+            <span>Hair Styles</span>
+
+        </a>
+
+
+        <!-- ACTIVE -->
+        <a href="{{ url_for('main.haircuts') }}"
+           class="sidebar-link active">
+
+            <span class="sidebar-icon">✂</span>
+            <span>Hair Cutting</span>
+
+        </a>
+
+
+        <a href="{{ url_for('main.male') }}#accessoriesSection"
+           class="sidebar-link">
+
+            <span class="sidebar-icon">◇</span>
+            <span>Accessories</span>
+
+        </a>
+
+
+        <a href="{{ url_for('main.male') }}#productsSection"
+           class="sidebar-link">
+
+            <span class="sidebar-icon">▣</span>
+            <span>Hair Products</span>
+
+        </a>
+
+
+        <a href="{{ url_for('main.male') }}#favoritesSection"
+           class="sidebar-link">
+
+            <span class="sidebar-icon">♡</span>
+            <span>Favorites</span>
+
+        </a>
+
+
+        <a href="{{ url_for('main.salon') }}"
+           class="sidebar-link">
+
+            <span class="sidebar-icon">⌖</span>
+            <span>Nearest Salon</span>
+
+        </a>
+
+
+        <a href="{{ url_for('main.hospital') }}"
+           class="sidebar-link">
+
+            <span class="sidebar-icon">✚</span>
+            <span>Nearest Hospital</span>
+
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="sidebar-quote">
+            <span>Look Good</span>
+            <strong>Feel Confident</strong>
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="male-main">
+
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section class="haircuts-hero">
+
+        <div class="hero-content">
+
+            <span class="hero-label">
+                MEN'S HAIRCUT COLLECTION
+            </span>
+
+            <h1>
+                Find Your Perfect
+                <span>Haircut.</span>
+            </h1>
+
+            <p>
+                Explore modern cuts, timeless classics and
+                styles designed for every face shape.
+            </p>
+
+        </div>
+
+        <div class="hero-decoration">
+            ✂
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         PAGE HEADER
+    ================================================== -->
+
+    <section class="haircuts-heading">
+
+        <div>
+            <span class="section-label">
+                STYLE YOUR WAY
+            </span>
+
+            <h2>
+                Male Haircuts
+            </h2>
+
+            <p>
+                Choose a haircut based on length, texture
+                and your personal style.
+            </p>
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="haircut-search">
+
+            <span>⌕</span>
+
+            <input
+                type="text"
+                id="haircutSearch"
+                placeholder="Search haircut..."
+                autocomplete="off"
+            >
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         FILTERS
+    ================================================== -->
+
+    <div class="haircut-filters">
+
+        <button
+            class="filter-button active"
+            data-filter="all">
+            All
+        </button>
+
+        <button
+            class="filter-button"
+            data-filter="long">
+            Long
+        </button>
+
+        <button
+            class="filter-button"
+            data-filter="medium">
+            Medium
+        </button>
+
+        <button
+            class="filter-button"
+            data-filter="short">
+            Short
+        </button>
+
+        <button
+            class="filter-button"
+            data-filter="very-short">
+            Very Short
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         LONG HAIRCUTS
+    ================================================== -->
+
+    <section
+        class="haircut-length-section"
+        data-section-length="long">
+
+        <div class="length-title">
+
+            <div>
+                <span>01</span>
+
+                <h2>
+                    Long Haircuts
+                </h2>
+            </div>
+
+            <p>
+                Flowing and longer men's styles.
+            </p>
+
+        </div>
+
+
+        <div class="haircut-grid">
+
+
+            <!-- CARD -->
+
+            <article
+                class="haircut-card"
+                data-length="long"
+                data-texture="straight,wavy"
+                data-face="oval,heart"
+                data-name="Long Layers">
+
+                <div class="haircut-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/male/haircuts/long-layers.jpg') }}"
+                        alt="Long Layers haircut"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn"
+                            type="button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="haircut-info">
+
+                    <span class="haircut-category">
+                        LONG
+                    </span>
+
+                    <h3>
+                        Long Layers
+                    </h3>
+
+                    <p>
+                        Natural movement with layered length.
+                    </p>
+
+                    <a
+                        href="{{ url_for('main.styleme',
+                                style='Long Layers',
+                                image='images/male/haircuts/long-layers.jpg') }}"
+                        class="try-on-button">
+
+                        <span>✦</span>
+                        Try On Yourself
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="haircut-card"
+                data-length="long"
+                data-texture="wavy,curly"
+                data-face="oval,round"
+                data-name="Flow Hair">
+
+                <div class="haircut-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/male/haircuts/flow-hair.jpg') }}"
+                        alt="Flow Hair haircut"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn"
+                            type="button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="haircut-info">
+
+                    <span class="haircut-category">
+                        LONG
+                    </span>
+
+                    <h3>
+                        Flow Hair
+                    </h3>
+
+                    <p>
+                        Relaxed flowing style for longer hair.
+                    </p>
+
+                    <a
+                        href="{{ url_for('main.styleme',
+                                style='Flow Hair',
+                                image='images/male/haircuts/flow-hair.jpg') }}"
+                        class="try-on-button">
+
+                        <span>✦</span>
+                        Try On Yourself
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         MEDIUM HAIRCUTS
+    ================================================== -->
+
+    <section
+        class="haircut-length-section"
+        data-section-length="medium">
+
+        <div class="length-title">
+
+            <div>
+                <span>02</span>
+
+                <h2>
+                    Medium Haircuts
+                </h2>
+            </div>
+
+            <p>
+                Versatile cuts for everyday styling.
+            </p>
+
+        </div>
+
+
+        <div class="haircut-grid">
+
+
+            <article
+                class="haircut-card"
+                data-length="medium"
+                data-texture="straight,wavy"
+                data-face="oval,square"
+                data-name="Modern Quiff">
+
+                <div class="haircut-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/male/haircuts/modern-quiff.jpg') }}"
+                        alt="Modern Quiff haircut"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn"
+                            type="button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="haircut-info">
+
+                    <span class="haircut-category">
+                        MEDIUM
+                    </span>
+
+                    <h3>
+                        Modern Quiff
+                    </h3>
+
+                    <p>
+                        Clean sides with volume on top.
+                    </p>
+
+                    <a
+                        href="{{ url_for('main.styleme',
+                                style='Modern Quiff',
+                                image='images/male/haircuts/modern-quiff.jpg') }}"
+                        class="try-on-button">
+
+                        <span>✦</span>
+                        Try On Yourself
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="haircut-card"
+                data-length="medium"
+                data-texture="straight"
+                data-face="oval,square,heart"
+                data-name="Classic Side Part">
+
+                <div class="haircut-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/male/haircuts/classic-side-part.jpg') }}"
+                        alt="Classic Side Part haircut"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn"
+                            type="button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="haircut-info">
+
+                    <span class="haircut-category">
+                        MEDIUM
+                    </span>
+
+                    <h3>
+                        Classic Side Part
+                    </h3>
+
+                    <p>
+                        Sharp, clean and timeless.
+                    </p>
+
+                    <a
+                        href="{{ url_for('main.styleme',
+                                style='Classic Side Part',
+                                image='images/male/haircuts/classic-side-part.jpg') }}"
+                        class="try-on-button">
+
+                        <span>✦</span>
+                        Try On Yourself
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="haircut-card"
+                data-length="medium"
+                data-texture="wavy,curly"
+                data-face="oval,round"
+                data-name="Curtain Hair">
+
+                <div class="haircut-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/male/haircuts/curtain-hair.jpg') }}"
+                        alt="Curtain Hair haircut"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn"
+                            type="button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="haircut-info">
+
+                    <span class="haircut-category">
+                        MEDIUM
+                    </span>
+
+                    <h3>
+                        Curtain Hair
+                    </h3>
+
+                    <p>
+                        Soft middle-parted modern style.
+                    </p>
+
+                    <a
+                        href="{{ url_for('main.styleme',
+                                style='Curtain Hair',
+                                image='images/male/haircuts/curtain-hair.jpg') }}"
+                        class="try-on-button">
+
+                        <span>✦</span>
+                        Try On Yourself
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SHORT HAIRCUTS
+    ================================================== -->
+
+    <section
+        class="haircut-length-section"
+        data-section-length="short">
+
+        <div class="length-title">
+
+            <div>
+                <span>03</span>
+
+                <h2>
+                    Short Haircuts
+                </h2>
+            </div>
+
+            <p>
+                Clean, sharp and easy-to-maintain cuts.
+            </p>
+
+        </div>
+
+
+        <div class="haircut-grid">
+
+
+            <article
+                class="haircut-card"
+                data-length="short"
+                data-texture="straight,wavy"
+                data-face="oval,square"
+                data-name="Textured Crop">
+
+                <div class="haircut-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/male/haircuts/textured-crop.jpg') }}"
+                        alt="Textured Crop haircut"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn"
+                            type="button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="haircut-info">
+
+                    <span class="haircut-category">
+                        SHORT
+                    </span>
+
+                    <h3>
+                        Textured Crop
+                    </h3>
+
+                    <p>
+                        Textured top with clean sides.
+                    </p>
+
+                    <a
+                        href="{{ url_for('main.styleme',
+                                style='Textured Crop',
+                                image='images/male/haircuts/textured-crop.jpg') }}"
+                        class="try-on-button">
+
+                        <span>✦</span>
+                        Try On Yourself
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="haircut-card"
+                data-length="short"
+                data-texture="straight,wavy"
+                data-face="oval,square,round"
+                data-name="Low Fade">
+
+                <div class="haircut-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/male/haircuts/low-fade.jpg') }}"
+                        alt="Low Fade haircut"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn"
+                            type="button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="haircut-info">
+
+                    <span class="haircut-category">
+                        SHORT
+                    </span>
+
+                    <h3>
+                        Low Fade
+                    </h3>
+
+                    <p>
+                        Subtle fade with a modern finish.
+                    </p>
+
+                    <a
+                        href="{{ url_for('main.styleme',
+                                style='Low Fade',
+                                image='images/male/haircuts/low-fade.jpg') }}"
+                        class="try-on-button">
+
+                        <span>✦</span>
+                        Try On Yourself
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="haircut-card"
+                data-length="short"
+                data-texture="straight"
+                data-face="oval,square"
+                data-name="Buzz Cut">
+
+                <div class="haircut-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/male/haircuts/buzz-cut.jpg') }}"
+                        alt="Buzz Cut haircut"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn"
+                            type="button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="haircut-info">
+
+                    <span class="haircut-category">
+                        SHORT
+                    </span>
+
+                    <h3>
+                        Buzz Cut
+                    </h3>
+
+                    <p>
+                        Minimal, sharp and effortless.
+                    </p>
+
+                    <a
+                        href="{{ url_for('main.styleme',
+                                style='Buzz Cut',
+                                image='images/male/haircuts/buzz-cut.jpg') }}"
+                        class="try-on-button">
+
+                        <span>✦</span>
+                        Try On Yourself
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         VERY SHORT HAIRCUTS
+    ================================================== -->
+
+    <section
+        class="haircut-length-section"
+        data-section-length="very-short">
+
+        <div class="length-title">
+
+            <div>
+                <span>04</span>
+
+                <h2>
+                    Very Short Haircuts
+                </h2>
+            </div>
+
+            <p>
+                Bold and low-maintenance styles.
+            </p>
+
+        </div>
+
+
+        <div class="haircut-grid">
+
+
+            <article
+                class="haircut-card"
+                data-length="very-short"
+                data-texture="straight"
+                data-face="oval,square,round"
+                data-name="High Fade">
+
+                <div class="haircut-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/male/haircuts/high-fade.jpg') }}"
+                        alt="High Fade haircut"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn"
+                            type="button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="haircut-info">
+
+                    <span class="haircut-category">
+                        VERY SHORT
+                    </span>
+
+                    <h3>
+                        High Fade
+                    </h3>
+
+                    <p>
+                        Strong fade with a clean silhouette.
+                    </p>
+
+                    <a
+                        href="{{ url_for('main.styleme',
+                                style='High Fade',
+                                image='images/male/haircuts/high-fade.jpg') }}"
+                        class="try-on-button">
+
+                        <span>✦</span>
+                        Try On Yourself
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="haircut-card"
+                data-length="very-short"
+                data-texture="straight"
+                data-face="oval,square"
+                data-name="Skin Fade">
+
+                <div class="haircut-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/male/haircuts/skin-fade.jpg') }}"
+                        alt="Skin Fade haircut"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn"
+                            type="button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="haircut-info">
+
+                    <span class="haircut-category">
+                        VERY SHORT
+                    </span>
+
+                    <h3>
+                        Skin Fade
+                    </h3>
+
+                    <p>
+                        Ultra-clean fade with a modern look.
+                    </p>
+
+                    <a
+                        href="{{ url_for('main.styleme',
+                                style='Skin Fade',
+                                image='images/male/haircuts/skin-fade.jpg') }}"
+                        class="try-on-button">
+
+                        <span>✦</span>
+                        Try On Yourself
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- NO RESULTS -->
+
+    <div
+        class="no-results"
+        id="noResults">
+
+        <div>✂</div>
+
+        <h3>
+            No haircuts found
+        </h3>
+
+        <p>
+            Try another haircut name or category.
+        </p>
+
+    </div>
+
+
+</main>
+
+
+<script src="{{ url_for('static', filename='js/haircuts.js') }}"></script>
+
+</body>
+</html>
