@@ -79,3 +79,9 @@ def male_haircuts():
 @main.route("/female/hairstyle")
 def female_hairstyles():
     return render_template("female_hairstyle.html")
+@main.route("/favorites")
+def favorites():
+    return render_template("favourites.html")
+@main.route("/mylooks")
+def mylooks():
+    return render_template("mylooks.html")

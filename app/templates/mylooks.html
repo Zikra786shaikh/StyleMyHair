@@ -1,0 +1,832 @@
+```html
+<!DOCTYPE html>
+<html lang="en" data-theme="rose">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StyleMyHair | My Looks</title>
+
+    <!-- SAME FEMALE HOME CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    <!-- MY LOOKS CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/mylooks.css') }}"
+    >
+</head>
+
+<body class="female-page">
+
+<!-- =====================================================
+     SAME HEADER AS FEMALE HOME
+====================================================== -->
+
+<header class="female-header">
+
+    <div class="header-left">
+
+        <button
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            type="button"
+            aria-label="Open menu"
+        >
+            ☰
+        </button>
+
+        <a
+            href="{{ url_for('main.female') }}"
+            class="female-logo"
+        >
+            <span class="logo-mark">S</span>
+
+            <span class="logo-text">
+                StyleMyHair
+            </span>
+        </a>
+
+    </div>
+
+    <div class="header-center">
+
+        <div class="theme-selector">
+
+            <button type="button" class="theme-dot theme-rose"
+                    data-theme="rose" aria-label="Rose theme"></button>
+
+            <button type="button" class="theme-dot theme-lavender"
+                    data-theme="lavender" aria-label="Lavender theme"></button>
+
+            <button type="button" class="theme-dot theme-peach"
+                    data-theme="peach" aria-label="Peach theme"></button>
+
+            <button type="button" class="theme-dot theme-sky"
+                    data-theme="sky" aria-label="Sky theme"></button>
+
+            <button type="button" class="theme-dot theme-mint"
+                    data-theme="mint" aria-label="Mint theme"></button>
+
+            <button type="button" class="theme-dot theme-sage"
+                    data-theme="sage" aria-label="Sage theme"></button>
+
+            <button type="button" class="theme-dot theme-butter"
+                    data-theme="butter" aria-label="Butter theme"></button>
+
+            <button type="button" class="theme-dot theme-coral"
+                    data-theme="coral" aria-label="Coral theme"></button>
+
+            <button type="button" class="theme-dot theme-plum"
+                    data-theme="plum" aria-label="Plum theme"></button>
+
+            <button type="button" class="theme-dot theme-ocean"
+                    data-theme="ocean" aria-label="Ocean theme"></button>
+
+            <button type="button" class="theme-dot theme-cocoa"
+                    data-theme="cocoa" aria-label="Cocoa theme"></button>
+
+            <button type="button" class="theme-dot theme-midnight"
+                    data-theme="midnight" aria-label="Midnight theme"></button>
+
+        </div>
+
+    </div>
+
+    <div class="header-right">
+
+        <button
+            type="button"
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle dark mode"
+        >
+            ◐
+        </button>
+
+        <button
+            type="button"
+            class="notification-button"
+            aria-label="Notifications"
+        >
+            ♡
+        </button>
+
+        <div class="female-profile">
+
+            <div class="female-profile-avatar">
+                U
+            </div>
+
+            <div class="female-profile-info">
+                <strong>User</strong>
+                <span>Style Lover</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     SAME SIDEBAR AS FEMALE HOME
+====================================================== -->
+
+<aside
+    class="female-sidebar"
+    id="femaleSidebar"
+>
+
+    <div class="sidebar-inner">
+
+        <div class="sidebar-section">
+
+            <span class="sidebar-section-title">
+                EXPLORE
+            </span>
+
+            <a
+                href="{{ url_for('main.female') }}"
+                class="sidebar-link"
+            >
+                <span class="sidebar-icon">⌂</span>
+                <span>Home</span>
+            </a>
+
+            <a
+                href="{{ url_for('main.hairstyles') }}"
+                class="sidebar-link"
+            >
+                <span class="sidebar-icon">✦</span>
+                <span>Hair Styles</span>
+            </a>
+
+            <a
+                href="{{ url_for('main.haircuts') }}"
+                class="sidebar-link"
+            >
+                <span class="sidebar-icon">✂</span>
+                <span>Hair Cutting</span>
+            </a>
+
+            <a
+                href="#"
+                class="sidebar-link"
+            >
+                <span class="sidebar-icon">♡</span>
+                <span>Hair Accessories</span>
+            </a>
+
+            <a
+                href="#"
+                class="sidebar-link"
+            >
+                <span class="sidebar-icon">✧</span>
+                <span>Occasional Looks</span>
+            </a>
+
+            <a
+                href="#"
+                class="sidebar-link"
+            >
+                <span class="sidebar-icon">◇</span>
+                <span>Hair Products</span>
+            </a>
+
+        </div>
+
+
+        <div class="sidebar-section">
+
+            <span class="sidebar-section-title">
+                MY STYLE
+            </span>
+
+            <!-- MY LOOKS ACTIVE -->
+
+            <a
+                href="{{ url_for('main.mylooks') }}"
+                class="sidebar-link active"
+            >
+                <span class="sidebar-icon">♡</span>
+                <span>My Looks</span>
+            </a>
+
+            <!-- FAVORITES -->
+
+            <a
+                href="{{ url_for('main.favorites') }}"
+                class="sidebar-link"
+            >
+                <span class="sidebar-icon">★</span>
+                <span>Favorites</span>
+            </a>
+
+        </div>
+
+
+        <div class="sidebar-section">
+
+            <span class="sidebar-section-title">
+                SERVICES
+            </span>
+
+            <a
+                href="#"
+                class="sidebar-link"
+            >
+                <span class="sidebar-icon">⌖</span>
+                <span>Nearest Salon</span>
+            </a>
+
+            <a
+                href="#"
+                class="sidebar-link"
+            >
+                <span class="sidebar-icon">✚</span>
+                <span>Nearest Hospital</span>
+            </a>
+
+        </div>
+
+
+        <div class="sidebar-section sidebar-bottom">
+
+            <a
+                href="#"
+                class="sidebar-link"
+            >
+                <span class="sidebar-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+            <a
+                href="#"
+                class="sidebar-link"
+            >
+                <span class="sidebar-icon">?</span>
+                <span>Help</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MOBILE NAVIGATION
+====================================================== -->
+
+<nav class="mobile-bottom-nav">
+
+    <a
+        href="{{ url_for('main.female') }}"
+        class="mobile-nav-item"
+    >
+        <span>⌂</span>
+        <small>Home</small>
+    </a>
+
+    <a
+        href="{{ url_for('main.hairstyles') }}"
+        class="mobile-nav-item"
+    >
+        <span>✦</span>
+        <small>Styles</small>
+    </a>
+
+    <a
+        href="{{ url_for('main.mylooks') }}"
+        class="mobile-nav-item active"
+    >
+        <span>♡</span>
+        <small>My Looks</small>
+    </a>
+
+    <a
+        href="{{ url_for('main.favorites') }}"
+        class="mobile-nav-item"
+    >
+        <span>★</span>
+        <small>Favorites</small>
+    </a>
+
+</nav>
+
+
+<!-- =====================================================
+     MY LOOKS CONTENT
+====================================================== -->
+
+<main class="mylooks-page">
+
+    <div class="mylooks-container">
+
+        <!-- PAGE HEADING -->
+
+        <section class="mylooks-heading">
+
+            <div>
+
+                <span class="mylooks-eyebrow">
+                    YOUR PERSONAL STYLE
+                </span>
+
+                <h1 class="mylooks-title">
+                    My Looks
+                </h1>
+
+                <p class="mylooks-subtitle">
+                    Keep your favourite hairstyles, saved looks,
+                    and recent style experiments all in one place.
+                </p>
+
+            </div>
+
+            <div class="mylooks-heading-actions">
+
+                <a
+                    href="{{ url_for('main.hairstyles') }}"
+                    class="mylooks-btn mylooks-btn-primary"
+                >
+                    ✦ Explore Hairstyles
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- HERO -->
+
+        <section class="mylooks-hero">
+
+            <div class="mylooks-hero-content">
+
+                <span class="mylooks-hero-label">
+                    ✨ YOUR STYLE JOURNEY
+                </span>
+
+                <h2 class="mylooks-hero-title">
+                    Your looks. Your collection.
+                </h2>
+
+                <p class="mylooks-hero-description">
+                    Save hairstyles you love and easily come back
+                    to them whenever you want to try a new look.
+                </p>
+
+                <a
+                    href="{{ url_for('main.hairstyles') }}"
+                    class="mylooks-btn mylooks-btn-primary"
+                >
+                    Discover Your Next Look
+                </a>
+
+            </div>
+
+            <div class="mylooks-hero-decoration">
+                <span>✦</span>
+            </div>
+
+        </section>
+
+
+        <!-- SAVED LOOKS -->
+
+        <section class="mylooks-section">
+
+            <div class="mylooks-section-header">
+
+                <div>
+
+                    <h2 class="mylooks-section-title">
+                        Saved Looks
+
+                        <span
+                            class="mylooks-section-count"
+                            id="savedCount"
+                        >
+                            3
+                        </span>
+                    </h2>
+
+                    <p class="mylooks-section-description">
+                        Hairstyles you've chosen to keep.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="mylooks-grid"
+                id="savedLooksGrid"
+            >
+
+                <!-- LOOK 1 -->
+
+                <article
+                    class="mylooks-card"
+                    data-look-id="1"
+                >
+
+                    <div class="mylooks-card-image-wrap">
+
+                        <img
+                            src="{{ url_for('static', filename='images/hairstyles/long-layers.jpg') }}"
+                            alt="Long Layers hairstyle"
+                            class="mylooks-card-image"
+                        >
+
+                        <span class="mylooks-card-badge">
+                            Saved
+                        </span>
+
+                        <button
+                            type="button"
+                            class="mylooks-card-favorite is-active"
+                            data-favorite
+                            aria-label="Remove favorite"
+                        >
+                            ♥
+                        </button>
+
+                    </div>
+
+                    <div class="mylooks-card-content">
+
+                        <span class="mylooks-card-category">
+                            Hairstyle
+                        </span>
+
+                        <h3 class="mylooks-card-title">
+                            Long Layers
+                        </h3>
+
+                        <p class="mylooks-card-description">
+                            Soft flowing layers with a natural finish.
+                        </p>
+
+                        <div class="mylooks-card-footer">
+
+                            <span class="mylooks-card-date">
+                                Saved recently
+                            </span>
+
+                            <div class="mylooks-card-actions">
+
+                                <a
+                                    href="{{ url_for('main.styleme') }}?style=Long%20Layers"
+                                    class="mylooks-try-link"
+                                >
+                                    Try Again
+                                </a>
+
+                                <button
+                                    type="button"
+                                    class="mylooks-delete-btn"
+                                    data-delete
+                                    aria-label="Delete Long Layers"
+                                >
+                                    Remove
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- LOOK 2 -->
+
+                <article
+                    class="mylooks-card"
+                    data-look-id="2"
+                >
+
+                    <div class="mylooks-card-image-wrap">
+
+                        <img
+                            src="{{ url_for('static', filename='images/hairstyles/soft-waves.jpg') }}"
+                            alt="Soft Waves hairstyle"
+                            class="mylooks-card-image"
+                        >
+
+                        <span class="mylooks-card-badge">
+                            Saved
+                        </span>
+
+                        <button
+                            type="button"
+                            class="mylooks-card-favorite is-active"
+                            data-favorite
+                            aria-label="Remove favorite"
+                        >
+                            ♥
+                        </button>
+
+                    </div>
+
+                    <div class="mylooks-card-content">
+
+                        <span class="mylooks-card-category">
+                            Hairstyle
+                        </span>
+
+                        <h3 class="mylooks-card-title">
+                            Soft Waves
+                        </h3>
+
+                        <p class="mylooks-card-description">
+                            Effortless waves with a soft elegant finish.
+                        </p>
+
+                        <div class="mylooks-card-footer">
+
+                            <span class="mylooks-card-date">
+                                Saved recently
+                            </span>
+
+                            <div class="mylooks-card-actions">
+
+                                <a
+                                    href="{{ url_for('main.styleme') }}?style=Soft%20Waves"
+                                    class="mylooks-try-link"
+                                >
+                                    Try Again
+                                </a>
+
+                                <button
+                                    type="button"
+                                    class="mylooks-delete-btn"
+                                    data-delete
+                                    aria-label="Delete Soft Waves"
+                                >
+                                    Remove
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- LOOK 3 -->
+
+                <article
+                    class="mylooks-card"
+                    data-look-id="3"
+                >
+
+                    <div class="mylooks-card-image-wrap">
+
+                        <img
+                            src="{{ url_for('static', filename='images/hairstyles/elegant-bob.jpg') }}"
+                            alt="Elegant Bob hairstyle"
+                            class="mylooks-card-image"
+                        >
+
+                        <span class="mylooks-card-badge">
+                            Saved
+                        </span>
+
+                        <button
+                            type="button"
+                            class="mylooks-card-favorite is-active"
+                            data-favorite
+                            aria-label="Remove favorite"
+                        >
+                            ♥
+                        </button>
+
+                    </div>
+
+                    <div class="mylooks-card-content">
+
+                        <span class="mylooks-card-category">
+                            Haircut
+                        </span>
+
+                        <h3 class="mylooks-card-title">
+                            Elegant Bob
+                        </h3>
+
+                        <p class="mylooks-card-description">
+                            A clean modern bob for a polished look.
+                        </p>
+
+                        <div class="mylooks-card-footer">
+
+                            <span class="mylooks-card-date">
+                                Saved recently
+                            </span>
+
+                            <div class="mylooks-card-actions">
+
+                                <a
+                                    href="{{ url_for('main.styleme') }}?style=Elegant%20Bob"
+                                    class="mylooks-try-link"
+                                >
+                                    Try Again
+                                </a>
+
+                                <button
+                                    type="button"
+                                    class="mylooks-delete-btn"
+                                    data-delete
+                                    aria-label="Delete Elegant Bob"
+                                >
+                                    Remove
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                class="mylooks-empty"
+                id="savedEmptyState"
+                style="display: none;"
+            >
+
+                <div class="mylooks-empty-icon">
+                    ♡
+                </div>
+
+                <h3 class="mylooks-empty-title">
+                    Your collection is waiting
+                </h3>
+
+                <p class="mylooks-empty-description">
+                    Explore hairstyles and save the ones you love.
+                    They'll appear here.
+                </p>
+
+                <a
+                    href="{{ url_for('main.hairstyles') }}"
+                    class="mylooks-btn mylooks-btn-primary"
+                >
+                    Explore Hairstyles
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- RECENTLY TRIED -->
+
+        <section class="mylooks-section">
+
+            <div class="mylooks-section-header">
+
+                <div>
+
+                    <h2 class="mylooks-section-title">
+                        Recently Tried
+                    </h2>
+
+                    <p class="mylooks-section-description">
+                        Your latest hairstyle experiments.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="mylooks-recent-grid">
+
+                <article class="mylooks-recent-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/hairstyles/soft-waves.jpg') }}"
+                        alt="Soft Waves"
+                        class="mylooks-recent-image"
+                    >
+
+                    <div class="mylooks-recent-info">
+
+                        <h3 class="mylooks-recent-title">
+                            Soft Waves
+                        </h3>
+
+                        <p class="mylooks-recent-date">
+                            Recently tried
+                        </p>
+
+                        <a
+                            href="{{ url_for('main.styleme') }}?style=Soft%20Waves"
+                            class="mylooks-recent-link"
+                        >
+                            Try Again →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <article class="mylooks-recent-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/hairstyles/long-layers.jpg') }}"
+                        alt="Long Layers"
+                        class="mylooks-recent-image"
+                    >
+
+                    <div class="mylooks-recent-info">
+
+                        <h3 class="mylooks-recent-title">
+                            Long Layers
+                        </h3>
+
+                        <p class="mylooks-recent-date">
+                            Recently tried
+                        </p>
+
+                        <a
+                            href="{{ url_for('main.styleme') }}?style=Long%20Layers"
+                            class="mylooks-recent-link"
+                        >
+                            Try Again →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <article class="mylooks-recent-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/hairstyles/elegant-bob.jpg') }}"
+                        alt="Elegant Bob"
+                        class="mylooks-recent-image"
+                    >
+
+                    <div class="mylooks-recent-info">
+
+                        <h3 class="mylooks-recent-title">
+                            Elegant Bob
+                        </h3>
+
+                        <p class="mylooks-recent-date">
+                            Recently tried
+                        </p>
+
+                        <a
+                            href="{{ url_for('main.styleme') }}?style=Elegant%20Bob"
+                            class="mylooks-recent-link"
+                        >
+                            Try Again →
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script
+    src="{{ url_for('static', filename='js/mylooks.js') }}"
+></script>
+
+</body>
+</html>

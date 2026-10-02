@@ -70,95 +70,19 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     }
 
-
-    /* =================================================
-       THEME COLORS
-    ================================================== */
-
-    const themeButtons =
-        document.querySelectorAll(".theme-color");
-
-    const selectedThemeName =
-        document.getElementById("selectedThemeName");
-
-
-    const themeNames = {
-        rose: "Rose",
-        lavender: "Lavender",
-        peach: "Peach",
-        sky: "Sky",
-        mint: "Mint",
-        sage: "Sage",
-        butter: "Butter",
-        coral: "Coral",
-        plum: "Plum",
-        ocean: "Ocean",
-        cocoa: "Cocoa",
-        midnight: "Midnight"
-    };
-
-
-    function applyTheme(theme) {
-
-        document.documentElement.setAttribute(
-            "data-theme",
-            theme
-        );
-
-        themeButtons.forEach(function (button) {
-
-            button.classList.toggle(
-                "active",
-                button.dataset.theme === theme
-            );
-        });
-
-
-        if (selectedThemeName) {
-
-            selectedThemeName.textContent =
-                themeNames[theme] || theme;
-        }
-
-
-        localStorage.setItem(
-            "styleMyHairTheme",
-            theme
-        );
-    }
-
-
-    themeButtons.forEach(function (button) {
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                applyTheme(
-                    button.dataset.theme
-                );
-
-            }
-        );
-
-    });
-
-
-    const savedTheme =
-        localStorage.getItem("styleMyHairTheme");
-
-
-    if (savedTheme && themeNames[savedTheme]) {
-        applyTheme(savedTheme);
-    }
-
+/* =================================================
+   THEME COLORS
+   SAME THEME AS FEMALE HOME PAGE
+================================================== */
 
     /* =================================================
        SEARCH
     ================================================== */
 
     const searchInput =
-        document.getElementById("hairstyleSearch");
+        document.getElementById(
+            "hairstyleSearch"
+        );
 
     const clearSearch =
         document.getElementById(
@@ -181,13 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-    /*
-       IMPORTANT:
-       Each group/section is detected automatically.
-       This allows the heading + cards to disappear
-       together when a filter is selected.
-    */
-
     const resultSections =
         document.querySelectorAll(
             ".hairstyle-results > section, " +
@@ -200,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =================================================
-       GET CARD INFORMATION
+       CARD FILTER
     ================================================== */
 
     function cardMatchesFilter(card) {
@@ -265,10 +182,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let visibleCount = 0;
 
 
-        /*
-           First hide/show individual cards.
-        */
-
         cards.forEach(function (card) {
 
             const name =
@@ -276,42 +189,35 @@ document.addEventListener("DOMContentLoaded", function () {
                     card.dataset.name || ""
                 ).toLowerCase();
 
-
             const type =
                 (
                     card.dataset.type || ""
                 ).toLowerCase();
-
 
             const length =
                 (
                     card.dataset.length || ""
                 ).toLowerCase();
 
-
             const texture =
                 (
                     card.dataset.texture || ""
                 ).toLowerCase();
-
 
             const color =
                 (
                     card.dataset.color || ""
                 ).toLowerCase();
 
-
             const cut =
                 (
                     card.dataset.cut || ""
                 ).toLowerCase();
 
-
             const category =
                 (
                     card.dataset.category || ""
                 ).toLowerCase();
-
 
             const searchableText =
                 card.textContent.toLowerCase();
@@ -351,11 +257,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        /*
-           IMPORTANT PART:
-           Hide the ENTIRE section when none
-           of its cards are visible.
-        */
+        /* =================================================
+           HIDE EMPTY SECTIONS
+        ================================================== */
 
         resultSections.forEach(function (section) {
 
@@ -386,25 +290,17 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
 
-            if (sectionHasVisibleCard) {
-
-                section.style.display = "";
-
-            } else {
-
-                section.style.display = "none";
-
-            }
+            section.style.display =
+                sectionHasVisibleCard
+                    ? ""
+                    : "none";
 
         });
 
 
-        /*
-           Extra fallback:
-           Find the nearest section for every card.
-           This handles slightly different HTML
-           structures safely.
-        */
+        /* =================================================
+           EXTRA SECTION FALLBACK
+        ================================================== */
 
         cards.forEach(function (card) {
 
@@ -443,7 +339,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             section.style.display =
-                visibleInSection ? "" : "none";
+                visibleInSection
+                    ? ""
+                    : "none";
 
         });
 
@@ -609,12 +507,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     ).toLowerCase();
 
 
-                /*
-                   Remove active state from
-                   top category buttons when
-                   using sidebar filters.
-                */
-
                 categoryButtons.forEach(
                     function (item) {
 
@@ -706,10 +598,14 @@ document.addEventListener("DOMContentLoaded", function () {
             "click",
             function () {
 
-                button.classList.toggle("saved");
+                button.classList.toggle(
+                    "saved"
+                );
 
                 const saved =
-                    button.classList.contains("saved");
+                    button.classList.contains(
+                        "saved"
+                    );
 
 
                 button.textContent =
@@ -718,7 +614,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 button.setAttribute(
                     "aria-pressed",
-                    saved ? "true" : "false"
+                    saved
+                        ? "true"
+                        : "false"
                 );
 
             }
@@ -729,6 +627,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =================================================
        TRY ON BUTTONS
+       OPEN EXTERNAL TRY-ON PAGE
     ================================================== */
 
     const tryButtons =
@@ -741,10 +640,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         button.addEventListener(
             "click",
-            function () {
+            function (event) {
+
+                event.preventDefault();
 
                 button.classList.add(
                     "loading"
+                );
+
+                window.open(
+                    "https://hair-morphing.preview.emergentagent.com/",
+                    "_blank"
                 );
 
             }
@@ -767,55 +673,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         heroTryStyle.addEventListener(
             "click",
-            function () {
+            function (event) {
 
-                const firstTryButton =
-                    document.querySelector(
-                        ".hairstyle-try"
-                    );
+                event.preventDefault();
 
-
-                if (firstTryButton) {
-
-                    window.location.href =
-                        firstTryButton.href;
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =================================================
-       STYLEME CTA
-    ================================================== */
-
-    const styleMeButton =
-        document.getElementById(
-            "styleMeButton"
-        );
-
-
-    if (styleMeButton) {
-
-        styleMeButton.addEventListener(
-            "click",
-            function () {
-
-                const firstTryButton =
-                    document.querySelector(
-                        ".hairstyle-try"
-                    );
-
-
-                if (firstTryButton) {
-
-                    window.location.href =
-                        firstTryButton.href;
-
-                }
+                window.open(
+                    "https://hair-morphing.preview.emergentagent.com/",
+                    "_blank"
+                );
 
             }
         );
@@ -853,6 +718,34 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
 
                 }
+
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       STYLEME CTA
+       OPEN EXTERNAL TRY-ON PAGE
+    ================================================== */
+
+    const styleMeButton =
+        document.getElementById(
+            "styleMeButton"
+        );
+
+
+    if (styleMeButton) {
+
+        styleMeButton.addEventListener(
+            "click",
+            function () {
+
+                window.open(
+                    "https://hair-morphing.preview.emergentagent.com/",
+                    "_blank"
+                );
 
             }
         );
@@ -923,25 +816,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-   /* =================================================
-   BACK BUTTON
-================================================= */
+    /* =================================================
+       BACK BUTTON
+    ================================================== */
 
-const pageBackButton =
-    document.getElementById("pageBackButton");
+    const pageBackButton =
+        document.getElementById(
+            "pageBackButton"
+        );
 
-if (pageBackButton) {
 
-    pageBackButton.addEventListener(
-        "click",
-        function () {
+    if (pageBackButton) {
 
-            window.location.href = "/female";
+        pageBackButton.addEventListener(
+            "click",
+            function () {
 
-        }
-    );
+                window.location.href =
+                    "/female";
 
-}
+            }
+        );
+
+    }
+
 
     /* =================================================
        INITIAL FILTER

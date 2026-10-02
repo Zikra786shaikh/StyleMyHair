@@ -617,57 +617,217 @@ hairLengthOptions.forEach(function (option) {
 
     });
 
+/* =====================================================
+   THEME — CONTINUE HOME PAGE THEME
+===================================================== */
+
+const themeNames = {
+    rose: "Rose",
+    lavender: "Lavender",
+    peach: "Peach",
+    sky: "Sky Blue",
+    mint: "Mint",
+    sage: "Sage",
+    butter: "Butter",
+    coral: "Coral",
+    plum: "Plum",
+    ocean: "Ocean",
+    cocoa: "Cocoa",
+    midnight: "Midnight"
+};
 
 
-    /* =====================================================
-       THEME
-    ====================================================== */
+/* =====================================================
+   THEME BUTTONS
+===================================================== */
 
-    if (themeToggle) {
+const themeButtons =
+    document.querySelectorAll(".theme-color");
 
-        themeToggle.addEventListener(
-            "click",
-            function () {
-
-                document.body.classList.toggle(
-                    "light"
-                );
+const selectedThemeName =
+    document.getElementById("selectedThemeName");
 
 
-                const isLight =
-                    document.body.classList.contains(
-                        "light"
-                    );
+/* =====================================================
+   LOAD HOME PAGE THEME
+===================================================== */
+
+function getSavedTheme() {
+
+    return localStorage.getItem(
+        "stylemyhair-female-theme"
+    );
+
+}
 
 
-                localStorage.setItem(
-                    "smh-theme",
-                    isLight
-                        ? "light"
-                        : "dark"
-                );
+/* =====================================================
+   APPLY THEME
+===================================================== */
 
-            }
-        );
+function applyTheme(theme, save = false) {
 
+    if (!themeNames[theme]) {
 
-        const savedTheme =
-            localStorage.getItem(
-                "smh-theme"
-            );
-
-
-        if (savedTheme === "light") {
-
-            document.body.classList.add(
-                "light"
-            );
-
-        }
+        theme = "rose";
 
     }
 
 
+    /* MAIN THEME */
+
+    document.documentElement.setAttribute(
+        "data-theme",
+        theme
+    );
+
+
+    /* REMOVE OLD LIGHT MODE */
+
+    document.body.classList.remove(
+        "light"
+    );
+
+
+    /* ACTIVE THEME BUTTON */
+
+    themeButtons.forEach(function (button) {
+
+        button.classList.toggle(
+            "active",
+            button.dataset.theme === theme
+        );
+
+    });
+
+
+    /* THEME NAME */
+
+    if (selectedThemeName) {
+
+        selectedThemeName.textContent =
+            themeNames[theme];
+
+    }
+
+
+    /* SAVE */
+
+    if (save) {
+
+        localStorage.setItem(
+            "stylemyhair-female-theme",
+            theme
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIAL THEME
+===================================================== */
+
+const savedTheme =
+    getSavedTheme();
+
+
+if (
+    savedTheme &&
+    themeNames[savedTheme]
+) {
+
+    applyTheme(savedTheme);
+
+} else {
+
+    applyTheme("rose");
+
+}
+
+
+/* =====================================================
+   THEME BUTTONS
+===================================================== */
+
+themeButtons.forEach(function (button) {
+
+    button.addEventListener(
+        "click",
+        function () {
+
+            const selectedTheme =
+                button.dataset.theme;
+
+
+            if (
+                !themeNames[selectedTheme]
+            ) {
+
+                return;
+
+            }
+
+
+            applyTheme(
+                selectedTheme,
+                true
+            );
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   OLD DARK/LIGHT BUTTON
+===================================================== */
+
+if (themeToggle) {
+
+    themeToggle.addEventListener(
+        "click",
+        function () {
+
+            document.body.classList.toggle(
+                "light"
+            );
+
+
+            const isLight =
+                document.body.classList.contains(
+                    "light"
+                );
+
+
+            if (isLight) {
+
+                document.documentElement.setAttribute(
+                    "data-theme",
+                    "rose"
+                );
+
+            } else {
+
+                const currentTheme =
+                    document.documentElement.getAttribute(
+                        "data-theme"
+                    ) || "midnight";
+
+
+                document.documentElement.setAttribute(
+                    "data-theme",
+                    currentTheme
+                );
+
+            }
+
+        }
+    );
+
+}
 
     /* =====================================================
        MESSAGE

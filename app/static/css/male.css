@@ -4214,4 +4214,345 @@ img {
 
     -webkit-backface-visibility: hidden;
 
+}/* =====================================================
+   HERO - MODEL LEFT / VIDEO RIGHT
+===================================================== */
+
+.male-hero {
+    min-height: 700px;
+
+    position: relative;
+    overflow: hidden;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 60px;
+
+    padding: 60px 7%;
+
+    background:
+        radial-gradient(
+            circle at 80% 40%,
+            color-mix(
+                in srgb,
+                var(--primary) 18%,
+                transparent
+            ),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            var(--background),
+            var(--surface)
+        );
+}
+
+
+/* =====================================================
+   MODEL - LEFT
+===================================================== */
+
+.hero-visual {
+    grid-column: 1;
+    grid-row: 1;
+
+    min-height: 600px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =====================================================
+   VIDEO - RIGHT
+===================================================== */
+
+.hero-video {
+    grid-column: 2;
+    grid-row: 1;
+
+    width: 380px;
+    height: 600px;
+
+    justify-self: center;
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    background: #000;
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow);
+
+    cursor: pointer;
+
+    z-index: 5;
+}
+
+.hero-video video {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    background: #000;
+
+    cursor: pointer;
+}
+/* =====================================================
+   LARGER HERO VIDEO
+===================================================== */
+
+.hero-video {
+    width: 400px;
+    height: 700px;
+    justify-self: center;
+}
+
+.hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.hero-video {
+    width: 440px;
+    height: 680px;
+    justify-self: center;
+    transform: translateY(-100px);
+}
+/* =====================================================
+   MALE HERO VIDEO - MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .male-hero .hero-video {
+        width: min(88vw, 380px);
+        height: auto;
+        aspect-ratio: 9 / 16;
+
+        justify-self: center;
+        align-self: center;
+
+        transform: none;
+        margin: 20px auto 0;
+    }
+
+    .male-hero .hero-video video {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .male-hero .hero-video {
+        width: 88vw;
+        max-width: 340px;
+        aspect-ratio: 9 / 16;
+        height: auto;
+
+        margin: 15px auto 0;
+    }
+}
+/* =====================================================
+   FORCE MALE VIDEO MOBILE FIX
+===================================================== */
+
+@media screen and (max-width: 900px) {
+
+    .male-hero .hero-video {
+        width: 85vw !important;
+        max-width: 360px !important;
+        height: 570px !important;
+
+        grid-column: 1 !important;
+        grid-row: 3 !important;
+
+        margin: 25px auto !important;
+        justify-self: center !important;
+        align-self: center !important;
+
+        transform: none !important;
+
+        border-radius: 22px;
+        overflow: hidden;
+    }
+
+    .male-hero .hero-video video {
+        width: 100% !important;
+        height: 100% !important;
+
+        max-width: none !important;
+        max-height: none !important;
+
+        object-fit: cover !important;
+        object-position: center !important;
+
+        display: block !important;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+
+    .male-hero .hero-video {
+        width: 88vw !important;
+        max-width: 330px !important;
+        height: 520px !important;
+
+        margin: 20px auto !important;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+
+    .male-hero .hero-video {
+        width: 90vw !important;
+        max-width: 300px !important;
+        height: 470px !important;
+    }
+}
+/* =====================================================
+   MALE MOBILE - CENTER EVERYTHING
+===================================================== */
+
+@media screen and (max-width: 900px) {
+
+    .male-main {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .male-hero {
+        width: 100% !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        text-align: center !important;
+
+        padding: 40px 20px !important;
+        gap: 30px !important;
+    }
+
+    /* ALL HERO CONTENT CENTER */
+    .male-hero .hero-content {
+        width: 100% !important;
+        max-width: 600px !important;
+
+        margin: 0 auto !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+
+        text-align: center !important;
+    }
+
+    /* MODEL / IMAGE CENTER */
+    .male-hero .hero-visual {
+        width: 100% !important;
+        max-width: 420px !important;
+
+        margin: 0 auto !important;
+
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    /* VIDEO CENTER */
+    .male-hero .hero-video {
+        width: min(88vw, 360px) !important;
+        height: 560px !important;
+
+        margin: 0 auto !important;
+
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+
+        transform: none !important;
+    }
+
+    .male-hero .hero-video video {
+        width: 100% !important;
+        height: 100% !important;
+
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+}
+
+
+/* SMALL PHONES */
+@media screen and (max-width: 600px) {
+
+    .male-hero {
+        padding: 30px 15px !important;
+    }
+
+    .male-hero .hero-video {
+        width: 88vw !important;
+        max-width: 330px !important;
+        height: 520px !important;
+    }
+}
+/* =====================================================
+   MOBILE ONLY - SWAP VIDEO AND PHOTO POSITIONS
+===================================================== */
+
+@media screen and (max-width: 900px) {
+
+    .male-hero {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto auto !important;
+    }
+
+    /* VIDEO → PHOTO'S POSITION */
+    .male-hero .hero-video {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+
+        width: min(88vw, 360px) !important;
+        height: 560px !important;
+
+        justify-self: center !important;
+        margin: 0 auto !important;
+        transform: none !important;
+    }
+
+    /* PHOTOS → VIDEO'S POSITION */
+    .male-hero .hero-visual {
+        grid-column: 1 !important;
+        grid-row: 3 !important;
+
+        width: 100% !important;
+        margin: 0 auto !important;
+
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
 }

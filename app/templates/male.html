@@ -192,17 +192,7 @@
         </button>
 
 
-        <button
-            class="side-link"
-            data-scroll="accessoriesSection"
-            type="button"
-        >
-
-            <span>◈</span>
-
-            <label>Accessories</label>
-
-        </button>
+    
 
 
         <button
@@ -233,36 +223,8 @@
         </button>
 
 
-        <span class="nav-heading second-heading">
-            SERVICES
-        </span>
-
-
-        <button
-            class="side-link"
-            id="salonButton"
-            type="button"
-        >
-
-            <span>✂</span>
-
-            <label>Nearest Salon</label>
-
-        </button>
-
-
-        <button
-            class="side-link"
-            id="hospitalButton"
-            type="button"
-        >
-
-            <span>✚</span>
-
-            <label>Nearest Hospital</label>
-
-        </button>
-
+    
+        
     </nav>
 
 
@@ -530,6 +492,58 @@
 
             </h1>
 
+        <!-- HERO IMAGE -->
+
+        <div class="hero-visual">
+
+            <div class="visual-ring"></div>
+
+            <div class="visual-ring ring-two"></div>
+
+
+            <div class="male-photo-placeholder">
+
+                <img
+                    src="{{ url_for('static', filename='images/hero-male.jpg') }}"
+                    alt="StyleMyHair Men's Hero Model"
+                    class="hero-male-image"
+                >
+
+            </div>
+
+
+            <div class="floating-style-card card-top">
+
+                <span>✂</span>
+
+                <div>
+
+                    <strong>Trending</strong>
+
+                    <small>Textured Crop</small>
+
+                </div>
+
+            </div>
+
+
+            <div class="floating-style-card card-bottom">
+
+                <span>★</span>
+
+                <div>
+
+                    <strong>Popular</strong>
+
+                    <small>Low Fade</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+           
 
             <p>
 
@@ -599,58 +613,20 @@
             </div>
 
         </div>
+         <div class="hero-video">
+    <video
+        autoplay
+        loop
+        playsinline
+        
+    >
+        <source
+            src="{{ url_for('static', filename='videos/male-style.mp4') }}"
+            type="video/mp4"
+        >
+    </video>
+</div>
 
-
-        <!-- HERO IMAGE -->
-
-        <div class="hero-visual">
-
-            <div class="visual-ring"></div>
-
-            <div class="visual-ring ring-two"></div>
-
-
-            <div class="male-photo-placeholder">
-
-                <img
-                    src="{{ url_for('static', filename='images/hero-male.jpg') }}"
-                    alt="StyleMyHair Men's Hero Model"
-                    class="hero-male-image"
-                >
-
-            </div>
-
-
-            <div class="floating-style-card card-top">
-
-                <span>✂</span>
-
-                <div>
-
-                    <strong>Trending</strong>
-
-                    <small>Textured Crop</small>
-
-                </div>
-
-            </div>
-
-
-            <div class="floating-style-card card-bottom">
-
-                <span>★</span>
-
-                <div>
-
-                    <strong>Popular</strong>
-
-                    <small>Low Fade</small>
-
-                </div>
-
-            </div>
-
-        </div>
 
     </section>
 
@@ -699,27 +675,7 @@
             </button>
 
 
-            <button
-                class="quick-card"
-                id="quickSalon"
-                type="button"
-            >
-
-                <div class="quick-icon">
-                    ◉
-                </div>
-
-                <div>
-
-                    <strong>Nearest Salon</strong>
-
-                    <span>Find grooming nearby</span>
-
-                </div>
-
-                <b>→</b>
-
-            </button>
+        
 
 
             <button
@@ -766,6 +722,28 @@
                 <b>→</b>
 
             </button>
+             <button
+                class="quick-card"
+                data-scroll="accessoriesSection"
+                type="button"
+            >
+
+                <div class="quick-icon">
+                    ◈
+                </div>
+
+                <div>
+
+                    <strong>Accessories</strong>
+
+                    <span>Design Your Look</span>
+
+                </div>
+
+                <b>→</b>
+
+            </button>
+
 
         </div>
 
@@ -1747,83 +1725,6 @@
          NEARBY SERVICES
     ================================================== -->
 
-    <section class="nearby-section">
-
-        <div class="section-heading">
-
-            <div>
-
-                <span>AROUND YOU</span>
-
-                <h2>Nearby Services</h2>
-
-            </div>
-
-        </div>
-
-
-        <div class="nearby-grid">
-
-
-            <button
-                class="nearby-card"
-                id="nearbySalon"
-                type="button"
-            >
-
-                <div class="nearby-icon">
-                    ✂
-                </div>
-
-                <div>
-
-                    <span>FIND NEARBY</span>
-
-                    <strong>Salon / Barber</strong>
-
-                    <small>
-                        Discover grooming
-                        locations around you.
-                    </small>
-
-                </div>
-
-                <b>→</b>
-
-            </button>
-
-
-            <button
-                class="nearby-card"
-                id="nearbyHospital"
-                type="button"
-            >
-
-                <div class="nearby-icon hospital">
-                    ✚
-                </div>
-
-                <div>
-
-                    <span>HEALTHCARE</span>
-
-                    <strong>Nearest Hospital</strong>
-
-                    <small>
-                        Quickly access nearby
-                        healthcare facilities.
-                    </small>
-
-                </div>
-
-                <b>→</b>
-
-            </button>
-
-        </div>
-
-    </section>
-
 
     <!-- =================================================
          FAVORITES
@@ -1971,7 +1872,45 @@
 <script
     src="{{ url_for('static', filename='js/male.js') }}"
 ></script>
+<script>
+const heroVideo = document.querySelector('.hero-video video');
 
+if (heroVideo) {
+
+    // Click = play / pause
+    heroVideo.addEventListener('click', () => {
+
+        if (heroVideo.paused) {
+            heroVideo.play().catch(() => {});
+        } else {
+            heroVideo.pause();
+        }
+
+    });
+
+    // Pause when video leaves screen
+    const videoObserver = new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+                    heroVideo.play().catch(() => {});
+                } else {
+                    heroVideo.pause();
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.25
+        }
+    );
+
+    videoObserver.observe(heroVideo);
+}
+</script>
 </body>
 
 </html>

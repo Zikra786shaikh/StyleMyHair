@@ -186,21 +186,6 @@
 
         </a>
 
-
-        <a
-            href="#occasions"
-            class="sidebar-link"
-        >
-
-            <span class="sidebar-icon">✿</span>
-
-            <span>
-                Occasional Looks
-            </span>
-
-        </a>
-
-
         <a
             href="#products"
             class="sidebar-link"
@@ -220,11 +205,8 @@
         </p>
 
 
-        <a
-            href="#mylooks"
-            class="sidebar-link"
-        >
-
+        <a href="{{ url_for('main.mylooks') }}"class="sidebar-link">
+    
             <span class="sidebar-icon">◉</span>
 
             <span>
@@ -234,43 +216,12 @@
         </a>
 
 
-        <a
-            href="#favorites"
-            class="sidebar-link"
-        >
+        <a href="{{ url_for('main.favorites') }}" class="sidebar-link">
 
             <span class="sidebar-icon">♥</span>
 
             <span>
                 Favorites
-            </span>
-
-        </a>
-
-
-        <a
-            href="#salon"
-            class="sidebar-link"
-        >
-
-            <span class="sidebar-icon">⌖</span>
-
-            <span>
-                Nearest Salon
-            </span>
-
-        </a>
-
-
-        <a
-            href="#hospital"
-            class="sidebar-link"
-        >
-
-            <span class="sidebar-icon">+</span>
-
-            <span>
-                Nearest Hospital
             </span>
 
         </a>
@@ -543,6 +494,7 @@
             </h1>
 
         </div>
+        
 
 
         <!-- HEADER ACTIONS -->
@@ -638,7 +590,90 @@
                     that feels like you.
 
                 </h2>
+                 <!-- HERO VISUAL -->
 
+            <div class="hero-visual">
+
+                <div class="hero-glow"></div>
+
+
+                <div class="hero-main-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/female-hero-1.jpg') }}"
+                        alt="Elegant female hairstyle"
+                    >
+
+                </div>
+
+
+                <div class="hero-small-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/female-hero-2.jpg') }}"
+                        alt="Beautiful hairstyle"
+                    >
+
+                </div>
+
+
+                <div class="hero-floating-card card-top">
+
+                    <span class="floating-icon">
+                        ✦
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Trending
+                        </strong>
+
+                        <small>
+                            This season
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-floating-card card-bottom">
+
+                    <span class="heart-symbol">
+                        ♥
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Your Style
+                        </strong>
+
+                        <small>
+                            Make it yours
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <span class="hero-decoration decoration-one">
+                    ✿
+                </span>
+
+                <span class="hero-decoration decoration-two">
+                    ✦
+                </span>
+
+                <span class="hero-decoration decoration-three">
+                    ❀
+                </span>
+
+            </div>
+
+                
 
                 <p>
 
@@ -724,90 +759,19 @@
 
             </div>
 
-
-            <!-- HERO VISUAL -->
-
-            <div class="hero-visual">
-
-                <div class="hero-glow"></div>
-
-
-                <div class="hero-main-image">
-
-                    <img
-                        src="{{ url_for('static', filename='images/female-hero-1.jpg') }}"
-                        alt="Elegant female hairstyle"
-                    >
-
-                </div>
-
-
-                <div class="hero-small-image">
-
-                    <img
-                        src="{{ url_for('static', filename='images/female-hero-2.jpg') }}"
-                        alt="Beautiful hairstyle"
-                    >
-
-                </div>
-
-
-                <div class="hero-floating-card card-top">
-
-                    <span class="floating-icon">
-                        ✦
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            Trending
-                        </strong>
-
-                        <small>
-                            This season
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="hero-floating-card card-bottom">
-
-                    <span class="heart-symbol">
-                        ♥
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            Your Style
-                        </strong>
-
-                        <small>
-                            Make it yours
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <span class="hero-decoration decoration-one">
-                    ✿
-                </span>
-
-                <span class="hero-decoration decoration-two">
-                    ✦
-                </span>
-
-                <span class="hero-decoration decoration-three">
-                    ❀
-                </span>
-
-            </div>
-
+        <div class="hero-video">
+    <video
+        autoplay
+        loop
+        playsinline
+    >
+        <source
+            src="{{ url_for('static', filename='videos/femal-style.mp4') }}"
+            type="video/mp4"
+        >
+    </video>
+</div>
+           
         </section>
 
 
@@ -1148,13 +1112,13 @@
 
 
                         <a
-                            href="{{ url_for('main.female_try_on') }}?style=long-layers"
-                            class="try-button"
-                        >
-                            Try On
-                            →
-                        </a>
-
+    href="https://hair-morphing.preview.emergentagent.com/"
+    class="try-on-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Try On
+</a>
                     </div>
 
                 </article>
@@ -1230,12 +1194,13 @@
 
 
                         <a
-                            href="{{ url_for('main.female_try_on') }}?style=modern-bob"
-                            class="try-button"
-                        >
-                            Try On
-                            →
-                        </a>
+    href="https://hair-morphing.preview.emergentagent.com/"
+    class="try-on-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Try On
+</a>
 
                     </div>
 
@@ -1311,14 +1276,14 @@
                         </div>
 
 
-                        <a
-                            href="{{ url_for('main.female_try_on') }}?style=soft-waves"
-                            class="try-button"
-                        >
-                            Try On
-                            →
-                        </a>
-
+                       <a
+    href="https://hair-morphing.preview.emergentagent.com/"
+    class="try-on-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Try On
+</a>
                     </div>
 
                 </article>
@@ -1394,12 +1359,13 @@
 
 
                         <a
-                            href="{{ url_for('main.female_try_on') }}?style=defined-curls"
-                            class="try-button"
-                        >
-                            Try On
-                            →
-                        </a>
+    href="https://hair-morphing.preview.emergentagent.com/"
+    class="try-on-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Try On
+</a>
 
                     </div>
 
@@ -1476,12 +1442,13 @@
 
 
                         <a
-                            href="{{ url_for('main.female_try_on') }}?style=elegant-braids"
-                            class="try-button"
-                        >
-                            Try On
-                            →
-                        </a>
+    href="https://hair-morphing.preview.emergentagent.com/"
+    class="try-on-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Try On
+</a>
 
                     </div>
 
@@ -1558,12 +1525,13 @@
 
 
                         <a
-                            href="{{ url_for('main.female_try_on') }}?style=classic-updo"
-                            class="try-button"
-                        >
-                            Try On
-                            →
-                        </a>
+    href="https://hair-morphing.preview.emergentagent.com/"
+    class="try-on-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Try On
+</a>
 
                     </div>
 
@@ -2178,81 +2146,7 @@
              NEARBY
         ================================================== -->
 
-        <section class="nearby-section">
-
-            <article
-                class="nearby-card"
-                id="salon"
-            >
-
-                <div class="nearby-icon">
-                    ⌖
-                </div>
-
-                <div>
-
-                    <span>
-                        FIND NEARBY
-                    </span>
-
-                    <h2>
-                        Nearest Salon
-                    </h2>
-
-                    <p>
-                        Discover salons around your location.
-                    </p>
-
-                    <button
-                        type="button"
-                        id="salonButton"
-                        class="small-button"
-                    >
-                        FIND A SALON →
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <article
-                class="nearby-card medical"
-                id="hospital"
-            >
-
-                <div class="nearby-icon">
-                    +
-                </div>
-
-                <div>
-
-                    <span>
-                        HAIR & WELLNESS
-                    </span>
-
-                    <h2>
-                        Nearest Hospital
-                    </h2>
-
-                    <p>
-                        Quickly locate nearby medical facilities.
-                    </p>
-
-                    <button
-                        type="button"
-                        id="hospitalButton"
-                        class="small-button"
-                    >
-                        FIND NEARBY →
-                    </button>
-
-                </div>
-
-            </article>
-
-        </section>
-
+        
 
         <!-- =================================================
              FINAL CTA
@@ -2464,6 +2358,49 @@
 
     });
 
+
+
+
+
+
+</script>
+<script>
+
+const heroVideo = document.querySelector('.hero-video video');
+
+if (heroVideo) {
+
+    /* CLICK VIDEO = PLAY / PAUSE */
+    heroVideo.addEventListener('click', () => {
+        if (heroVideo.paused) {
+            heroVideo.play().catch(() => {});
+        } else {
+            heroVideo.pause();
+        }
+    });
+
+
+    /* SCROLL AWAY = PAUSE / SCROLL BACK = PLAY */
+    const videoObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+                    heroVideo.play().catch(() => {});
+                } else {
+                    heroVideo.pause();
+                }
+
+            });
+        },
+        {
+            threshold: 0.25
+        }
+    );
+
+    videoObserver.observe(heroVideo);
+}
+</script>
 </script>
 ```
 

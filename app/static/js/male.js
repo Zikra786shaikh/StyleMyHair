@@ -851,31 +851,24 @@ function selectStyle(
 }
 
 
-tryButtons.forEach(
-    function(button) {
+/* =====================================================
+   TRY ON HAIRSTYLE
+===================================================== */
 
-        button.addEventListener(
-            "click",
-            function() {
+tryButtons.forEach(function(button) {
 
-                const style =
-                    this.dataset.style;
+    button.addEventListener("click", function(event) {
 
-                selectStyle(
-                    style
-                );
+        event.preventDefault();
+        event.stopPropagation();
 
-                openStyleModal(
-                    style
-                );
+        // Open Emergent AI Try-On website
+        window.location.href =
+            "https://hair-morphing.preview.emergentagent.com/";
 
-            }
-        );
+    });
 
-    }
-);
-
-
+});
 /* =====================================================
    MODAL
 ====================================================== */
