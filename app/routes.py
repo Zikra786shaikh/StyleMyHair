@@ -85,3 +85,33 @@ def favorites():
 @main.route("/mylooks")
 def mylooks():
     return render_template("mylooks.html")
+@main.route("/reels")
+def reels():
+    return render_template("reel.html")
+    # ================= SAVED REELS =================
+
+@main.route("/saved-reels")
+def saved_reels():
+    return render_template("saved_reel.html")
+
+@main.route("/reel")
+def reel():
+    return render_template("reels.html")
+    # ================= SAVED REELS =================
+
+@main.route("/saved-reel")
+def saved_reel():
+    return render_template("saved_reels.html")
+@main.route("/accessories")
+def accessories():
+    return render_template("Accessories.html")
+
+@main.route("/hair-products")
+def hair_products():
+    return render_template("hair_products.html")
+@main.route("/male/products")
+def male_products():
+    return render_template("male_products.html")
+@main.route("/settings")
+def settings():
+    return render_template("settings.html")

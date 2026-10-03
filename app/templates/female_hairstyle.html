@@ -173,54 +173,72 @@
                 </span>
 
             </a>
+            <!-- REELS -->
+
+        <a
+            href="{{ url_for('main.reels') }}"
+            class="sidebar-link"
+            data-section="reels"
+        >
+
+            <span class="sidebar-icon">🎬</span>
+
+            <span>
+                Reels
+            </span>
+
+        </a>
+
+
+        <!-- SAVED REELS -->
+
+        <a
+            href="{{ url_for('main.saved_reels') }}"
+            class="sidebar-link"
+            data-section="saved-reels"
+        >
+
+            <span class="sidebar-icon">🔖</span>
+
+            <span>
+                Saved Reels
+            </span>
+
+        </a>
+
 
 
             <a
-                href="{{ url_for('main.female') }}#accessories"
-                class="sidebar-link"
-            >
+            href="{{ url_for('main.accessories') }}"
+            class="sidebar-link"
+        >
 
-                <span class="sidebar-icon">
-                    ◇
-                </span>
+            <span>
+                🎀
+            </span>
 
-                <span>
-                    Accessories
-                </span>
+            Accessories
 
-            </a>
+        </a>
 
 
-            <a
-                href="{{ url_for('main.female') }}#occasions"
-                class="sidebar-link"
-            >
-
-                <span class="sidebar-icon">
-                    ✿
-                </span>
-
-                <span>
-                    Occasional Looks
-                </span>
-
-            </a>
+            
 
 
             <a
-                href="{{ url_for('main.female') }}#products"
-                class="sidebar-link"
-            >
+            href="{{ url_for('main.hair_products') }}"
+            class="sidebar-link"
+        >
 
-                <span class="sidebar-icon">
-                    ♡
-                </span>
+            <span class="sidebar-icon">
+                ♡
+            </span>
 
-                <span>
-                    Hair Products
-                </span>
+            <span>
+                Hair Products
+            </span>
 
-            </a>
+        </a>
 
 
             <p class="nav-label nav-label-space">
@@ -260,37 +278,7 @@
             </a>
 
 
-            <a
-                href="{{ url_for('main.female') }}#salon"
-                class="sidebar-link"
-            >
-
-                <span class="sidebar-icon">
-                    ⌖
-                </span>
-
-                <span>
-                    Nearest Salon
-                </span>
-
-            </a>
-
-
-            <a
-                href="{{ url_for('main.female') }}#hospital"
-                class="sidebar-link"
-            >
-
-                <span class="sidebar-icon">
-                    +
-                </span>
-
-                <span>
-                    Nearest Hospital
-                </span>
-
-            </a>
-
+           
         </nav>
 
 
@@ -399,22 +387,19 @@
 
         <div class="sidebar-footer">
 
-            <a
-                href="{{ url_for('main.female') }}#settings"
-                class="sidebar-footer-link"
-            >
-                ⚙
-                Settings
-            </a>
+            <button
+            class="bottom-control"
+            id="settingsButton"
+            type="button"
+        >
 
-            <a
-                href="{{ url_for('main.female') }}#help"
-                class="sidebar-footer-link"
-            >
-                ?
-                Help & Support
-            </a>
+            <a href="{{ url_for('main.settings') }}" class="sidebar-link">
+    <span class="sidebar-icon">⚙</span>
+    <span>Settings</span>
+</a>
 
+        </button>
+            
         </div>
 
     </aside>
@@ -1534,7 +1519,9 @@
 
     <script
         src="{{ url_for('static', filename='js/female_hairstyle.js') }}?v=1"
+        
     ></script>
+    
 
 </body>
 

@@ -128,19 +128,19 @@
 
 
         <a
-            href="{{ url_for('main.female') }}#hairstyles"
-            class="sidebar-link"
-        >
+                href="{{ url_for('main.female_hairstyles') }}"
+                class="sidebar-link active"
+            >
 
-            <span class="sidebar-icon">
-                ✦
-            </span>
+                <span class="sidebar-icon">
+                    ✦
+                </span>
 
-            <span>
-                Hair Styles
-            </span>
+                <span>
+                    Hair Styles
+                </span>
 
-        </a>
+            </a>
 
 
         <a
@@ -157,42 +157,58 @@
             </span>
 
         </a>
-
+        <!-- REELS -->
 
         <a
-            href="{{ url_for('main.female') }}#accessories"
+            href="{{ url_for('main.reels') }}"
             class="sidebar-link"
+            data-section="reels"
         >
 
-            <span class="sidebar-icon">
-                ◇
-            </span>
+            <span class="sidebar-icon">🎬</span>
 
             <span>
-                Accessories
+                Reels
             </span>
 
         </a>
 
 
+        <!-- SAVED REELS -->
+
         <a
-            href="{{ url_for('main.female') }}#occasions"
+            href="{{ url_for('main.saved_reels') }}"
             class="sidebar-link"
+            data-section="saved-reels"
         >
 
-            <span class="sidebar-icon">
-                ✿
-            </span>
+            <span class="sidebar-icon">🔖</span>
 
             <span>
-                Occasional Looks
+                Saved Reels
             </span>
 
         </a>
 
 
+
         <a
-            href="{{ url_for('main.female') }}#products"
+            href="{{ url_for('main.accessories') }}"
+            class="sidebar-link"
+        >
+
+            <span>
+                🎀
+            </span>
+
+            Accessories
+
+        </a>
+
+        
+
+        <a
+            href="{{ url_for('main.hair_products') }}"
             class="sidebar-link"
         >
 
@@ -205,7 +221,6 @@
             </span>
 
         </a>
-
 
         <p class="nav-label nav-label-second">
             YOUR SPACE
@@ -456,21 +471,20 @@
 
     <div class="sidebar-footer">
 
-        <a
-            href="{{ url_for('main.female') }}#settings"
-            class="sidebar-footer-link"
+        <button
+            class="bottom-control"
+            id="settingsButton"
+            type="button"
         >
-            ⚙
-            Settings
-        </a>
 
-        <a
-            href="{{ url_for('main.female') }}#help"
-            class="sidebar-footer-link"
-        >
-            ?
-            Help & Support
-        </a>
+            <a href="{{ url_for('main.settings') }}" class="sidebar-link">
+    <span class="sidebar-icon">⚙</span>
+    <span>Settings</span>
+</a>
+
+        </button>
+
+        
 
     </div>
 
@@ -2100,6 +2114,7 @@
             <span>✂</span>
             <small>Cutting</small>
         </a>
+        
 
 
         <a

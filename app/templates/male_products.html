@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StyleMyHair | Men's Hair Products</title>
+
+    <!-- EXISTING MALE PAGE CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/male.css') }}"
+    >
+
+    <!-- MALE PRODUCTS CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/male_products.css') }}?v=1"
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body
+    data-theme="graphite"
+    class="male-products-page"
+>
+
+<!-- =====================================================
+     MOBILE OVERLAY
+===================================================== -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>
+
+
+<!-- =====================================================
+     MALE SIDEBAR
+===================================================== -->
+
+<aside
+    class="male-sidebar"
+    id="maleSidebar"
+>
+
+    <!-- SIDEBAR TOP -->
+    <div class="sidebar-top">
+
+        <div class="brand">
+
+            <div class="brand-symbol">
+                SM
+            </div>
+
+            <div class="brand-text">
+
+                <strong>
+                    StyleMyHair
+                </strong>
+
+                <span>
+                    MEN'S STUDIO
+                </span>
+
+            </div>
+
+        </div>
+
+        <button
+            class="mobile-close"
+            id="mobileClose"
+            type="button"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- PROFILE -->
+    <div class="sidebar-profile">
+
+        <div class="profile-avatar">
+            👤
+        </div>
+
+        <div class="profile-info">
+
+            <strong>
+                My Profile
+            </strong>
+
+            <span>
+                Style Explorer
+            </span>
+
+        </div>
+
+        <button
+            class="profile-arrow"
+            id="profileButton"
+            type="button"
+        >
+            →
+        </button>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+    <nav class="sidebar-navigation">
+
+        <span class="nav-heading">
+            EXPLORE
+        </span>
+
+
+        <!-- DASHBOARD -->
+
+        <a
+            class="side-link"
+            href="{{ url_for('main.male') }}"
+        >
+            <span>
+                ⌂
+            </span>
+
+            <label>
+                Dashboard
+            </label>
+        </a>
+
+
+        <!-- HAIRSTYLES -->
+
+        <a
+            class="side-link"
+            href="{{ url_for('main.hairstyles') }}"
+        >
+            <span>
+                ✂
+            </span>
+
+            <label>
+                Hairstyles
+            </label>
+        </a>
+
+
+        <!-- HAIR CUTTING -->
+
+        <a
+            class="side-link"
+            href="{{ url_for('main.male_haircuts') }}"
+        >
+            <span>
+                ✂
+            </span>
+
+            <label>
+                Hair Cutting
+            </label>
+        </a>
+
+
+        <!-- REELS -->
+
+        <a
+            class="side-link"
+            href="/reel"
+        >
+            <span>
+                ▶
+            </span>
+
+            <label>
+                Reels
+            </label>
+        </a>
+
+
+        <!-- SAVED REELS -->
+
+        <a
+            class="side-link"
+            href="/saved-reel"
+        >
+            <span>
+                🔖
+            </span>
+
+            <label>
+                Saved Reels
+            </label>
+        </a>
+
+
+        <!-- HAIR PRODUCTS -->
+
+        <a
+            class="side-link active"
+            href="{{ url_for('main.male_products') }}"
+        >
+            <span>
+                ◆
+            </span>
+
+            <label>
+                Hair Products
+            </label>
+        </a>
+
+
+        <!-- FAVORITES -->
+
+        <a
+            class="side-link"
+            href="{{ url_for('main.male') }}#favoritesSection"
+        >
+            <span>
+                ♥
+            </span>
+
+            <label>
+                Favorites
+            </label>
+        </a>
+
+    </nav>
+
+
+    <!-- =================================================
+         THEME
+    ================================================== -->
+
+    <div class="theme-panel">
+
+        <div class="theme-title">
+
+            <span>
+                THEME
+            </span>
+
+            <small id="themeName">
+                Graphite
+            </small>
+
+        </div>
+
+
+        <div
+            class="theme-grid"
+            id="themeGrid"
+        >
+
+            <button
+                class="theme-dot graphite"
+                data-theme="graphite"
+                title="Graphite"
+                type="button"
+            ></button>
+
+
+            <button
+                class="theme-dot navy"
+                data-theme="navy"
+                title="Navy"
+                type="button"
+            ></button>
+
+
+            <button
+                class="theme-dot steel"
+                data-theme="steel"
+                title="Steel"
+                type="button"
+            ></button>
+
+
+            <button
+                class="theme-dot ocean"
+                data-theme="ocean"
+                title="Ocean"
+                type="button"
+            ></button>
+
+
+            <button
+                class="theme-dot emerald"
+                data-theme="emerald"
+                title="Emerald"
+                type="button"
+            ></button>
+
+
+            <button
+                class="theme-dot forest"
+                data-theme="forest"
+                title="Forest"
+                type="button"
+            ></button>
+
+
+            <button
+                class="theme-dot burgundy"
+                data-theme="burgundy"
+                title="Burgundy"
+                type="button"
+            ></button>
+
+
+            <button
+                class="theme-dot copper"
+                data-theme="copper"
+                title="Copper"
+                type="button"
+            ></button>
+
+
+            <button
+                class="theme-dot charcoal"
+                data-theme="charcoal"
+                title="Charcoal"
+                type="button"
+            ></button>
+
+
+            <button
+                class="theme-dot midnight"
+                data-theme="midnight"
+                title="Midnight"
+                type="button"
+            ></button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SIDEBAR BOTTOM
+    ================================================== -->
+
+    <div class="sidebar-bottom">
+
+        <button
+            class="bottom-control"
+            id="modeToggle"
+            type="button"
+        >
+
+            <span id="modeIcon">
+                ☀
+            </span>
+
+            <label id="modeText">
+                Light Mode
+            </label>
+
+        </button>
+
+
+        <button
+            class="bottom-control"
+            id="settingsButton"
+            type="button"
+        >
+
+            <a href="{{ url_for('main.settings') }}" class="sidebar-link">
+    <span class="sidebar-icon">⚙</span>
+    <span>Settings</span>
+</a>
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="male-main">
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <header class="male-topbar">
+
+        <button
+            class="mobile-menu"
+            id="mobileMenu"
+            type="button"
+        >
+            ☰
+        </button>
+
+
+        <a
+            href="{{ url_for('main.male') }}"
+            class="back-button"
+        >
+            <span>
+                ←
+            </span>
+
+            <label>
+                Back
+            </label>
+        </a>
+
+
+        <div class="topbar-title">
+
+            <span>
+                MEN'S STYLE STUDIO
+            </span>
+
+            <strong>
+                Find Your Signature Look
+            </strong>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+            <button
+                class="top-icon"
+                id="searchButton"
+                type="button"
+            >
+                ⌕
+            </button>
+
+
+            <button
+                class="top-profile"
+                id="topProfile"
+                type="button"
+            >
+                👤
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         SEARCH PANEL
+    ================================================== -->
+
+    <div
+        class="search-panel"
+        id="searchPanel"
+    >
+
+        <div class="search-box">
+
+            <span>
+                ⌕
+            </span>
+
+            <input
+                id="styleSearch"
+                type="text"
+                placeholder="Search hairstyles, looks, products..."
+            >
+
+            <button
+                id="closeSearch"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         PRODUCTS CONTENT
+    ================================================= -->
+
+    <div class="products-shell">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="products-hero">
+
+            <div class="hero-copy">
+
+                <div class="products-badge">
+                    MEN'S GROOMING COLLECTION
+                </div>
+
+
+                <h1>
+                    Hair Products
+                </h1>
+
+
+                <p>
+                    Build a grooming routine around your
+                    hair type, style and everyday goals.
+                </p>
+
+
+                <!-- PRODUCT SEARCH -->
+
+                <div class="hero-search">
+
+                    <span>
+                        ⌕
+                    </span>
+
+                    <input
+                        id="productSearch"
+                        type="search"
+                        placeholder="Search hair products..."
+                    >
+
+                    <button
+                        id="clearProductSearch"
+                        type="button"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO ART -->
+
+            <div class="hero-art">
+
+                <div class="bottle bottle-one"></div>
+
+                <div class="bottle bottle-two"></div>
+
+                <div class="hero-art-circle">
+                    SM
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PRODUCT CATEGORIES
+        ================================================== -->
+
+        <section
+            class="product-section"
+            id="categoriesSection"
+        >
+
+            <div class="section-head">
+
+                <div>
+
+                    <span>
+                        SHOP BY NEED
+                    </span>
+
+                    <h2>
+                        Product Categories
+                    </h2>
+
+                </div>
+
+
+                <button
+                    class="see-all"
+                    id="resetCategory"
+                    type="button"
+                >
+                    See All →
+                </button>
+
+            </div>
+
+
+            <!-- CATEGORY FILTERS -->
+
+            <div
+                class="filter-chips category-filters"
+                id="categoryFilters"
+            >
+
+                <button
+                    class="filter-chip active"
+                    data-category="all"
+                    type="button"
+                >
+                    All Products
+                </button>
+
+
+                <button
+                    class="filter-chip"
+                    data-category="shampoo"
+                    type="button"
+                >
+                    Shampoo
+                </button>
+
+
+                <button
+                    class="filter-chip"
+                    data-category="conditioner"
+                    type="button"
+                >
+                    Conditioner
+                </button>
+
+
+                <button
+                    class="filter-chip"
+                    data-category="serum"
+                    type="button"
+                >
+                    Hair Serum
+                </button>
+
+
+                <button
+                    class="filter-chip"
+                    data-category="oil"
+                    type="button"
+                >
+                    Hair Oil
+                </button>
+
+
+                <button
+                    class="filter-chip"
+                    data-category="mask"
+                    type="button"
+                >
+                    Hair Mask
+                </button>
+
+
+                <button
+                    class="filter-chip"
+                    data-category="styling"
+                    type="button"
+                >
+                    Styling
+                </button>
+
+
+                <button
+                    class="filter-chip"
+                    data-category="beard"
+                    type="button"
+                >
+                    Beard Care
+                </button>
+
+
+                <button
+                    class="filter-chip"
+                    data-category="growth"
+                    type="button"
+                >
+                    Hair Growth
+                </button>
+
+            </div>
+
+
+            <!-- CATEGORY PRODUCTS -->
+
+            <div
+                class="product-grid"
+                id="categoryGrid"
+            ></div>
+
+
+            <div
+                class="empty-state"
+                id="categoryEmpty"
+            >
+                No matching products found.
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MATCH WITH HAIR TYPE
+        ================================================== -->
+
+        <section class="product-section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <span>
+                        PERSONALIZED
+                    </span>
+
+                    <h2>
+                        Match With Your Hair Type
+                    </h2>
+
+                </div>
+
+
+                <button
+                    class="see-all"
+                    id="resetHairType"
+                    type="button"
+                >
+                    See All →
+                </button>
+
+            </div>
+
+
+            <!-- HAIR TYPE FILTERS -->
+
+            <div
+                class="hair-type-filters"
+                id="hairTypeFilters"
+            >
+
+                <button
+                    class="hair-type active"
+                    data-hair="all"
+                    type="button"
+                >
+                    All
+                </button>
+
+
+                <button
+                    class="hair-type"
+                    data-hair="straight"
+                    type="button"
+                >
+                    Straight
+                </button>
+
+
+                <button
+                    class="hair-type"
+                    data-hair="wavy"
+                    type="button"
+                >
+                    Wavy
+                </button>
+
+
+                <button
+                    class="hair-type"
+                    data-hair="curly"
+                    type="button"
+                >
+                    Curly
+                </button>
+
+
+                <button
+                    class="hair-type"
+                    data-hair="dry"
+                    type="button"
+                >
+                    Dry
+                </button>
+
+
+                <button
+                    class="hair-type"
+                    data-hair="oily"
+                    type="button"
+                >
+                    Oily
+                </button>
+
+
+                <button
+                    class="hair-type"
+                    data-hair="thick"
+                    type="button"
+                >
+                    Thick
+                </button>
+
+
+                <button
+                    class="hair-type"
+                    data-hair="thin"
+                    type="button"
+                >
+                    Thin
+                </button>
+
+
+                <button
+                    class="hair-type"
+                    data-hair="damaged"
+                    type="button"
+                >
+                    Damaged
+                </button>
+
+            </div>
+
+
+            <!-- HAIR TYPE PRODUCTS -->
+
+            <div
+                class="product-grid"
+                id="hairTypeGrid"
+            ></div>
+
+
+            <div
+                class="empty-state"
+                id="hairTypeEmpty"
+            >
+                No matching products found.
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FEATURED PRODUCTS
+        ================================================== -->
+
+        <section class="product-section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <span>
+                        EDITOR'S PICKS
+                    </span>
+
+                    <h2>
+                        Featured Products
+                    </h2>
+
+                </div>
+
+
+                <button
+                    class="see-all"
+                    id="showFeatured"
+                    type="button"
+                >
+                    See All →
+                </button>
+
+            </div>
+
+
+            <div
+                class="product-grid"
+                id="featuredGrid"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             BEST FOR YOU
+        ================================================== -->
+
+        <section class="product-section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <span>
+                        PERSONAL ROUTINES
+                    </span>
+
+                    <h2>
+                        Best For You
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="recommendation-grid"
+                id="recommendationGrid"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             YOU MAY ALSO LIKE
+        ================================================== -->
+
+        <section class="product-section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <span>
+                        MORE TO EXPLORE
+                    </span>
+
+                    <h2>
+                        You May Also Like
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="product-grid"
+                id="likedGrid"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="male-products-footer">
+
+            <strong>
+                StyleMyHair
+            </strong>
+
+            <span>
+                MEN'S STYLE STUDIO • GROOMING COLLECTION
+            </span>
+
+        </footer>
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script
+    src="{{ url_for('static', filename='js/male_products.js') }}?v=1"
+></script>
+
+</body>
+</html>

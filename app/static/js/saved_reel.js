@@ -2,24 +2,19 @@ document.addEventListener(
     "DOMContentLoaded",
     function () {
 
-        const container =
+        const savedContainer =
             document.getElementById(
-                "savedReelsContainer"
+                "savedContainer"
             );
 
-        const emptyMessage =
+        const emptyState =
             document.getElementById(
-                "emptyMessage"
-            );
-
-        const savedCount =
-            document.getElementById(
-                "savedCount"
+                "emptyState"
             );
 
 
         // =====================================================
-        // GET SAVED REELS
+        // SAVED REELS
         // =====================================================
 
         let savedReels =
@@ -31,7 +26,7 @@ document.addEventListener(
 
 
         // =====================================================
-        // SAME HAIRSTYLE DATA AS REELS.JS
+        // HAIRSTYLE DATA
         // =====================================================
 
         const hairstyles = [
@@ -104,7 +99,7 @@ document.addEventListener(
 
 
         // =====================================================
-        // GET STYLE DATA
+        // GET STYLE
         // =====================================================
 
         function getStyleData(number) {
@@ -119,105 +114,126 @@ document.addEventListener(
 
 
         // =====================================================
-        // SHOW SAVED REELS
+        // SHOW EMPTY STATE
+        // =====================================================
+
+        function showEmptyState() {
+
+            savedContainer.innerHTML = "";
+
+            savedContainer.style.display =
+                "none";
+
+            emptyState.style.display =
+                "flex";
+
+        }
+
+
+        // =====================================================
+        // CREATE SAVED REEL
+        // =====================================================
+
+        function createSavedReel(number) {
+
+            const style =
+                getStyleData(number);
+
+
+            const card =
+                document.createElement("article");
+
+
+            card.className =
+                "saved-reel";
+
+
+            card.dataset.reelNumber =
+                number;
+
+
+            card.innerHTML = `
+
+                <video
+                    src="/static/videos/reel${number}.mp4"
+                    loop
+                    muted
+                    playsinline
+                    controls
+                ></video>
+
+
+                <div class="reel-overlay"></div>
+
+
+                <button
+                    type="button"
+                    class="unsave-button"
+                >
+                    🔖 Saved
+                </button>
+
+
+                <div class="reel-info">
+
+                    <h3>
+                        ${style.title}
+                    </h3>
+
+                    <p>
+                        ${style.description}
+                    </p>
+
+                    <strong>
+                        ${style.hashtags}
+                    </strong>
+
+                </div>
+
+            `;
+
+
+            return card;
+
+        }
+
+
+        // =====================================================
+        // LOAD SAVED REELS
         // =====================================================
 
         function loadSavedReels() {
 
-            container.innerHTML = "";
+            savedContainer.innerHTML = "";
 
 
-            savedCount.textContent =
-                savedReels.length;
+            if (
+                savedReels.length === 0
+            ) {
 
-
-            // NOTHING SAVED
-
-            if (savedReels.length === 0) {
-
-                emptyMessage.style.display =
-                    "flex";
-
-                container.style.display =
-                    "none";
+                showEmptyState();
 
                 return;
 
             }
 
 
-            // REELS EXIST
-
-            emptyMessage.style.display =
+            emptyState.style.display =
                 "none";
 
-            container.style.display =
+            savedContainer.style.display =
                 "grid";
 
 
             savedReels.forEach(
                 function (number) {
 
-                    const style =
-                        getStyleData(number);
-
-
                     const reel =
-                        document.createElement(
-                            "article"
+                        createSavedReel(
+                            number
                         );
 
-
-                    reel.className =
-                        "saved-reel";
-
-
-                    reel.dataset.reelNumber =
-                        number;
-
-
-                    reel.innerHTML = `
-
-                        <video
-                            src="/static/videos/reel${number}.mp4"
-                            loop
-                            muted
-                            playsinline
-                            controls
-                        ></video>
-
-
-                        <div class="reel-overlay"></div>
-
-
-                        <div class="reel-info">
-
-                            <h2>
-                                ${style.title}
-                            </h2>
-
-                            <p>
-                                ${style.description}
-                            </p>
-
-                            <strong>
-                                ${style.hashtags}
-                            </strong>
-
-                        </div>
-
-
-                        <button
-                            type="button"
-                            class="unsave-button"
-                        >
-                            🔖 Saved
-                        </button>
-
-                    `;
-
-
-                    container.appendChild(
+                    savedContainer.appendChild(
                         reel
                     );
 
@@ -228,10 +244,10 @@ document.addEventListener(
 
 
         // =====================================================
-        // UNSAVE REEL
+        // UNSAVE
         // =====================================================
 
-        container.addEventListener(
+        savedContainer.addEventListener(
             "click",
             function (event) {
 
@@ -284,7 +300,7 @@ document.addEventListener(
 
 
         // =====================================================
-        // INITIAL LOAD
+        // LOAD PAGE
         // =====================================================
 
         loadSavedReels();

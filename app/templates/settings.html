@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StyleMyHair | Settings</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/settings.css') }}">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap">
+</head>
+
+<body>
+
+<div class="settings-page">
+
+    <!-- HEADER -->
+    <header class="settings-header">
+
+        <div class="header-left">
+
+            <button class="back-btn" id="backButton">
+                <span>←</span>
+                <span>Back</span>
+            </button>
+
+            <div>
+                <p class="header-label">STYLEMYHAIR</p>
+                <h1>Settings</h1>
+            </div>
+
+        </div>
+
+        <div class="header-right">
+
+            <button class="mode-btn" id="modeToggle">
+                <span id="modeIcon">☀</span>
+                <span id="modeText">Light Mode</span>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="settings-container">
+
+        <!-- PROFILE -->
+        <section class="settings-section">
+
+            <div class="section-heading">
+                <div class="section-icon">👤</div>
+
+                <div>
+                    <h2>Profile</h2>
+                    <p>Manage your StyleMyHair profile.</p>
+                </div>
+            </div>
+
+            <div class="settings-card profile-card">
+
+                <div class="profile-avatar">
+                    <span>SM</span>
+                </div>
+
+                <div class="profile-info">
+                    <h3 id="profileName">Style Explorer</h3>
+                    <p id="profileEmail">your@email.com</p>
+                </div>
+
+                <button class="outline-btn" id="editProfile">
+                    Edit Profile
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- APPEARANCE -->
+        <section class="settings-section">
+
+            <div class="section-heading">
+
+                <div class="section-icon">🎨</div>
+
+                <div>
+                    <h2>Appearance</h2>
+                    <p>Customize how StyleMyHair looks.</p>
+                </div>
+
+            </div>
+
+
+            <div class="settings-card">
+
+                <div class="setting-row">
+
+                    <div class="setting-text">
+                        <h3>Theme</h3>
+                        <p>Choose your preferred accent color.</p>
+                    </div>
+
+                    <div class="theme-name" id="themeName">
+                        Default
+                    </div>
+
+                </div>
+
+
+                <div class="theme-grid" id="themeGrid">
+
+                    <button class="theme-dot theme-rose"
+                            data-theme="rose"
+                            title="Rose"></button>
+
+                    <button class="theme-dot theme-lavender"
+                            data-theme="lavender"
+                            title="Lavender"></button>
+
+                    <button class="theme-dot theme-peach"
+                            data-theme="peach"
+                            title="Peach"></button>
+
+                    <button class="theme-dot theme-sky"
+                            data-theme="sky"
+                            title="Sky"></button>
+
+                    <button class="theme-dot theme-mint"
+                            data-theme="mint"
+                            title="Mint"></button>
+
+                    <button class="theme-dot theme-sage"
+                            data-theme="sage"
+                            title="Sage"></button>
+
+                    <button class="theme-dot theme-butter"
+                            data-theme="butter"
+                            title="Butter"></button>
+
+                    <button class="theme-dot theme-coral"
+                            data-theme="coral"
+                            title="Coral"></button>
+
+                    <button class="theme-dot theme-plum"
+                            data-theme="plum"
+                            title="Plum"></button>
+
+                    <button class="theme-dot theme-ocean"
+                            data-theme="ocean"
+                            title="Ocean"></button>
+
+                    <button class="theme-dot theme-cocoa"
+                            data-theme="cocoa"
+                            title="Cocoa"></button>
+
+                    <button class="theme-dot theme-midnight"
+                            data-theme="midnight"
+                            title="Midnight"></button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- NOTIFICATIONS -->
+        <section class="settings-section">
+
+            <div class="section-heading">
+
+                <div class="section-icon">🔔</div>
+
+                <div>
+                    <h2>Notifications</h2>
+                    <p>Control the notifications you receive.</p>
+                </div>
+
+            </div>
+
+
+            <div class="settings-card">
+
+                <div class="setting-row">
+
+                    <div class="setting-text">
+                        <h3>Style Recommendations</h3>
+                        <p>Receive personalized hairstyle suggestions.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input type="checkbox"
+                               id="recommendationNotifications"
+                               checked>
+                        <span class="slider"></span>
+                    </label>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-text">
+                        <h3>New Products</h3>
+                        <p>Get notified about new hair products.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input type="checkbox"
+                               id="productNotifications"
+                               checked>
+                        <span class="slider"></span>
+                    </label>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-text">
+                        <h3>Offers & Updates</h3>
+                        <p>Receive important StyleMyHair updates.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input type="checkbox"
+                               id="offerNotifications">
+                        <span class="slider"></span>
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRIVACY -->
+        <section class="settings-section">
+
+            <div class="section-heading">
+
+                <div class="section-icon">🔒</div>
+
+                <div>
+                    <h2>Privacy</h2>
+                    <p>Manage your privacy preferences.</p>
+                </div>
+
+            </div>
+
+
+            <div class="settings-card">
+
+                <div class="setting-row">
+
+                    <div class="setting-text">
+                        <h3>Save Search History</h3>
+                        <p>Keep your recent hairstyle searches.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input type="checkbox"
+                               id="searchHistory"
+                               checked>
+                        <span class="slider"></span>
+                    </label>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-text">
+                        <h3>Personalized Experience</h3>
+                        <p>Use your preferences to improve recommendations.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input type="checkbox"
+                               id="personalizedExperience"
+                               checked>
+                        <span class="slider"></span>
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LANGUAGE -->
+        <section class="settings-section">
+
+            <div class="section-heading">
+
+                <div class="section-icon">🌐</div>
+
+                <div>
+                    <h2>Language</h2>
+                    <p>Select your preferred language.</p>
+                </div>
+
+            </div>
+
+
+            <div class="settings-card">
+
+                <div class="setting-row">
+
+                    <div class="setting-text">
+                        <h3>App Language</h3>
+                        <p>Choose the language used throughout the app.</p>
+                    </div>
+
+                    <select id="languageSelect">
+
+                        <option value="en">
+                            English
+                        </option>
+
+                        <option value="hi">
+                            हिन्दी
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACCOUNT -->
+        <section class="settings-section">
+
+            <div class="section-heading">
+
+                <div class="section-icon">⚙</div>
+
+                <div>
+                    <h2>Account</h2>
+                    <p>Manage your StyleMyHair account.</p>
+                </div>
+
+            </div>
+
+
+            <div class="settings-card account-card">
+
+                <button class="danger-btn" id="resetSettings">
+                    Reset Settings
+                </button>
+
+                <button class="logout-btn" id="logoutButton">
+                    Log Out
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <div class="save-message" id="saveMessage">
+            Settings saved
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+
+</body>
+</html>

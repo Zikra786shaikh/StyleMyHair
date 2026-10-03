@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StyleMyHair | Saved Reels</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/saved_reel.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="saved-header">
+
+        <a
+            href="{{ url_for('main.female') }}"
+            class="back-button"
+        >
+            ←
+        </a>
+
+        <div class="saved-title">
+
+            <strong>Saved Reels</strong>
+
+            <span>MY SAVED HAIRSTYLES</span>
+
+        </div>
+
+    </header>
+
+
+    <!-- SAVED REELS -->
+
+    <main
+        class="saved-container"
+        id="savedContainer"
+    >
+
+        <!-- JavaScript loads saved reels here -->
+
+    </main>
+
+
+    <!-- NO SAVED REELS -->
+
+    <div
+        class="empty-state"
+        id="emptyState"
+    >
+
+        <div class="empty-icon">
+            🔖
+        </div>
+
+        <h2>No Reels Saved</h2>
+
+        <p>
+            Save your favorite hairstyle reels
+            and they will appear here.
+        </p>
+
+        <a
+            href="{{ url_for('main.reels') }}"
+            class="browse-button"
+        >
+            Browse Reels
+        </a>
+
+    </div>
+
+
+    <script
+        src="{{ url_for('static', filename='js/saved_reel.js') }}"
+    ></script>
+
+</body>
+
+</html>

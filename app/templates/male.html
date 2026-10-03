@@ -154,7 +154,7 @@
             class="side-link"
             id="reelsButton"
             type="button"
-            onclick="window.location.href='/reels';"
+            onclick="window.location.href='/reel';"
         >
 
             <span>▶</span>
@@ -168,7 +168,7 @@
     class="side-link"
     id="savedReelsButton"
     type="button"
-    onclick="window.location.href='/saved-reels';"
+    onclick="window.location.href='/saved-reel';"
 >
 
     <span>🔖</span>
@@ -201,10 +201,13 @@
             type="button"
         >
 
-            <span>◆</span>
-
-            <label>Hair Products</label>
-
+            <a
+    href="{{ url_for('main.male_products') }}"
+    class="sidebar-link"
+>
+    <span class="sidebar-icon">♙</span>
+    <span>Hair Products</span>
+</a>
         </button>
 
 
@@ -350,9 +353,10 @@
             type="button"
         >
 
-            <span>⚙</span>
-
-            <label>Settings</label>
+            <a href="{{ url_for('main.settings') }}" class="sidebar-link">
+    <span class="sidebar-icon">⚙</span>
+    <span>Settings</span>
+</a>
 
         </button>
 

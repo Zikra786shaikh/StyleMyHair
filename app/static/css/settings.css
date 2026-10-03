@@ -1,0 +1,885 @@
+/* =====================================================
+   STYLEMYHAIR
+   UNIVERSAL SETTINGS PAGE
+   FEMALE + MALE
+===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+
+    --primary: #d66b91;
+    --secondary: #e9a7bd;
+    --accent: #e52f72;
+
+    --background: #fff8fb;
+    --surface: #ffffff;
+    --surface-2: #f8edf2;
+    --surface-3: #f2dce5;
+
+    --text: #25232a;
+    --muted: #77717a;
+
+    --border: rgba(40, 30, 40, 0.10);
+
+    --shadow:
+        0 18px 45px rgba(60, 30, 45, 0.08);
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+body {
+
+    font-family: "DM Sans", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(214, 107, 145, 0.10),
+            transparent 30%
+        ),
+        var(--background);
+
+    color: var(--text);
+
+    min-height: 100vh;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+.settings-page {
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.settings-header {
+
+    min-height: 110px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 25px 5%;
+
+    border-bottom: 1px solid var(--border);
+
+    background: var(--surface);
+
+    position: sticky;
+    top: 0;
+    z-index: 20;
+
+    backdrop-filter: blur(20px);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.header-left {
+
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+.back-btn {
+
+    border: 1px solid var(--border);
+
+    background: var(--surface-2);
+
+    color: var(--text);
+
+    padding: 12px 17px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: 0.25s ease;
+}
+
+
+.back-btn:hover {
+
+    transform: translateX(-3px);
+
+    border-color: var(--primary);
+
+    color: var(--primary);
+}
+
+
+.header-label {
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+
+    color: var(--primary);
+
+    margin-bottom: 3px;
+}
+
+
+.settings-header h1 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 32px;
+
+    font-weight: 600;
+}
+
+
+.mode-btn {
+
+    border: 1px solid var(--border);
+
+    background: var(--surface-2);
+
+    color: var(--text);
+
+    padding: 12px 17px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    gap: 8px;
+
+    align-items: center;
+
+    transition: 0.25s ease;
+}
+
+
+.mode-btn:hover {
+
+    border-color: var(--primary);
+
+    color: var(--primary);
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.settings-container {
+
+    width: min(1000px, 92%);
+
+    margin: 45px auto 80px;
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.settings-section {
+
+    margin-bottom: 42px;
+}
+
+
+.section-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 17px;
+}
+
+
+.section-icon {
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 14px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--surface-2);
+
+    font-size: 20px;
+
+    border: 1px solid var(--border);
+}
+
+
+.section-heading h2 {
+
+    font-size: 20px;
+
+    margin-bottom: 3px;
+}
+
+
+.section-heading p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.settings-card {
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 24px;
+
+    box-shadow: var(--shadow);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.profile-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+.profile-avatar {
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color: white;
+
+    font-weight: 700;
+
+    font-size: 18px;
+}
+
+
+.profile-info {
+
+    flex: 1;
+}
+
+
+.profile-info h3 {
+
+    font-size: 17px;
+
+    margin-bottom: 4px;
+}
+
+
+.profile-info p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   SETTING ROW
+===================================================== */
+
+.setting-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.setting-row:first-child {
+
+    padding-top: 0;
+}
+
+
+.setting-row:last-child {
+
+    border-bottom: none;
+
+    padding-bottom: 0;
+}
+
+
+.setting-text {
+
+    flex: 1;
+}
+
+
+.setting-text h3 {
+
+    font-size: 15px;
+
+    margin-bottom: 5px;
+}
+
+
+.setting-text p {
+
+    font-size: 13px;
+
+    color: var(--muted);
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.outline-btn,
+.logout-btn,
+.danger-btn {
+
+    border-radius: 11px;
+
+    padding: 11px 17px;
+
+    font-family: inherit;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+
+.outline-btn {
+
+    border: 1px solid var(--primary);
+
+    color: var(--primary);
+
+    background: transparent;
+}
+
+
+.outline-btn:hover {
+
+    background: var(--primary);
+
+    color: white;
+}
+
+
+.logout-btn {
+
+    border: none;
+
+    background: var(--primary);
+
+    color: white;
+
+    min-width: 120px;
+}
+
+
+.logout-btn:hover {
+
+    transform: translateY(-2px);
+
+    opacity: 0.9;
+}
+
+
+.danger-btn {
+
+    border: 1px solid #d85b67;
+
+    color: #d85b67;
+
+    background: transparent;
+}
+
+
+.danger-btn:hover {
+
+    background: #d85b67;
+
+    color: white;
+}
+
+
+/* =====================================================
+   THEME COLORS
+===================================================== */
+
+.theme-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(12, minmax(35px, 1fr));
+
+    gap: 13px;
+
+    margin-top: 20px;
+}
+
+
+.theme-dot {
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    border: 3px solid transparent;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.theme-dot:hover {
+
+    transform: scale(1.12);
+}
+
+
+.theme-dot.active {
+
+    border-color: var(--text);
+
+    box-shadow:
+        0 0 0 3px var(--surface),
+        0 0 0 5px var(--primary);
+}
+
+
+.theme-rose {
+    background: #e96b9a;
+}
+
+.theme-lavender {
+    background: #9d8ce5;
+}
+
+.theme-peach {
+    background: #f29b83;
+}
+
+.theme-sky {
+    background: #5caee8;
+}
+
+.theme-mint {
+    background: #62cdb0;
+}
+
+.theme-sage {
+    background: #8fa889;
+}
+
+.theme-butter {
+    background: #e6c85c;
+}
+
+.theme-coral {
+    background: #e66d5b;
+}
+
+.theme-plum {
+    background: #8e4f91;
+}
+
+.theme-ocean {
+    background: #267da8;
+}
+
+.theme-cocoa {
+    background: #95684e;
+}
+
+.theme-midnight {
+    background: #343b58;
+}
+
+
+.theme-name {
+
+    color: var(--primary);
+
+    font-weight: 700;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   SWITCH
+===================================================== */
+
+.switch {
+
+    position: relative;
+
+    width: 48px;
+    height: 26px;
+
+    flex-shrink: 0;
+}
+
+
+.switch input {
+
+    opacity: 0;
+
+    width: 0;
+    height: 0;
+}
+
+
+.slider {
+
+    position: absolute;
+
+    inset: 0;
+
+    cursor: pointer;
+
+    background: var(--surface-3);
+
+    border-radius: 30px;
+
+    transition: 0.25s;
+}
+
+
+.slider::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    left: 3px;
+    top: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    transition: 0.25s;
+}
+
+
+.switch input:checked + .slider {
+
+    background: var(--primary);
+}
+
+
+.switch input:checked + .slider::before {
+
+    transform: translateX(22px);
+}
+
+
+/* =====================================================
+   SELECT
+===================================================== */
+
+select {
+
+    border: 1px solid var(--border);
+
+    background: var(--surface-2);
+
+    color: var(--text);
+
+    padding: 11px 15px;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    font-family: inherit;
+}
+
+
+/* =====================================================
+   ACCOUNT
+===================================================== */
+
+.account-card {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+}
+
+
+/* =====================================================
+   SAVE MESSAGE
+===================================================== */
+
+.save-message {
+
+    position: fixed;
+
+    bottom: 30px;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, 100px);
+
+    padding: 13px 22px;
+
+    border-radius: 12px;
+
+    background: var(--text);
+
+    color: var(--background);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    opacity: 0;
+
+    transition: 0.3s ease;
+
+    z-index: 100;
+}
+
+
+.save-message.show {
+
+    transform:
+        translate(-50%, 0);
+
+    opacity: 1;
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+body.dark-mode {
+
+    --background: #0d0f14;
+
+    --surface: #151820;
+
+    --surface-2: #1d212a;
+
+    --surface-3: #282d37;
+
+    --text: #f4f5f7;
+
+    --muted: #a1a8b4;
+
+    --border: rgba(255,255,255,0.09);
+
+    --shadow:
+        0 18px 45px rgba(0,0,0,0.28);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 800px) {
+
+    .settings-header {
+
+        padding: 20px;
+
+    }
+
+    .settings-container {
+
+        width: 94%;
+
+        margin-top: 30px;
+    }
+
+    .theme-grid {
+
+        grid-template-columns:
+            repeat(6, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .settings-header {
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .header-right {
+
+        display: none;
+    }
+
+
+    .header-left {
+
+        gap: 12px;
+    }
+
+
+    .settings-header h1 {
+
+        font-size: 26px;
+    }
+
+
+    .back-btn span:last-child {
+
+        display: none;
+    }
+
+
+    .settings-card {
+
+        padding: 18px;
+    }
+
+
+    .profile-card {
+
+        flex-wrap: wrap;
+    }
+
+
+    .profile-info {
+
+        min-width: calc(100% - 85px);
+    }
+
+
+    .profile-card .outline-btn {
+
+        width: 100%;
+    }
+
+
+    .setting-row {
+
+        align-items: flex-start;
+    }
+
+
+    .setting-text {
+
+        padding-right: 10px;
+    }
+
+
+    .theme-grid {
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        justify-items: center;
+    }
+
+
+    .account-card {
+
+        flex-direction: column;
+    }
+
+
+    .account-card button {
+
+        width: 100%;
+    }
+
+}

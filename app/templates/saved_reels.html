@@ -2,61 +2,91 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Saved Reels | StyleMyHair</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/saved_reels.css') }}">
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/saved_reels.css') }}"
+    >
+
 </head>
+
 
 <body>
 
     <!-- HEADER -->
+
     <header class="saved-header">
 
         <button
             class="back-button"
             type="button"
-            onclick="window.location.href='/reels';">
+            onclick="window.location.href='/reels';"
+        >
             ←
         </button>
 
+
         <div class="header-title">
+
             <h1>Saved Reels</h1>
+
             <span id="savedCount">0</span>
+
         </div>
 
     </header>
 
 
     <!-- SAVED REELS -->
-    <main id="savedReelsContainer" class="saved-reels-container">
-    </main>
+
+    <main
+        id="savedReelsContainer"
+        class="saved-reels-container"
+    ></main>
 
 
     <!-- EMPTY MESSAGE -->
-    <section id="emptyMessage" class="empty-message">
 
-        <div class="empty-icon">🔖</div>
+    <section
+        id="emptyMessage"
+        class="empty-message"
+    >
+
+        <div class="empty-icon">
+            🔖
+        </div>
+
 
         <h2>No Saved Reels</h2>
+
 
         <p>
             Reels that you save will appear here.
         </p>
 
+
         <button
             type="button"
-            onclick="window.location.href='/reels';">
+            onclick="window.location.href='/reel';"
+        >
             Browse Reels
         </button>
 
     </section>
 
 
-    <script src="{{ url_for('static', filename='js/saved_reels.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='js/saved_reels.js') }}"
+    ></script>
 
 </body>
 

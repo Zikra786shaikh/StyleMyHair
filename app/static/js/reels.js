@@ -937,3 +937,51 @@ document
     );
 
 });
+// =========================================================
+// TAP REEL → PLAY / PAUSE
+// =========================================================
+
+reelsContainer.addEventListener(
+    "click",
+    function (event) {
+
+        // Do nothing if clicking an action button
+        if (
+            event.target.closest(".reel-action") ||
+            event.target.closest(".mute-button")
+        ) {
+            return;
+        }
+
+
+        // Find the reel that was clicked
+        const reel =
+            event.target.closest(".reel");
+
+        if (!reel) {
+            return;
+        }
+
+
+        // Find the video inside that reel
+        const video =
+            reel.querySelector(".reel-video");
+
+        if (!video) {
+            return;
+        }
+
+
+        // PLAY ↔ PAUSE
+        if (video.paused) {
+
+            video.play().catch(function () {});
+
+        } else {
+
+            video.pause();
+
+        }
+
+    }
+);

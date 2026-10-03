@@ -7,7 +7,7 @@
 
 body {
     background: #0b0b0b;
-    color: white;
+    color: #ffffff;
     font-family: Arial, sans-serif;
     min-height: 100vh;
 }
@@ -19,19 +19,18 @@ body {
 
 .saved-header {
     height: 80px;
+    width: 100%;
+    background: #111111;
 
     display: flex;
     align-items: center;
 
     padding: 0 30px;
 
-    background: #111;
-
-    border-bottom: 1px solid #292929;
+    border-bottom: 1px solid #252525;
 
     position: sticky;
     top: 0;
-
     z-index: 100;
 }
 
@@ -40,70 +39,63 @@ body {
     width: 44px;
     height: 44px;
 
-    border: none;
-    border-radius: 50%;
-
-    background: #202020;
-
-    color: white;
-
-    font-size: 27px;
-
-    cursor: pointer;
-}
-
-
-.back-button:hover {
-    background: #303030;
-}
-
-
-.header-title {
-    margin-left: 18px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-}
-
-
-.header-title h1 {
-    font-size: 22px;
-}
-
-
-.header-title span {
-    min-width: 25px;
-    height: 25px;
-
-    padding: 0 7px;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #c8b28a;
+    color: white;
+    text-decoration: none;
 
-    color: #111;
+    font-size: 28px;
 
-    border-radius: 20px;
+    border-radius: 50%;
 
-    font-size: 12px;
+    background: #1c1c1c;
 
-    font-weight: bold;
+    transition: 0.2s;
+}
+
+
+.back-button:hover {
+    background: #292929;
+}
+
+
+.saved-title {
+    margin-left: 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.saved-title strong {
+    font-size: 21px;
+}
+
+
+.saved-title span {
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #a8a8a8;
 }
 
 
 /* =====================================================
-   SAVED REELS
+   SAVED REELS GRID
 ===================================================== */
 
-.saved-reels-container {
+.saved-container {
+
+    width: 100%;
 
     max-width: 1400px;
 
-    margin: auto;
+    margin: 0 auto;
 
     padding: 30px;
 
@@ -117,28 +109,33 @@ body {
 
 
 /* =====================================================
-   REEL
+   REEL CARD
 ===================================================== */
 
 .saved-reel {
 
-    height: 520px;
-
     position: relative;
 
-    overflow: hidden;
-
-    border-radius: 18px;
+    height: 520px;
 
     background: #151515;
 
+    border-radius: 18px;
+
+    overflow: hidden;
+
     border: 1px solid #292929;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
 }
 
 
 .saved-reel video {
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -148,7 +145,7 @@ body {
 
 
 /* =====================================================
-   OVERLAY
+   DARK OVERLAY
 ===================================================== */
 
 .reel-overlay {
@@ -160,8 +157,8 @@ body {
     background:
         linear-gradient(
             to top,
-            rgba(0, 0, 0, 0.92),
-            rgba(0, 0, 0, 0.05) 65%
+            rgba(0,0,0,0.9),
+            rgba(0,0,0,0.05) 60%
         );
 
     pointer-events: none;
@@ -184,8 +181,9 @@ body {
 }
 
 
-.reel-info h2 {
-    font-size: 19px;
+.reel-info h3 {
+
+    font-size: 20px;
 
     margin-bottom: 8px;
 }
@@ -193,11 +191,11 @@ body {
 
 .reel-info p {
 
-    color: #d0d0d0;
-
     font-size: 13px;
 
     line-height: 1.5;
+
+    color: #d1d1d1;
 
     margin-bottom: 8px;
 }
@@ -205,14 +203,14 @@ body {
 
 .reel-info strong {
 
-    color: #c8b28a;
-
     font-size: 12px;
+
+    color: #c8b28a;
 }
 
 
 /* =====================================================
-   UNSAVE
+   UNSAVE BUTTON
 ===================================================== */
 
 .unsave-button {
@@ -226,35 +224,38 @@ body {
 
     border: none;
 
-    border-radius: 20px;
-
-    padding: 10px 14px;
-
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0,0,0,0.7);
 
     color: white;
+
+    padding: 10px 13px;
+
+    border-radius: 20px;
 
     cursor: pointer;
 
     font-size: 13px;
+
+    backdrop-filter: blur(8px);
+
+    transition: 0.2s;
 }
 
 
 .unsave-button:hover {
 
-    background: #9d304d;
+    background: rgba(220, 50, 80, 0.9);
 
 }
 
 
 /* =====================================================
-   EMPTY MESSAGE
+   EMPTY STATE
 ===================================================== */
 
-.empty-message {
+.empty-state {
 
-    min-height:
-        calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
 
     display: none;
 
@@ -272,7 +273,7 @@ body {
 
 .empty-icon {
 
-    font-size: 60px;
+    font-size: 55px;
 
     margin-bottom: 20px;
 
@@ -280,7 +281,7 @@ body {
 }
 
 
-.empty-message h2 {
+.empty-state h2 {
 
     font-size: 28px;
 
@@ -288,41 +289,45 @@ body {
 }
 
 
-.empty-message p {
+.empty-state p {
+
+    max-width: 400px;
 
     color: #999;
 
-    margin-bottom: 25px;
+    line-height: 1.6;
 
-    font-size: 15px;
+    margin-bottom: 25px;
 }
 
 
-.empty-message button {
+.browse-button {
 
-    border: none;
+    display: inline-block;
 
-    padding: 12px 24px;
+    text-decoration: none;
 
-    border-radius: 25px;
+    color: #ffffff;
 
     background: #c8b28a;
 
-    color: #111;
+    padding: 12px 22px;
+
+    border-radius: 25px;
+
+    font-size: 14px;
 
     font-weight: bold;
-
-    cursor: pointer;
 }
 
 
 /* =====================================================
-   TABLET
+   RESPONSIVE
 ===================================================== */
 
 @media (max-width: 1100px) {
 
-    .saved-reels-container {
+    .saved-container {
 
         grid-template-columns:
             repeat(3, 1fr);
@@ -332,13 +337,9 @@ body {
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+@media (max-width: 800px) {
 
-@media (max-width: 750px) {
-
-    .saved-reels-container {
+    .saved-container {
 
         grid-template-columns:
             repeat(2, 1fr);
@@ -359,22 +360,18 @@ body {
 }
 
 
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
-
 @media (max-width: 500px) {
 
     .saved-header {
 
         height: 70px;
 
-        padding: 0 15px;
+        padding: 0 16px;
 
     }
 
 
-    .saved-reels-container {
+    .saved-container {
 
         grid-template-columns: 1fr;
 

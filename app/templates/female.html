@@ -171,27 +171,62 @@
             </span>
 
         </a>
-
+        <!-- REELS -->
 
         <a
-            href="#accessories"
+            href="{{ url_for('main.reels') }}"
             class="sidebar-link"
+            data-section="reels"
         >
 
-            <span class="sidebar-icon">◇</span>
+            <span class="sidebar-icon">🎬</span>
 
             <span>
-                Accessories
+                Reels
             </span>
 
         </a>
 
+
+        <!-- SAVED REELS -->
+
         <a
-            href="#products"
+            href="{{ url_for('main.saved_reels') }}"
+            class="sidebar-link"
+            data-section="saved-reels"
+        >
+
+            <span class="sidebar-icon">🔖</span>
+
+            <span>
+                Saved Reels
+            </span>
+
+        </a>
+
+
+
+        <a
+            href="{{ url_for('main.accessories') }}"
             class="sidebar-link"
         >
 
-            <span class="sidebar-icon">♡</span>
+            <span>
+                🎀
+            </span>
+
+            Accessories
+
+        </a>
+
+        <a
+            href="{{ url_for('main.hair_products') }}"
+            class="sidebar-link"
+        >
+
+            <span class="sidebar-icon">
+                ♡
+            </span>
 
             <span>
                 Hair Products
@@ -415,23 +450,21 @@
 
     <!-- SIDEBAR FOOTER -->
 
-    <div class="sidebar-footer">
-
-        <a
-            href="#settings"
-            class="sidebar-footer-link"
+    <button
+            class="bottom-control"
+            id="settingsButton"
+            type="button"
         >
-            ⚙
-            Settings
-        </a>
 
-        <a
-            href="#help"
-            class="sidebar-footer-link"
-        >
-            ?
-            Help & Support
-        </a>
+            <a href="{{ url_for('main.settings') }}" class="sidebar-link">
+    <span class="sidebar-icon">⚙</span>
+    <span>Settings</span>
+</a>
+
+        </button>
+
+
+    
 
     </div>
 
