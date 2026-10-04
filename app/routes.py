@@ -82,9 +82,6 @@ def female_hairstyles():
 @main.route("/favorites")
 def favorites():
     return render_template("favourites.html")
-@main.route("/mylooks")
-def mylooks():
-    return render_template("mylooks.html")
 @main.route("/reels")
 def reels():
     return render_template("reel.html")
@@ -115,3 +112,6 @@ def male_products():
 @main.route("/settings")
 def settings():
     return render_template("settings.html")
+@main.route("/favourites")
+def favourites():
+    return render_template("favourites.html")

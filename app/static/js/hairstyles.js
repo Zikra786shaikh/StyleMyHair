@@ -1,505 +1,535 @@
-/* =========================================================
-   STYLEMYHAIR
-   MEN'S HAIRSTYLES PAGE
-========================================================= */
+/* =====================================================
+   STYLEMYHAIR - HAIRSTYLE GALLERY
+   Search, filters, sorting, favourites, modal and themes
+===================================================== */
 
+document.addEventListener("DOMContentLoaded", () => {
+    "use strict";
 
-document.addEventListener("DOMContentLoaded", function () {
+    const STORAGE_KEY = "stylemyhair_favorites";
 
+    // -------------------------------------------------
+    // ELEMENTS
+    // -------------------------------------------------
 
-    /* =====================================================
-       ELEMENTS
-    ====================================================== */
+    const grid = document.getElementById("hairstyleGrid");
+    if (!grid) return;
 
-    const searchInput =
-        document.getElementById("styleSearch");
+    const cards = Array.from(grid.querySelectorAll(".hairstyle-card"));
+    const categoryTabs = document.querySelectorAll(".category-tab");
+    const searchInput = document.getElementById("styleSearch");
+    const sortSelect = document.getElementById("sortStyles");
+    const resultsText = document.getElementById("resultsText");
+    const noResults = document.getElementById("noResults");
 
-    const styleCards =
-        document.querySelectorAll(".style-card");
+    const resetButtons = [
+        document.getElementById("resetFilters"),
+        document.getElementById("clearFilters"),
+        document.getElementById("noResultsReset")
+    ];
 
-    const resultCount =
-        document.getElementById("resultCount");
+    // Modal
+    const modal = document.getElementById("hairstyleModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDescription = document.getElementById("modalDescription");
+    const modalTags = document.getElementById("modalTags");
+    const modalFavorite = document.getElementById("modalFavorite");
+    const modalClose = document.getElementById("modalClose");
 
-    const noResults =
-        document.getElementById("noResults");
+    // -------------------------------------------------
+    // STATE
+    // -------------------------------------------------
 
-    const filterToggle =
-        document.getElementById("filterToggle");
+    let activeCategory = "all";
+    let selectedCard = null;
+    const favorites = new Map();
 
-    const filterPanel =
-        document.getElementById("filterPanel");
+    // -------------------------------------------------
+    // LOAD FAVOURITES
+    // -------------------------------------------------
 
-    const categoryTabs =
-        document.querySelectorAll(".category-tab");
+    function loadFavorites() {
+        favorites.clear();
 
-    const favoriteButtons =
-        document.querySelectorAll(".favorite");
+        try {
+            const saved = JSON.parse(
+                localStorage.getItem(STORAGE_KEY) || "[]"
+            );
 
-
-    const textureCards =
-        document.querySelectorAll(".texture-card");
-
-    const faceButtons =
-        document.querySelectorAll(".face-options button");
-
-    const colorItems =
-        document.querySelectorAll(".color-item");
-
-    const themeToggle =
-        document.getElementById("themeToggle");
-
-
-    /* =====================================================
-       STATE
-    ====================================================== */
-
-    let currentCategory = "all";
-
-    let currentLength = "all";
-
-    let currentTexture = "all";
-
-    let currentMood = "all";
-
-
-
-    /* =====================================================
-       FILTER PANEL
-    ====================================================== */
-
-    if (filterToggle && filterPanel) {
-
-        filterToggle.addEventListener(
-            "click",
-            function () {
-
-                filterPanel.classList.toggle("open");
-
-            }
-        );
-
-    }
-
-
-
-    /* =====================================================
-       CATEGORY FILTER
-    ====================================================== */
-
-    categoryTabs.forEach(function (tab) {
-
-        tab.addEventListener(
-            "click",
-            function () {
-
-                categoryTabs.forEach(
-                    function (item) {
-
-                        item.classList.remove("active");
-
-                    }
-                );
-
-
-                tab.classList.add("active");
-
-
-                currentCategory =
-                    tab.dataset.category;
-
-
-                applyFilters();
-
-            }
-        );
-
-    });
-
-
-
-    /* =====================================================
-       FILTER OPTIONS
-    ====================================================== */
-
-    const filterOptions =
-        document.querySelectorAll(".filter-option");
-
-
-    filterOptions.forEach(function (option) {
-
-        option.addEventListener(
-            "click",
-            function () {
-
-                const type =
-                    option.dataset.filterType;
-
-                const value =
-                    option.dataset.filterValue;
-
-
-                document
-                    .querySelectorAll(
-                        `.filter-option[data-filter-type="${type}"]`
-                    )
-                    .forEach(function (item) {
-
-                        item.classList.remove("active");
-
+            saved.forEach(item => {
+                if (typeof item === "string") {
+                    favorites.set(item, {
+                        name: item,
+                        image: "",
+                        length: "",
+                        description: "",
+                        tags: ""
                     });
-
-
-                option.classList.add("active");
-
-
-                if (type === "length") {
-
-                    currentLength = value;
-
+                } else if (item && item.name) {
+                    favorites.set(item.name, item);
                 }
-
-
-                if (type === "texture") {
-
-                    currentTexture = value;
-
-                }
-
-
-                if (type === "mood") {
-
-                    currentMood = value;
-
-                }
-
-
-                applyFilters();
-
-            }
-        );
-
-    });
-
-
-
-    /* =====================================================
-       SEARCH
-    ====================================================== */
-
-    if (searchInput) {
-
-        searchInput.addEventListener(
-            "input",
-            function () {
-
-                applyFilters();
-
-            }
-        );
-
+            });
+        } catch (error) {
+            console.warn("Could not load favourites.", error);
+        }
     }
 
+    // -------------------------------------------------
+    // SAVE FAVOURITES
+    // -------------------------------------------------
 
+    function saveFavorites() {
+        try {
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify([...favorites.values()])
+            );
+        } catch (error) {
+            console.warn("Could not save favourites.", error);
+        }
 
-    /* =====================================================
-       APPLY FILTERS
-    ====================================================== */
+        updateFavoriteCount();
+    }
+
+    function updateFavoriteCount() {
+        const count = document.getElementById("favoriteCount");
+
+        if (count) {
+            count.textContent = favorites.size;
+        }
+    }
+
+    // -------------------------------------------------
+    // HAIRSTYLE DATA FOR FAVOURITES
+    // -------------------------------------------------
+
+    function getFavoriteData(card) {
+        const imageElement = card.querySelector(
+            ".hairstyle-card-image"
+        );
+
+        return {
+            name: card.dataset.name || "Hairstyle",
+            image: card.dataset.image ||
+                imageElement?.src ||
+                imageElement?.getAttribute("src") ||
+                "",
+            length: card.dataset.length || "",
+            description: card.dataset.description || "",
+            tags: card.dataset.tags || ""
+        };
+    }
+
+    // -------------------------------------------------
+    // HEART BUTTON
+    // -------------------------------------------------
+
+    function syncHeart(card) {
+        const heart = card.querySelector(".style-heart");
+        if (!heart) return;
+
+        const name = card.dataset.name;
+        const saved = favorites.has(name);
+
+        heart.classList.toggle("saved", saved);
+        heart.textContent = saved ? "♥" : "♡";
+        heart.setAttribute("aria-pressed", String(saved));
+        heart.setAttribute(
+            "aria-label",
+            saved ? "Remove from favourites" : "Add to favourites"
+        );
+    }
+
+    function toggleFavorite(card) {
+        const item = getFavoriteData(card);
+        const name = item.name;
+
+        if (favorites.has(name)) {
+            favorites.delete(name);
+        } else {
+            favorites.set(name, item);
+        }
+
+        syncHeart(card);
+        saveFavorites();
+
+        if (
+            selectedCard === card &&
+            modal?.classList.contains("open")
+        ) {
+            updateModalFavorite();
+        }
+    }
+
+    // -------------------------------------------------
+    // FILTER VALUES
+    // -------------------------------------------------
+
+    function getCheckedValues(name) {
+        return Array.from(
+            document.querySelectorAll(
+                `input[name="${name}"]:checked`
+            )
+        ).map(input => input.value);
+    }
+
+    // -------------------------------------------------
+    // FILTER LOGIC
+    // -------------------------------------------------
+
+    function matchesFilters(card) {
+        const name = (card.dataset.name || "").toLowerCase();
+        const length = card.dataset.length || "";
+        const description =
+            (card.dataset.description || "").toLowerCase();
+
+        const tags = (card.dataset.tags || "")
+            .toLowerCase()
+            .split(/\s+/);
+
+        const search = (searchInput?.value || "")
+            .trim()
+            .toLowerCase();
+
+        const selectedLengths = getCheckedValues("length");
+        const selectedTypes = getCheckedValues("type");
+        const selectedStyles = getCheckedValues("style");
+
+        const matchesSearch =
+            !search ||
+            name.includes(search) ||
+            description.includes(search) ||
+            tags.some(tag => tag.includes(search));
+
+        const matchesCategory =
+            activeCategory === "all" ||
+            length === activeCategory ||
+            tags.includes(activeCategory);
+
+        const matchesLength =
+            selectedLengths.length === 0 ||
+            selectedLengths.includes(length);
+
+        const matchesType =
+            selectedTypes.length === 0 ||
+            selectedTypes.some(type => tags.includes(type));
+
+        const matchesStyle =
+            selectedStyles.length === 0 ||
+            selectedStyles.some(style => tags.includes(style));
+
+        return (
+            matchesSearch &&
+            matchesCategory &&
+            matchesLength &&
+            matchesType &&
+            matchesStyle
+        );
+    }
+
+    // -------------------------------------------------
+    // APPLY FILTERS AND SORTING
+    // -------------------------------------------------
 
     function applyFilters() {
+        let visible = cards.filter(matchesFilters);
 
-        const searchTerm =
-            searchInput
-                ? searchInput.value
-                    .toLowerCase()
-                    .trim()
-                : "";
+        const sort = sortSelect?.value || "featured";
 
+        if (sort === "az") {
+            visible.sort((a, b) =>
+                (a.dataset.name || "").localeCompare(
+                    b.dataset.name || ""
+                )
+            );
+        } else if (sort === "za") {
+            visible.sort((a, b) =>
+                (b.dataset.name || "").localeCompare(
+                    a.dataset.name || ""
+                )
+            );
+        }
 
-        let visibleCount = 0;
+        visible.forEach(card => grid.appendChild(card));
 
+        cards
+            .filter(card => !visible.includes(card))
+            .forEach(card => grid.appendChild(card));
 
-        styleCards.forEach(function (card) {
-
-            const name =
-                (
-                    card.dataset.name || ""
-                ).toLowerCase();
-
-
-            const category =
-                (
-                    card.dataset.category || ""
-                ).toLowerCase();
-
-
-            const length =
-                (
-                    card.dataset.length || ""
-                ).toLowerCase();
-
-
-            const texture =
-                (
-                    card.dataset.texture || ""
-                ).toLowerCase();
-
-
-            const mood =
-                (
-                    card.dataset.mood || ""
-                ).toLowerCase();
-
-
-            const matchesSearch =
-                !searchTerm ||
-                name.includes(searchTerm) ||
-                category.includes(searchTerm);
-
-
-            const matchesCategory =
-                currentCategory === "all" ||
-                category.includes(
-                    currentCategory
-                );
-
-
-            const matchesLength =
-                currentLength === "all" ||
-                length === currentLength;
-
-
-            const matchesTexture =
-                currentTexture === "all" ||
-                texture === currentTexture;
-
-
-            const matchesMood =
-                currentMood === "all" ||
-                mood === currentMood;
-
-
-            const visible =
-                matchesSearch &&
-                matchesCategory &&
-                matchesLength &&
-                matchesTexture &&
-                matchesMood;
-
-
-            if (visible) {
-
-                card.style.display = "";
-
-                visibleCount++;
-
-            } else {
-
-                card.style.display = "none";
-
-            }
-
+        cards.forEach(card => {
+            card.hidden = !visible.includes(card);
         });
 
-
-        if (resultCount) {
-
-            resultCount.textContent =
-                `${visibleCount} style${visibleCount === 1 ? "" : "s"}`;
-
+        if (resultsText) {
+            resultsText.textContent =
+                `Showing ${visible.length} of ${cards.length} hairstyles`;
         }
-
 
         if (noResults) {
-
-            noResults.classList.toggle(
-                "show",
-                visibleCount === 0
-            );
-
+            noResults.hidden = visible.length !== 0;
         }
-
     }
 
+    // -------------------------------------------------
+    // MODAL
+    // -------------------------------------------------
 
+    function openModal(card) {
+        if (
+            !modal ||
+            !modalImage ||
+            !modalTitle ||
+            !modalDescription ||
+            !modalTags
+        ) return;
 
-    /* =====================================================
-       FAVORITES
-    ====================================================== */
+        selectedCard = card;
 
-    favoriteButtons.forEach(function (button) {
+        const item = getFavoriteData(card);
 
-        button.addEventListener(
-            "click",
-            function (event) {
+        modalImage.src = item.image;
+        modalImage.alt = item.name;
+        modalTitle.textContent = item.name;
+        modalDescription.textContent = item.description;
 
-                event.preventDefault();
+        modalTags.replaceChildren();
 
-                event.stopPropagation();
+        [item.length, ...item.tags.split(/\s+/)]
+            .filter(Boolean)
+            .slice(0, 5)
+            .forEach(tag => {
+                const chip = document.createElement("span");
 
+                chip.textContent =
+                    tag.charAt(0).toUpperCase() + tag.slice(1);
 
-                button.classList.toggle("saved");
+                modalTags.appendChild(chip);
+            });
 
+        updateModalFavorite();
 
-                if (
-                    button.classList.contains("saved")
-                ) {
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+    }
 
-                    button.textContent = "♥";
+    function updateModalFavorite() {
+        if (!selectedCard || !modalFavorite) return;
 
-                } else {
+        const saved = favorites.has(selectedCard.dataset.name);
 
-                    button.textContent = "♡";
+        modalFavorite.textContent = saved
+            ? "♥ Saved to Favorites"
+            : "♡ Save to Favorites";
+    }
 
-                }
+    function closeModal() {
+        modal?.classList.remove("open");
+        modal?.setAttribute("aria-hidden", "true");
+    }
 
-            }
-        );
+    // -------------------------------------------------
+    // CATEGORY TABS
+    // -------------------------------------------------
 
-    });
+    categoryTabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            categoryTabs.forEach(item => {
+                item.classList.remove("active");
+            });
 
-
-
-    /* =====================================================
-       TRY STYLE BUTTONS
-    ====================================================== */
-
-    const tryButtons =
-        document.querySelectorAll(
-            ".card-action, .try-button"
-        );
-
-
-    tryButtons.forEach(function (button) {
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                const card =
-                    button.closest(".style-card");
-
-
-                if (card) {
-
-                    const styleName =
-                        card.dataset.name;
-
-
-                    showMessage(
-                        `Selected: ${formatName(styleName)}`
-                    );
-
-                } else {
-
-                    showMessage(
-                        "Style selected — Try-On will be connected next."
-                    );
-
-                }
-
-            }
-        );
-
-    });
-
-
-
-    /* =====================================================
-   HAIR LENGTH SELECTION
-====================================================== */
-
-const hairLengthOptions =
-    document.querySelectorAll(".hair-length-option");
-
-
-hairLengthOptions.forEach(function (option) {
-
-    option.addEventListener(
-        "click",
-        function () {
-
-            const selectedLength =
-                option.dataset.length;
-
-
-            /* -----------------------------
-               ACTIVE BUTTON
-            ----------------------------- */
-
-            hairLengthOptions.forEach(
-                function (item) {
-
-                    item.classList.remove("active");
-
-                }
-            );
-
-
-            option.classList.add("active");
-
-
-            /* -----------------------------
-               UPDATE LENGTH
-            ----------------------------- */
-
-            currentLength =
-                selectedLength;
-
-
-            /* -----------------------------
-               SYNC FILTER PANEL
-            ----------------------------- */
-
-            document
-                .querySelectorAll(
-                    '.filter-option[data-filter-type="length"]'
-                )
-                .forEach(function (item) {
-
-                    item.classList.toggle(
-                        "active",
-                        item.dataset.filterValue === selectedLength
-                    );
-
-                });
-
-
-            /* -----------------------------
-               APPLY FILTER
-            ----------------------------- */
+            tab.classList.add("active");
+            activeCategory = tab.dataset.category || "all";
 
             applyFilters();
+        });
+    });
 
+    // -------------------------------------------------
+    // FILTER EVENTS
+    // -------------------------------------------------
 
-            /* -----------------------------
-               SCROLL TO COLLECTION
-            ----------------------------- */
+    document
+        .querySelectorAll('.filter-group input[type="checkbox"]')
+        .forEach(input => {
+            input.addEventListener("change", applyFilters);
+        });
 
+    searchInput?.addEventListener("input", applyFilters);
+    sortSelect?.addEventListener("change", applyFilters);
+
+    // -------------------------------------------------
+    // RESET FILTERS
+    // -------------------------------------------------
+
+    resetButtons.forEach(button => {
+        button?.addEventListener("click", () => {
             document
-                .getElementById("collection")
-                ?.scrollIntoView({
-                    behavior: "smooth"
+                .querySelectorAll(
+                    '.filter-group input[type="checkbox"]'
+                )
+                .forEach(input => {
+                    input.checked = false;
                 });
 
+            if (searchInput) searchInput.value = "";
+            if (sortSelect) sortSelect.value = "featured";
+
+            activeCategory = "all";
+
+            categoryTabs.forEach(tab => {
+                tab.classList.toggle(
+                    "active",
+                    tab.dataset.category === "all"
+                );
+            });
+
+            applyFilters();
+        });
+    });
+
+    // -------------------------------------------------
+    // CARD EVENTS
+    // -------------------------------------------------
+
+    cards.forEach(card => {
+        const heart = card.querySelector(".style-heart");
+        const details = card.querySelector(".details-button");
+        const quickView = card.querySelector(".quick-view");
+        const image = card.querySelector(".hairstyle-card-image");
+
+        syncHeart(card);
+
+        heart?.addEventListener("click", event => {
+            event.stopPropagation();
+            toggleFavorite(card);
+        });
+
+        details?.addEventListener("click", () => {
+            openModal(card);
+        });
+
+        quickView?.addEventListener("click", () => {
+            openModal(card);
+        });
+
+        image?.addEventListener("dblclick", () => {
+            openModal(card);
+        });
+    });
+
+    // -------------------------------------------------
+    // MODAL EVENTS
+    // -------------------------------------------------
+
+    modalFavorite?.addEventListener("click", () => {
+        if (selectedCard) {
+            toggleFavorite(selectedCard);
+        }
+    });
+
+    modalClose?.addEventListener("click", closeModal);
+
+    modal?.addEventListener("click", event => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+            closeModal();
+        }
+    });
+
+    // -------------------------------------------------
+    // SEARCH PANEL
+    // -------------------------------------------------
+
+    const searchButton = document.getElementById("searchButton");
+    const searchPanel = document.getElementById("searchPanel");
+    const closeSearch = document.getElementById("closeSearch");
+
+    searchButton?.addEventListener("click", () => {
+        searchPanel?.classList.toggle("open");
+
+        if (searchPanel?.classList.contains("open")) {
+            searchInput?.focus();
+        }
+    });
+
+    closeSearch?.addEventListener("click", () => {
+        searchPanel?.classList.remove("open");
+
+        if (searchInput) {
+            searchInput.value = "";
+            applyFilters();
+        }
+    });
+
+    // -------------------------------------------------
+    // MOBILE SIDEBAR
+    // -------------------------------------------------
+
+    const sidebar = document.getElementById("maleSidebar");
+    const overlay = document.getElementById("mobileOverlay");
+
+    function closeSidebar() {
+        sidebar?.classList.remove("open");
+        overlay?.classList.remove("show");
+    }
+
+    document.getElementById("mobileMenu")?.addEventListener(
+        "click",
+        () => {
+            sidebar?.classList.add("open");
+            overlay?.classList.add("show");
         }
     );
 
-});
+    document
+        .getElementById("mobileClose")
+        ?.addEventListener("click", closeSidebar);
+
+    overlay?.addEventListener("click", closeSidebar);
+
+    // -------------------------------------------------
+    // THEME SELECTOR
+    // -------------------------------------------------
+
+    const themeGrid = document.getElementById("themeGrid");
+    const themeName = document.getElementById("themeName");
+
+    
+
+    const themeLabels = {
+        graphite: "Graphite",
+        navy: "Navy",
+        steel: "Steel",
+        ocean: "Ocean",
+        emerald: "Emerald",
+        forest: "Forest",
+        burgundy: "Burgundy",
+        copper: "Copper",
+        charcoal: "Charcoal",
+        midnight: "Midnight"
+    };
+
+    function setTheme(theme) {
+        document.body.dataset.theme = theme;
 
 
+        themeButtons.forEach(button => {
+            button.classList.toggle(
+                "active",
+                button.dataset.theme === theme
+            );
+        });
 
-    /* =====================================================
-       TEXTURE CARDS
-    ====================================================== */
-
-    textureCards.forEach(function (card) {
-
-        card.addEventListener(
-            "click",
-            function () {
-
-                const texture =
-                    card.dataset.textureChoice;
+        if (themeName) {
+            themeName.textContent =
+                themeLabels[theme] || "Graphite";
+        }
 
 
                 currentTexture = texture;
@@ -529,9 +559,9 @@ hairLengthOptions.forEach(function (option) {
                     });
 
             }
-        );
+        
 
-    });
+    
 
 
 
@@ -671,8 +701,17 @@ function applyTheme(theme, save = false) {
 
         theme = "rose";
 
+        localStorage.setItem("stylemyhair_theme", theme);
     }
 
+    themeButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            setTheme(button.dataset.theme);
+        });
+    });
+
+
+    const storedTheme = localStorage.getItem("stylemyhair_theme");
 
     /* MAIN THEME */
 
@@ -829,131 +868,69 @@ if (themeToggle) {
 
 }
 
-    /* =====================================================
-       MESSAGE
-    ====================================================== */
+    if (storedTheme && themeLabels[storedTheme]) {
+        setTheme(storedTheme);
+    }
 
-    function showMessage(message) {
+    // -------------------------------------------------
+    // LIGHT MODE
+    // -------------------------------------------------
 
-        let toast =
-            document.querySelector(
-                ".style-toast"
-            );
+    const modeToggle = document.getElementById("modeToggle");
+    const modeIcon = document.getElementById("modeIcon");
+    const modeText = document.getElementById("modeText");
 
+    function setLightMode(enabled) {
+        document.body.classList.toggle("light-mode", enabled);
 
-        if (!toast) {
-
-            toast =
-                document.createElement(
-                    "div"
-                );
-
-            toast.className =
-                "style-toast";
-
-
-            toast.style.position =
-                "fixed";
-
-            toast.style.bottom =
-                "25px";
-
-            toast.style.left =
-                "50%";
-
-            toast.style.transform =
-                "translateX(-50%)";
-
-            toast.style.zIndex =
-                "9999";
-
-            toast.style.padding =
-                "13px 20px";
-
-            toast.style.background =
-                "#d6c4a2";
-
-            toast.style.color =
-                "#111";
-
-            toast.style.fontSize =
-                "11px";
-
-            toast.style.letterSpacing =
-                "0.08em";
-
-            toast.style.boxShadow =
-                "0 15px 40px rgba(0,0,0,.35)";
-
-
-            document.body.appendChild(
-                toast
-            );
-
+        if (modeIcon) {
+            modeIcon.textContent = enabled ? "☾" : "☀";
         }
 
+        if (modeText) {
+            modeText.textContent =
+                enabled ? "Dark Mode" : "Light Mode";
+        }
 
-        toast.textContent =
-            message;
-
-
-        toast.style.opacity =
-            "1";
-
-
-        clearTimeout(
-            toast.timeout
+        localStorage.setItem(
+            "stylemyhair_light_mode",
+            String(enabled)
         );
-
-
-        toast.timeout =
-            setTimeout(
-                function () {
-
-                    toast.style.opacity =
-                        "0";
-
-                },
-                2200
-            );
-
     }
 
+    modeToggle?.addEventListener("click", () => {
+        setLightMode(
+            !document.body.classList.contains("light-mode")
+        );
+    });
 
+    setLightMode(
+        localStorage.getItem("stylemyhair_light_mode") === "true"
+    );
 
-    /* =====================================================
-       FORMAT NAME
-    ====================================================== */
+    // -------------------------------------------------
+    // STORAGE SYNC
+    // -------------------------------------------------
 
-    function formatName(name) {
+    window.addEventListener("storage", event => {
+        if (event.key === STORAGE_KEY) {
+            loadFavorites();
 
-        if (!name) {
-
-            return "Hairstyle";
-
+            cards.forEach(syncHeart);
+            updateFavoriteCount();
         }
+    });
 
+    // -------------------------------------------------
+    // INITIALIZE
+    // -------------------------------------------------
 
-        return name
-            .split(" ")
-            .map(function (word) {
+    loadFavorites();
 
-                return word
-                    .charAt(0)
-                    .toUpperCase() +
-                    word.slice(1);
+    cards.forEach(syncHeart);
 
-            })
-            .join(" ");
-
-    }
-
-
-
-    /* =====================================================
-       INITIAL FILTER
-    ====================================================== */
-
+    updateFavoriteCount();
     applyFilters();
 
+    console.log("StyleMyHair hairstyle gallery initialized.");
 });

@@ -179,18 +179,6 @@
 
 
 
-        <button
-            class="side-link"
-            data-scroll="eventSection"
-            type="button"
-        >
-
-            <span>⚡</span>
-
-            <label>Event Looks</label>
-
-        </button>
-
 
     
 
@@ -206,7 +194,7 @@
     class="sidebar-link"
 >
     <span class="sidebar-icon">♙</span>
-    <span>Hair Products</span>
+    <label>Hair Products</label>
 </a>
         </button>
 
@@ -217,11 +205,14 @@
             type="button"
         >
 
-            <span>♥</span>
-
-            <label>Favorites</label>
-
-            <b id="favoriteCount">0</b>
+            <a href="{{ url_for('main.favourites') }}"
+   class="side-link favorites-drag"
+   id="favoritesNavButton"
+   draggable="true">
+    <span class="side-icon">♥</span>
+    <label>Favorites</label>
+    <b id="favoriteCount">0</b>
+</a>
 
         </button>
 

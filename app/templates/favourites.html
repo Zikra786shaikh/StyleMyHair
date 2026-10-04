@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StyleMyHair | Favourites</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/male.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/favourites.css') }}?v=21"
+    >
+
+</head>
+
+
+<body data-theme="graphite">
+
+
+<!-- =====================================================
+     MOBILE OVERLAY
+====================================================== -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>
+
+
+<!-- =====================================================
+     SAME MALE SIDEBAR
+====================================================== -->
+
+<aside
+    class="male-sidebar"
+    id="maleSidebar"
+>
+
+    <div class="sidebar-top">
+
+        <div class="brand">
+
+            <div class="brand-symbol">
+                SM
+            </div>
+
+            <div class="brand-text">
+
+                <strong>StyleMyHair</strong>
+
+                <span>MEN'S STUDIO</span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="mobile-close"
+            id="mobileClose"
+            type="button"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <div class="sidebar-profile">
+
+        <div class="profile-avatar">
+            👤
+        </div>
+
+        <div class="profile-info">
+
+            <strong>My Profile</strong>
+
+            <span>Style Explorer</span>
+
+        </div>
+
+        <button
+            class="profile-arrow"
+            type="button"
+            id="profileButton"
+        >
+            →
+        </button>
+
+    </div>
+
+
+    <!-- MAIN NAVIGATION -->
+
+    <nav class="sidebar-navigation">
+
+        <span class="nav-heading">
+            EXPLORE
+        </span>
+
+
+        <a class="side-link" href="{{ url_for('main.male') }}">
+            <span>⌂</span><label>Dashboard</label>
+        </a>
+
+
+        <!-- HAIRSTYLES -->
+
+        <a
+            class="side-link"
+            href="{{ url_for('main.hairstyles') }}"
+        >
+
+            <span>✂</span>
+
+            <label>Hairstyles</label>
+
+        </a>
+
+
+        <!-- REELS -->
+
+        <button
+            class="side-link"
+            id="reelsButton"
+            type="button"
+            onclick="window.location.href='/reel';"
+        >
+
+            <span>▶</span>
+
+            <label>Reels</label>
+
+        </button>
+
+
+        <!-- SAVED REELS -->
+
+        <button
+            class="side-link"
+            id="savedReelsButton"
+            type="button"
+            onclick="window.location.href='/saved-reel';"
+        >
+
+            <span>🔖</span>
+
+            <label>Saved Reels</label>
+
+        </button>
+
+
+        <!-- HAIR PRODUCTS -->
+
+        <button
+            class="side-link"
+            data-scroll="productsSection"
+            type="button"
+        >
+
+            <a
+                href="{{ url_for('main.male_products') }}"
+                class="sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    ♙
+                </span>
+
+                <label>
+                    Hair Products
+                </label>
+
+            </a>
+
+        </button>
+
+
+        <!-- FAVORITES -->
+
+        <button
+            class="side-link active"
+            data-scroll="favoritesSection"
+            type="button"
+        >
+
+            <a
+                href="{{ url_for('main.favourites') }}"
+                class="side-link favorites-drag"
+                id="favoritesNavButton"
+                draggable="true"
+            >
+
+                <span class="side-icon">
+                    ♥
+                </span>
+
+                <label>
+                    Favorites
+                </label>
+
+                <b id="favoriteCount">
+                    0
+                </b>
+
+            </a>
+
+        </button>
+
+
+    </nav>
+
+
+    <!-- THEME -->
+
+    <div class="theme-panel">
+
+        <div class="theme-title">
+
+            <span>
+                THEME
+            </span>
+
+            <small id="themeName">
+                Graphite
+            </small>
+
+        </div>
+
+
+        <div
+            class="theme-grid"
+            id="themeGrid"
+        >
+
+            <button
+                class="theme-dot graphite active"
+                data-theme="graphite"
+                title="Graphite"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot navy"
+                data-theme="navy"
+                title="Navy"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot steel"
+                data-theme="steel"
+                title="Steel"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot ocean"
+                data-theme="ocean"
+                title="Ocean"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot emerald"
+                data-theme="emerald"
+                title="Emerald"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot forest"
+                data-theme="forest"
+                title="Forest"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot burgundy"
+                data-theme="burgundy"
+                title="Burgundy"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot copper"
+                data-theme="copper"
+                title="Copper"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot charcoal"
+                data-theme="charcoal"
+                title="Charcoal"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot midnight"
+                data-theme="midnight"
+                title="Midnight"
+                type="button"
+            ></button>
+
+        </div>
+
+    </div>
+
+
+    <!-- BOTTOM CONTROLS -->
+
+    <div class="sidebar-bottom">
+
+        <button
+            class="bottom-control"
+            id="modeToggle"
+            type="button"
+        >
+
+            <span id="modeIcon">
+                ☀
+            </span>
+
+            <label id="modeText">
+                Light Mode
+            </label>
+
+        </button>
+
+
+        <button
+            class="bottom-control"
+            id="settingsButton"
+            type="button"
+        >
+
+            <a
+                href="{{ url_for('main.settings') }}"
+                class="sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    ⚙
+                </span>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     SAME MALE MAIN
+====================================================== -->
+
+<main class="male-main">
+
+
+    <!-- =================================================
+         SAME MALE HEADER
+    ================================================== -->
+
+    <header class="male-topbar">
+
+        <button
+            class="mobile-menu"
+            id="mobileMenu"
+            type="button"
+        >
+            ☰
+        </button>
+
+
+        <a
+            href="{{ url_for('main.home') }}"
+            class="back-button"
+        >
+
+            <span>
+                ←
+            </span>
+
+            <label>
+                Back
+            </label>
+
+        </a>
+
+
+        <div class="topbar-title">
+
+            <span>
+                MEN'S STYLE STUDIO
+            </span>
+
+            <strong>
+                Find Your Signature Look
+            </strong>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+            <button
+                class="top-icon"
+                id="searchButton"
+                type="button"
+            >
+                ⌕
+            </button>
+
+            <button
+                class="top-profile"
+                id="topProfile"
+                type="button"
+            >
+                👤
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         SAME SEARCH PANEL
+    ================================================== -->
+
+    <div
+        class="search-panel"
+        id="searchPanel"
+    >
+
+        <div class="search-box">
+
+            <span>
+                ⌕
+            </span>
+
+            <input
+                type="text"
+                id="styleSearch"
+                placeholder="Search hairstyles, looks, products..."
+            >
+
+            <button
+                id="closeSearch"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FAVOURITES MAIN CONTENT
+====================================================== -->
+
+    <section
+        class="favourites-page"
+        id="favoritesSection"
+    >
+
+        <div class="favourites-header">
+
+            <div class="favourites-heading">
+
+                <span class="favourites-eyebrow">
+                    YOUR STYLE COLLECTION
+                </span>
+
+                <h1>
+                    Favourites
+                </h1>
+
+                <p>
+                    Keep your favourite hairstyles and looks
+                    in one place.
+                </p>
+
+            </div>
+
+
+            <div class="favourites-count-card">
+
+                <span>
+                    SAVED LOOKS
+                </span>
+
+                <strong id="pageFavoriteCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- FILTERS -->
+
+        <div class="favourites-toolbar">
+
+            <div class="favourites-filters">
+
+                <button
+                    class="favourite-filter active"
+                    data-filter="all"
+                    type="button"
+                >
+                    All
+                </button>
+
+                <button
+                    class="favourite-filter"
+                    data-filter="hairstyle"
+                    type="button"
+                >
+                    Hairstyles
+                </button>
+
+                
+
+                <button
+                    class="favourite-filter"
+                    data-filter="product"
+                    type="button"
+                >
+                    Products
+                </button>
+
+                <button
+                    class="favourite-filter"
+                    data-filter="reel"
+                    type="button"
+                >
+                    Reels
+                </button>
+
+            </div>
+
+
+            <div class="favourites-sort">
+
+                <label for="favouriteSort">
+                    Sort
+                </label>
+
+                <select id="favouriteSort">
+
+                    <option value="newest">
+                        Newest
+                    </option>
+
+                    <option value="oldest">
+                        Oldest
+                    </option>
+
+                    <option value="az">
+                        A - Z
+                    </option>
+
+                    <option value="za">
+                        Z - A
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             DYNAMIC FAVORITES GRID
+        ================================================== -->
+
+        <div
+            class="favourites-grid"
+            id="favouritesGrid"
+        ></div>
+
+
+        <!-- =================================================
+             EMPTY STATE
+        ================================================== -->
+
+        <div
+            class="favourites-empty"
+            id="favouritesEmpty"
+            hidden
+        >
+
+            <div class="empty-icon">
+                ♥
+            </div>
+
+            <h2>
+                No Favourites Yet
+            </h2>
+
+            <p>
+                Start exploring hairstyles and save the
+                looks you love.
+            </p>
+
+            <a
+                href="{{ url_for('main.hairstyles') }}"
+                class="empty-action"
+            >
+                Explore Hairstyles
+            </a>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+<!-- =====================================================
+     SAME MALE JAVASCRIPT
+====================================================== -->
+
+
+
+
+<!-- =====================================================
+     FAVOURITES JAVASCRIPT
+====================================================== -->
+
+<script
+    src="{{ url_for('static', filename='js/favourites.js') }}?v=21"
+></script>
+
+
+</body>
+
+</html>

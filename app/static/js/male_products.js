@@ -63,9 +63,8 @@ const FAVORITES_KEY =
 const MALE_THEME_KEY =
     "stylemyhair-male-theme";
 
-const MALE_DARK_MODE_KEY =
-    "stylemyhair-male-dark-mode";
-
+const MALE_MODE_KEY =
+    "stylemyhair-male-mode";
 
 /* =========================================================
    PRODUCT DATA
@@ -565,181 +564,130 @@ const products = [
 
 /* =========================================================
    THEME SYSTEM
+   SAME THEME SYSTEM AS MAIN MALE PAGE
 ========================================================= */
 
 const maleThemes = {
 
     graphite: {
         name: "Graphite",
-        accent: "#8b95a5",
-        accent2: "#697586",
-        lightBg: "#f4f5f7",
-        lightSurface: "#ffffff",
-        lightSoft: "#eceef2",
-        lightText: "#17191d"
+        primary: "#6f7cff",
+        secondary: "#aeb6ff",
+        accent: "#4c5ee8"
     },
 
     navy: {
         name: "Navy",
-        accent: "#496b9b",
-        accent2: "#31527f",
-        lightBg: "#f2f5fa",
-        lightSurface: "#ffffff",
-        lightSoft: "#e5ebf4",
-        lightText: "#162033"
+        primary: "#3974b8",
+        secondary: "#8bb8e8",
+        accent: "#24528c"
     },
 
     steel: {
         name: "Steel",
-        accent: "#6e7f8d",
-        accent2: "#52636f",
-        lightBg: "#f2f4f5",
-        lightSurface: "#ffffff",
-        lightSoft: "#e4e8eb",
-        lightText: "#1b2228"
+        primary: "#7891a8",
+        secondary: "#b8c8d6",
+        accent: "#526c82"
     },
 
     ocean: {
         name: "Ocean",
-        accent: "#3d8fa5",
-        accent2: "#267184",
-        lightBg: "#eff7f9",
-        lightSurface: "#ffffff",
-        lightSoft: "#dceff2",
-        lightText: "#15282d"
+        primary: "#278da6",
+        secondary: "#7bc7d7",
+        accent: "#16687d"
     },
 
     emerald: {
         name: "Emerald",
-        accent: "#3c9274",
-        accent2: "#28725a",
-        lightBg: "#eff7f3",
-        lightSurface: "#ffffff",
-        lightSoft: "#dceee7",
-        lightText: "#172822"
+        primary: "#319b79",
+        secondary: "#8ad3bb",
+        accent: "#217159"
     },
 
     forest: {
         name: "Forest",
-        accent: "#52745c",
-        accent2: "#3b5943",
-        lightBg: "#f2f6f2",
-        lightSurface: "#ffffff",
-        lightSoft: "#e1e9e2",
-        lightText: "#1b2820"
+        primary: "#477c61",
+        secondary: "#9dbdaa",
+        accent: "#315b46"
     },
 
     burgundy: {
         name: "Burgundy",
-        accent: "#8b4d5d",
-        accent2: "#713746",
-        lightBg: "#faf3f5",
-        lightSurface: "#ffffff",
-        lightSoft: "#f0e0e5",
-        lightText: "#2b1a20"
+        primary: "#9b5263",
+        secondary: "#d69ba8",
+        accent: "#703746"
     },
 
     copper: {
         name: "Copper",
-        accent: "#a66c48",
-        accent2: "#875437",
-        lightBg: "#faf5f1",
-        lightSurface: "#ffffff",
-        lightSoft: "#eee2d8",
-        lightText: "#2b211c"
+        primary: "#bd7950",
+        secondary: "#e0aa8a",
+        accent: "#8e5334"
     },
 
     charcoal: {
         name: "Charcoal",
-        accent: "#555b63",
-        accent2: "#3e444c",
-        lightBg: "#f3f4f5",
-        lightSurface: "#ffffff",
-        lightSoft: "#e5e6e8",
-        lightText: "#191c20"
+        primary: "#727985",
+        secondary: "#b4bac3",
+        accent: "#4c515b"
     },
 
     midnight: {
         name: "Midnight",
-        accent: "#626c9e",
-        accent2: "#48537f",
-        lightBg: "#f1f3fa",
-        lightSurface: "#ffffff",
-        lightSoft: "#e1e5f2",
-        lightText: "#171b2b"
+        primary: "#63558e",
+        secondary: "#a99dd0",
+        accent: "#473b70"
     }
 
 };
 
 
 /* =========================================================
-   FORCE THEME CSS
-   This fixes pages whose existing CSS is stuck in dark mode.
+   APPLY MALE THEME
 ========================================================= */
 
+function applyMaleTheme(themeKey) {
 
-
-
-/* =========================================================
-   APPLY THEME VARIABLES
-========================================================= */
-
-function applyMaleTheme(theme) {
-    if (!maleThemes[theme]) {
-        theme = "graphite";
+    if (!maleThemes[themeKey]) {
+        themeKey = "graphite";
     }
 
-    const selected = maleThemes[theme];
+    const theme = maleThemes[themeKey];
 
-    html.setAttribute("data-theme", theme);
-    body.setAttribute("data-theme", theme);
-
-    /* =====================================================
-       MALE PRODUCTS PAGE COLORS
-    ===================================================== */
-
-    body.style.setProperty("--mp-bg", selected.lightBg);
-    body.style.setProperty("--mp-surface", selected.lightSurface);
-    body.style.setProperty("--mp-surface-2", selected.lightSoft);
-    body.style.setProperty("--mp-surface-3", selected.lightSoft);
-    body.style.setProperty("--mp-text", selected.lightText);
-    body.style.setProperty("--mp-muted", selected.lightText);
-    body.style.setProperty("--mp-primary", selected.accent);
-    body.style.setProperty("--mp-accent", selected.accent2);
-    body.style.setProperty("--mp-border", selected.lightSoft);
+    html.setAttribute("data-theme", themeKey);
+    body.setAttribute("data-theme", themeKey);
 
     /* =====================================================
-       HEADER + SIDEBAR + MALE MAIN PAGE COLORS
+       SAME VARIABLES USED BY MALE.CSS
     ===================================================== */
-
-    body.style.setProperty("--primary", selected.accent);
-    body.style.setProperty("--secondary", selected.accent2);
-    body.style.setProperty("--accent", selected.accent2);
-
-    body.style.setProperty("--background", selected.lightBg);
-    body.style.setProperty("--surface", selected.lightSurface);
-    body.style.setProperty("--surface-2", selected.lightSoft);
-    body.style.setProperty("--surface-3", selected.lightSoft);
-
-    body.style.setProperty("--text", selected.lightText);
 
     body.style.setProperty(
-        "--muted",
-        selected.lightText
+        "--primary",
+        theme.primary
     );
 
     body.style.setProperty(
-        "--border",
-        selected.lightSoft
+        "--secondary",
+        theme.secondary
+    );
+
+    body.style.setProperty(
+        "--accent",
+        theme.accent
     );
 
     /* =====================================================
-       SAVE
+       KEEP PRODUCTS PAGE CONNECTED TO SAME COLORS
     ===================================================== */
 
-    localStorage.setItem(
-        MALE_THEME_KEY,
-        theme
+    body.style.setProperty(
+        "--mp-primary",
+        theme.primary
+    );
+
+    body.style.setProperty(
+        "--mp-accent",
+        theme.accent
     );
 
     /* =====================================================
@@ -747,201 +695,299 @@ function applyMaleTheme(theme) {
     ===================================================== */
 
     themeButtons.forEach(function(button) {
+
         button.classList.toggle(
             "active",
-            button.dataset.theme === theme
+            button.dataset.theme === themeKey
         );
+
     });
 
     if (themeName) {
         themeName.textContent =
-            selected.name;
+            theme.name;
     }
+
+    /* =====================================================
+       SAVE SAME KEY AS MAIN MALE PAGE
+    ===================================================== */
+
+    localStorage.setItem(
+        MALE_THEME_KEY,
+        themeKey
+    );
 }
+
+
 /* =========================================================
-   APPLY DARK / LIGHT MODE
+   APPLY LIGHT / DARK MODE
+   SAME STORAGE KEY AS MAIN MALE PAGE
 ========================================================= */
 
-function applyMaleDarkMode(isDark, save = true) {
+function applyMaleMode(isLight, save = true) {
 
-    const dark = Boolean(isDark);
+    const light = Boolean(isLight);
+
+    body.classList.toggle(
+        "light-mode",
+        light
+    );
 
     html.classList.toggle(
-        "dark-mode",
-        dark
+        "light-mode",
+        light
     );
 
     body.classList.toggle(
         "dark-mode",
-        dark
+        !light
     );
 
-    html.setAttribute(
-        "data-mode",
-        dark ? "dark" : "light"
+    html.classList.toggle(
+        "dark-mode",
+        !light
     );
 
     body.setAttribute(
         "data-mode",
-        dark ? "dark" : "light"
+        light ? "light" : "dark"
     );
 
-    if (dark) {
-
-        /* =================================================
-           PRODUCTS PAGE DARK COLORS
-        ================================================= */
-
-        body.style.setProperty(
-            "--mp-bg",
-            "#101216"
-        );
-
-        body.style.setProperty(
-            "--mp-surface",
-            "#181a1f"
-        );
-
-        body.style.setProperty(
-            "--mp-surface-2",
-            "#202329"
-        );
-
-        body.style.setProperty(
-            "--mp-surface-3",
-            "#292d34"
-        );
-
-        body.style.setProperty(
-            "--mp-text",
-            "#f5f6f8"
-        );
-
-        body.style.setProperty(
-            "--mp-muted",
-            "#b5bbc5"
-        );
-
-        body.style.setProperty(
-            "--mp-border",
-            "rgba(255,255,255,0.10)"
-        );
+    html.setAttribute(
+        "data-mode",
+        light ? "light" : "dark"
+    );
 
 
-        /* =================================================
-           HEADER + SIDEBAR DARK COLORS
-        ================================================= */
+    /* =====================================================
+       LIGHT MODE
+    ===================================================== */
+
+    if (light) {
 
         body.style.setProperty(
             "--background",
-            "#101216"
+            "#f3f5f7"
         );
 
         body.style.setProperty(
             "--surface",
-            "#181a1f"
+            "#ffffff"
         );
 
         body.style.setProperty(
             "--surface-2",
-            "#202329"
+            "#eef1f4"
         );
 
         body.style.setProperty(
             "--surface-3",
-            "#292d34"
+            "#e5e9ee"
         );
 
         body.style.setProperty(
             "--text",
-            "#f5f6f8"
+            "#151922"
         );
 
         body.style.setProperty(
             "--muted",
-            "#b5bbc5"
+            "#667080"
         );
 
         body.style.setProperty(
             "--border",
-            "rgba(255,255,255,0.10)"
+            "rgba(20,25,35,0.08)"
         );
+
+        body.style.setProperty(
+            "--mp-bg",
+            "#f3f5f7"
+        );
+
+        body.style.setProperty(
+            "--mp-surface",
+            "#ffffff"
+        );
+
+        body.style.setProperty(
+            "--mp-surface-2",
+            "#eef1f4"
+        );
+
+        body.style.setProperty(
+            "--mp-surface-3",
+            "#e5e9ee"
+        );
+
+        body.style.setProperty(
+            "--mp-text",
+            "#151922"
+        );
+
+        body.style.setProperty(
+            "--mp-muted",
+            "#667080"
+        );
+
+        body.style.setProperty(
+            "--mp-border",
+            "rgba(20,25,35,0.08)"
+        );
+
 
     } else {
 
         /* =================================================
-           RESTORE SELECTED THEME
+           DARK MODE
         ================================================= */
 
-        const theme =
-            localStorage.getItem(
-                MALE_THEME_KEY
-            ) || "graphite";
+        body.style.setProperty(
+            "--background",
+            "#0b0d12"
+        );
 
-        applyMaleTheme(theme);
-    }
+        body.style.setProperty(
+            "--surface",
+            "#12151d"
+        );
 
-    if (save) {
-        localStorage.setItem(
-            MALE_DARK_MODE_KEY,
-            dark ? "true" : "false"
+        body.style.setProperty(
+            "--surface-2",
+            "#181c26"
+        );
+
+        body.style.setProperty(
+            "--surface-3",
+            "#202531"
+        );
+
+        body.style.setProperty(
+            "--text",
+            "#f5f7fb"
+        );
+
+        body.style.setProperty(
+            "--muted",
+            "#9299a8"
+        );
+
+        body.style.setProperty(
+            "--border",
+            "rgba(255,255,255,0.08)"
+        );
+
+        body.style.setProperty(
+            "--mp-bg",
+            "#0b0d12"
+        );
+
+        body.style.setProperty(
+            "--mp-surface",
+            "#12151d"
+        );
+
+        body.style.setProperty(
+            "--mp-surface-2",
+            "#181c26"
+        );
+
+        body.style.setProperty(
+            "--mp-surface-3",
+            "#202531"
+        );
+
+        body.style.setProperty(
+            "--mp-text",
+            "#f5f7fb"
+        );
+
+        body.style.setProperty(
+            "--mp-muted",
+            "#9299a8"
+        );
+
+        body.style.setProperty(
+            "--mp-border",
+            "rgba(255,255,255,0.08)"
         );
     }
 
+
+    /* =====================================================
+       BUTTON TEXT / ICON
+    ===================================================== */
+
     if (modeIcon) {
+
         modeIcon.textContent =
-            dark ? "☾" : "☀";
+            light ? "☀" : "☾";
+
     }
 
     if (modeText) {
+
         modeText.textContent =
-            dark
-                ? "Dark Mode"
-                : "Light Mode";
+            light
+                ? "Light Mode"
+                : "Dark Mode";
+
     }
+
+
+    /* =====================================================
+       SAVE SAME MODE KEY AS MAIN MALE PAGE
+    ===================================================== */
+
+    if (save) {
+
+        localStorage.setItem(
+            MALE_MODE_KEY,
+            light ? "light" : "dark"
+        );
+
+    }
+
 }
+
+
 /* =========================================================
-   LOAD THEME
+   LOAD SAVED THEME
 ========================================================= */
 
 function loadTheme() {
 
-    let savedTheme =
+    const savedTheme =
         localStorage.getItem(
             MALE_THEME_KEY
-        );
-
-    if (!maleThemes[savedTheme]) {
-
-        savedTheme = "graphite";
-
-    }
+        ) || "graphite";
 
     applyMaleTheme(savedTheme);
 }
 
 
 /* =========================================================
-   LOAD DARK MODE
+   LOAD SAVED LIGHT / DARK MODE
 ========================================================= */
 
 function loadDarkMode() {
 
-    const saved =
+    const savedMode =
         localStorage.getItem(
-            MALE_DARK_MODE_KEY
+            MALE_MODE_KEY
         );
 
     /*
-       IMPORTANT:
-       No saved value = LIGHT MODE.
+       MAIN MALE PAGE:
+       "light" = Light Mode
+       anything else = Dark Mode
     */
 
-    const isDark =
-        saved === "true";
+    const isLight =
+        savedMode === "light";
 
-    applyMaleDarkMode(
-        isDark,
+    applyMaleMode(
+        isLight,
         false
     );
 }
@@ -963,7 +1009,7 @@ function setupThemeButtons() {
                 event.stopPropagation();
 
                 const selectedTheme =
-                    this.getAttribute("data-theme");
+                    this.dataset.theme;
 
                 if (
                     selectedTheme &&
@@ -980,11 +1026,12 @@ function setupThemeButtons() {
         );
 
     });
+
 }
 
 
 /* =========================================================
-   DARK MODE BUTTON
+   LIGHT / DARK BUTTON
 ========================================================= */
 
 function setupDarkMode() {
@@ -1000,19 +1047,20 @@ function setupDarkMode() {
             event.preventDefault();
             event.stopPropagation();
 
-            const currentlyDark =
-                body.getAttribute("data-mode") === "dark";
+            const currentMode =
+                body.getAttribute(
+                    "data-mode"
+                ) || "dark";
 
-            applyMaleDarkMode(
-                !currentlyDark,
+            applyMaleMode(
+                currentMode !== "light",
                 true
             );
 
         }
     );
+
 }
-
-
 /* =========================================================
    FAVORITES
 ========================================================= */

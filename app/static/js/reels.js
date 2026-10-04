@@ -262,43 +262,128 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       LIKE
-    ===================================================== */
+   LIKE REEL
+====================================================== */
 
-    document
-        .querySelectorAll(".like-button")
-        .forEach(function (button) {
+const LIKED_REELS_KEY =
+    "stylemyhair-male-liked-reels";
 
-            button.addEventListener(
-                "click",
-                function () {
 
-                    button.classList.toggle("liked");
+function getLikedReels() {
 
-                    const icon =
-                        button.querySelector(
-                            ".like-icon"
+    return JSON.parse(
+        localStorage.getItem(
+            LIKED_REELS_KEY
+        ) || "[]"
+    );
+
+}
+
+
+function saveLikedReels(likedReels) {
+
+    localStorage.setItem(
+        LIKED_REELS_KEY,
+        JSON.stringify(likedReels)
+    );
+
+}
+
+
+document
+    .querySelectorAll(".like-button")
+    .forEach(function (button, index) {
+
+        const reelId =
+            "reel" + (index + 1);
+
+
+        /* LOAD EXISTING LIKE */
+
+        const likedReels =
+            getLikedReels();
+
+
+        if (
+            likedReels.includes(reelId)
+        ) {
+
+            button.classList.add("liked");
+
+            button.querySelector(
+                ".like-icon"
+            ).textContent = "♥";
+
+        }
+
+
+        /* CLICK LIKE */
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                let liked =
+                    getLikedReels();
+
+
+                if (
+                    liked.includes(reelId)
+                ) {
+
+                    /* UNLIKE */
+
+                    liked =
+                        liked.filter(
+                            function (id) {
+
+                                return id !== reelId;
+
+                            }
                         );
 
 
-                    if (
-                        button.classList.contains("liked")
-                    ) {
+                    button.classList.remove(
+                        "liked"
+                    );
 
-                        icon.textContent = "♥";
 
-                    } else {
+                    button.querySelector(
+                        ".like-icon"
+                    ).textContent = "♡";
 
-                        icon.textContent = "♡";
 
-                    }
+                } else {
+
+                    /* LIKE */
+
+                    liked.push(reelId);
+
+
+                    button.classList.add(
+                        "liked"
+                    );
+
+
+                    button.querySelector(
+                        ".like-icon"
+                    ).textContent = "♥";
 
                 }
-            );
-
-        });
 
 
+                saveLikedReels(liked);
+
+
+                console.log(
+                    "Liked reels:",
+                    liked
+                );
+
+            }
+        );
+
+    });
     /* =====================================================
        SAVE REEL
     ===================================================== */

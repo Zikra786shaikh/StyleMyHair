@@ -1,0 +1,974 @@
+/* =========================================================
+   STYLEMYHAIR
+   MALE FAVOURITES PAGE
+   ========================================================= */
+
+.favourites-male-page {
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   PAGE CONTAINER
+   ========================================================= */
+
+.favourites-page {
+
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    padding:
+        calc(var(--topbar-height, 80px) + 38px)
+        38px
+        70px;
+
+    background: var(--background);
+    color: var(--text);
+
+    transition:
+        background-color .3s ease,
+        color .3s ease;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.favourites-heading {
+
+    max-width: 1450px;
+
+    margin: 0 auto 32px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.section-eyebrow {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .18em;
+
+    text-transform: uppercase;
+
+    color: var(--accent);
+}
+
+
+.favourites-heading h2 {
+
+    margin: 0;
+
+    font-size: clamp(32px, 4vw, 52px);
+
+    line-height: 1.05;
+
+    font-weight: 800;
+
+    letter-spacing: -.035em;
+
+    color: var(--text);
+}
+
+
+.favourites-heading p {
+
+    max-width: 650px;
+
+    margin: 14px 0 0;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   SAVED COUNT
+   ========================================================= */
+
+.saved-count-box {
+
+    min-width: 145px;
+
+    padding: 20px 24px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    background: var(--surface);
+
+    box-shadow: 0 15px 45px rgba(0,0,0,.06);
+
+    text-align: center;
+
+    transition:
+        background-color .3s ease,
+        border-color .3s ease;
+}
+
+
+.saved-count-box strong {
+
+    display: block;
+
+    font-size: 32px;
+
+    line-height: 1;
+
+    color: var(--accent);
+}
+
+
+.saved-count-box span {
+
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.favourites-toolbar {
+
+    max-width: 1450px;
+
+    margin: 0 auto 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    background: var(--surface);
+
+    transition:
+        background-color .3s ease,
+        border-color .3s ease;
+}
+
+
+.favourite-filters {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+
+.favourite-filter {
+
+    border: 1px solid var(--border);
+
+    background: var(--surface-2);
+
+    color: var(--muted);
+
+    padding: 10px 16px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color .2s ease,
+        color .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+
+.favourite-filter:hover {
+
+    transform: translateY(-1px);
+
+    color: var(--text);
+
+}
+
+
+.favourite-filter.active {
+
+    background: var(--accent);
+
+    border-color: var(--accent);
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   SORT
+   ========================================================= */
+
+.favourite-sort {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+
+.favourite-sort label {
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: var(--muted);
+}
+
+
+.favourite-sort select {
+
+    min-width: 145px;
+
+    padding: 10px 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: var(--surface-2);
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.favourites-grid {
+
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.favourite-card {
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    border-radius: 22px;
+
+    background: var(--surface);
+
+    box-shadow: 0 18px 55px rgba(0,0,0,.07);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background-color .3s ease,
+        border-color .3s ease;
+
+    animation: favouriteCardIn .45s ease both;
+}
+
+
+.favourite-card:hover {
+
+    transform: translateY(-6px);
+
+    box-shadow: 0 25px 65px rgba(0,0,0,.13);
+}
+
+
+@keyframes favouriteCardIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.favourite-image {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 4.7;
+
+    overflow: hidden;
+
+    background: var(--surface-2);
+}
+
+
+.favourite-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform .5s ease;
+}
+
+
+.favourite-card:hover .favourite-image img {
+
+    transform: scale(1.04);
+}
+
+
+.image-fallback {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 42px;
+
+    color: var(--accent);
+
+    background: var(--surface-2);
+
+    z-index: 0;
+}
+
+
+.favourite-image img {
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   REMOVE ICON
+   ========================================================= */
+
+.remove-favourite {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 14px;
+
+    right: 14px;
+
+    width: 38px;
+
+    height: 38px;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.45);
+
+    backdrop-filter: blur(12px);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+
+.remove-favourite:hover {
+
+    transform: scale(1.08);
+
+    background: rgba(0,0,0,.65);
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.favourite-card-content {
+
+    padding: 20px;
+}
+
+
+.favourite-category {
+
+    display: inline-block;
+
+    margin-bottom: 9px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: .16em;
+
+    color: var(--accent);
+}
+
+
+.favourite-card h3 {
+
+    margin: 0;
+
+    font-size: 19px;
+
+    line-height: 1.25;
+
+    color: var(--text);
+}
+
+
+.favourite-card p {
+
+    margin: 9px 0 18px;
+
+    min-height: 44px;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   CARD ACTIONS
+   ========================================================= */
+
+.favourite-card-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.try-on-button {
+
+    flex: 1;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    background: var(--accent);
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+}
+
+
+.try-on-button:hover {
+
+    transform: translateY(-2px);
+
+    opacity: .9;
+}
+
+
+.delete-button {
+
+    min-height: 42px;
+
+    padding: 10px 13px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: var(--surface-2);
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+}
+
+
+.delete-button:hover {
+
+    color: var(--text);
+
+    border-color: var(--accent);
+}
+
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.favourites-empty {
+
+    max-width: 1450px;
+
+    margin: 35px auto 0;
+
+    padding: 80px 30px;
+
+    border: 1px dashed var(--border);
+
+    border-radius: 24px;
+
+    background: var(--surface);
+
+    text-align: center;
+}
+
+
+.favourites-empty[hidden] {
+
+    display: none;
+}
+
+
+.empty-icon {
+
+    font-size: 50px;
+
+    color: var(--accent);
+
+    margin-bottom: 15px;
+}
+
+
+.favourites-empty h3 {
+
+    margin: 0;
+
+    font-size: 26px;
+
+    color: var(--text);
+}
+
+
+.favourites-empty p {
+
+    margin: 10px 0 24px;
+
+    color: var(--muted);
+}
+
+
+.empty-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 0 20px;
+
+    border-radius: 10px;
+
+    background: var(--accent);
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   SEARCH PANEL
+   ========================================================= */
+
+.male-search-panel {
+
+    position: fixed;
+
+    z-index: 2000;
+
+    top: var(--topbar-height, 80px);
+
+    right: 30px;
+
+    width: min(430px, calc(100vw - 40px));
+
+    display: none;
+
+    padding: 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    background: var(--surface);
+
+    box-shadow: 0 25px 70px rgba(0,0,0,.18);
+}
+
+
+.male-search-panel.active,
+.male-search-panel.open {
+
+    display: block;
+}
+
+
+.search-panel-inner {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.search-panel-inner input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    border: 0;
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    padding: 12px;
+
+    font-size: 14px;
+}
+
+
+.search-panel-inner input::placeholder {
+
+    color: var(--muted);
+}
+
+
+.search-panel-inner button {
+
+    width: 38px;
+
+    height: 38px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: var(--surface-2);
+
+    color: var(--text);
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   DARK MODE
+   Uses the variables supplied by male.css / male.js
+   ========================================================= */
+
+body.dark-mode .favourite-card,
+body[data-mode="dark"] .favourite-card {
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.28);
+}
+
+
+body.dark-mode .favourites-page,
+body[data-mode="dark"] .favourites-page {
+
+    background: var(--background);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .favourites-grid {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .favourites-page {
+
+        padding:
+            calc(var(--topbar-height, 76px) + 28px)
+            24px
+            55px;
+
+    }
+
+
+    .favourites-heading {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .favourites-toolbar {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .favourite-sort {
+
+        width: 100%;
+
+        justify-content: space-between;
+
+    }
+
+
+    .favourite-sort select {
+
+        flex: 1;
+
+    }
+
+
+    .favourites-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .favourites-page {
+
+        padding:
+            calc(var(--topbar-height, 70px) + 20px)
+            15px
+            45px;
+
+    }
+
+
+    .favourites-heading h2 {
+
+        font-size: 34px;
+
+    }
+
+
+    .saved-count-box {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+
+    .favourite-filters {
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        flex-wrap: nowrap;
+
+        padding-bottom: 4px;
+
+    }
+
+
+    .favourite-filter {
+
+        flex-shrink: 0;
+
+    }
+
+
+    .favourites-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .favourite-card-content {
+
+        padding: 18px;
+
+    }
+
+
+    .favourite-card-actions {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .try-on-button,
+    .delete-button {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+}

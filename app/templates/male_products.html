@@ -159,18 +159,7 @@
 
         <!-- HAIR CUTTING -->
 
-        <a
-            class="side-link"
-            href="{{ url_for('main.male_haircuts') }}"
-        >
-            <span>
-                ✂
-            </span>
-
-            <label>
-                Hair Cutting
-            </label>
-        </a>
+        
 
 
         <!-- REELS -->
@@ -223,10 +212,10 @@
 
         <!-- FAVORITES -->
 
-        <a
-            class="side-link"
-            href="{{ url_for('main.male') }}#favoritesSection"
-        >
+        <a href="{{ url_for('main.favourites') }}"
+   class="side-link favorites-drag"
+   id="favoritesNavButton"
+   draggable="true">
             <span>
                 ♥
             </span>
