@@ -1,10 +1,11 @@
+
 document.addEventListener("DOMContentLoaded", function () {
 
     // =========================================================
     // SETTINGS
     // =========================================================
 
-    const TOTAL_REELS = 500;
+    const TOTAL_REELS = 20;
 
     const reelsContainer =
         document.getElementById("reelsContainer");
@@ -39,6 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const toast =
         document.getElementById("toast");
 
+    if (!reelsContainer) {
+        console.error("reelsContainer not found");
+        return;
+    }
 
     // =========================================================
     // STORAGE
@@ -52,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const MALE_COMMENTS_KEY =
         "stylemyhair-comments";
-
 
     let savedReels =
         JSON.parse(
@@ -69,15 +73,12 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.getItem(MALE_COMMENTS_KEY) || "{}"
         );
 
-
     // =========================================================
     // CURRENT REEL
     // =========================================================
 
     let currentReelNumber = 1;
-
     let currentCommentReel = null;
-
 
     // =========================================================
     // HAIRSTYLE DATA
@@ -142,19 +143,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     ];
 
-
     // =========================================================
     // GET STYLE DATA
     // =========================================================
 
     function getStyleData(number) {
-
         const index =
             (number - 1) % hairstyles.length;
 
         return hairstyles[index];
     }
-
 
     // =========================================================
     // CREATE REEL
@@ -185,7 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
         reel.dataset.hashtags =
             style.hashtags;
 
-
         reel.innerHTML = `
 
             <video
@@ -206,7 +203,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 🔇
             </button>
 
-
             <div class="reel-info">
 
                 <h2>${style.title}</h2>
@@ -221,7 +217,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             </div>
 
-
             <div class="reel-actions">
 
                 <button
@@ -232,7 +227,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     <small>Like</small>
                 </button>
 
-
                 <button
                     type="button"
                     class="reel-action comment-button"
@@ -241,7 +235,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     <small>Comment</small>
                 </button>
 
-
                 <button
                     type="button"
                     class="reel-action share-button"
@@ -249,7 +242,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     <span class="action-icon">↗</span>
                     <small>Share</small>
                 </button>
-
 
                 <button
                     type="button"
@@ -262,12 +254,10 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
-
         updateReelButtons(reel);
 
         return reel;
     }
-
 
     // =========================================================
     // UPDATE LIKE / SAVE BUTTONS
@@ -287,25 +277,20 @@ document.addEventListener("DOMContentLoaded", function () {
         const saveText =
             reel.querySelector(".save-button small");
 
-
         if (likedReels.includes(reelNumber)) {
 
             likeIcon.textContent = "♥";
-
             reel.classList.add("liked");
 
         } else {
 
             likeIcon.textContent = "♡";
-
             reel.classList.remove("liked");
         }
-
 
         if (savedReels.includes(reelNumber)) {
 
             saveIcon.textContent = "🔖";
-
             reel.classList.add("saved");
 
             if (saveText) {
@@ -315,7 +300,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
 
             saveIcon.textContent = "🔖";
-
             reel.classList.remove("saved");
 
             if (saveText) {
@@ -324,7 +308,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-
     // =========================================================
     // EXISTING REELS
     // =========================================================
@@ -332,22 +315,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const existingReels =
         reelsContainer.querySelectorAll(".reel");
 
-
     existingReels.forEach(function (reel, index) {
 
-        const number =
-            index + 1;
+        const number = index + 1;
 
-        reel.dataset.reelNumber =
-            number;
+        reel.dataset.reelNumber = number;
 
         updateReelButtons(reel);
-
     });
 
-
     // =========================================================
-    // ADD REELS 4 TO 500
+    // ADD REELS UP TO REEL 20
     // =========================================================
 
     for (
@@ -361,7 +339,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         reelsContainer.appendChild(reel);
     }
-
 
     // =========================================================
     // AUTOPLAY OBSERVER
@@ -380,14 +357,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         return;
                     }
 
-
                     if (entry.isIntersecting) {
 
                         currentReelNumber =
                             Number(
                                 entry.target.dataset.reelNumber
                             );
-
 
                         document
                             .querySelectorAll(".reel-video")
@@ -396,43 +371,32 @@ document.addEventListener("DOMContentLoaded", function () {
                                 if (otherVideo !== video) {
                                     otherVideo.pause();
                                 }
-
                             });
 
-
                         video.play().catch(function () {});
-
 
                     } else {
 
                         video.pause();
-
                     }
-
                 });
-
             },
             {
                 threshold: 0.7
             }
         );
 
-
     document
         .querySelectorAll(".reel")
         .forEach(function (reel) {
-
             observer.observe(reel);
-
         });
 
-
     // =========================================================
-    // LOOP: REEL 500 → REEL 1
+    // LOOP: REEL 20 → REEL 1
     // =========================================================
 
     let isJumping = false;
-
 
     reelsContainer.addEventListener(
         "scroll",
@@ -442,14 +406,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
             const reels =
                 reelsContainer.querySelectorAll(".reel");
 
             if (!reels.length) {
                 return;
             }
-
 
             const lastReel =
                 reels[reels.length - 1];
@@ -460,7 +422,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const containerRect =
                 reelsContainer.getBoundingClientRect();
 
-
             if (
                 rect.top <= containerRect.top + 20 &&
                 Math.abs(
@@ -470,14 +431,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 isJumping = true;
 
-
                 setTimeout(function () {
 
                     const firstReel =
                         reelsContainer.querySelector(
                             ".reel[data-reel-number='1']"
                         );
-
 
                     if (firstReel) {
 
@@ -486,28 +445,20 @@ document.addEventListener("DOMContentLoaded", function () {
                             block: "start"
                         });
 
-
                         currentReelNumber = 1;
-
                     }
 
-
                     setTimeout(function () {
-
                         isJumping = false;
-
                     }, 300);
 
                 }, 100);
-
             }
-
         },
         {
             passive: true
         }
     );
-
 
     // =========================================================
     // LIKE
@@ -524,7 +475,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
             const reel =
                 button.closest(".reel");
 
@@ -532,10 +482,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
             const number =
                 Number(reel.dataset.reelNumber);
-
 
             if (likedReels.includes(number)) {
 
@@ -547,21 +495,16 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
 
                 likedReels.push(number);
-
             }
-
 
             localStorage.setItem(
                 MALE_LIKED_REELS_KEY,
                 JSON.stringify(likedReels)
             );
 
-
             updateReelButtons(reel);
-
         }
     );
-
 
     // =========================================================
     // SAVE
@@ -578,7 +521,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
             const reel =
                 button.closest(".reel");
 
@@ -586,10 +528,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
             const number =
                 Number(reel.dataset.reelNumber);
-
 
             if (savedReels.includes(number)) {
 
@@ -603,9 +543,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 button.querySelector("small").textContent =
                     "Save";
 
-                showToast(
-                    "Removed from saved"
-                );
+                showToast("Removed from saved");
 
             } else {
 
@@ -616,20 +554,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 button.querySelector("small").textContent =
                     "Saved";
 
-                showToast(
-                    "Reel saved"
-                );
+                showToast("Reel saved");
             }
-
 
             localStorage.setItem(
                 MALE_SAVED_REELS_KEY,
                 JSON.stringify(savedReels)
             );
-
         }
     );
-
 
     // =========================================================
     // MUTE / UNMUTE
@@ -646,24 +579,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
             const reel =
                 button.closest(".reel");
 
             const video =
                 reel.querySelector(".reel-video");
 
-
-            video.muted =
-                !video.muted;
-
+            video.muted = !video.muted;
 
             button.textContent =
                 video.muted ? "🔇" : "🔊";
-
         }
     );
-
 
     // =========================================================
     // TAP VIDEO → PLAY / PAUSE
@@ -680,14 +607,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
             const video =
                 event.target.closest(".reel-video");
 
             if (!video) {
                 return;
             }
-
 
             if (video.paused) {
 
@@ -696,12 +621,9 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
 
                 video.pause();
-
             }
-
         }
     );
-
 
     // =========================================================
     // COMMENTS
@@ -718,28 +640,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
             const reel =
                 button.closest(".reel");
 
             currentCommentReel =
                 Number(reel.dataset.reelNumber);
 
-
-            openComments(
-                currentCommentReel
-            );
-
+            openComments(currentCommentReel);
         }
     );
 
-
     function openComments(number) {
+
+        if (!commentsOverlay) return;
 
         commentsOverlay.classList.add("active");
 
         renderComments(number);
-
 
         setTimeout(function () {
 
@@ -748,133 +665,110 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
         }, 100);
-
     }
-
 
     function renderComments(number) {
 
-        commentsList.innerHTML = "";
+        if (!commentsList) return;
 
+        commentsList.innerHTML = "";
 
         const reelComments =
             comments[number] || [];
 
-
         if (reelComments.length === 0) {
 
-            commentsList.innerHTML =
-                `
+            commentsList.innerHTML = `
                 <p class="no-comments">
                     No comments yet. Be the first!
                 </p>
-                `;
+            `;
 
             return;
         }
-
 
         reelComments.forEach(function (comment) {
 
             const item =
                 document.createElement("div");
 
-            item.className =
-                "comment-item";
-
-            item.textContent =
-                comment;
+            item.className = "comment-item";
+            item.textContent = comment;
 
             commentsList.appendChild(item);
-
         });
-
     }
-
 
     // =========================================================
     // POST COMMENT
     // =========================================================
 
-    commentForm.addEventListener(
-        "submit",
-        function (event) {
+    if (commentForm) {
 
-            event.preventDefault();
+        commentForm.addEventListener(
+            "submit",
+            function (event) {
 
+                event.preventDefault();
 
-            const text =
-                commentInput.value.trim();
+                if (!commentInput) return;
 
+                const text =
+                    commentInput.value.trim();
 
-            if (
-                !text ||
-                currentCommentReel === null
-            ) {
-                return;
+                if (
+                    !text ||
+                    currentCommentReel === null
+                ) {
+                    return;
+                }
+
+                if (!comments[currentCommentReel]) {
+                    comments[currentCommentReel] = [];
+                }
+
+                comments[currentCommentReel].push(text);
+
+                localStorage.setItem(
+                    MALE_COMMENTS_KEY,
+                    JSON.stringify(comments)
+                );
+
+                commentInput.value = "";
+
+                renderComments(currentCommentReel);
             }
-
-
-            if (!comments[currentCommentReel]) {
-
-                comments[currentCommentReel] = [];
-
-            }
-
-
-            comments[currentCommentReel].push(text);
-
-
-            localStorage.setItem(
-                MALE_COMMENTS_KEY,
-                JSON.stringify(comments)
-            );
-
-
-            commentInput.value = "";
-
-
-            renderComments(
-                currentCommentReel
-            );
-
-        }
-    );
-
+        );
+    }
 
     // =========================================================
     // CLOSE COMMENTS
     // =========================================================
 
-    closeComments.addEventListener(
-        "click",
-        function () {
+    if (closeComments) {
 
-            commentsOverlay.classList.remove(
-                "active"
-            );
+        closeComments.addEventListener(
+            "click",
+            function () {
 
-        }
-    );
-
-
-    commentsOverlay.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                event.target === commentsOverlay
-            ) {
-
-                commentsOverlay.classList.remove(
-                    "active"
-                );
-
+                commentsOverlay?.classList.remove("active");
             }
+        );
+    }
 
-        }
-    );
+    if (commentsOverlay) {
 
+        commentsOverlay.addEventListener(
+            "click",
+            function (event) {
+
+                if (event.target === commentsOverlay) {
+
+                    commentsOverlay.classList.remove("active");
+                }
+            }
+        );
+    }
 
     // =========================================================
     // SHARE
@@ -891,151 +785,122 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
             const reel =
                 button.closest(".reel");
-
 
             const title =
                 reel.dataset.title;
 
-
             const url =
                 window.location.href;
-
 
             try {
 
                 if (navigator.share) {
 
                     await navigator.share({
-                        title:
-                            `StyleMyHair - ${title}`,
-                        text:
-                            "Check out this hairstyle reel on StyleMyHair!",
+                        title: `StyleMyHair - ${title}`,
+                        text: "Check out this hairstyle reel on StyleMyHair!",
                         url: url
                     });
 
                 } else {
 
-                    await navigator.clipboard.writeText(
-                        url
-                    );
+                    await navigator.clipboard.writeText(url);
 
-                    showToast(
-                        "Reel link copied!"
-                    );
-
+                    showToast("Reel link copied!");
                 }
 
             } catch (error) {
-
-                // User cancelled share
-
+                // User cancelled share.
             }
-
         }
     );
-
 
     // =========================================================
     // SEARCH OPEN
     // =========================================================
 
-    openSearch.addEventListener(
-        "click",
-        function () {
+    if (openSearch) {
 
-            searchBox.classList.add(
-                "active"
-            );
+        openSearch.addEventListener(
+            "click",
+            function () {
 
-            reelSearch.focus();
-
-        }
-    );
-
+                searchBox?.classList.add("active");
+                reelSearch?.focus();
+            }
+        );
+    }
 
     // =========================================================
     // SEARCH CLOSE
     // =========================================================
 
-    closeSearch.addEventListener(
-        "click",
-        function () {
+    if (closeSearch) {
 
-            searchBox.classList.remove(
-                "active"
-            );
+        closeSearch.addEventListener(
+            "click",
+            function () {
 
-            reelSearch.value = "";
+                searchBox?.classList.remove("active");
 
-            showAllReels();
+                if (reelSearch) {
+                    reelSearch.value = "";
+                }
 
-        }
-    );
-
+                showAllReels();
+            }
+        );
+    }
 
     // =========================================================
     // SEARCH
     // =========================================================
 
-    reelSearch.addEventListener(
-        "input",
-        function () {
+    if (reelSearch) {
 
-            const query =
-                reelSearch.value
-                    .trim()
-                    .toLowerCase();
+        reelSearch.addEventListener(
+            "input",
+            function () {
 
+                const query =
+                    reelSearch.value.trim().toLowerCase();
 
-            const reels =
-                reelsContainer.querySelectorAll(".reel");
+                const reels =
+                    reelsContainer.querySelectorAll(".reel");
 
+                reels.forEach(function (reel) {
 
-            reels.forEach(function (reel) {
+                    const title =
+                        reel.dataset.title.toLowerCase();
 
-                const title =
-                    reel.dataset.title
-                        .toLowerCase();
+                    const description =
+                        reel.dataset.description.toLowerCase();
 
-                const description =
-                    reel.dataset.description
-                        .toLowerCase();
+                    const hashtags =
+                        reel.dataset.hashtags.toLowerCase();
 
-                const hashtags =
-                    reel.dataset.hashtags
-                        .toLowerCase();
+                    const matches =
+                        title.includes(query) ||
+                        description.includes(query) ||
+                        hashtags.includes(query);
 
-
-                const matches =
-                    title.includes(query) ||
-                    description.includes(query) ||
-                    hashtags.includes(query);
-
-
-                reel.style.display =
-                    matches ? "" : "none";
-
-            });
-
-        }
-    );
-
+                    reel.style.display =
+                        matches ? "" : "none";
+                });
+            }
+        );
+    }
 
     function showAllReels() {
 
         reelsContainer
             .querySelectorAll(".reel")
             .forEach(function (reel) {
-
                 reel.style.display = "";
-
             });
-
     }
-
 
     // =========================================================
     // TOAST
@@ -1047,25 +912,14 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        toast.textContent = message;
 
-        toast.textContent =
-            message;
-
-        toast.classList.add(
-            "show"
-        );
-
+        toast.classList.add("show");
 
         setTimeout(function () {
-
-            toast.classList.remove(
-                "show"
-            );
-
+            toast.classList.remove("show");
         }, 2000);
-
     }
-
 
     // =========================================================
     // START FROM REEL 1
@@ -1076,14 +930,12 @@ document.addEventListener("DOMContentLoaded", function () {
             ".reel[data-reel-number='1']"
         );
 
-
     if (firstReel) {
 
         firstReel.scrollIntoView({
             behavior: "auto",
             block: "start"
         });
-
     }
 
 });
