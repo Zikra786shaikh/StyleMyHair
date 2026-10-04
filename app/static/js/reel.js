@@ -44,19 +44,29 @@ document.addEventListener("DOMContentLoaded", function () {
     // STORAGE
     // =========================================================
 
+    const MALE_SAVED_REELS_KEY =
+        "stylemyhair-male-saved-reels";
+
+    const MALE_LIKED_REELS_KEY =
+        "stylemyhair-liked-reels";
+
+    const MALE_COMMENTS_KEY =
+        "stylemyhair-comments";
+
+
     let savedReels =
         JSON.parse(
-            localStorage.getItem("stylemyhair-saved-reels") || "[]"
+            localStorage.getItem(MALE_SAVED_REELS_KEY) || "[]"
         );
 
     let likedReels =
         JSON.parse(
-            localStorage.getItem("stylemyhair-liked-reels") || "[]"
+            localStorage.getItem(MALE_LIKED_REELS_KEY) || "[]"
         );
 
     let comments =
         JSON.parse(
-            localStorage.getItem("stylemyhair-comments") || "{}"
+            localStorage.getItem(MALE_COMMENTS_KEY) || "{}"
         );
 
 
@@ -76,43 +86,59 @@ document.addEventListener("DOMContentLoaded", function () {
     const hairstyles = [
         {
             title: "Elegant Long Layers",
-            description: "Soft layered hairstyle for a stylish everyday look.",
-            hashtags: "#LongHair #Layers #Hairstyle"
+            description:
+                "Soft layered hairstyle for a stylish everyday look.",
+            hashtags:
+                "#LongHair #Layers #Hairstyle"
         },
         {
             title: "Modern Bob",
-            description: "A clean modern bob hairstyle with an elegant finish.",
-            hashtags: "#Bob #BobCut #WomensHair"
+            description:
+                "A clean modern bob hairstyle with an elegant finish.",
+            hashtags:
+                "#Bob #BobCut #WomensHair"
         },
         {
             title: "Elegant Braids",
-            description: "Beautiful braided hairstyle for a graceful look.",
-            hashtags: "#Braids #BraidedHair #Hairstyle"
+            description:
+                "Beautiful braided hairstyle for a graceful look.",
+            hashtags:
+                "#Braids #BraidedHair #Hairstyle"
         },
         {
             title: "Soft Curls",
-            description: "Soft curls for a beautiful and natural appearance.",
-            hashtags: "#Curls #CurlyHair #HairStyle"
+            description:
+                "Soft curls for a beautiful and natural appearance.",
+            hashtags:
+                "#Curls #CurlyHair #HairStyle"
         },
         {
             title: "Classic Ponytail",
-            description: "A simple and stylish ponytail for everyday looks.",
-            hashtags: "#Ponytail #LongHair #Style"
+            description:
+                "A simple and stylish ponytail for everyday looks.",
+            hashtags:
+                "#Ponytail #LongHair #Style"
         },
         {
             title: "Beach Waves",
-            description: "Relaxed beach waves with a soft modern finish.",
-            hashtags: "#BeachWaves #Waves #Hair"
+            description:
+                "Relaxed beach waves with a soft modern finish.",
+            hashtags:
+                "#BeachWaves #Waves #Hair"
         },
         {
             title: "Layered Bob",
-            description: "A stylish layered bob with a modern appearance.",
-            hashtags: "#LayeredBob #Bob #HairStyle"
+            description:
+                "A stylish layered bob with a modern appearance.",
+            hashtags:
+                "#LayeredBob #Bob #HairStyle"
         },
         {
             title: "French Braid",
-            description: "A classic French braid for an elegant hairstyle.",
-            hashtags: "#FrenchBraid #Braids #Hair"
+            description:
+                "A classic French braid for an elegant hairstyle.",
+            hashtags:
+                "#FrenchBraid #Braids #Hair"
         }
     ];
 
@@ -258,6 +284,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const saveIcon =
             reel.querySelector(".save-icon");
 
+        const saveText =
+            reel.querySelector(".save-button small");
+
 
         if (likedReels.includes(reelNumber)) {
 
@@ -279,24 +308,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
             reel.classList.add("saved");
 
+            if (saveText) {
+                saveText.textContent = "Saved";
+            }
+
         } else {
 
             saveIcon.textContent = "🔖";
 
             reel.classList.remove("saved");
+
+            if (saveText) {
+                saveText.textContent = "Save";
+            }
         }
     }
 
 
     // =========================================================
-    // CREATE THE FIRST 3 REELS
+    // EXISTING REELS
     // =========================================================
 
     const existingReels =
         reelsContainer.querySelectorAll(".reel");
 
-
-    // Existing HTML reels are Reel 1, 2 and 3
 
     existingReels.forEach(function (reel, index) {
 
@@ -307,6 +342,7 @@ document.addEventListener("DOMContentLoaded", function () {
             number;
 
         updateReelButtons(reel);
+
     });
 
 
@@ -352,8 +388,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                 entry.target.dataset.reelNumber
                             );
 
-
-                        // Pause every other video
 
                         document
                             .querySelectorAll(".reel-video")
@@ -420,16 +454,12 @@ document.addEventListener("DOMContentLoaded", function () {
             const lastReel =
                 reels[reels.length - 1];
 
-
             const rect =
                 lastReel.getBoundingClientRect();
-
 
             const containerRect =
                 reelsContainer.getBoundingClientRect();
 
-
-            // User has reached Reel 500
 
             if (
                 rect.top <= containerRect.top + 20 &&
@@ -522,7 +552,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             localStorage.setItem(
-                "stylemyhair-liked-reels",
+                MALE_LIKED_REELS_KEY,
                 JSON.stringify(likedReels)
             );
 
@@ -538,57 +568,69 @@ document.addEventListener("DOMContentLoaded", function () {
     // =========================================================
 
     reelsContainer.addEventListener(
-    "click",
-    function (event) {
+        "click",
+        function (event) {
 
-        const button =
-            event.target.closest(".save-button");
+            const button =
+                event.target.closest(".save-button");
 
-        if (!button) {
-            return;
-        }
+            if (!button) {
+                return;
+            }
 
-        const reel =
-            button.closest(".reel");
 
-        if (!reel) {
-            return;
-        }
+            const reel =
+                button.closest(".reel");
 
-        const number =
-            Number(reel.dataset.reelNumber);
+            if (!reel) {
+                return;
+            }
 
-        if (savedReels.includes(number)) {
 
-            savedReels =
-                savedReels.filter(
-                    id => id !== number
+            const number =
+                Number(reel.dataset.reelNumber);
+
+
+            if (savedReels.includes(number)) {
+
+                savedReels =
+                    savedReels.filter(
+                        id => id !== number
+                    );
+
+                reel.classList.remove("saved");
+
+                button.querySelector("small").textContent =
+                    "Save";
+
+                showToast(
+                    "Removed from saved"
                 );
 
-            button.querySelector("small").textContent = "Save";
+            } else {
 
-            reel.classList.remove("saved");
+                savedReels.push(number);
 
-            showToast("Removed from saved");
+                reel.classList.add("saved");
 
-        } else {
+                button.querySelector("small").textContent =
+                    "Saved";
 
-            savedReels.push(number);
+                showToast(
+                    "Reel saved"
+                );
+            }
 
-            button.querySelector("small").textContent = "Saved";
 
-            reel.classList.add("saved");
+            localStorage.setItem(
+                MALE_SAVED_REELS_KEY,
+                JSON.stringify(savedReels)
+            );
 
-            showToast("Reel saved");
         }
+    );
 
-        localStorage.setItem(
-            "stylemyhair-saved-reels",
-            JSON.stringify(savedReels)
-        );
 
-    }
-);
     // =========================================================
     // MUTE / UNMUTE
     // =========================================================
@@ -684,7 +726,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 Number(reel.dataset.reelNumber);
 
 
-            openComments(currentCommentReel);
+            openComments(
+                currentCommentReel
+            );
 
         }
     );
@@ -696,9 +740,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         renderComments(number);
 
+
         setTimeout(function () {
 
-            commentInput.focus();
+            if (commentInput) {
+                commentInput.focus();
+            }
 
         }, 100);
 
@@ -760,7 +807,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 commentInput.value.trim();
 
 
-            if (!text || currentCommentReel === null) {
+            if (
+                !text ||
+                currentCommentReel === null
+            ) {
                 return;
             }
 
@@ -776,7 +826,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             localStorage.setItem(
-                "stylemyhair-comments",
+                MALE_COMMENTS_KEY,
                 JSON.stringify(comments)
             );
 
@@ -856,15 +906,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             try {
 
-                if (
-                    navigator.share
-                ) {
+                if (navigator.share) {
 
                     await navigator.share({
                         title:
                             `StyleMyHair - ${title}`,
                         text:
-                            `Check out this hairstyle reel on StyleMyHair!`,
+                            "Check out this hairstyle reel on StyleMyHair!",
                         url: url
                     });
 
@@ -994,6 +1042,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // =========================================================
 
     function showToast(message) {
+
+        if (!toast) {
+            return;
+        }
+
 
         toast.textContent =
             message;

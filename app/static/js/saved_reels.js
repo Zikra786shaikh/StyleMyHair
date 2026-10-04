@@ -2,6 +2,10 @@ document.addEventListener(
     "DOMContentLoaded",
     function () {
 
+        // =====================================================
+        // ELEMENTS
+        // =====================================================
+
         const container =
             document.getElementById(
                 "savedReelsContainer"
@@ -19,19 +23,23 @@ document.addEventListener(
 
 
         // =====================================================
-        // GET SAVED REELS
+        // STORAGE
         // =====================================================
+
+        const FEMALE_SAVED_REELS_KEY =
+            "stylemyhair-female-saved-reels";
+
 
         let savedReels =
             JSON.parse(
                 localStorage.getItem(
-                    "stylemyhair-saved-reels"
+                    FEMALE_SAVED_REELS_KEY
                 ) || "[]"
             );
 
 
         // =====================================================
-        // SAME HAIRSTYLE DATA AS REELS.JS
+        // HAIRSTYLE DATA
         // =====================================================
 
         const hairstyles = [
@@ -119,7 +127,7 @@ document.addEventListener(
 
 
         // =====================================================
-        // SHOW SAVED REELS
+        // LOAD SAVED REELS
         // =====================================================
 
         function loadSavedReels() {
@@ -131,7 +139,9 @@ document.addEventListener(
                 savedReels.length;
 
 
+            // =================================================
             // NOTHING SAVED
+            // =================================================
 
             if (savedReels.length === 0) {
 
@@ -146,7 +156,9 @@ document.addEventListener(
             }
 
 
+            // =================================================
             // REELS EXIST
+            // =================================================
 
             emptyMessage.style.display =
                 "none";
@@ -179,7 +191,7 @@ document.addEventListener(
                     reel.innerHTML = `
 
                         <video
-                            src="/static/videos/reel${number}.mp4"
+                            src="/static/reels/reel${number}.mp4"
                             loop
                             muted
                             playsinline
@@ -270,7 +282,7 @@ document.addEventListener(
 
 
                 localStorage.setItem(
-                    "stylemyhair-saved-reels",
+                    FEMALE_SAVED_REELS_KEY,
                     JSON.stringify(
                         savedReels
                     )

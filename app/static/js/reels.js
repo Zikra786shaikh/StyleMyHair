@@ -1,454 +1,568 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    console.log("REELS JS IS WORKING");
-
-    /* =====================================================
-       CREATE 100 REELS
-    ===================================================== */
-
-    const reelsContainer =
-        document.getElementById("reelsContainer");
-
-    const TOTAL_REELS = 100;
+        console.log("FEMALE REELS JS IS WORKING");
 
 
-    for (let i = 1; i <= TOTAL_REELS; i++) {
+        // =====================================================
+        // SETTINGS
+        // =====================================================
 
-        const reel = document.createElement("article");
+        const reelsContainer =
+            document.getElementById(
+                "reelsContainer"
+            );
 
-        reel.className = "reel";
-
-        reel.innerHTML = `
-
-            <video 
-    class="reel-video" 
-    src="/static/reels/reel${i}.mp4" 
-    loop 
-    playsinline 
-></video>
-
-            <div class="video-overlay"></div>
+        const TOTAL_REELS = 100;
 
 
-            <!-- MUTE -->
-<button class="mute-button"> 
-    🔊
-</button>
+        if (!reelsContainer) {
+            console.error(
+                "reelsContainer not found"
+            );
+            return;
+        }
 
 
-            <!-- RIGHT SIDE -->
+        // =====================================================
+        // STORAGE KEYS
+        // =====================================================
 
-            <div class="reel-actions">
+        const FEMALE_SAVED_REELS_KEY =
+            "stylemyhair-female-saved-reels";
 
-                <button class="reel-action like-button">
+        const FEMALE_LIKED_REELS_KEY =
+            "stylemyhair-female-liked-reels";
 
-                    <span class="like-icon">♡</span>
 
-                    <small>Like</small>
+        // =====================================================
+        // CREATE REELS
+        // =====================================================
 
+        for (
+            let i = 1;
+            i <= TOTAL_REELS;
+            i++
+        ) {
+
+            const reel =
+                document.createElement(
+                    "article"
+                );
+
+
+            reel.className =
+                "reel";
+
+
+            reel.dataset.reelNumber =
+                i;
+
+
+            reel.dataset.reelId =
+                "reel" + i;
+
+
+            reel.dataset.title =
+                "Women's Hairstyle " + i;
+
+
+            reel.innerHTML = `
+
+                <video
+                    class="reel-video"
+                    src="/static/reels/reel${i}.mp4"
+                    loop
+                    playsinline
+                    muted
+                ></video>
+
+
+                <div class="video-overlay"></div>
+
+
+                <!-- MUTE -->
+
+                <button
+                    type="button"
+                    class="mute-button"
+                >
+                    🔇
                 </button>
 
 
-                <button class="reel-action comment-button">
+                <!-- RIGHT SIDE -->
 
-                    <span>💬</span>
+                <div class="reel-actions">
 
-                    <small>
-                        <span class="comment-count">0</span>
-                        Comments
-                    </small>
+                    <button
+                        type="button"
+                        class="reel-action like-button"
+                    >
 
-                </button>
+                        <span class="like-icon">
+                            ♡
+                        </span>
 
+                        <small>
+                            Like
+                        </small>
 
-                <button class="reel-action share-button">
-
-                    <span>↗</span>
-
-                    <small>Share</small>
-
-                </button>
-
-
-                <button class="reel-action save-button">
-
-                    <span>🔖</span>
-
-                    <small>Save</small>
-
-                </button>
-
-            </div>
+                    </button>
 
 
-            <!-- INFORMATION -->
+                    <button
+                        type="button"
+                        class="reel-action comment-button"
+                    >
 
-            <div class="reel-info">
+                        <span>
+                            💬
+                        </span>
 
-                <div class="creator-row">
+                        <small>
 
-                    <div class="creator-avatar">
-                        SM
-                    </div>
+                            <span class="comment-count">
+                                0
+                            </span>
 
-                    <strong>@StyleMyHair</strong>
+                            Comments
 
-                    <button class="follow-button">
-                        Follow
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="reel-action share-button"
+                    >
+
+                        <span>
+                            ↗
+                        </span>
+
+                        <small>
+                            Share
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="reel-action save-button"
+                    >
+
+                        <span>
+                            🔖
+                        </span>
+
+                        <small>
+                            Save
+                        </small>
+
                     </button>
 
                 </div>
 
 
-                <h2>
-                    Men's Hairstyle ${i}
-                </h2>
+                <!-- INFORMATION -->
+
+                <div class="reel-info">
+
+                    <div class="creator-row">
+
+                        <div class="creator-avatar">
+                            SM
+                        </div>
+
+                        <strong>
+                            @StyleMyHair
+                        </strong>
+
+                        <button
+                            type="button"
+                            class="follow-button"
+                        >
+                            Follow
+                        </button>
+
+                    </div>
 
 
-                <p>
-                    Discover this stylish men's hairstyle.
-                    Find your perfect look with StyleMyHair.
-                </p>
+                    <h2>
+                        Women's Hairstyle ${i}
+                    </h2>
 
 
-                <span class="hashtags">
-                    #menshair #hairstyle #haircut #StyleMyHair
-                </span>
-
-            </div>
-
-        `;
-
-        reelsContainer.appendChild(reel);
-
-    }
+                    <p>
+                        Discover this beautiful women's
+                        hairstyle and find your perfect
+                        look with StyleMyHair.
+                    </p>
 
 
-    /* =====================================================
-       GET ALL REELS
-    ===================================================== */
+                    <span class="hashtags">
+                        #womenshair
+                        #hairstyle
+                        #haircut
+                        #StyleMyHair
+                    </span>
 
-    const reels =
-        document.querySelectorAll(".reel");
+                </div>
 
-
-    /* =====================================================
-       REEL INFORMATION
-    ===================================================== */
-
-    const reelData = [];
-
-    for (let i = 1; i <= TOTAL_REELS; i++) {
-
-        reelData.push({
-
-            id: "reel" + i,
-
-            title: "Men's Hairstyle " + i,
-
-            comments: []
-
-        });
-
-    }
+            `;
 
 
-    /* =====================================================
-       LOCAL STORAGE
-    ===================================================== */
-
-    function getSavedReels() {
-
-        return JSON.parse(
-            localStorage.getItem("savedReels") || "[]"
-        );
-
-    }
-
-
-    function saveReels(saved) {
-
-        localStorage.setItem(
-            "savedReels",
-            JSON.stringify(saved)
-        );
-
-    }
-
-
-    function getComments(reelId) {
-
-        const savedComments = JSON.parse(
-            localStorage.getItem(
-                "comments_" + reelId
-            ) || "null"
-        );
-
-
-        if (savedComments) {
-
-            return savedComments;
+            reelsContainer.appendChild(
+                reel
+            );
 
         }
 
 
-        const reel = reelData.find(
-            item => item.id === reelId
-        );
+        // =====================================================
+        // GET ALL REELS
+        // =====================================================
+
+        const reels =
+            document.querySelectorAll(
+                ".reel"
+            );
 
 
-        return reel ? reel.comments : [];
+        // =====================================================
+        // COMMENTS DATA
+        // =====================================================
 
-    }
-
-
-    function saveComments(reelId, comments) {
-
-        localStorage.setItem(
-            "comments_" + reelId,
-            JSON.stringify(comments)
-        );
-
-    }
+        const reelData = [];
 
 
-    /* =====================================================
-       AUTO PLAY / PAUSE
-    ===================================================== */
+        for (
+            let i = 1;
+            i <= TOTAL_REELS;
+            i++
+        ) {
 
-    const observer = new IntersectionObserver(
+            reelData.push({
 
-        function (entries) {
+                id:
+                    "reel" + i,
 
-            entries.forEach(function (entry) {
+                title:
+                    "Women's Hairstyle " + i,
 
-                const video =
-                    entry.target.querySelector(
-                        ".reel-video"
-                    );
-
-
-                if (!video) return;
-
-
-                if (entry.isIntersecting) {
-
-                    video.play().catch(function () {});
-
-                } else {
-
-                    video.pause();
-
-                    video.currentTime = 0;
-
-                }
+                comments:
+                    []
 
             });
 
-        },
-
-        {
-            threshold: 0.7
         }
 
-    );
+
+        // =====================================================
+        // SAVED REELS
+        // =====================================================
+
+        function getSavedReels() {
+
+            return JSON.parse(
+                localStorage.getItem(
+                    FEMALE_SAVED_REELS_KEY
+                ) || "[]"
+            );
+
+        }
 
 
-    reels.forEach(function (reel) {
+        function saveReels(saved) {
 
-        observer.observe(reel);
+            localStorage.setItem(
+                FEMALE_SAVED_REELS_KEY,
+                JSON.stringify(saved)
+            );
 
-    });
-
-
-    /* =====================================================
-   LIKE REEL
-====================================================== */
-
-const LIKED_REELS_KEY =
-    "stylemyhair-male-liked-reels";
+        }
 
 
-function getLikedReels() {
+        // =====================================================
+        // COMMENTS
+        // =====================================================
 
-    return JSON.parse(
-        localStorage.getItem(
-            LIKED_REELS_KEY
-        ) || "[]"
-    );
+        function getComments(reelId) {
 
-}
-
-
-function saveLikedReels(likedReels) {
-
-    localStorage.setItem(
-        LIKED_REELS_KEY,
-        JSON.stringify(likedReels)
-    );
-
-}
+            const savedComments =
+                JSON.parse(
+                    localStorage.getItem(
+                        "female-comments-" + reelId
+                    ) || "null"
+                );
 
 
-document
-    .querySelectorAll(".like-button")
-    .forEach(function (button, index) {
+            if (savedComments) {
 
-        const reelId =
-            "reel" + (index + 1);
+                return savedComments;
 
-
-        /* LOAD EXISTING LIKE */
-
-        const likedReels =
-            getLikedReels();
+            }
 
 
-        if (
-            likedReels.includes(reelId)
+            const reel =
+                reelData.find(
+                    item =>
+                        item.id === reelId
+                );
+
+
+            return reel
+                ? reel.comments
+                : [];
+
+        }
+
+
+        function saveComments(
+            reelId,
+            comments
         ) {
 
-            button.classList.add("liked");
-
-            button.querySelector(
-                ".like-icon"
-            ).textContent = "♥";
+            localStorage.setItem(
+                "female-comments-" + reelId,
+                JSON.stringify(comments)
+            );
 
         }
 
 
-        /* CLICK LIKE */
+        // =====================================================
+        // AUTO PLAY / PAUSE
+        // =====================================================
 
-        button.addEventListener(
-            "click",
-            function () {
+        const observer =
+            new IntersectionObserver(
 
-                let liked =
-                    getLikedReels();
+                function (entries) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            const video =
+                                entry.target.querySelector(
+                                    ".reel-video"
+                                );
 
 
-                if (
-                    liked.includes(reelId)
-                ) {
+                            if (!video) {
+                                return;
+                            }
 
-                    /* UNLIKE */
 
-                    liked =
-                        liked.filter(
-                            function (id) {
+                            if (
+                                entry.isIntersecting
+                            ) {
 
-                                return id !== reelId;
+                                video.play()
+                                    .catch(
+                                        function () {}
+                                    );
+
+                            } else {
+
+                                video.pause();
+
+                                video.currentTime =
+                                    0;
 
                             }
-                        );
 
-
-                    button.classList.remove(
-                        "liked"
+                        }
                     );
 
+                },
 
-                    button.querySelector(
-                        ".like-icon"
-                    ).textContent = "♡";
-
-
-                } else {
-
-                    /* LIKE */
-
-                    liked.push(reelId);
-
-
-                    button.classList.add(
-                        "liked"
-                    );
-
-
-                    button.querySelector(
-                        ".like-icon"
-                    ).textContent = "♥";
-
+                {
+                    threshold: 0.7
                 }
 
+            );
 
-                saveLikedReels(liked);
 
+        reels.forEach(
+            function (reel) {
 
-                console.log(
-                    "Liked reels:",
-                    liked
+                observer.observe(
+                    reel
                 );
 
             }
         );
 
-    });
-    /* =====================================================
-       SAVE REEL
-    ===================================================== */
 
-    document
-        .querySelectorAll(".save-button")
-        .forEach(function (button, index) {
+        // =====================================================
+        // LIKE
+        // =====================================================
 
-            const reelId =
-                "reel" + (index + 1);
+        function getLikedReels() {
 
+            return JSON.parse(
+                localStorage.getItem(
+                    FEMALE_LIKED_REELS_KEY
+                ) || "[]"
+            );
 
-            const savedReels =
-                getSavedReels();
-
-
-            if (
-                savedReels.includes(reelId)
-            ) {
-
-                button.classList.add("saved");
-
-                button.querySelector(
-                    "small"
-                ).textContent = "Saved";
-
-            }
+        }
 
 
-            button.addEventListener(
-                "click",
-                function () {
+        function saveLikedReels(
+            likedReels
+        ) {
 
-                    let saved =
-                        getSavedReels();
+            localStorage.setItem(
+                FEMALE_LIKED_REELS_KEY,
+                JSON.stringify(
+                    likedReels
+                )
+            );
+
+        }
+
+
+        document
+            .querySelectorAll(
+                ".like-button"
+            )
+            .forEach(
+                function (
+                    button,
+                    index
+                ) {
+
+                    const reelId =
+                        "reel" +
+                        (index + 1);
+
+
+                    const likedReels =
+                        getLikedReels();
 
 
                     if (
-                        saved.includes(reelId)
+                        likedReels.includes(
+                            reelId
+                        )
                     ) {
 
-                        saved =
-                            saved.filter(
-                                function (id) {
-
-                                    return id !== reelId;
-
-                                }
-                            );
-
-
-                        button.classList.remove(
-                            "saved"
+                        button.classList.add(
+                            "liked"
                         );
 
 
                         button.querySelector(
-                            "small"
-                        ).textContent = "Save";
+                            ".like-icon"
+                        ).textContent =
+                            "♥";
+
+                    }
 
 
-                    } else {
+                    button.addEventListener(
+                        "click",
+                        function () {
 
-                        saved.push(reelId);
+                            let liked =
+                                getLikedReels();
 
+
+                            if (
+                                liked.includes(
+                                    reelId
+                                )
+                            ) {
+
+                                liked =
+                                    liked.filter(
+                                        function (
+                                            id
+                                        ) {
+
+                                            return (
+                                                id !==
+                                                reelId
+                                            );
+
+                                        }
+                                    );
+
+
+                                button.classList.remove(
+                                    "liked"
+                                );
+
+
+                                button.querySelector(
+                                    ".like-icon"
+                                ).textContent =
+                                    "♡";
+
+                            } else {
+
+                                liked.push(
+                                    reelId
+                                );
+
+
+                                button.classList.add(
+                                    "liked"
+                                );
+
+
+                                button.querySelector(
+                                    ".like-icon"
+                                ).textContent =
+                                    "♥";
+
+                            }
+
+
+                            saveLikedReels(
+                                liked
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+        // =====================================================
+        // SAVE REEL
+        // =====================================================
+
+        document
+            .querySelectorAll(
+                ".save-button"
+            )
+            .forEach(
+                function (
+                    button,
+                    index
+                ) {
+
+                    const reelId =
+                        index + 1;
+
+
+                    const savedReels =
+                        getSavedReels();
+
+
+                    if (
+                        savedReels.includes(
+                            reelId
+                        )
+                    ) {
 
                         button.classList.add(
                             "saved"
@@ -457,420 +571,451 @@ document
 
                         button.querySelector(
                             "small"
-                        ).textContent = "Saved";
+                        ).textContent =
+                            "Saved";
 
                     }
 
 
-                    saveReels(saved);
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            let saved =
+                                getSavedReels();
 
 
-                    console.log(
-                        "Saved reels:",
-                        saved
+                            if (
+                                saved.includes(
+                                    reelId
+                                )
+                            ) {
+
+                                saved =
+                                    saved.filter(
+                                        function (
+                                            id
+                                        ) {
+
+                                            return (
+                                                id !==
+                                                reelId
+                                            );
+
+                                        }
+                                    );
+
+
+                                button.classList.remove(
+                                    "saved"
+                                );
+
+
+                                button.querySelector(
+                                    "small"
+                                ).textContent =
+                                    "Save";
+
+                            } else {
+
+                                saved.push(
+                                    reelId
+                                );
+
+
+                                button.classList.add(
+                                    "saved"
+                                );
+
+
+                                button.querySelector(
+                                    "small"
+                                ).textContent =
+                                    "Saved";
+
+                            }
+
+
+                            saveReels(
+                                saved
+                            );
+
+                        }
                     );
 
                 }
             );
 
-        });
 
+        // =====================================================
+        // COMMENTS PANEL
+        // =====================================================
 
-    /* =====================================================
-       COMMENTS PANEL
-    ===================================================== */
+        const commentsPanel =
+            document.getElementById(
+                "commentsPanel"
+            );
 
-    const commentsPanel =
-        document.getElementById(
-            "commentsPanel"
-        );
+        const commentsList =
+            document.getElementById(
+                "commentsList"
+            );
 
+        const commentsTotal =
+            document.getElementById(
+                "commentsTotal"
+            );
 
-    const commentsList =
-        document.getElementById(
-            "commentsList"
-        );
+        const commentInput =
+            document.getElementById(
+                "commentInput"
+            );
 
+        const postComment =
+            document.getElementById(
+                "postComment"
+            );
 
-    const commentsTotal =
-        document.getElementById(
-            "commentsTotal"
-        );
-
-
-    const commentInput =
-        document.getElementById(
-            "commentInput"
-        );
-
-
-    const postComment =
-        document.getElementById(
-            "postComment"
-        );
-
-
-    const closeComments =
-        document.getElementById(
-            "closeComments"
-        );
-
-
-    let currentReelId = null;
-
-
-    /* =====================================================
-       UPDATE COMMENT NUMBER
-    ===================================================== */
-
-    function updateCommentCount(
-        reel,
-        count
-    ) {
-
-        const countElement =
-            reel.querySelector(
-                ".comment-count"
+        const closeComments =
+            document.getElementById(
+                "closeComments"
             );
 
 
-        if (countElement) {
-
-            countElement.textContent =
-                count;
-
-        }
-
-    }
+        let currentReelId = null;
 
 
-    /* =====================================================
-       DISPLAY COMMENTS
-    ===================================================== */
+        // =====================================================
+        // UPDATE COMMENT COUNT
+        // =====================================================
 
-    function displayComments(
-        reelId
-    ) {
+        function updateCommentCount(
+            reel,
+            count
+        ) {
 
-        const comments =
-            getComments(reelId);
-
-
-        commentsList.innerHTML = "";
-
-
-        if (comments.length === 0) {
-
-            commentsList.innerHTML = `
-                <div class="no-comments">
-                    No comments yet.
-                    Be the first to comment!
-                </div>
-            `;
-
-        } else {
-
-            comments.forEach(
-                function (comment) {
-
-                    const commentItem =
-                        document.createElement(
-                            "div"
-                        );
+            const countElement =
+                reel.querySelector(
+                    ".comment-count"
+                );
 
 
-                    commentItem.className =
-                        "comment-item";
+            if (countElement) {
 
+                countElement.textContent =
+                    count;
 
-                    const avatar =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    avatar.className =
-                        "comment-avatar";
-
-
-                    avatar.textContent =
-                        "SM";
-
-
-                    const content =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    content.className =
-                        "comment-content";
-
-
-                    const username =
-                        document.createElement(
-                            "strong"
-                        );
-
-
-                    username.textContent =
-                        "@StyleMyHair";
-
-
-                    const text =
-                        document.createElement(
-                            "p"
-                        );
-
-
-                    text.textContent =
-                        comment;
-
-
-                    content.appendChild(
-                        username
-                    );
-
-
-                    content.appendChild(
-                        text
-                    );
-
-
-                    commentItem.appendChild(
-                        avatar
-                    );
-
-
-                    commentItem.appendChild(
-                        content
-                    );
-
-
-                    commentsList.appendChild(
-                        commentItem
-                    );
-
-                }
-            );
+            }
 
         }
 
 
-        commentsTotal.textContent =
-            comments.length;
+        // =====================================================
+        // DISPLAY COMMENTS
+        // =====================================================
 
-    }
-
-
-    /* =====================================================
-       OPEN COMMENTS
-    ===================================================== */
-
-    function openComments(
-        reel,
-        reelId
-    ) {
-
-        currentReelId =
-            reelId;
-
-
-        displayComments(
+        function displayComments(
             reelId
-        );
+        ) {
 
-
-        commentsPanel.classList.add(
-            "show"
-        );
-
-
-        commentInput.focus();
-
-    }
-
-
-    document
-        .querySelectorAll(".comment-button")
-        .forEach(function (button, index) {
-
-            button.addEventListener(
-                "click",
-                function () {
-
-                    const reel =
-                        button.closest(
-                            ".reel"
-                        );
-
-
-                    const reelId =
-                        "reel" + (index + 1);
-
-
-                    openComments(
-                        reel,
-                        reelId
-                    );
-
-                }
-            );
-
-        });
-
-
-    /* =====================================================
-       POST COMMENT
-    ===================================================== */
-
-    postComment.addEventListener(
-        "click",
-        function () {
-
-            const text =
-                commentInput.value.trim();
-
-
-            if (!text) return;
+            if (!commentsList) {
+                return;
+            }
 
 
             const comments =
                 getComments(
-                    currentReelId
+                    reelId
                 );
 
 
-            comments.push(text);
+            commentsList.innerHTML =
+                "";
 
 
-            saveComments(
-                currentReelId,
-                comments
-            );
+            if (
+                comments.length === 0
+            ) {
+
+                commentsList.innerHTML = `
+                    <div class="no-comments">
+                        No comments yet.
+                        Be the first to comment!
+                    </div>
+                `;
+
+            } else {
+
+                comments.forEach(
+                    function (
+                        comment
+                    ) {
+
+                        const commentItem =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        commentItem.className =
+                            "comment-item";
+
+
+                        const avatar =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        avatar.className =
+                            "comment-avatar";
+
+
+                        avatar.textContent =
+                            "SM";
+
+
+                        const content =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        content.className =
+                            "comment-content";
+
+
+                        const username =
+                            document.createElement(
+                                "strong"
+                            );
+
+
+                        username.textContent =
+                            "@StyleMyHair";
+
+
+                        const text =
+                            document.createElement(
+                                "p"
+                            );
+
+
+                        text.textContent =
+                            comment;
+
+
+                        content.appendChild(
+                            username
+                        );
+
+
+                        content.appendChild(
+                            text
+                        );
+
+
+                        commentItem.appendChild(
+                            avatar
+                        );
+
+
+                        commentItem.appendChild(
+                            content
+                        );
+
+
+                        commentsList.appendChild(
+                            commentItem
+                        );
+
+                    }
+                );
+
+            }
+
+
+            if (commentsTotal) {
+
+                commentsTotal.textContent =
+                    comments.length;
+
+            }
+
+        }
+
+
+        // =====================================================
+        // OPEN COMMENTS
+        // =====================================================
+
+        function openComments(
+            reel,
+            reelId
+        ) {
+
+            currentReelId =
+                reelId;
 
 
             displayComments(
-                currentReelId
+                reelId
             );
 
 
-            const reelIndex =
-                parseInt(
-                    currentReelId.replace(
-                        "reel",
-                        ""
-                    )
-                ) - 1;
+            if (commentsPanel) {
 
-
-            const reel =
-                reels[reelIndex];
-
-
-            if (reel) {
-
-                updateCommentCount(
-                    reel,
-                    comments.length
+                commentsPanel.classList.add(
+                    "show"
                 );
 
             }
 
 
-            commentInput.value = "";
+            if (commentInput) {
 
-        }
-    );
-
-
-    /* =====================================================
-       ENTER KEY TO POST
-    ===================================================== */
-
-    commentInput.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Enter"
-            ) {
-
-                postComment.click();
+                commentInput.focus();
 
             }
 
         }
-    );
 
 
-    /* =====================================================
-       CLOSE COMMENTS
-    ===================================================== */
+        document
+            .querySelectorAll(
+                ".comment-button"
+            )
+            .forEach(
+                function (
+                    button,
+                    index
+                ) {
 
-    closeComments.addEventListener(
-        "click",
-        function () {
+                    button.addEventListener(
+                        "click",
+                        function () {
 
-            commentsPanel.classList.remove(
-                "show"
+                            const reel =
+                                button.closest(
+                                    ".reel"
+                                );
+
+
+                            const reelId =
+                                "reel" +
+                                (index + 1);
+
+
+                            openComments(
+                                reel,
+                                reelId
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+        // =====================================================
+        // POST COMMENT
+        // =====================================================
+
+        if (postComment) {
+
+            postComment.addEventListener(
+                "click",
+                function () {
+
+                    if (!commentInput) {
+                        return;
+                    }
+
+
+                    const text =
+                        commentInput.value.trim();
+
+
+                    if (
+                        !text ||
+                        !currentReelId
+                    ) {
+                        return;
+                    }
+
+
+                    const comments =
+                        getComments(
+                            currentReelId
+                        );
+
+
+                    comments.push(
+                        text
+                    );
+
+
+                    saveComments(
+                        currentReelId,
+                        comments
+                    );
+
+
+                    displayComments(
+                        currentReelId
+                    );
+
+
+                    const reelIndex =
+                        parseInt(
+                            currentReelId.replace(
+                                "reel",
+                                ""
+                            )
+                        ) - 1;
+
+
+                    const reel =
+                        reels[reelIndex];
+
+
+                    if (reel) {
+
+                        updateCommentCount(
+                            reel,
+                            comments.length
+                        );
+
+                    }
+
+
+                    commentInput.value =
+                        "";
+
+                }
             );
 
         }
-    );
 
 
-    /* =====================================================
-       SHARE
-    ===================================================== */
+        // =====================================================
+        // ENTER KEY TO POST
+        // =====================================================
 
-    document
-        .querySelectorAll(".share-button")
-        .forEach(function (button) {
+        if (commentInput) {
 
-            button.addEventListener(
-                "click",
-                async function () {
+            commentInput.addEventListener(
+                "keydown",
+                function (event) {
 
-                    const url =
-                        window.location.href;
+                    if (
+                        event.key === "Enter"
+                    ) {
 
+                        if (postComment) {
 
-                    if (navigator.share) {
-
-                        try {
-
-                            await navigator.share({
-
-                                title:
-                                    "StyleMyHair Reels",
-
-                                text:
-                                    "Check out this men's hairstyle!",
-
-                                url: url
-
-                            });
-
-                        } catch (error) {}
-
-                    } else {
-
-                        try {
-
-                            await navigator.clipboard
-                                .writeText(url);
-
-
-                            alert(
-                                "Reel link copied!"
-                            );
-
-                        } catch (error) {
-
-                            alert(
-                                "Unable to copy link."
-                            );
+                            postComment.click();
 
                         }
 
@@ -879,108 +1024,260 @@ document
                 }
             );
 
-        });
+        }
 
 
-   /* =====================================================
-   MUTE / UNMUTE
-===================================================== */
+        // =====================================================
+        // CLOSE COMMENTS
+        // =====================================================
 
-document
-    .querySelectorAll(".mute-button")
-    .forEach(function (button) {
+        if (closeComments) {
 
-        button.addEventListener(
-            "click",
-            function () {
-
-                const reel =
-                    button.closest(".reel");
-
-                const video =
-                    reel.querySelector(".reel-video");
-
-
-                video.muted = !video.muted;
-
-
-                if (video.muted) {
-
-                    button.textContent = "🔇";
-
-                } else {
-
-                    button.textContent = "🔊";
-
-                }
-
-            }
-        );
-
-    });
-
-
-    /* =====================================================
-       FOLLOW
-    ===================================================== */
-
-    document
-        .querySelectorAll(".follow-button")
-        .forEach(function (button) {
-
-            button.addEventListener(
+            closeComments.addEventListener(
                 "click",
                 function () {
 
-                    if (
-                        button.textContent.trim()
-                        === "Follow"
-                    ) {
+                    if (commentsPanel) {
 
-                        button.textContent =
-                            "Following";
-
-                    } else {
-
-                        button.textContent =
-                            "Follow";
+                        commentsPanel.classList.remove(
+                            "show"
+                        );
 
                     }
 
                 }
             );
 
-        });
+        }
 
 
-    /* =====================================================
-       DOUBLE CLICK TO LIKE
-    ===================================================== */
+        // =====================================================
+        // SHARE
+        // =====================================================
 
-    document
-        .querySelectorAll(".reel")
-        .forEach(function (reel) {
+        document
+            .querySelectorAll(
+                ".share-button"
+            )
+            .forEach(
+                function (button) {
 
-            reel.addEventListener(
-                "dblclick",
-                function () {
+                    button.addEventListener(
+                        "click",
+                        async function () {
 
-                    const likeButton =
-                        reel.querySelector(
-                            ".like-button"
+                            const url =
+                                window.location.href;
+
+
+                            if (
+                                navigator.share
+                            ) {
+
+                                try {
+
+                                    await navigator.share({
+
+                                        title:
+                                            "StyleMyHair Reels",
+
+                                        text:
+                                            "Check out this women's hairstyle!",
+
+                                        url:
+                                            url
+
+                                    });
+
+                                } catch (
+                                    error
+                                ) {
+
+                                    // User cancelled
+
+                                }
+
+                            } else {
+
+                                try {
+
+                                    await navigator.clipboard
+                                        .writeText(
+                                            url
+                                        );
+
+
+                                    alert(
+                                        "Reel link copied!"
+                                    );
+
+                                } catch (
+                                    error
+                                ) {
+
+                                    alert(
+                                        "Unable to copy link."
+                                    );
+
+                                }
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+        // =====================================================
+        // MUTE / UNMUTE
+        // =====================================================
+
+        document
+            .querySelectorAll(
+                ".mute-button"
+            )
+            .forEach(
+                function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            const reel =
+                                button.closest(
+                                    ".reel"
+                                );
+
+
+                            if (!reel) {
+                                return;
+                            }
+
+
+                            const video =
+                                reel.querySelector(
+                                    ".reel-video"
+                                );
+
+
+                            if (!video) {
+                                return;
+                            }
+
+
+                            video.muted =
+                                !video.muted;
+
+
+                            button.textContent =
+                                video.muted
+                                    ? "🔇"
+                                    : "🔊";
+
+                        }
+                    );
+
+                }
+            );
+
+
+        // =====================================================
+        // FOLLOW
+        // =====================================================
+
+        document
+            .querySelectorAll(
+                ".follow-button"
+            )
+            .forEach(
+                function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            if (
+                                button.textContent.trim()
+                                === "Follow"
+                            ) {
+
+                                button.textContent =
+                                    "Following";
+
+                            } else {
+
+                                button.textContent =
+                                    "Follow";
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+        // =====================================================
+        // DOUBLE CLICK TO LIKE
+        // =====================================================
+
+        reels.forEach(
+            function (reel) {
+
+                reel.addEventListener(
+                    "dblclick",
+                    function () {
+
+                        const likeButton =
+                            reel.querySelector(
+                                ".like-button"
+                            );
+
+
+                        const icon =
+                            reel.querySelector(
+                                ".like-icon"
+                            );
+
+
+                        if (
+                            !likeButton ||
+                            !icon
+                        ) {
+                            return;
+                        }
+
+
+                        let liked =
+                            getLikedReels();
+
+
+                        const reelId =
+                            "reel" +
+                            reel.dataset.reelNumber;
+
+
+                        if (
+                            liked.includes(
+                                reelId
+                            )
+                        ) {
+                            return;
+                        }
+
+
+                        liked.push(
+                            reelId
                         );
 
 
-                    const icon =
-                        reel.querySelector(
-                            ".like-icon"
+                        saveLikedReels(
+                            liked
                         );
 
-
-                    if (
-                        !likeButton.classList
-                            .contains("liked")
-                    ) {
 
                         likeButton.classList.add(
                             "liked"
@@ -991,82 +1288,99 @@ document
                             "♥";
 
                     }
+                );
+
+            }
+        );
+
+
+        // =====================================================
+        // INITIAL COMMENT COUNTS
+        // =====================================================
+
+        reels.forEach(
+            function (
+                reel,
+                index
+            ) {
+
+                const reelId =
+                    "reel" +
+                    (index + 1);
+
+
+                const comments =
+                    getComments(
+                        reelId
+                    );
+
+
+                updateCommentCount(
+                    reel,
+                    comments.length
+                );
+
+            }
+        );
+
+
+        // =====================================================
+        // TAP REEL → PLAY / PAUSE
+        // =====================================================
+
+        reelsContainer.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    event.target.closest(
+                        ".reel-action"
+                    ) ||
+                    event.target.closest(
+                        ".mute-button"
+                    )
+                ) {
+                    return;
+                }
+
+
+                const reel =
+                    event.target.closest(
+                        ".reel"
+                    );
+
+
+                if (!reel) {
+                    return;
+                }
+
+
+                const video =
+                    reel.querySelector(
+                        ".reel-video"
+                    );
+
+
+                if (!video) {
+                    return;
+                }
+
+
+                if (video.paused) {
+
+                    video.play()
+                        .catch(
+                            function () {}
+                        );
+
+                } else {
+
+                    video.pause();
 
                 }
-            );
 
-        });
-
-
-    /* =====================================================
-       INITIAL COMMENT COUNTS
-    ===================================================== */
-
-    reels.forEach(
-        function (reel, index) {
-
-            const reelId =
-                "reel" + (index + 1);
-
-
-            const comments =
-                getComments(reelId);
-
-
-            updateCommentCount(
-                reel,
-                comments.length
-            );
-
-        }
-    );
-
-});
-// =========================================================
-// TAP REEL → PLAY / PAUSE
-// =========================================================
-
-reelsContainer.addEventListener(
-    "click",
-    function (event) {
-
-        // Do nothing if clicking an action button
-        if (
-            event.target.closest(".reel-action") ||
-            event.target.closest(".mute-button")
-        ) {
-            return;
-        }
-
-
-        // Find the reel that was clicked
-        const reel =
-            event.target.closest(".reel");
-
-        if (!reel) {
-            return;
-        }
-
-
-        // Find the video inside that reel
-        const video =
-            reel.querySelector(".reel-video");
-
-        if (!video) {
-            return;
-        }
-
-
-        // PLAY ↔ PAUSE
-        if (video.paused) {
-
-            video.play().catch(function () {});
-
-        } else {
-
-            video.pause();
-
-        }
+            }
+        );
 
     }
 );

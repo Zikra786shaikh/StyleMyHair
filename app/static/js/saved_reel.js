@@ -2,6 +2,10 @@ document.addEventListener(
     "DOMContentLoaded",
     function () {
 
+        // =====================================================
+        // ELEMENTS
+        // =====================================================
+
         const savedContainer =
             document.getElementById(
                 "savedContainer"
@@ -14,13 +18,17 @@ document.addEventListener(
 
 
         // =====================================================
-        // SAVED REELS
+        // STORAGE
         // =====================================================
+
+        const MALE_SAVED_REELS_KEY =
+            "stylemyhair-male-saved-reels";
+
 
         let savedReels =
             JSON.parse(
                 localStorage.getItem(
-                    "stylemyhair-saved-reels"
+                    MALE_SAVED_REELS_KEY
                 ) || "[]"
             );
 
@@ -286,7 +294,7 @@ document.addEventListener(
 
 
                 localStorage.setItem(
-                    "stylemyhair-saved-reels",
+                    MALE_SAVED_REELS_KEY,
                     JSON.stringify(
                         savedReels
                     )
