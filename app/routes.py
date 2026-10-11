@@ -49,9 +49,22 @@ def female_try_on():
 def male():
     return render_template("male.html")
 
+@main.route("/nearest")
+def nearest():
+    return render_template("nearest_salons.html")
+    
+@main.route("/female/nearby-salons")
+def female_nearby_salons():
+    return render_template("near_salon.html")
+    
+@main.route("/nearby-salons")
+def nearby_salons():
+    return render_template("nearby_salons.html")
+
 @main.route("/hairstyles")
 def hairstyles():
     return render_template("hairstyles.html")
+    
 @main.route("/styleme")
 def styleme():
     selected_style = request.args.get(

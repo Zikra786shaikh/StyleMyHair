@@ -37,7 +37,7 @@
 </head>
 
 
-<body data-theme="graphite">
+<body>
 
 
 <!-- =====================================================
@@ -69,6 +69,10 @@
 
             <div class="brand-text">
 
+    <a
+        href="{{ url_for('main.choose_style') }}"
+        class="sidebar-logo"
+    >
                 <strong>StyleMyHair</strong>
 
                 <span>MEN'S STUDIO</span>
@@ -176,8 +180,13 @@
     <label>Saved Reels</label>
 
 </button>
-
-
+<a
+    class="side-link"
+    href="{{ url_for('main.nearest') }}"
+>
+    <span>📍</span>
+    <label>Nearest</label>
+</a>
 
 
     
@@ -379,7 +388,7 @@
 
 
         <a
-            href="{{ url_for('main.home') }}"
+            href="{{ url_for('main.choose_style') }}"
             class="back-button"
         >
 
@@ -400,22 +409,21 @@
 
 
         <div class="topbar-actions">
+     
+            <a
+           href="{{ url_for('main.female') }}"
+           class="sidebar-link"
+        >
 
-            <button
-                class="top-icon"
-                id="searchButton"
-                type="button"
-            >
-                ⌕
-            </button>
+            <span class="sidebar-icon">👤</span>
 
-            <button
-                class="top-profile"
-                id="topProfile"
-                type="button"
-            >
-                👤
-            </button>
+            <span>
+                 FEMALE
+            </span>
+
+        </a>
+
+            
 
         </div>
 
@@ -764,7 +772,7 @@
 
             </div>
 
-<a href="{{ url_for('main.hairstyles') }}">"
+<a href="{{ url_for('main.hairstyles') }}">
     View All
 </a>
         </div>
@@ -1867,6 +1875,7 @@
 <script
     src="{{ url_for('static', filename='js/male.js') }}"
 ></script>
+<script src="{{ url_for('static', filename='js/theme.js') }}"></script>
 <script>
 const heroVideo = document.querySelector('.hero-video video');
 

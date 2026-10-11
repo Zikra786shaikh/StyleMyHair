@@ -1,305 +1,529 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="rose">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>StyleMyHair | Reels</title>
 
+    <!-- FEMALE DASHBOARD CSS = MASTER THEME -->
     <link
         rel="stylesheet"
-        href="{{ url_for('static', filename='css/reel.css') }}?v=20"
+        href="{{ url_for('static', filename='css/female.css') }}"
     >
+
+    <!-- FEMALE REELS CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/reel.css') }}"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
 </head>
 
-<body>
 
-<header class="reels-header">
+<body class="female-reels-page">
+
+
+<!-- =====================================================
+     MOBILE OVERLAY
+===================================================== -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>
+
+<aside
+    class="female-sidebar"
+    id="femaleSidebar"
+>
+<a
+    href="{{ url_for('main.choose_style') }}"
+    class="sidebar-logo"
+>
+    <span class="logo-style">
+        Style
+    </span>
+
+    <span class="logo-myhair">
+        MyHair
+    </span>
+</a>
+
+<nav class="sidebar-navigation">
+
+    <p class="nav-label">
+        DISCOVER
+    </p>
 
     <a
         href="{{ url_for('main.female') }}"
-        class="back-button"
-        aria-label="Back"
+        class="sidebar-link"
     >
-        ←
+        <span class="sidebar-icon">⌂</span>
+        <span>Dasboard</span>
     </a>
 
-    <div class="reels-logo">
-        <span>Style</span>MyHair
+    <a
+        href="{{ url_for('main.female_hairstyles') }}"
+        class="sidebar-link"
+    >
+        <span class="sidebar-icon">✦</span>
+        <span>Hair Styles</span>
+    </a>
+
+    <a
+        href="{{ url_for('main.haircuts') }}"
+        class="sidebar-link"
+    >
+        <span class="sidebar-icon">✂</span>
+        <span>Hair Cutting</span>
+    </a>
+
+    <a
+        href="{{ url_for('main.reels') }}"
+        class="sidebar-link active"
+    >
+        <span class="sidebar-icon">🎬</span>
+        <span>Reels</span>
+    </a>
+
+    <a
+        href="{{ url_for('main.saved_reels') }}"
+        class="sidebar-link"
+    >
+        <span class="sidebar-icon">🔖</span>
+        <span>Saved Reels</span>
+    </a>
+
+    <a
+        href="{{ url_for('main.accessories') }}"
+        class="sidebar-link"
+    >
+        <span class="sidebar-icon">🎀</span>
+        <span>Accessories</span>
+    </a>
+
+    <a
+        href="{{ url_for('main.hair_products') }}"
+        class="sidebar-link"
+    >
+        <span class="sidebar-icon">♡</span>
+        <span>Hair Products</span>
+    </a>
+
+    <p class="nav-label nav-label-space">
+        MY SPACE
+    </p>
+
+    <a
+        href="{{ url_for('main.favorites') }}"
+        class="sidebar-link"
+    >
+        <span class="sidebar-icon">♥</span>
+        <span>Favorites</span>
+    </a>
+
+</nav>
+
+
+<!-- =====================================================
+     THEME PANEL
+===================================================== -->
+
+<div class="theme-panel">
+
+    <div class="theme-title">
+        <span>THEME</span>
+        <small>COLORS</small>
     </div>
 
-    <h1>Reels</h1>
+    <div class="theme-colors">
 
-    <button
-        type="button"
-        class="search-button"
-        id="openSearch"
-    >
-        🔍
-    </button>
+        <button
+            type="button"
+            class="theme-color"
+            data-theme="rose"
+        ></button>
 
-</header>
+        <button
+            type="button"
+            class="theme-color"
+            data-theme="lavender"
+        ></button>
 
+        <button
+            type="button"
+            class="theme-color"
+            data-theme="peach"
+        ></button>
 
-<!-- SEARCH -->
-<div class="search-box" id="searchBox">
+        <button
+            type="button"
+            class="theme-color"
+            data-theme="sky"
+        ></button>
 
-    <input
-        type="text"
-        id="reelSearch"
-        placeholder="Search hairstyles..."
-        autocomplete="off"
-    >
+        <button
+            type="button"
+            class="theme-color"
+            data-theme="mint"
+        ></button>
 
-    <button
-        type="button"
-        id="closeSearch"
-    >
-        ✕
-    </button>
+        <button
+            type="button"
+            class="theme-color"
+            data-theme="sage"
+        ></button>
+
+        <button
+            type="button"
+            class="theme-color"
+            data-theme="butter"
+        ></button>
+
+        <button
+            type="button"
+            class="theme-color"
+            data-theme="coral"
+        ></button>
+
+        <button
+            type="button"
+            class="theme-color"
+            data-theme="plum"
+        ></button>
+
+        <button
+            type="button"
+            class="theme-color"
+            data-theme="ocean"
+        ></button>
+
+        <button
+            type="button"
+            class="theme-color"
+            data-theme="cocoa"
+        ></button>
+
+        <button
+            type="button"
+            class="theme-color"
+            data-theme="midnight"
+        ></button>
+
+    </div>
 
 </div>
 
-
-<main class="reels-container" id="reelsContainer">
-
-
-    <!-- =====================================================
-         REEL 1
-    ====================================================== -->
-
-    <article
-        class="reel"
-        data-reel-id="reel-1"
-        data-title="Elegant Long Layers"
-        data-description="Soft layered hairstyle for a stylish everyday look."
-        data-hashtags="#longhair #layers #hairstyle"
-    >
-
-        <video
-            class="reel-video"
-            src="{{ url_for('static', filename='videos/reel1.mp4') }}"
-            loop
-            muted
-            playsinline
-            preload="metadata"
-        ></video>
+</aside>
 
 
-        <div class="video-dark"></div>
+<!-- =====================================================
+     MAIN AREA
+===================================================== -->
+
+<main class="reels-main">
+
+
+    <!-- =================================================
+         TOPBAR
+    ================================================== -->
+
+    <header class="reels-topbar">
 
 
         <button
             type="button"
-            class="mute-button"
+            class="mobile-menu"
+            id="mobileMenu"
+            aria-label="Open menu"
         >
-            🔇
+            ☰
         </button>
 
 
-        <div class="reel-info">
+        <div class="topbar-title">
 
-            <h2>Elegant Long Layers</h2>
-
-            <p>
-                Soft layered hairstyle for a stylish everyday look.
-            </p>
-
-            <strong>
-                #LongHair #Layers #Hairstyle
-            </strong>
+            <span>
+                DISCOVER YOUR NEXT LOOK
+            </span>
 
         </div>
 
 
-        <div class="reel-actions">
+        <div class="topbar-actions">
 
-            <button
-                type="button"
-                class="reel-action like-button"
+
+            <a
+                href="{{ url_for('main.female') }}"
+                class="back-button"
             >
-                <span class="action-icon like-icon">♡</span>
-                <small>Like</small>
-            </button>
 
+                <span>
+                    ←
+                </span>
 
-            <button
-                type="button"
-                class="reel-action comment-button"
-            >
-                <span class="action-icon">💬</span>
-                <small>Comment</small>
-            </button>
+                <label>
+                    Dashboard
+                </label>
 
+            </a>
 
-            <button
-                type="button"
-                class="reel-action share-button"
-            >
-                <span class="action-icon">↗</span>
-                <small>Share</small>
-            </button>
-
-
-            <button
-                type="button"
-                class="reel-action save-button"
-            >
-                <span class="action-icon save-icon">🔖</span>
-                <small>Save</small>
-            </button>
 
         </div>
 
-    </article>
+    </header>
 
 
 
-    <!-- =====================================================
-         REEL 2
-    ====================================================== -->
+    <!-- =================================================
+         REELS PAGE
+    ================================================== -->
 
-    <article
-        class="reel"
-        data-reel-id="reel-2"
-        data-title="Modern Bob"
-        data-description="A clean modern bob hairstyle with an elegant finish."
-        data-hashtags="#bob #bobcut #womenshair"
+    <section
+        class="reels-page"
+        id="reelsPage"
     >
 
-        <video
-            class="reel-video"
-            src="{{ url_for('static', filename='videos/reel2.mp4') }}"
-            loop
-            muted
-            playsinline
-            preload="metadata"
-        ></video>
 
-        <div class="video-dark"></div>
+        <!-- REELS FEED -->
 
-        <button
-            type="button"
-            class="mute-button"
+        <div
+            class="reels-feed"
+            id="reelsFeed"
         >
-            🔇
-        </button>
 
 
-        <div class="reel-info">
+            {% for i in range(1, 21) %}
 
-            <h2>Modern Bob</h2>
 
-            <p>
-                A clean modern bob hairstyle with an elegant finish.
-            </p>
+            <article
+                class="reel-item"
+                data-reel-id="reel{{ i }}"
+            >
 
-            <strong>
-                #Bob #BobCut #WomensHair
-            </strong>
+
+                <!-- VIDEO -->
+
+                <div class="reel-video-container">
+
+
+                    <video
+                        class="reel-video"
+                        src="{{ url_for('static', filename='videos/reel' ~ i ~ '.mp4') }}"
+                        playsinline
+                        preload="metadata"
+                    ></video>
+
+
+                    <!-- VIDEO PLAY BUTTON -->
+
+                    <button
+                        type="button"
+                        class="video-play"
+                        aria-label="Play reel"
+                    >
+                        ▶
+                    </button>
+
+
+                    <!-- MUTE -->
+
+                    <button
+                        type="button"
+                        class="reel-mute"
+                        aria-label="Mute reel"
+                    >
+                        🔊
+                    </button>
+
+
+                    <!-- REEL ACTIONS -->
+
+                    <div class="reel-actions">
+
+
+                        <!-- LIKE -->
+
+                        <button
+                            type="button"
+                            class="reel-action action-like like-button"
+                            aria-label="Like reel"
+                        >
+
+                            <span>
+                                ♡
+                            </span>
+
+                            <small>
+                                Like
+                            </small>
+
+                        </button>
+
+
+                        <!-- COMMENT -->
+
+                        <button
+                            type="button"
+                            class="reel-action action-comment comment-button"
+                            aria-label="Comments"
+                        >
+
+                            <span>
+                                💬
+                            </span>
+
+                            <small>
+                                Comments
+                            </small>
+
+                        </button>
+
+
+                        <!-- SHARE -->
+
+                        <button
+                            type="button"
+                            class="reel-action action-share share-button"
+                            aria-label="Share reel"
+                        >
+
+                            <span>
+                                ↗
+                            </span>
+
+                            <small>
+                                Share
+                            </small>
+
+                        </button>
+
+
+                        <!-- SAVE -->
+
+                        <button
+                            type="button"
+                            class="reel-action action-save save-button"
+                            aria-label="Save reel"
+                        >
+
+                            <span>
+                                🔖
+                            </span>
+
+                            <small>
+                                Save
+                            </small>
+
+                        </button>
+
+
+                    </div>
+
+
+                    <!-- REEL INFORMATION -->
+
+                    <div class="reel-information">
+
+
+                        <div class="reel-user">
+
+                            <div class="reel-avatar">
+                                SM
+                            </div>
+
+                            <strong>
+                                @StyleMyHair
+                            </strong>
+
+                        </div>
+
+
+                        <h2>
+                            Discover Your Next Hairstyle
+                        </h2>
+
+
+                        <p>
+                            Find inspiration and try a new look.
+                        </p>
+
+
+                    </div>
+
+
+                    <!-- STYLEMYHAIR WATERMARK -->
+
+                    <div class="reel-watermark">
+                        StyleMyHair
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+            {% endfor %}
+
 
         </div>
 
 
-        <div class="reel-actions">
+        <!-- REEL NAVIGATION -->
 
-            <button type="button" class="reel-action like-button">
-                <span class="action-icon like-icon">♡</span>
-                <small>Like</small>
+        <div class="reel-navigation">
+
+
+            <button
+                type="button"
+                id="previousReel"
+                class="reel-nav-button"
+                aria-label="Previous reel"
+            >
+                ↑
             </button>
 
-            <button type="button" class="reel-action comment-button">
-                <span class="action-icon">💬</span>
-                <small>Comment</small>
+
+            <button
+                type="button"
+                id="nextReel"
+                class="reel-nav-button"
+                aria-label="Next reel"
+            >
+                ↓
             </button>
 
-            <button type="button" class="reel-action share-button">
-                <span class="action-icon">↗</span>
-                <small>Share</small>
-            </button>
-
-            <button type="button" class="reel-action save-button">
-                <span class="action-icon save-icon">🔖</span>
-                <small>Save</small>
-            </button>
-
-        </div>
-
-    </article>
-
-
-
-    <!-- =====================================================
-         REEL 3
-    ====================================================== -->
-
-    <article
-        class="reel"
-        data-reel-id="reel-3"
-        data-title="Elegant Braids"
-        data-description="Beautiful braided hairstyle for a graceful look."
-        data-hashtags="#braids #braidedhair #hairstyle"
-    >
-
-        <video
-            class="reel-video"
-            src="{{ url_for('static', filename='videos/reel3.mp4') }}"
-            loop
-            muted
-            playsinline
-            preload="metadata"
-        ></video>
-
-        <div class="video-dark"></div>
-
-        <button
-            type="button"
-            class="mute-button"
-        >
-            🔇
-        </button>
-
-
-        <div class="reel-info">
-
-            <h2>Elegant Braids</h2>
-
-            <p>
-                Beautiful braided hairstyle for a graceful look.
-            </p>
-
-            <strong>
-                #Braids #BraidedHair #Hairstyle
-            </strong>
 
         </div>
 
 
-        <div class="reel-actions">
-
-            <button type="button" class="reel-action like-button">
-                <span class="action-icon like-icon">♡</span>
-                <small>Like</small>
-            </button>
-
-            <button type="button" class="reel-action comment-button">
-                <span class="action-icon">💬</span>
-                <small>Comment</small>
-            </button>
-
-            <button type="button" class="reel-action share-button">
-                <span class="action-icon">↗</span>
-                <small>Share</small>
-            </button>
-
-            <button type="button" class="reel-action save-button">
-                <span class="action-icon save-icon">🔖</span>
-                <small>Save</small>
-            </button>
-
-        </div>
-
-    </article>
+    </section>
 
 
 </main>
@@ -307,28 +531,44 @@
 
 
 <!-- =====================================================
-     COMMENTS POPUP
-====================================================== -->
+     COMMENTS MODAL
+===================================================== -->
 
 <div
-    class="comments-overlay"
-    id="commentsOverlay"
+    class="comments-modal"
+    id="commentsModal"
+    aria-hidden="true"
 >
 
-    <div
-        class="comments-panel"
-        id="commentsPanel"
-    >
+
+    <div class="comments-overlay"></div>
+
+
+    <div class="comments-box">
+
 
         <div class="comments-header">
 
-            <h2>Comments</h2>
+            <div>
+
+                <strong>
+                    Comments
+                </strong>
+
+                <span id="commentsTotal">
+                    0
+                </span>
+
+            </div>
+
 
             <button
                 type="button"
                 id="closeComments"
+                class="close-comments"
+                aria-label="Close comments"
             >
-                ✕
+                ×
             </button>
 
         </div>
@@ -340,24 +580,26 @@
         ></div>
 
 
-        <form
-            class="comment-form"
-            id="commentForm"
-        >
+        <div class="comment-input-area">
 
             <input
                 type="text"
                 id="commentInput"
+                maxlength="300"
                 placeholder="Add a comment..."
-                maxlength="200"
                 autocomplete="off"
             >
 
-            <button type="submit">
+
+            <button
+                type="button"
+                id="postComment"
+            >
                 Post
             </button>
 
-        </form>
+        </div>
+
 
     </div>
 
@@ -365,18 +607,106 @@
 
 
 
-<!-- SHARE MESSAGE -->
-
-<div
-    class="toast"
-    id="toast"
-></div>
-
-
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script
-    src="{{ url_for('static', filename='js/reel.js') }}?v=20"
+    src="{{ url_for('static', filename='js/reel.js') }}"
 ></script>
 
+
+<!-- =====================================================
+     FEMALE DASHBOARD THEME SYNC
+     ONLY COLOR/THEME LOGIC
+===================================================== -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const themeButtons =
+        document.querySelectorAll(".theme-color");
+
+    const themeKey =
+        "styleMyHairTheme";
+
+    const validThemes = [
+        "rose",
+        "lavender",
+        "peach",
+        "sky",
+        "mint",
+        "sage",
+        "butter",
+        "coral",
+        "plum",
+        "ocean",
+        "cocoa",
+        "midnight"
+    ];
+
+    function applyTheme(theme) {
+
+        if (!validThemes.includes(theme)) {
+            theme = "rose";
+        }
+
+        document.documentElement.setAttribute(
+            "data-theme",
+            theme
+        );
+
+        themeButtons.forEach(function (button) {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.theme === theme
+            );
+
+        });
+
+    }
+
+
+    /* Read the SAME theme used by Female Dashboard */
+
+    const savedTheme =
+        localStorage.getItem(themeKey);
+
+    applyTheme(savedTheme || "rose");
+
+
+    /* Change theme on Female Reels */
+
+    themeButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const selectedTheme =
+                    this.dataset.theme;
+
+                if (!validThemes.includes(selectedTheme)) {
+                    return;
+                }
+
+                localStorage.setItem(
+                    themeKey,
+                    selectedTheme
+                );
+
+                applyTheme(selectedTheme);
+
+            }
+        );
+
+    });
+
+});
+</script>
+
+
 </body>
+
 </html>

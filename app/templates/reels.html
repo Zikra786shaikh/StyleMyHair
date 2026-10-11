@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -17,112 +18,705 @@
         href="{{ url_for('static', filename='css/reels.css') }}"
     >
 
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
 </head>
 
 
 <body>
 
+
+<!-- =====================================================
+     MOBILE OVERLAY
+===================================================== -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside
+    class="reels-sidebar"
+    id="reelsSidebar"
+>
+
+    <div class="sidebar-top">
+
+        <div class="brand">
+
+            <div class="brand-symbol">
+                SM
+            </div>
+
+            <div class="brand-text">
+
+                <strong>
+                    StyleMyHair
+                </strong>
+
+                <span>
+                    MEN'S STUDIO
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="mobile-close"
+            id="mobileClose"
+            type="button"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <div class="sidebar-profile">
+
+        <div class="profile-avatar">
+            👤
+        </div>
+
+        <div class="profile-info">
+
+            <strong>
+                My Profile
+            </strong>
+
+            <span>
+                Style Explorer
+            </span>
+
+        </div>
+
+        <span class="profile-arrow">
+            →
+        </span>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-navigation">
+
+        <span class="nav-heading">
+            EXPLORE
+        </span>
+
+
+        <a
+            class="side-link"
+            href="{{ url_for('main.male') }}"
+        >
+
+            <span>
+                ⌂
+            </span>
+
+            <label>
+                Dashboard
+            </label>
+
+        </a>
+
+
+        <a
+            class="side-link"
+            href="{{ url_for('main.hairstyles') }}"
+        >
+
+            <span>
+                ✂
+            </span>
+
+            <label>
+                Hairstyles
+            </label>
+
+        </a>
+
+
+        <a
+            class="side-link active"
+            href="/reel"
+        >
+
+            <span>
+                ▶
+            </span>
+
+            <label>
+                Reels
+            </label>
+
+        </a>
+
+
+        <a
+            class="side-link"
+            href="/saved-reel"
+        >
+
+            <span>
+                🔖
+            </span>
+
+            <label>
+                Saved Reels
+            </label>
+
+        </a>
+
+
+        
+
+
+        <a
+            class="side-link"
+            href="{{ url_for('main.male_products') }}"
+        >
+
+            <span>
+                ♙
+            </span>
+
+            <label>
+                Hair Products
+            </label>
+
+        </a>
+
+
+        <a
+            class="side-link"
+            href="{{ url_for('main.favourites') }}"
+        >
+
+            <span>
+                ♥
+            </span>
+
+            <label>
+                Favorites
+            </label>
+
+        </a>
+
+    </nav>
+
+
+    <!-- THEME -->
+
+    <div class="theme-panel">
+
+        <div class="theme-title">
+
+            <span>
+                THEME
+            </span>
+
+            <small>
+                Graphite
+            </small>
+
+        </div>
+
+
+        <div class="theme-grid">
+
+            <div class="theme-grid">
+
+    <button
+        type="button"
+        class="theme-dot graphite"
+        data-theme="graphite"
+        aria-label="Graphite theme">
+    </button>
+
+    <button
+        type="button"
+        class="theme-dot navy"
+        data-theme="navy"
+        aria-label="Navy theme">
+    </button>
+
+    <button
+        type="button"
+        class="theme-dot steel"
+        data-theme="steel"
+        aria-label="Steel theme">
+    </button>
+
+    <button
+        type="button"
+        class="theme-dot ocean"
+        data-theme="ocean"
+        aria-label="Ocean theme">
+    </button>
+
+    <button
+        type="button"
+        class="theme-dot emerald"
+        data-theme="emerald"
+        aria-label="Emerald theme">
+    </button>
+
+    <button
+        type="button"
+        class="theme-dot forest"
+        data-theme="forest"
+        aria-label="Forest theme">
+    </button>
+
+    <button
+        type="button"
+        class="theme-dot burgundy"
+        data-theme="burgundy"
+        aria-label="Burgundy theme">
+    </button>
+
+    <button
+        type="button"
+        class="theme-dot copper"
+        data-theme="copper"
+        aria-label="Copper theme">
+    </button>
+
+    <button
+        type="button"
+        class="theme-dot charcoal"
+        data-theme="charcoal"
+        aria-label="Charcoal theme">
+    </button>
+
+    <button
+        type="button"
+        class="theme-dot midnight"
+        data-theme="midnight"
+        aria-label="Midnight theme">
+    </button>
+
+
+</div>
+        </div>
+
+    </div>
+
+
+    <!-- BOTTOM -->
+
+    <div class="sidebar-bottom">
+    
+<button type="button" id="modeToggle" class="mode-toggle">
+    <span class="mode-icon">🌙</span>
+    <span id="modeText">Dark Mode</span>
+</button>
+        <a
+            class="bottom-control"
+            href="{{ url_for('main.settings') }}"
+        >
+
+            <span>
+                ⚙
+            </span>
+
+            <label>
+                Settings
+            </label>
+
+        </a>
+        
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="reels-main">
+
+
     <!-- TOP BAR -->
 
-    <header class="reels-header">
+    <header class="reels-topbar">
+
+        <button
+            class="mobile-menu"
+            id="mobileMenu"
+            type="button"
+        >
+            ☰
+        </button>
+
 
         <a
             href="{{ url_for('main.male') }}"
             class="back-button"
         >
-            ←
+
+            <span>
+                ←
+            </span>
+
+            <label>
+                Back
+            </label>
+
         </a>
 
 
-        <div class="reels-title">
+        <div class="topbar-title">
 
-            <strong>Reels</strong>
+            <span>
+                STYLEMYHAIR REELS
+            </span>
 
-            <span>MEN'S HAIRSTYLES</span>
+            <strong>
+                Discover Style in Motion
+            </strong>
 
         </div>
 
 
-        <div class="header-space"></div>
+        <div class="topbar-actions">
+
+            <a
+                href="{{ url_for('main.female') }}"
+                class="gender-link"
+            >
+                👤 FEMALE
+            </a>
+
+        </div>
 
     </header>
 
 
-    <!-- REELS -->
 
-    <!--
-        The 100 reels will be created automatically
-        by reels.js.
-    -->
+    <!-- =================================================
+         REELS AREA
+    ================================================== -->
 
-    <main
-        class="reels-container"
-        id="reelsContainer"
-    ></main>
+    <section class="reels-page">
 
 
-    <!-- COMMENTS PANEL -->
+        <div class="reels-header">
+
+            <span>
+                STYLE IN MOTION
+            </span>
+
+            <h1>
+                Reels
+            </h1>
+
+            <p>
+                Discover hairstyles, trends and inspiration.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             VERTICAL REELS
+        ================================================== -->
+
+        <div
+            class="reels-feed"
+            id="reelsFeed"
+        >
+
+
+            {% for i in range(1, 21) %}
+
+
+            <!-- =================================================
+                 REEL {{ i }}
+            ================================================== -->
+
+            <article
+                class="reel-item"
+                id="reel-{{ i }}"
+                data-reel-id="reel{{ i }}"
+            >
+
+                <div class="reel-video-container">
+
+
+                    <!-- VIDEO -->
+
+                    <video
+    class="reel-video"
+    muted
+    playsinline
+    preload="metadata"
+>
+                        <source
+                            src="{{ url_for('static', filename='reels/reel' ~ i ~ '.mp4') }}"
+                            type="video/mp4"
+                        >
+
+                        Your browser does not support video.
+
+                    </video>
+
+
+
+                   
+
+
+<!-- MUTE / UNMUTE -->
+
+<button
+    class="reel-mute"
+    type="button"
+    aria-label="Mute or unmute"
+>
+    🔊
+</button>
+                    <!-- RIGHT SIDE ACTIONS -->
+
+                    <div class="reel-actions">
+
+
+                        <!-- LIKE -->
+
+                        <button
+                            class="reel-action like-button"
+                            type="button"
+                        >
+
+                            <span class="action-icon">
+                                ♡
+                            </span>
+
+                            <small>
+                                Like
+                            </small>
+
+                        </button>
+
+
+
+                        <!-- COMMENT -->
+
+                        <button
+                            class="reel-action comment-button"
+                            type="button"
+                        >
+
+                            <span class="action-icon">
+                                💬
+                            </span>
+
+                            <small>
+                                Comment
+                            </small>
+
+                        </button>
+
+
+
+                        <!-- SAVE -->
+
+                        <button
+                            class="reel-action save-button"
+                            type="button"
+                        >
+
+                            <span class="action-icon">
+                                🔖
+                            </span>
+
+                            <small>
+                                Save
+                            </small>
+
+                        </button>
+
+
+
+                        <!-- SHARE -->
+
+                        <button
+                            class="reel-action share-button"
+                            type="button"
+                        >
+
+                            <span class="action-icon">
+                                ↗
+                            </span>
+
+                            <small>
+                                Share
+                            </small>
+
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- REEL INFORMATION -->
+
+                    <div class="reel-information">
+
+
+                        <span class="reel-category">
+
+                            {% if i % 3 == 1 %}
+
+                                TRENDING
+
+                            {% elif i % 3 == 2 %}
+
+                                INSPIRATION
+
+                            {% else %}
+
+                                STYLE GUIDE
+
+                            {% endif %}
+
+                        </span>
+
+
+                        <h2>
+                            StyleMyHair Reel {{ i }}
+                        </h2>
+
+
+                        <p>
+                            Discover fresh hairstyle inspiration
+                            and trending looks for your next style.
+                        </p>
+
+
+                        <div class="reel-user">
+
+                            <div class="mini-avatar">
+                                SM
+                            </div>
+
+                            <strong>
+                                StyleMyHair
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+            {% endfor %}
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         COMMENT MODAL
+    ================================================== -->
 
     <div
-        class="comments-panel"
-        id="commentsPanel"
+        class="comment-modal"
+        id="commentModal"
     >
 
-        <div class="comments-header">
-
-            <strong>
-
-                Comments
-
-                <span id="commentsTotal">0</span>
-
-            </strong>
+        <div class="comment-box">
 
 
             <button
-                id="closeComments"
+                class="comment-close"
+                id="commentClose"
                 type="button"
             >
                 ×
             </button>
 
-        </div>
+
+            <h2>
+                Comments
+            </h2>
 
 
-        <div
-            class="comments-list"
-            id="commentsList"
-        ></div>
-
-
-        <div class="comment-input-area">
-
-            <input
-                type="text"
-                id="commentInput"
-                placeholder="Add a comment..."
-                maxlength="300"
+            <div
+                class="comments-list"
+                id="commentsList"
             >
 
+                <p class="no-comments">
+                    No comments yet. Be the first!
+                </p>
 
-            <button
-                id="postComment"
-                type="button"
-            >
-                Post
-            </button>
+            </div>
+
+
+
+            <div class="comment-input-area">
+
+                <input
+                    type="text"
+                    id="commentInput"
+                    placeholder="Add a comment..."
+                >
+
+                <button
+                    type="button"
+                    id="commentSubmit"
+                >
+                    Post
+                </button>
+
+            </div>
+
 
         </div>
 
     </div>
 
 
-    <!-- JAVASCRIPT -->
-
-    <script
-        src="{{ url_for('static', filename='js/reels.js') }}"
-    ></script>
-
+</main>
+    <script src="{{ url_for('static', filename='js/reels.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
 
 </body>
 

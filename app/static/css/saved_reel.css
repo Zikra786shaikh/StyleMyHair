@@ -1,389 +1,635 @@
+/* =========================================================
+   STYLEMYHAIR - FEMALE SAVED REELS
+   MATCHES FEMALE WEBSITE STYLE
+========================================================= */
+
+:root {
+    --pink: #e85b91;
+    --pink-dark: #c83d72;
+    --pink-soft: #fff0f6;
+
+    --bg: #fff8fb;
+    --card: #ffffff;
+
+    --text: #2d2430;
+    --muted: #817581;
+
+    --border: #f1dce6;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html,
+body {
+    min-height: 100%;
+}
 
 body {
-    background: #0b0b0b;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8fb 0%,
+            #fff1f6 100%
+        );
+
+    color: var(--text);
+}
+
+button,
+a {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 
-/* =====================================================
+/* =========================================================
    HEADER
-===================================================== */
+========================================================= */
 
 .saved-header {
-    height: 80px;
     width: 100%;
-    background: #111111;
+
+    min-height: 82px;
+
+    padding: 0 42px;
 
     display: flex;
     align-items: center;
 
-    padding: 0 30px;
+    gap: 18px;
 
-    border-bottom: 1px solid #252525;
+    background: rgba(255, 255, 255, 0.88);
+
+    border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(12px);
 
     position: sticky;
     top: 0;
+
     z-index: 100;
 }
 
 
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
 .back-button {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: white;
-    text-decoration: none;
+    border: 1px solid var(--border);
 
-    font-size: 28px;
+    border-radius: 12px;
 
-    border-radius: 50%;
+    background: #ffffff;
 
-    background: #1c1c1c;
+    color: var(--text);
 
-    transition: 0.2s;
+    font-size: 21px;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
 }
-
 
 .back-button:hover {
-    background: #292929;
+    background: var(--pink-soft);
+
+    color: var(--pink-dark);
+
+    transform: translateX(-2px);
 }
 
 
-.saved-title {
-    margin-left: 18px;
+/* =========================================================
+   TITLE
+========================================================= */
 
+.saved-title {
     display: flex;
     flex-direction: column;
 
     gap: 4px;
 }
 
-
 .saved-title strong {
     font-size: 21px;
-}
 
+    font-weight: 750;
+
+    line-height: 1.2;
+}
 
 .saved-title span {
-    font-size: 10px;
+    font-size: 9px;
 
-    letter-spacing: 2px;
+    font-weight: 800;
 
-    color: #a8a8a8;
+    letter-spacing: 1.5px;
+
+    color: var(--muted);
 }
 
 
-/* =====================================================
-   SAVED REELS GRID
-===================================================== */
+/* =========================================================
+   MAIN SAVED AREA
+========================================================= */
 
 .saved-container {
-
-    width: 100%;
-
-    max-width: 1400px;
+    width: min(1250px, calc(100% - 84px));
 
     margin: 0 auto;
 
-    padding: 30px;
+    padding: 38px 0 60px;
 
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4, minmax(0, 1fr));
 
     gap: 22px;
 }
 
 
-/* =====================================================
-   REEL CARD
-===================================================== */
+/* =========================================================
+   SAVED REEL CARD
+========================================================= */
 
-.saved-reel {
-
-    position: relative;
-
-    height: 520px;
-
-    background: #151515;
-
-    border-radius: 18px;
-
+.saved-reel-card {
     overflow: hidden;
 
-    border: 1px solid #292929;
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
 
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.35);
+        0 8px 25px rgba(86, 46, 66, .07);
 
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.saved-reel-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 16px 35px rgba(86, 46, 66, .12);
 }
 
 
-.saved-reel video {
+/* =========================================================
+   VIDEO
+========================================================= */
+
+.saved-video-wrapper {
+    position: relative;
 
     width: 100%;
 
+    aspect-ratio: 9 / 13;
+
+    overflow: hidden;
+
+    background: #f5e8ee;
+}
+
+.saved-reel-video {
+    width: 100%;
     height: 100%;
 
-    object-fit: cover;
-
     display: block;
+
+    object-fit: cover;
 }
 
 
-/* =====================================================
-   DARK OVERLAY
-===================================================== */
+/* =========================================================
+   VIDEO OVERLAY
+========================================================= */
 
-.reel-overlay {
-
+.saved-video-overlay {
     position: absolute;
 
     inset: 0;
 
-    background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,0.9),
-            rgba(0,0,0,0.05) 60%
-        );
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 
     pointer-events: none;
 }
 
 
-/* =====================================================
-   INFO
-===================================================== */
+/* =========================================================
+   PLAY BUTTON
+========================================================= */
 
-.reel-info {
-
-    position: absolute;
-
-    left: 18px;
-    right: 18px;
-    bottom: 18px;
-
-    z-index: 2;
-}
-
-
-.reel-info h3 {
-
-    font-size: 20px;
-
-    margin-bottom: 8px;
-}
-
-
-.reel-info p {
-
-    font-size: 13px;
-
-    line-height: 1.5;
-
-    color: #d1d1d1;
-
-    margin-bottom: 8px;
-}
-
-
-.reel-info strong {
-
-    font-size: 12px;
-
-    color: #c8b28a;
-}
-
-
-/* =====================================================
-   UNSAVE BUTTON
-===================================================== */
-
-.unsave-button {
-
-    position: absolute;
-
-    top: 15px;
-    right: 15px;
-
-    z-index: 5;
+.saved-play-button {
+    width: 50px;
+    height: 50px;
 
     border: none;
 
-    background: rgba(0,0,0,0.7);
+    border-radius: 50%;
 
-    color: white;
+    background: rgba(255, 255, 255, .94);
 
-    padding: 10px 13px;
+    color: var(--pink-dark);
 
-    border-radius: 20px;
+    font-size: 17px;
 
-    cursor: pointer;
+    display: flex;
 
-    font-size: 13px;
+    align-items: center;
+    justify-content: center;
 
-    backdrop-filter: blur(8px);
+    pointer-events: auto;
 
-    transition: 0.2s;
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, .16);
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
 }
 
+.saved-play-button:hover {
+    transform: scale(1.08);
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.saved-reel-info {
+    padding: 17px;
+}
+
+.saved-reel-heading {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.saved-reel-heading h3 {
+    font-size: 15px;
+
+    line-height: 1.3;
+
+    font-weight: 750;
+}
+
+.saved-creator {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 10px;
+
+    color: var(--muted);
+}
+
+.saved-reel-info p {
+    margin-top: 10px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   BOOKMARK / UNSAVE
+========================================================= */
+
+.unsave-button {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: var(--pink-soft);
+
+    color: var(--pink-dark);
+
+    font-size: 17px;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
 
 .unsave-button:hover {
+    background: var(--pink);
 
-    background: rgba(220, 50, 80, 0.9);
+    color: #ffffff;
 
+    transform: scale(1.05);
 }
 
 
-/* =====================================================
+/* =========================================================
+   WATCH REEL BUTTON
+========================================================= */
+
+.saved-reel-actions {
+    margin-top: 15px;
+}
+
+.saved-view-button {
+    width: 100%;
+
+    min-height: 40px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink),
+            var(--pink-dark)
+        );
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+}
+
+.saved-view-button:hover {
+    transform: translateY(-1px);
+
+    opacity: .92;
+}
+
+
+/* =========================================================
    EMPTY STATE
-===================================================== */
+========================================================= */
 
 .empty-state {
+    width: min(700px, calc(100% - 40px));
 
-    min-height: calc(100vh - 80px);
+    min-height: 340px;
+
+    margin: 40px auto 60px;
+
+    padding: 45px 30px;
+
+    border: 1px dashed var(--border);
+
+    border-radius: 24px;
+
+    background:
+        rgba(255, 255, 255, .75);
 
     display: none;
+
+    flex-direction: column;
 
     align-items: center;
 
     justify-content: center;
 
-    flex-direction: column;
-
     text-align: center;
-
-    padding: 30px;
 }
 
+
+/* =========================================================
+   EMPTY ICON
+========================================================= */
 
 .empty-icon {
+    width: 70px;
+    height: 70px;
 
-    font-size: 55px;
+    display: flex;
 
-    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
 
-    opacity: 0.7;
+    margin-bottom: 18px;
+
+    border-radius: 50%;
+
+    background: var(--pink-soft);
+
+    font-size: 30px;
 }
 
+
+/* =========================================================
+   EMPTY TEXT
+========================================================= */
 
 .empty-state h2 {
+    margin-bottom: 8px;
 
-    font-size: 28px;
+    font-size: 20px;
 
-    margin-bottom: 10px;
+    font-weight: 750;
 }
-
 
 .empty-state p {
+    max-width: 430px;
 
-    max-width: 400px;
+    color: var(--muted);
 
-    color: #999;
+    font-size: 12px;
 
     line-height: 1.6;
-
-    margin-bottom: 25px;
 }
 
 
+/* =========================================================
+   BROWSE REELS
+========================================================= */
+
 .browse-button {
+    margin-top: 20px;
 
-    display: inline-block;
+    padding: 11px 20px;
 
-    text-decoration: none;
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink),
+            var(--pink-dark)
+        );
 
     color: #ffffff;
 
-    background: #c8b28a;
+    font-size: 11px;
 
-    padding: 12px 22px;
+    font-weight: 700;
 
-    border-radius: 25px;
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+}
 
-    font-size: 14px;
+.browse-button:hover {
+    transform: translateY(-1px);
 
-    font-weight: bold;
+    opacity: .92;
 }
 
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+/* =========================================================
+   TABLET
+========================================================= */
 
-@media (max-width: 1100px) {
+@media (max-width: 1150px) {
 
     .saved-container {
-
         grid-template-columns:
-            repeat(3, 1fr);
+            repeat(3, minmax(0, 1fr));
 
+        width: min(1000px, calc(100% - 50px));
     }
-
 }
 
 
-@media (max-width: 800px) {
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (max-width: 850px) {
 
     .saved-container {
-
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2, minmax(0, 1fr));
 
-        padding: 18px;
+        width: calc(100% - 40px);
 
-        gap: 15px;
-
+        gap: 18px;
     }
-
-
-    .saved-reel {
-
-        height: 430px;
-
-    }
-
-}
-
-
-@media (max-width: 500px) {
 
     .saved-header {
+        padding: 0 22px;
+    }
+}
 
-        height: 70px;
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 560px) {
+
+    .saved-header {
+        min-height: 72px;
 
         padding: 0 16px;
 
+        gap: 12px;
     }
 
+    .back-button {
+        width: 38px;
+        height: 38px;
+
+        font-size: 19px;
+    }
+
+    .saved-title strong {
+        font-size: 18px;
+    }
+
+    .saved-title span {
+        font-size: 8px;
+    }
 
     .saved-container {
+        width: calc(100% - 28px);
+
+        padding-top: 24px;
 
         grid-template-columns: 1fr;
 
-        padding: 15px;
-
+        gap: 20px;
     }
 
-
-    .saved-reel {
-
-        height: 560px;
-
+    .saved-reel-card {
+        width: 100%;
     }
 
+    .saved-video-wrapper {
+        aspect-ratio: 9 / 13;
+    }
+
+    .empty-state {
+        width: calc(100% - 28px);
+
+        margin-top: 28px;
+
+        min-height: 300px;
+
+        padding: 35px 20px;
+    }
 }

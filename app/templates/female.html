@@ -87,7 +87,7 @@
     <!-- LOGO -->
 
     <a
-        href="{{ url_for('main.female') }}"
+        href="{{ url_for('main.choose_style') }}"
         class="sidebar-logo"
     >
 
@@ -142,7 +142,7 @@
             <span class="sidebar-icon">⌂</span>
 
             <span>
-                Home
+                Dasboard
             </span>
 
         </a>
@@ -252,6 +252,18 @@
             </span>
 
         </a>
+        
+           <a
+    href="{{ url_for('main.female_nearby_salons') }}"
+    class="sidebar-link active">
+
+    <span class="sidebar-icon">⌖</span>
+
+    <span class="sidebar-link-text">
+        Nearby Salons
+    </span>
+
+</a>
 
     </nav>
 
@@ -525,17 +537,21 @@
         <!-- HEADER ACTIONS -->
 
         <div class="header-actions">
+             
+                
+            <a
+           href="{{ url_for('main.male') }}"
+           class="sidebar-link"
+        >
 
-            <button
-                type="button"
-                class="header-icon-button"
-                id="headerSearchButton"
-                title="Search"
-                aria-label="Search"
-            >
-                ⌕
-            </button>
+            <span class="sidebar-icon">👤</span>
 
+            <span>
+                 MALE
+            </span>
+
+        </a>
+    
 
             <button
                 type="button"
@@ -548,14 +564,7 @@
             </button>
 
 
-            <button
-                type="button"
-                class="header-profile"
-                title="My Profile"
-                aria-label="My Profile"
-            >
-                ♡
-            </button>
+           
 
         </div>
 
@@ -573,8 +582,12 @@
         type="button"
         class="page-back-button"
         id="pageBackButton"
-        aria-label="Go back to previous page"
+       
     >
+     <a
+            href="{{ url_for('main.choose_style') }}"
+            class="back-button"
+        >
         <span class="back-arrow">←</span>
         <span class="back-text">Back</span>
     </button>
@@ -2426,6 +2439,7 @@ if (heroVideo) {
     videoObserver.observe(heroVideo);
 }
 </script>
+<script src="{{ url_for('static', filename='js/theme.js') }}"></script>
 </script>
 ```
 

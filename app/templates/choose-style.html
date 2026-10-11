@@ -107,6 +107,11 @@
                 >
 
                     <div class="style-card-image">
+     
+            <a
+           href="{{ url_for('main.male') }}"
+           class="sidebar-link"
+        >
 
                         <img
                             src="{{ url_for('static', filename='images/choose-male.jpeg') }}"
@@ -169,6 +174,11 @@
                 >
 
                     <div class="style-card-image">
+     
+            <a
+           href="{{ url_for('main.female') }}"
+           class="sidebar-link"
+        >
 
                         <img
                             src="{{ url_for('static', filename='images/choose-female.jpeg') }}"
@@ -206,6 +216,7 @@
                         <div class="style-card-arrow">
 
                             →
+                            
 
                         </div>
 
@@ -237,31 +248,14 @@
                     disabled
                 >
 
-                    <span id="continueText">
-                        SELECT YOUR STYLE
-                    </span>
+                    
 
-                    <b>
-                        →
-                    </b>
-
-                </button>
+                  
 
             </div>
 
 
         </section>
-
-
-        <!-- =====================================
-             BOTTOM TEXT
-        ====================================== -->
-
-        <div class="choose-bottom">
-
-            STYLEMYHAIR • DISCOVER WHAT SUITS YOU
-
-        </div>
 
 
     </main>

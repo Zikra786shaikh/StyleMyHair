@@ -1,570 +1,1302 @@
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
-    console.log("MALE REELS JS IS WORKING");
+    // =========================================================
+    // STYLEMYHAIR - MALE REELS
+    // =========================================================
 
-    // =====================================================
-    // SETTINGS
-    // =====================================================
+    const reels = Array.from(document.querySelectorAll(".reel-item"));
+    const reelsFeed = document.getElementById("reelsFeed");
+    const reelsPage = document.querySelector(".reels-page");
 
-    const reelsContainer = document.getElementById("reelsContainer");
-    const TOTAL_VIDEOS = 20;
-    const BATCH_SIZE = 20;
-
-    if (!reelsContainer) {
-        console.error("reelsContainer not found");
+    if (!reels.length || !reelsFeed || !reelsPage) {
         return;
     }
 
-    // =====================================================
-    // MALE HAIRSTYLE REEL DATA
-    // =====================================================
-
-    const hairstyles = [
-        {
-            title: "Classic Taper Fade",
-            description: "A clean and timeless taper fade that gives you a sharp, polished and effortlessly stylish look.",
-            tags: "#TaperFade #MensHair #StyleMyHair"
-        },
-        {
-            title: "Textured Crop",
-            description: "Add texture and volume with this modern crop. Perfect for a trendy and low-maintenance hairstyle.",
-            tags: "#TexturedCrop #MensStyle #HairInspiration"
-        },
-        {
-            title: "Modern Pompadour",
-            description: "A voluminous pompadour that brings a bold, confident and sophisticated touch to your appearance.",
-            tags: "#Pompadour #MensHairstyle #StyleMyHair"
-        },
-        {
-            title: "Low Fade",
-            description: "Keep it fresh with a subtle low fade that blends smoothly and looks great on different hair types.",
-            tags: "#LowFade #FreshCut #MensHair"
-        },
-        {
-            title: "Messy Quiff",
-            description: "Create a relaxed, textured look with a messy quiff that adds movement and natural volume.",
-            tags: "#MessyQuiff #QuiffStyle #HairGoals"
-        },
-        {
-            title: "Slick Back",
-            description: "Go for a sleek and confident appearance with this classic slick-back hairstyle.",
-            tags: "#SlickBack #ClassicMensHair #StyleMyHair"
-        },
-        {
-            title: "Buzz Cut",
-            description: "Simple, bold and easy to maintain. The buzz cut is a great choice for a sharp, minimal look.",
-            tags: "#BuzzCut #ShortHair #MensGrooming"
-        },
-        {
-            title: "Mid Fade with Texture",
-            description: "Combine a modern mid fade with textured hair on top for a balanced and fashionable finish.",
-            tags: "#MidFade #TexturedHair #MensStyle"
-        },
-        {
-            title: "Curly Top Fade",
-            description: "Show off your natural curls with a clean fade on the sides and defined curls on top.",
-            tags: "#CurlyHair #CurlyFade #MensHairstyle"
-        },
-        {
-            title: "French Crop",
-            description: "A stylish French crop with a neat fringe and short sides for an effortless everyday look.",
-            tags: "#FrenchCrop #MensHaircut #StyleMyHair"
-        },
-        {
-            title: "Undercut",
-            description: "Make a statement with a bold undercut that contrasts short sides with longer hair on top.",
-            tags: "#Undercut #MensFashion #HairInspiration"
-        },
-        {
-            title: "Side Part",
-            description: "A refined side part that delivers a clean and professional look for work or special occasions.",
-            tags: "#SidePart #FormalHair #MensStyle"
-        },
-        {
-            title: "High Fade",
-            description: "Get a bold and modern finish with a high fade and a stylish top that stands out.",
-            tags: "#HighFade #FadeHaircut #MensHair"
-        },
-        {
-            title: "Bro Flow",
-            description: "Let your medium-length hair flow naturally for a relaxed, effortless and casual appearance.",
-            tags: "#BroFlow #MediumHair #MensHairstyle"
-        },
-        {
-            title: "Spiky Hair",
-            description: "Add personality to your look with textured spikes and a modern finish.",
-            tags: "#SpikyHair #MensHaircut #HairTrends"
-        },
-        {
-            title: "Crew Cut",
-            description: "A versatile crew cut that combines simplicity, comfort and a sharp masculine style.",
-            tags: "#CrewCut #ShortMensHair #StyleMyHair"
-        },
-        {
-            title: "Wolf Cut for Men",
-            description: "Try a layered men's wolf cut for extra movement, texture and a bold modern look.",
-            tags: "#MensWolfCut #LayeredHair #HairTrends"
-        },
-        {
-            title: "Burst Fade",
-            description: "A distinctive burst fade that curves around the ears and adds a unique touch to your haircut.",
-            tags: "#BurstFade #ModernFade #MensStyle"
-        },
-        {
-            title: "Long Wavy Hair",
-            description: "Embrace natural waves and longer locks for a relaxed hairstyle full of texture and character.",
-            tags: "#LongHairMen #WavyHair #HairInspiration"
-        },
-        {
-            title: "Modern Mullet",
-            description: "Bring a daring edge to your look with a modern mullet featuring texture and stylish layers.",
-            tags: "#ModernMullet #MensHair #StyleMyHair"
-        }
-    ];
-
-    // =====================================================
+    // =========================================================
     // STORAGE
-    // =====================================================
+    // =========================================================
 
-    const LIKED_KEY = "stylemyhair-male-liked-reels";
-    const SAVED_KEY = "stylemyhair-male-saved-reels";
-    const COMMENTS_KEY = "stylemyhair-male-comments-";
+    const SAVED_KEY = "styleMyHairSavedReels";
+    const LIKED_KEY = "styleMyHairLikedReels";
+    const COMMENTS_KEY = "styleMyHairReelComments";
 
-    function readStorage(key, fallback = []) {
-        try {
-            return JSON.parse(localStorage.getItem(key)) ?? fallback;
-        } catch (error) {
-            return fallback;
-        }
+    let savedReels = JSON.parse(
+        localStorage.getItem(SAVED_KEY) || "[]"
+    );
+
+    let likedReels = JSON.parse(
+        localStorage.getItem(LIKED_KEY) || "[]"
+    );
+
+    let commentsData = JSON.parse(
+        localStorage.getItem(COMMENTS_KEY) || "{}"
+    );
+
+    // =========================================================
+    // CURRENT REEL
+    // =========================================================
+
+    let currentIndex = 0;
+    let currentCommentReel = null;
+
+    let wheelLocked = false;
+    let touchStartY = 0;
+    let touchStartX = 0;
+
+    // =========================================================
+    // STORAGE
+    // =========================================================
+
+    function saveStorage() {
+        localStorage.setItem(
+            SAVED_KEY,
+            JSON.stringify(savedReels)
+        );
+
+        localStorage.setItem(
+            LIKED_KEY,
+            JSON.stringify(likedReels)
+        );
+
+        localStorage.setItem(
+            COMMENTS_KEY,
+            JSON.stringify(commentsData)
+        );
     }
 
-    function getLikedReels() {
-        return readStorage(LIKED_KEY);
-    }
+    // =========================================================
+    // TOAST
+    // =========================================================
 
-    function getSavedReels() {
-        return readStorage(SAVED_KEY);
-    }
+    function showToast(message) {
 
-    function getComments(reelNumber) {
-        return readStorage(COMMENTS_KEY + reelNumber);
-    }
+        let toast = document.getElementById("reelToast");
 
-    function getReelTitle(reelNumber) {
-        return hairstyles[reelNumber - 1].title;
-    }
+        if (!toast) {
 
-    // =====================================================
-    // CREATE A REEL
-    // =====================================================
+            toast = document.createElement("div");
 
-    let reelInstance = 0;
+            toast.id = "reelToast";
 
-    function createReel(reelNumber) {
-        const data = hairstyles[reelNumber - 1];
-        const reel = document.createElement("article");
+            toast.style.position = "fixed";
+            toast.style.left = "50%";
+            toast.style.bottom = "35px";
+            toast.style.transform = "translateX(-50%)";
+            toast.style.background = "rgba(0,0,0,0.85)";
+            toast.style.color = "#fff";
+            toast.style.padding = "10px 18px";
+            toast.style.borderRadius = "20px";
+            toast.style.fontSize = "14px";
+            toast.style.zIndex = "99999";
+            toast.style.pointerEvents = "none";
 
-        reel.className = "reel";
-        reel.dataset.reelNumber = reelNumber;
-        reel.dataset.reelId = "reel" + reelNumber;
-        reel.dataset.instance = reelInstance++;
-
-        const liked = getLikedReels().includes(reelNumber);
-        const saved = getSavedReels().includes(reelNumber);
-        const comments = getComments(reelNumber);
-
-        reel.innerHTML = `
-            <video
-                class="reel-video"
-                src="/static/reels/reel${reelNumber}.mp4"
-                loop
-                playsinline
-                muted
-                preload="metadata"
-            ></video>
-
-            <div class="video-overlay"></div>
-
-            <button type="button" class="mute-button">
-                🔇
-            </button>
-
-            <div class="reel-actions">
-
-                <button type="button"
-                    class="reel-action like-button ${liked ? "liked" : ""}">
-                    <span class="like-icon">${liked ? "♥" : "♡"}</span>
-                    <small>Like</small>
-                </button>
-
-                <button type="button"
-                    class="reel-action comment-button">
-                    <span>💬</span>
-                    <small>
-                        <span class="comment-count">${comments.length}</span>
-                        Comments
-                    </small>
-                </button>
-
-                <button type="button"
-                    class="reel-action share-button">
-                    <span>↗</span>
-                    <small>Share</small>
-                </button>
-
-                <button type="button"
-                    class="reel-action save-button ${saved ? "saved" : ""}">
-                    <span>🔖</span>
-                    <small>${saved ? "Saved" : "Save"}</small>
-                </button>
-
-            </div>
-
-            <div class="reel-info">
-
-                <div class="creator-row">
-                    <div class="creator-avatar">SM</div>
-                    <strong>@StyleMyHair</strong>
-                    <button type="button" class="follow-button">
-                        Follow
-                    </button>
-                </div>
-
-                <h2>${data.title}</h2>
-
-                <p>${data.description}</p>
-
-                <span class="hashtags">${data.tags}</span>
-
-            </div>
-        `;
-
-        return reel;
-    }
-
-    // =====================================================
-    // ADD REELS IN A LOOP
-    // =====================================================
-
-    function appendReelBatch() {
-        const fragment = document.createDocumentFragment();
-
-        for (let i = 1; i <= BATCH_SIZE; i++) {
-            const reelNumber = ((reelInstance) % TOTAL_VIDEOS) + 1;
-            fragment.appendChild(createReel(reelNumber));
+            document.body.appendChild(toast);
         }
 
-        reelsContainer.appendChild(fragment);
+        toast.textContent = message;
+        toast.style.display = "block";
 
-        observeReels();
+        clearTimeout(toast.timer);
+
+        toast.timer = setTimeout(() => {
+            toast.style.display = "none";
+        }, 1500);
     }
 
-    // =====================================================
-    // AUTOPLAY AND INFINITE SCROLL
-    // =====================================================
+    // =========================================================
+    // REEL ID
+    // =========================================================
 
-    const observedReels = new WeakSet();
-    let isAppending = false;
+    function getReelId(reel) {
+        return reel.dataset.reelId || reel.id;
+    }
 
-    const videoObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            const reel = entry.target;
-            const video = reel.querySelector(".reel-video");
+    // =========================================================
+    // BUTTON STATES
+    // =========================================================
 
-            if (!video) return;
+    function updateButtonStates(reel) {
 
-            if (entry.isIntersecting && entry.intersectionRatio >= 0.7) {
-                video.play().catch(function () {});
+        const reelId = getReelId(reel);
 
-                // Append another batch as the user reaches the end.
-                if (
-                    reel === reelsContainer.lastElementChild &&
-                    !isAppending
-                ) {
-                    isAppending = true;
-                    appendReelBatch();
-                    isAppending = false;
+        const likeButton =
+            reel.querySelector(".like-button");
+
+        const saveButton =
+            reel.querySelector(".save-button");
+
+        // LIKE
+        if (likeButton) {
+
+            const icon =
+                likeButton.querySelector(".action-icon");
+
+            const text =
+                likeButton.querySelector("small");
+
+            if (likedReels.includes(reelId)) {
+
+                if (icon) {
+                    icon.textContent = "♥";
                 }
+
+                if (text) {
+                    text.textContent = "Liked";
+                }
+
+                likeButton.classList.add("active");
+
             } else {
-                video.pause();
+
+                if (icon) {
+                    icon.textContent = "♡";
+                }
+
+                if (text) {
+                    text.textContent = "Like";
+                }
+
+                likeButton.classList.remove("active");
             }
-        });
-    }, {
-        threshold: [0, 0.7]
+        }
+
+        // SAVE
+        if (saveButton) {
+
+            const icon =
+                saveButton.querySelector(".action-icon");
+
+            const text =
+                saveButton.querySelector("small");
+
+            if (savedReels.includes(reelId)) {
+
+                if (icon) {
+                    icon.textContent = "🔖";
+                }
+
+                if (text) {
+                    text.textContent = "Saved";
+                }
+
+                saveButton.classList.add("active");
+
+            } else {
+
+                if (icon) {
+                    icon.textContent = "🔖";
+                }
+
+                if (text) {
+                    text.textContent = "Save";
+                }
+
+                saveButton.classList.remove("active");
+            }
+        }
+    }
+
+    reels.forEach(reel => {
+        updateButtonStates(reel);
     });
 
-    function observeReels() {
-        reelsContainer.querySelectorAll(".reel").forEach(function (reel) {
-            if (!observedReels.has(reel)) {
-                videoObserver.observe(reel);
-                observedReels.add(reel);
-            }
-        });
-    }
+    // =========================================================
+    // UPDATE MUTE BUTTON
+    // =========================================================
 
-    // =====================================================
-    // INITIAL REELS
-    // =====================================================
+    function updateMuteButton(reel) {
 
-    appendReelBatch();
+        const video =
+            reel.querySelector(".reel-video");
 
-    // =====================================================
-    // LIKE / SAVE / COMMENTS / SHARE / MUTE / FOLLOW
-    // EVENT DELEGATION
-    // =====================================================
+        const muteButton =
+            reel.querySelector(".reel-mute");
 
-    let currentReelNumber = null;
+        if (!video || !muteButton) {
+            return;
+        }
 
-    const commentsPanel = document.getElementById("commentsPanel");
-    const commentsList = document.getElementById("commentsList");
-    const commentsTotal = document.getElementById("commentsTotal");
-    const commentInput = document.getElementById("commentInput");
-    const postComment = document.getElementById("postComment");
-    const closeComments = document.getElementById("closeComments");
+        if (video.muted) {
 
-    function updateAllCommentCounts(reelNumber) {
-        const count = getComments(reelNumber).length;
+            muteButton.textContent = "🔇";
 
-        reelsContainer.querySelectorAll(".reel").forEach(function (reel) {
-            if (Number(reel.dataset.reelNumber) === reelNumber) {
-                const counter = reel.querySelector(".comment-count");
-                if (counter) counter.textContent = count;
-            }
-        });
-    }
+            muteButton.setAttribute(
+                "aria-label",
+                "Unmute"
+            );
 
-    function updateLikeButtons(reelNumber, isLiked) {
-        reelsContainer.querySelectorAll(".reel").forEach(function (reel) {
-            if (Number(reel.dataset.reelNumber) === reelNumber) {
-                const button = reel.querySelector(".like-button");
-                const icon = reel.querySelector(".like-icon");
-
-                if (button && icon) {
-                    button.classList.toggle("liked", isLiked);
-                    icon.textContent = isLiked ? "♥" : "♡";
-                }
-            }
-        });
-    }
-
-    function updateSaveButtons(reelNumber, isSaved) {
-        reelsContainer.querySelectorAll(".reel").forEach(function (reel) {
-            if (Number(reel.dataset.reelNumber) === reelNumber) {
-                const button = reel.querySelector(".save-button");
-                const label = button?.querySelector("small");
-
-                if (button && label) {
-                    button.classList.toggle("saved", isSaved);
-                    label.textContent = isSaved ? "Saved" : "Save";
-                }
-            }
-        });
-    }
-
-    function displayComments(reelNumber) {
-        if (!commentsList) return;
-
-        const comments = getComments(reelNumber);
-        commentsList.innerHTML = "";
-
-        if (comments.length === 0) {
-            commentsList.innerHTML = `
-                <div class="no-comments">
-                    No comments yet. Be the first to comment!
-                </div>
-            `;
         } else {
-            comments.forEach(function (comment) {
-                const item = document.createElement("div");
-                item.className = "comment-item";
 
-                const avatar = document.createElement("div");
-                avatar.className = "comment-avatar";
-                avatar.textContent = "SM";
+            muteButton.textContent = "🔊";
 
-                const content = document.createElement("div");
-                content.className = "comment-content";
+            muteButton.setAttribute(
+                "aria-label",
+                "Mute"
+            );
+        }
+    }
 
-                const username = document.createElement("strong");
-                username.textContent = "@StyleMyHair";
+    // =========================================================
+    // STOP EVERY REEL EXCEPT ACTIVE ONE
+    // =========================================================
 
-                const text = document.createElement("p");
-                text.textContent = comment;
+    function stopOtherReels(activeIndex) {
 
-                content.append(username, text);
-                item.append(avatar, content);
-                commentsList.appendChild(item);
+        reels.forEach((reel, index) => {
+
+            if (index === activeIndex) {
+                return;
+            }
+
+            const video =
+                reel.querySelector(".reel-video");
+
+            if (!video) {
+                return;
+            }
+
+            video.pause();
+
+            video.muted = true;
+
+            video.currentTime = 0;
+
+            updateMuteButton(reel);
+        });
+    }
+
+    // =========================================================
+    // PLAY ACTIVE REEL
+    // =========================================================
+
+    function playActiveReel(userAction = false) {
+
+        const reel = reels[currentIndex];
+
+        if (!reel) {
+            return;
+        }
+
+        const video =
+            reel.querySelector(".reel-video");
+
+        if (!video) {
+            return;
+        }
+
+        // VERY IMPORTANT:
+        // Stop all other reels first.
+        stopOtherReels(currentIndex);
+
+        /*
+         * Try to play the active reel WITH SOUND.
+         *
+         * Browser autoplay rules may block sound on
+         * the first page load.
+         */
+
+        video.muted = false;
+
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+
+            playPromise.catch(() => {
+
+                /*
+                 * If browser blocks autoplay with sound,
+                 * play muted instead.
+                 */
+
+                video.muted = true;
+
+                video.play().catch(() => {});
             });
         }
 
-        if (commentsTotal) {
-            commentsTotal.textContent = comments.length;
-        }
+        updateMuteButton(reel);
     }
 
-    function openComments(reelNumber) {
-        currentReelNumber = reelNumber;
-        displayComments(reelNumber);
+    // =========================================================
+    // SHOW REEL
+    // =========================================================
 
-        commentsPanel?.classList.add("show");
-        commentInput?.focus();
+    function showReel(index, userAction = false) {
+
+        if (index < 0) {
+            index = 0;
+        }
+
+        if (index >= reels.length) {
+            index = reels.length - 1;
+        }
+
+        currentIndex = index;
+
+        // Move feed
+        reelsFeed.style.transform =
+            `translateY(-${currentIndex * 100}%)`;
+
+        // Stop every other video immediately
+        stopOtherReels(currentIndex);
+
+        // Play selected reel
+        playActiveReel(userAction);
     }
 
-    reelsContainer.addEventListener("click", async function (event) {
-        const reel = event.target.closest(".reel");
-        if (!reel) return;
+    // =========================================================
+    // NEXT REEL
+    // =========================================================
 
-        const reelNumber = Number(reel.dataset.reelNumber);
+    function nextReel() {
 
-        const likeButton = event.target.closest(".like-button");
-        const saveButton = event.target.closest(".save-button");
-        const commentButton = event.target.closest(".comment-button");
-        const shareButton = event.target.closest(".share-button");
-        const muteButton = event.target.closest(".mute-button");
-        const followButton = event.target.closest(".follow-button");
+        if (currentIndex >= reels.length - 1) {
+            return;
+        }
 
-        if (likeButton) {
-            let liked = getLikedReels();
+        showReel(
+            currentIndex + 1,
+            true
+        );
+    }
 
-            if (liked.includes(reelNumber)) {
-                liked = liked.filter(id => id !== reelNumber);
-            } else {
-                liked.push(reelNumber);
+    // =========================================================
+    // PREVIOUS REEL
+    // =========================================================
+
+    function previousReel() {
+
+        if (currentIndex <= 0) {
+            return;
+        }
+
+        showReel(
+            currentIndex - 1,
+            true
+        );
+    }
+
+    // =========================================================
+    // WHEEL SCROLL
+    // =========================================================
+
+    reelsPage.addEventListener(
+        "wheel",
+        event => {
+
+            event.preventDefault();
+
+            if (wheelLocked) {
+                return;
             }
 
-            localStorage.setItem(LIKED_KEY, JSON.stringify(liked));
-            updateLikeButtons(reelNumber, liked.includes(reelNumber));
-            return;
-        }
+            wheelLocked = true;
 
-        if (saveButton) {
-            let saved = getSavedReels();
-
-            if (saved.includes(reelNumber)) {
-                saved = saved.filter(id => id !== reelNumber);
-            } else {
-                saved.push(reelNumber);
+            if (event.deltaY > 0) {
+                nextReel();
+            } else if (event.deltaY < 0) {
+                previousReel();
             }
 
-            localStorage.setItem(SAVED_KEY, JSON.stringify(saved));
-            updateSaveButtons(reelNumber, saved.includes(reelNumber));
+            setTimeout(() => {
+                wheelLocked = false;
+            }, 650);
+        },
+        { passive: false }
+    );
+
+    // =========================================================
+    // TOUCH SWIPE
+    // =========================================================
+
+    reelsPage.addEventListener(
+        "touchstart",
+        event => {
+
+            if (!event.touches.length) {
+                return;
+            }
+
+            touchStartY =
+                event.touches[0].clientY;
+
+            touchStartX =
+                event.touches[0].clientX;
+        },
+        { passive: true }
+    );
+
+    reelsPage.addEventListener(
+        "touchend",
+        event => {
+
+            if (!event.changedTouches.length) {
+                return;
+            }
+
+            const endY =
+                event.changedTouches[0].clientY;
+
+            const endX =
+                event.changedTouches[0].clientX;
+
+            const differenceY =
+                touchStartY - endY;
+
+            const differenceX =
+                touchStartX - endX;
+
+            // Ignore mostly-horizontal movement
+            if (
+                Math.abs(differenceX) >
+                Math.abs(differenceY)
+            ) {
+                return;
+            }
+
+            // Minimum swipe distance
+            if (Math.abs(differenceY) < 50) {
+                return;
+            }
+
+            if (differenceY > 0) {
+                nextReel();
+            } else {
+                previousReel();
+            }
+        },
+        { passive: true }
+    );
+
+    // =========================================================
+    // KEYBOARD
+    // =========================================================
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            const tag =
+                event.target.tagName.toLowerCase();
+
+            if (
+                tag === "input" ||
+                tag === "textarea" ||
+                tag === "select"
+            ) {
+                return;
+            }
+
+            if (event.key === "ArrowDown") {
+
+                event.preventDefault();
+
+                nextReel();
+            }
+
+            if (event.key === "ArrowUp") {
+
+                event.preventDefault();
+
+                previousReel();
+            }
+        }
+    );
+
+    // =========================================================
+    // CLICK VIDEO = PLAY / PAUSE
+    // =========================================================
+
+    reels.forEach(reel => {
+
+        const video =
+            reel.querySelector(".reel-video");
+
+        if (!video) {
             return;
         }
 
-        if (commentButton) {
-            openComments(reelNumber);
-            return;
-        }
+        video.addEventListener(
+            "click",
+            event => {
 
-        if (shareButton) {
-            const url = window.location.href;
-            const title = getReelTitle(reelNumber);
+                event.stopPropagation();
 
-            if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: title + " | StyleMyHair",
-                        text: "Check out this men's hairstyle!",
-                        url: url
+                // Only active reel can be controlled
+                if (
+                    reels[currentIndex] !== reel
+                ) {
+                    return;
+                }
+
+                if (video.paused) {
+
+                    video.muted = false;
+
+                    video.play().catch(() => {
+
+                        video.muted = true;
+
+                        video.play().catch(() => {});
                     });
-                } catch (error) {
-                    // Sharing cancelled or unavailable.
+
+                } else {
+
+                    video.pause();
                 }
-            } else {
-                try {
-                    await navigator.clipboard.writeText(url);
-                    alert("Reel link copied!");
-                } catch (error) {
-                    alert("Unable to copy link.");
-                }
+
+                updateMuteButton(reel);
             }
-            return;
-        }
-
-        if (muteButton) {
-            const video = reel.querySelector(".reel-video");
-            if (!video) return;
-
-            video.muted = !video.muted;
-            muteButton.textContent = video.muted ? "🔇" : "🔊";
-            return;
-        }
-
-        if (followButton) {
-            followButton.textContent =
-                followButton.textContent.trim() === "Follow"
-                    ? "Following"
-                    : "Follow";
-            return;
-        }
-
-        // Tap the video area to play or pause.
-        if (!event.target.closest(".reel-action")) {
-            const video = reel.querySelector(".reel-video");
-            if (!video) return;
-
-            if (video.paused) {
-                video.play().catch(function () {});
-            } else {
-                video.pause();
-            }
-        }
-    });
-
-    // =====================================================
-    // DOUBLE CLICK TO LIKE
-    // =====================================================
-
-    reelsContainer.addEventListener("dblclick", function (event) {
-        const reel = event.target.closest(".reel");
-        if (!reel || event.target.closest(".reel-actions")) return;
-
-        const reelNumber = Number(reel.dataset.reelNumber);
-        const liked = getLikedReels();
-
-        if (liked.includes(reelNumber)) return;
-
-        liked.push(reelNumber);
-        localStorage.setItem(LIKED_KEY, JSON.stringify(liked));
-        updateLikeButtons(reelNumber, true);
-    });
-
-    // =====================================================
-    // POST COMMENT
-    // =====================================================
-
-    function submitComment() {
-        if (!commentInput || currentReelNumber === null) return;
-
-        const text = commentInput.value.trim();
-        if (!text) return;
-
-        const comments = getComments(currentReelNumber);
-        comments.push(text);
-
-        localStorage.setItem(
-            COMMENTS_KEY + currentReelNumber,
-            JSON.stringify(comments)
         );
 
-        displayComments(currentReelNumber);
-        updateAllCommentCounts(currentReelNumber);
+        // If video somehow starts playing while
+        // it is not the active reel, immediately stop it.
+        video.addEventListener(
+            "play",
+            () => {
 
-        commentInput.value = "";
-    }
+                if (
+                    reels[currentIndex] !== reel
+                ) {
 
-    postComment?.addEventListener("click", submitComment);
+                    video.pause();
 
-    commentInput?.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            submitComment();
-        }
+                    video.muted = true;
+
+                    video.currentTime = 0;
+                }
+            }
+        );
+
+        video.addEventListener(
+            "volumechange",
+            () => {
+                updateMuteButton(reel);
+            }
+        );
     });
 
-    closeComments?.addEventListener("click", function () {
-        commentsPanel?.classList.remove("show");
+    // =========================================================
+    // MUTE BUTTON
+    // =========================================================
+
+    reels.forEach(reel => {
+
+        const muteButton =
+            reel.querySelector(".reel-mute");
+
+        const video =
+            reel.querySelector(".reel-video");
+
+        if (!muteButton || !video) {
+            return;
+        }
+
+        muteButton.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+                if (
+                    reels[currentIndex] !== reel
+                ) {
+                    return;
+                }
+
+                video.muted = !video.muted;
+
+                if (!video.paused) {
+                    video.play().catch(() => {});
+                }
+
+                updateMuteButton(reel);
+            }
+        );
+
+        updateMuteButton(reel);
+    });
+
+    // =========================================================
+    // LIKE
+    // =========================================================
+
+    function handleLike(reel) {
+
+        const reelId =
+            getReelId(reel);
+
+        if (likedReels.includes(reelId)) {
+
+            likedReels =
+                likedReels.filter(
+                    id => id !== reelId
+                );
+
+            showToast("Removed Like");
+
+        } else {
+
+            likedReels.push(reelId);
+
+            showToast("Liked ❤️");
+        }
+
+        saveStorage();
+
+        updateButtonStates(reel);
+    }
+
+    reels.forEach(reel => {
+
+        const likeButton =
+            reel.querySelector(".like-button");
+
+        if (!likeButton) {
+            return;
+        }
+
+        likeButton.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+                handleLike(reel);
+            }
+        );
+    });
+
+    // =========================================================
+    // DOUBLE CLICK LIKE
+    // =========================================================
+
+    reels.forEach(reel => {
+
+        const video =
+            reel.querySelector(".reel-video");
+
+        if (!video) {
+            return;
+        }
+
+        let lastTap = 0;
+
+        video.addEventListener(
+            "dblclick",
+            event => {
+
+                event.preventDefault();
+
+                handleLike(reel);
+
+                showHeartAnimation(reel);
+            }
+        );
+
+        video.addEventListener(
+            "touchend",
+            () => {
+
+                const now =
+                    Date.now();
+
+                if (
+                    now - lastTap < 350
+                ) {
+
+                    handleLike(reel);
+
+                    showHeartAnimation(reel);
+                }
+
+                lastTap = now;
+            }
+        );
+    });
+
+    // =========================================================
+    // HEART ANIMATION
+    // =========================================================
+
+    function showHeartAnimation(reel) {
+
+        const heart =
+            document.createElement("div");
+
+        heart.textContent = "♥";
+
+        heart.style.position = "absolute";
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        heart.style.transform =
+            "translate(-50%, -50%) scale(0.5)";
+        heart.style.fontSize = "100px";
+        heart.style.color = "white";
+        heart.style.zIndex = "50";
+        heart.style.pointerEvents = "none";
+
+        heart.style.textShadow =
+            "0 4px 20px rgba(0,0,0,0.5)";
+
+        heart.style.transition =
+            "transform 0.35s ease, opacity 0.35s ease";
+
+        const container =
+            reel.querySelector(
+                ".reel-video-container"
+            );
+
+        if (!container) {
+            return;
+        }
+
+        container.appendChild(heart);
+
+        requestAnimationFrame(() => {
+
+            heart.style.transform =
+                "translate(-50%, -50%) scale(1.2)";
+        });
+
+        setTimeout(() => {
+
+            heart.style.opacity = "0";
+
+            heart.style.transform =
+                "translate(-50%, -50%) scale(1.5)";
+
+        }, 300);
+
+        setTimeout(() => {
+
+            heart.remove();
+
+        }, 650);
+    }
+
+    // =========================================================
+    // SAVE
+    // =========================================================
+
+    function handleSave(reel) {
+
+        const reelId =
+            getReelId(reel);
+
+        if (savedReels.includes(reelId)) {
+
+            savedReels =
+                savedReels.filter(
+                    id => id !== reelId
+                );
+
+            showToast(
+                "Removed from Saved"
+            );
+
+        } else {
+
+            savedReels.push(reelId);
+
+            showToast(
+                "Reel Saved 🔖"
+            );
+        }
+
+        saveStorage();
+
+        updateButtonStates(reel);
+    }
+
+    reels.forEach(reel => {
+
+        const saveButton =
+            reel.querySelector(".save-button");
+
+        if (!saveButton) {
+            return;
+        }
+
+        saveButton.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+                handleSave(reel);
+            }
+        );
+    });
+
+    // =========================================================
+    // SHARE
+    // =========================================================
+
+    function shareReel(reel) {
+
+        const reelId =
+            getReelId(reel);
+
+        const shareData = {
+
+            title: "StyleMyHair",
+
+            text:
+                "Check out this hairstyle Reel on StyleMyHair!",
+
+            url:
+                window.location.href +
+                "#" +
+                reelId
+        };
+
+        if (navigator.share) {
+
+            navigator
+                .share(shareData)
+                .catch(() => {});
+
+        } else {
+
+            const shareUrl =
+                shareData.url;
+
+            if (navigator.clipboard) {
+
+                navigator.clipboard
+                    .writeText(shareUrl)
+                    .then(() => {
+                        showToast("Link copied!");
+                    })
+                    .catch(() => {
+                        showToast(
+                            "Unable to copy link"
+                        );
+                    });
+
+            } else {
+
+                showToast(
+                    "Sharing is not available"
+                );
+            }
+        }
+    }
+
+    reels.forEach(reel => {
+
+        const shareButton =
+            reel.querySelector(".share-button");
+
+        if (!shareButton) {
+            return;
+        }
+
+        shareButton.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+                shareReel(reel);
+            }
+        );
+    });
+
+    // =========================================================
+    // COMMENTS
+    // =========================================================
+
+    const commentModal =
+        document.getElementById(
+            "commentModal"
+        );
+
+    const commentClose =
+        document.getElementById(
+            "commentClose"
+        );
+
+    const commentsList =
+        document.getElementById(
+            "commentsList"
+        );
+
+    const commentInput =
+        document.getElementById(
+            "commentInput"
+        );
+
+    const commentSubmit =
+        document.getElementById(
+            "commentSubmit"
+        );
+
+    // =========================================================
+    // RENDER COMMENTS
+    // =========================================================
+
+    function renderComments(reelId) {
+
+        if (!commentsList) {
+            return;
+        }
+
+        commentsList.innerHTML = "";
+
+        const comments =
+            commentsData[reelId] || [];
+
+        if (!comments.length) {
+
+            const empty =
+                document.createElement("p");
+
+            empty.className =
+                "no-comments";
+
+            empty.textContent =
+                "No comments yet. Be the first!";
+
+            commentsList.appendChild(
+                empty
+            );
+
+            return;
+        }
+
+        comments.forEach(comment => {
+
+            const commentItem =
+                document.createElement("div");
+
+            commentItem.className =
+                "comment-item";
+
+            const username =
+                document.createElement("strong");
+
+            username.textContent =
+                comment.username ||
+                "StyleMyHair User";
+
+            const text =
+                document.createElement("p");
+
+            text.textContent =
+                comment.text || "";
+
+            commentItem.appendChild(
+                username
+            );
+
+            commentItem.appendChild(
+                text
+            );
+
+            commentsList.appendChild(
+                commentItem
+            );
+        });
+    }
+
+    // =========================================================
+    // OPEN COMMENTS
+    // =========================================================
+
+    function openComments(reel) {
+
+        if (!commentModal) {
+            return;
+        }
+
+        currentCommentReel =
+            getReelId(reel);
+
+        renderComments(
+            currentCommentReel
+        );
+
+        commentModal.classList.add(
+            "active"
+        );
+
+        if (commentInput) {
+
+            commentInput.value = "";
+
+            setTimeout(() => {
+                commentInput.focus();
+            }, 100);
+        }
+    }
+
+    // =========================================================
+    // CLOSE COMMENTS
+    // =========================================================
+
+    function closeComments() {
+
+        if (!commentModal) {
+            return;
+        }
+
+        commentModal.classList.remove(
+            "active"
+        );
+
+        currentCommentReel = null;
+    }
+
+    // =========================================================
+    // COMMENT BUTTON
+    // =========================================================
+
+    reels.forEach(reel => {
+
+        const commentButton =
+            reel.querySelector(
+                ".comment-button"
+            );
+
+        if (!commentButton) {
+            return;
+        }
+
+        commentButton.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+                openComments(reel);
+            }
+        );
+    });
+
+    // =========================================================
+    // CLOSE COMMENT
+    // =========================================================
+
+    if (commentClose) {
+
+        commentClose.addEventListener(
+            "click",
+            closeComments
+        );
+    }
+
+    // =========================================================
+    // CLICK OUTSIDE
+    // =========================================================
+
+    if (commentModal) {
+
+        commentModal.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    event.target ===
+                    commentModal
+                ) {
+
+                    closeComments();
+                }
+            }
+        );
+    }
+
+    // =========================================================
+    // ADD COMMENT
+    // =========================================================
+
+    function addComment() {
+
+        if (
+            !currentCommentReel ||
+            !commentInput
+        ) {
+            return;
+        }
+
+        const text =
+            commentInput.value.trim();
+
+        if (!text) {
+            return;
+        }
+
+        if (text.length > 300) {
+
+            showToast(
+                "Comment is too long"
+            );
+
+            return;
+        }
+
+        if (
+            !commentsData[
+                currentCommentReel
+            ]
+        ) {
+
+            commentsData[
+                currentCommentReel
+            ] = [];
+        }
+
+        commentsData[
+            currentCommentReel
+        ].push({
+
+            username:
+                "StyleMyHair User",
+
+            text:
+                text,
+
+            time:
+                Date.now()
+        });
+
+        saveStorage();
+
+        renderComments(
+            currentCommentReel
+        );
+
+        commentInput.value = "";
+
+        showToast(
+            "Comment added"
+        );
+    }
+
+    if (commentSubmit) {
+
+        commentSubmit.addEventListener(
+            "click",
+            addComment
+        );
+    }
+
+    if (commentInput) {
+
+        commentInput.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Enter" &&
+                    !event.shiftKey
+                ) {
+
+                    event.preventDefault();
+
+                    addComment();
+                }
+            }
+        );
+    }
+
+    // =========================================================
+    // ESCAPE
+    // =========================================================
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Escape") {
+                closeComments();
+            }
+        }
+    );
+
+    // =========================================================
+    // INITIAL REEL
+    // =========================================================
+
+    reelsFeed.style.transform =
+        "translateY(0%)";
+
+    currentIndex = 0;
+
+    // Start Reel 1
+    playActiveReel(false);
+
+});
+/* =====================================================
+   DARK / LIGHT MODE TOGGLE
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const modeToggle = document.getElementById("modeToggle");
+    const modeText = document.getElementById("modeText");
+    const modeIcon = document.querySelector(".mode-icon");
+
+    if (!modeToggle) {
+        console.log("Dark Mode button not found");
+        return;
+    }
+
+    /* Load saved theme */
+
+    const savedTheme =
+        localStorage.getItem("stylemyhair-reel-theme");
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark-mode");
+
+        modeText.textContent = "Light Mode";
+        modeIcon.textContent = "☀️";
+
+    } else {
+
+        document.body.classList.remove("dark-mode");
+
+        modeText.textContent = "Dark Mode";
+        modeIcon.textContent = "🌙";
+    }
+
+
+    /* Button click */
+
+    modeToggle.addEventListener("click", function () {
+
+        document.body.classList.toggle("dark-mode");
+
+        const darkMode =
+            document.body.classList.contains("dark-mode");
+
+
+        if (darkMode) {
+
+            localStorage.setItem(
+                "stylemyhair-reel-theme",
+                "dark"
+            );
+
+            modeText.textContent = "Light Mode";
+            modeIcon.textContent = "☀️";
+
+        } else {
+
+            localStorage.setItem(
+                "stylemyhair-reel-theme",
+                "light"
+            );
+
+            modeText.textContent = "Dark Mode";
+            modeIcon.textContent = "🌙";
+        }
+
     });
 
 });

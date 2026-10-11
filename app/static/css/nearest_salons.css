@@ -1,0 +1,795 @@
+/* =====================================================
+   STYLEMYHAIR
+   NEARBY SALONS
+   MAIN CONTENT ONLY
+   Matches Male StyleMyHair Design
+===================================================== */
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.salons-page {
+    min-height: calc(100vh - 76px);
+    padding: 42px 5%;
+    color: var(--text);
+}
+
+
+/* =====================================================
+   PAGE HEADING
+===================================================== */
+
+.salons-heading {
+    margin-bottom: 28px;
+}
+
+.salons-heading .eyebrow,
+.results-heading span {
+    display: block;
+    margin-bottom: 8px;
+
+    color: var(--primary);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.salons-heading h1 {
+    margin: 0;
+
+    font-family: "Manrope", sans-serif;
+
+    color: var(--text);
+
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 800;
+
+    line-height: 1.05;
+    letter-spacing: -1.8px;
+}
+
+.salons-heading p {
+    max-width: 650px;
+
+    margin: 14px 0 0;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   SEARCH PANEL
+===================================================== */
+
+.salon-search-panel {
+    display: grid;
+
+    grid-template-columns: 1.25fr 1fr;
+
+    gap: 16px;
+
+    margin-bottom: 18px;
+    padding: 20px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    box-shadow: var(--shadow);
+}
+
+
+/* =====================================================
+   FIELD
+===================================================== */
+
+.salon-field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.salon-field label {
+    color: var(--muted);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.salon-input-wrap {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    min-height: 45px;
+
+    padding: 0 13px;
+
+    background: var(--surface-2);
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    transition: 0.2s ease;
+}
+
+.salon-input-wrap:hover {
+    border-color: var(--primary);
+}
+
+.salon-input-wrap:focus-within {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px
+        color-mix(
+            in srgb,
+            var(--primary) 10%,
+            transparent
+        );
+}
+
+.salon-input-wrap span {
+    flex-shrink: 0;
+
+    color: var(--primary);
+
+    font-size: 14px;
+}
+
+.salon-input-wrap input {
+    width: 100%;
+
+    padding: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 11px;
+}
+
+.salon-input-wrap input::placeholder {
+    color: var(--muted);
+}
+
+
+/* =====================================================
+   LOCATION
+===================================================== */
+
+.location-row {
+    display: flex;
+
+    gap: 7px;
+}
+
+.location-row .salon-input-wrap {
+    flex: 1;
+}
+
+.location-button {
+    flex-shrink: 0;
+
+    min-height: 45px;
+
+    padding: 0 13px;
+
+    background: var(--surface-3);
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.location-button:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+
+    transform: translateY(-1px);
+}
+
+.salon-field small {
+    color: var(--muted);
+
+    font-size: 8px;
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   BUDGET
+===================================================== */
+
+.budget-fields {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+
+/* =====================================================
+   FIND SALONS BUTTON
+===================================================== */
+
+.find-salons-button {
+    align-self: end;
+
+    min-height: 45px;
+
+    border: none;
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--accent)
+        );
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 24px
+        color-mix(
+            in srgb,
+            var(--primary) 22%,
+            transparent
+        );
+
+    transition: 0.2s ease;
+}
+
+.find-salons-button:hover {
+    transform: translateY(-2px);
+}
+
+.find-salons-button:active {
+    transform: translateY(0);
+}
+
+.find-salons-button span {
+    margin-right: 6px;
+}
+
+
+/* =====================================================
+   LOCATION STATUS
+===================================================== */
+
+.location-card {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 34px;
+    padding: 15px 17px;
+
+    background: var(--surface-2);
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+}
+
+.location-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 39px;
+    height: 39px;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    background: var(--surface-3);
+
+    color: var(--primary);
+
+    font-size: 17px;
+}
+
+.location-card strong {
+    color: var(--text);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.location-card p {
+    margin: 3px 0 0;
+
+    color: var(--muted);
+
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   RESULTS HEADING
+===================================================== */
+
+.results-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 17px;
+}
+
+.results-heading h2 {
+    margin: 4px 0 0;
+
+    font-family: "Manrope", sans-serif;
+
+    color: var(--text);
+
+    font-size: 25px;
+    font-weight: 800;
+
+    line-height: 1.1;
+    letter-spacing: -0.6px;
+}
+
+.results-heading > strong {
+    color: var(--muted);
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   SALON RESULTS
+===================================================== */
+
+.salon-results {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+
+/* =====================================================
+   SALON CARD
+===================================================== */
+
+.salon-card {
+    overflow: hidden;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 17px;
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.salon-card:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--primary) 45%,
+            transparent
+        );
+}
+
+
+/* =====================================================
+   SALON IMAGE
+===================================================== */
+
+.salon-image {
+    position: relative;
+
+    height: 190px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--surface-3),
+            var(--surface-2)
+        );
+}
+
+.salon-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.35s ease;
+}
+
+.salon-card:hover .salon-image img {
+    transform: scale(1.035);
+}
+
+
+/* =====================================================
+   DISTANCE
+===================================================== */
+
+.salon-distance {
+    position: absolute;
+
+    left: 13px;
+    bottom: 13px;
+
+    padding: 6px 9px;
+
+    background:
+        color-mix(
+            in srgb,
+            var(--background) 88%,
+            transparent
+        );
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--border) 75%,
+            transparent
+        );
+
+    border-radius: 8px;
+
+    backdrop-filter: blur(10px);
+
+    color: #ffffff;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   SALON INFORMATION
+===================================================== */
+
+.salon-info {
+    padding: 17px;
+}
+
+.salon-type {
+    color: var(--primary);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+.salon-info h3 {
+    margin: 5px 0 0;
+
+    font-family: "Manrope", sans-serif;
+
+    color: var(--text);
+
+    font-size: 18px;
+    font-weight: 800;
+
+    line-height: 1.2;
+}
+
+.salon-location {
+    display: flex;
+
+    gap: 5px;
+
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   SERVICES
+===================================================== */
+
+.salon-services {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    margin-top: 12px;
+}
+
+.service-tag {
+    padding: 5px 8px;
+
+    background: var(--surface-2);
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    color: var(--muted);
+
+    font-size: 7px;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   CARD BOTTOM
+===================================================== */
+
+.salon-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-top: 17px;
+    padding-top: 13px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+.salon-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.salon-price span {
+    color: var(--muted);
+
+    font-size: 7px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.salon-price strong {
+    margin-top: 2px;
+
+    color: var(--text);
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   DIRECTIONS BUTTON
+===================================================== */
+
+.salon-view-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--accent)
+        );
+
+    border-radius: 9px;
+
+    color: #ffffff;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    transition: 0.2s ease;
+}
+
+.salon-view-button:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.empty-salons {
+    grid-column: 1 / -1;
+
+    padding: 60px 22px;
+
+    text-align: center;
+
+    background: var(--surface);
+
+    border: 1px dashed var(--border);
+    border-radius: 17px;
+}
+
+.empty-salons > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    margin: 0 auto 13px;
+
+    border-radius: 13px;
+
+    background: var(--surface-2);
+
+    color: var(--primary);
+
+    font-size: 21px;
+}
+
+.empty-salons h3 {
+    margin: 0;
+
+    font-family: "Manrope", sans-serif;
+
+    color: var(--text);
+
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.empty-salons p {
+    max-width: 450px;
+
+    margin: 6px auto 0;
+
+    color: var(--muted);
+
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .salons-page {
+        padding: 38px 4%;
+    }
+
+    .salon-search-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .salon-results {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .salons-page {
+        padding: 32px 5%;
+    }
+
+    .salons-heading h1 {
+        font-size: 36px;
+    }
+
+    .salons-heading p {
+        font-size: 11px;
+    }
+
+    .salon-search-panel {
+        padding: 16px;
+        border-radius: 15px;
+    }
+
+    .location-row {
+        flex-direction: column;
+    }
+
+    .location-button {
+        width: 100%;
+    }
+
+    .budget-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .results-heading {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+    .salon-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .salon-view-button {
+        width: 100%;
+    }
+
+    .salon-image {
+        height: 200px;
+    }
+}

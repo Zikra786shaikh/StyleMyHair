@@ -12,6 +12,7 @@
 
     <title>StyleMyHair | Saved Reels</title>
 
+    <!-- FEMALE SAVED REELS CSS -->
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='css/saved_reel.css') }}"
@@ -22,41 +23,59 @@
 
 <body>
 
-    <!-- HEADER -->
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
     <header class="saved-header">
 
-       <a
-    href="/female"
+        <!-- BACK TO FEMALE PAGE -->
+
+        <a
+    href="javascript:history.back()"
     class="back-button"
+    aria-label="Go back"
 >
     ←
 </a>
 
+        <!-- TITLE -->
+
         <div class="saved-title">
 
-            <strong>Saved Reels</strong>
+            <strong>
+                Saved Reels
+            </strong>
 
-            <span>MY SAVED HAIRSTYLES</span>
+            <span>
+                MY SAVED HAIRSTYLES
+            </span>
 
         </div>
 
     </header>
 
 
-    <!-- SAVED REELS -->
+    <!-- =====================================================
+         SAVED FEMALE REELS
+    ====================================================== -->
 
     <main
         class="saved-container"
         id="savedContainer"
     >
 
-        <!-- JavaScript loads saved reels here -->
+        <!--
+            Saved female reels will be added here
+            automatically by saved_reel.js
+        -->
 
     </main>
 
 
-    <!-- NO SAVED REELS -->
+    <!-- =====================================================
+         EMPTY STATE
+    ====================================================== -->
 
     <div
         class="empty-state"
@@ -67,15 +86,22 @@
             🔖
         </div>
 
-        <h2>No Reels Saved</h2>
+
+        <h2>
+            No Reels Saved
+        </h2>
+
 
         <p>
             Save your favorite hairstyle reels
             and they will appear here.
         </p>
 
+
+        <!-- GO TO FEMALE REELS -->
+
         <a
-            href="{{ url_for('main.reel') }}"
+            href="{{ url_for('main.reels') }}"
             class="browse-button"
         >
             Browse Reels
@@ -84,9 +110,14 @@
     </div>
 
 
+    <!-- =====================================================
+         FEMALE SAVED REELS JAVASCRIPT
+    ====================================================== -->
+
     <script
         src="{{ url_for('static', filename='js/saved_reel.js') }}"
     ></script>
+
 
 </body>
 

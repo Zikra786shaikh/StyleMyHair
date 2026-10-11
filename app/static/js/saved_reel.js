@@ -1,317 +1,578 @@
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+document.addEventListener("DOMContentLoaded", () => {
+    "use strict";
 
-        // =====================================================
-        // ELEMENTS
-        // =====================================================
+    // =========================================================
+    // STYLEMYHAIR - FEMALE SAVED REELS
+    // =========================================================
 
-        const savedContainer =
-            document.getElementById(
-                "savedContainer"
-            );
+   const SAVED_KEY = "styleMyHairFemaleSavedReels";
 
-        const emptyState =
-            document.getElementById(
-                "emptyState"
-            );
+    const savedContainer =
+        document.getElementById("savedContainer") ||
+        document.getElementById("savedReelsContainer");
 
+    const emptyState =
+        document.getElementById("emptyState");
 
-        // =====================================================
-        // STORAGE
-        // =====================================================
+    const savedCount =
+        document.getElementById("savedCount");
 
-        const MALE_SAVED_REELS_KEY =
-            "stylemyhair-male-saved-reels";
+    if (!savedContainer) {
+        return;
+    }
 
+    // =========================================================
+    // STORAGE
+    // =========================================================
 
-        let savedReels =
-            JSON.parse(
-                localStorage.getItem(
-                    MALE_SAVED_REELS_KEY
-                ) || "[]"
-            );
+    let savedReels = JSON.parse(
+        localStorage.getItem(SAVED_KEY) || "[]"
+    );
 
+    // =========================================================
+    // FEMALE REEL INFORMATION
+    // =========================================================
 
-        // =====================================================
-        // HAIRSTYLE DATA
-        // =====================================================
+    const femaleReels = [
+        {
+            id: "reel1",
+            title: "Elegant Layered Hair",
+            description:
+                "A beautiful layered hairstyle for an effortless everyday look."
+        },
+        {
+            id: "reel2",
+            title: "Soft Waves",
+            description:
+                "Soft waves for a simple and elegant appearance."
+        },
+        {
+            id: "reel3",
+            title: "Classic Women's Style",
+            description:
+                "A timeless hairstyle for a polished finish."
+        },
+        {
+            id: "reel4",
+            title: "Modern Layers",
+            description:
+                "Fresh modern layers for a stylish appearance."
+        },
+        {
+            id: "reel5",
+            title: "Voluminous Waves",
+            description:
+                "Beautiful volume and movement for your hair."
+        },
+        {
+            id: "reel6",
+            title: "Long Hair Style",
+            description:
+                "A graceful hairstyle for longer hair."
+        },
+        {
+            id: "reel7",
+            title: "Soft Curls",
+            description:
+                "Soft curls for a feminine and elegant look."
+        },
+        {
+            id: "reel8",
+            title: "Everyday Hairstyle",
+            description:
+                "An easy hairstyle you can wear every day."
+        },
+        {
+            id: "reel9",
+            title: "Stylish Bob",
+            description:
+                "A clean and modern bob hairstyle."
+        },
+        {
+            id: "reel10",
+            title: "Beach Waves",
+            description:
+                "Relaxed waves for a fresh casual style."
+        },
+        {
+            id: "reel11",
+            title: "Chic Hairstyle",
+            description:
+                "A chic hairstyle for a confident look."
+        },
+        {
+            id: "reel12",
+            title: "Glossy Layers",
+            description:
+                "Smooth layered hair with a polished finish."
+        },
+        {
+            id: "reel13",
+            title: "Natural Waves",
+            description:
+                "Natural-looking waves with beautiful movement."
+        },
+        {
+            id: "reel14",
+            title: "Elegant Hair",
+            description:
+                "A graceful hairstyle for special occasions."
+        },
+        {
+            id: "reel15",
+            title: "Trendy Layers",
+            description:
+                "A modern layered look inspired by current styles."
+        },
+        {
+            id: "reel16",
+            title: "Soft Volume",
+            description:
+                "A soft voluminous hairstyle for everyday wear."
+        },
+        {
+            id: "reel17",
+            title: "Classic Waves",
+            description:
+                "Classic waves with an elegant finish."
+        },
+        {
+            id: "reel18",
+            title: "Modern Women's Cut",
+            description:
+                "A contemporary haircut for a fresh new look."
+        },
+        {
+            id: "reel19",
+            title: "Flowing Hair",
+            description:
+                "A beautiful flowing hairstyle with natural movement."
+        },
+        {
+            id: "reel20",
+            title: "Signature Style",
+            description:
+                "Discover a hairstyle that feels uniquely you."
+        }
+    ];
 
-        const hairstyles = [
+    // =========================================================
+    // GET REEL NUMBER
+    // =========================================================
 
-            {
-                title: "Elegant Long Layers",
-                description:
-                    "Soft layered hairstyle for a stylish everyday look.",
-                hashtags:
-                    "#LongHair #Layers #Hairstyle"
-            },
+    function getReelNumber(reelId) {
 
-            {
-                title: "Modern Bob",
-                description:
-                    "A clean modern bob hairstyle with an elegant finish.",
-                hashtags:
-                    "#Bob #BobCut #WomensHair"
-            },
+        const match =
+            String(reelId).match(/\d+/);
 
-            {
-                title: "Elegant Braids",
-                description:
-                    "Beautiful braided hairstyle for a graceful look.",
-                hashtags:
-                    "#Braids #BraidedHair #Hairstyle"
-            },
+        return match
+            ? parseInt(match[0], 10)
+            : null;
+    }
 
-            {
-                title: "Soft Curls",
-                description:
-                    "Soft curls for a beautiful and natural appearance.",
-                hashtags:
-                    "#Curls #CurlyHair #HairStyle"
-            },
+    // =========================================================
+    // UPDATE COUNT
+    // =========================================================
 
-            {
-                title: "Classic Ponytail",
-                description:
-                    "A simple and stylish ponytail for everyday looks.",
-                hashtags:
-                    "#Ponytail #LongHair #Style"
-            },
+    function updateCount() {
 
-            {
-                title: "Beach Waves",
-                description:
-                    "Relaxed beach waves with a soft modern finish.",
-                hashtags:
-                    "#BeachWaves #Waves #Hair"
-            },
+        if (savedCount) {
+            savedCount.textContent =
+                savedReels.length;
+        }
+    }
 
-            {
-                title: "Layered Bob",
-                description:
-                    "A stylish layered bob with a modern appearance.",
-                hashtags:
-                    "#LayeredBob #Bob #HairStyle"
-            },
+    // =========================================================
+    // EMPTY STATE
+    // =========================================================
 
-            {
-                title: "French Braid",
-                description:
-                    "A classic French braid for an elegant hairstyle.",
-                hashtags:
-                    "#FrenchBraid #Braids #Hair"
-            }
+    function updateEmptyState() {
 
-        ];
-
-
-        // =====================================================
-        // GET STYLE
-        // =====================================================
-
-        function getStyleData(number) {
-
-            const index =
-                (number - 1) %
-                hairstyles.length;
-
-            return hairstyles[index];
-
+        if (!emptyState) {
+            return;
         }
 
+        if (savedReels.length === 0) {
 
-        // =====================================================
-        // SHOW EMPTY STATE
-        // =====================================================
+            emptyState.style.display = "flex";
 
-        function showEmptyState() {
+        } else {
 
-            savedContainer.innerHTML = "";
+            emptyState.style.display = "none";
+        }
+    }
 
-            savedContainer.style.display =
-                "none";
+    // =========================================================
+    // CREATE SAVED REEL CARD
+    // =========================================================
 
-            emptyState.style.display =
-                "flex";
+    function createSavedReelCard(reelId) {
 
+        const reelNumber =
+            getReelNumber(reelId);
+
+        if (!reelNumber) {
+            return null;
         }
 
+        const info =
+            femaleReels.find(
+                (reel) => reel.id === reelId
+            ) || {
+                id: reelId,
+                title: "Women's Hairstyle",
+                description:
+                    "Discover a beautiful hairstyle on StyleMyHair."
+            };
 
-        // =====================================================
-        // CREATE SAVED REEL
-        // =====================================================
+        const card =
+            document.createElement("article");
 
-        function createSavedReel(number) {
+        card.className =
+            "saved-reel-card";
 
-            const style =
-                getStyleData(number);
+        card.dataset.reelId =
+            reelId;
 
+        card.innerHTML = `
 
-            const card =
-                document.createElement("article");
-
-
-            card.className =
-                "saved-reel";
-
-
-            card.dataset.reelNumber =
-                number;
-
-
-            card.innerHTML = `
+            <div class="saved-video-wrapper">
 
                 <video
-                    src="/static/videos/reel${number}.mp4"
-                    loop
-                    muted
+                    class="saved-reel-video"
+                    src="/static/videos/reel${reelNumber}.mp4"
                     playsinline
-                    controls
-                ></video>
+                    muted
+                    preload="metadata">
+                </video>
 
+                <div class="saved-video-overlay">
 
-                <div class="reel-overlay"></div>
-
-
-                <button
-                    type="button"
-                    class="unsave-button"
-                >
-                    🔖 Saved
-                </button>
-
-
-                <div class="reel-info">
-
-                    <h3>
-                        ${style.title}
-                    </h3>
-
-                    <p>
-                        ${style.description}
-                    </p>
-
-                    <strong>
-                        ${style.hashtags}
-                    </strong>
+                    <button
+                        type="button"
+                        class="saved-play-button"
+                        aria-label="Play video">
+                        ▶
+                    </button>
 
                 </div>
 
-            `;
+            </div>
 
+            <div class="saved-reel-info">
 
-            return card;
+                <div class="saved-reel-heading">
 
-        }
+                    <div>
 
+                        <h3>
+                            ${escapeHTML(info.title)}
+                        </h3>
+
+                        <span class="saved-creator">
+                            @StyleMyHair
+                        </span>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="unsave-button"
+                        aria-label="Remove from saved reels">
+                        🔖
+                    </button>
+
+                </div>
+
+                <p>
+                    ${escapeHTML(info.description)}
+                </p>
+
+                <div class="saved-reel-actions">
+
+                    <button
+                        type="button"
+                        class="saved-view-button">
+                        Watch Reel
+                    </button>
+
+                </div>
+
+            </div>
+        `;
 
         // =====================================================
-        // LOAD SAVED REELS
+        // VIDEO PLAY / PAUSE
         // =====================================================
 
-        function loadSavedReels() {
+        const video =
+            card.querySelector(
+                ".saved-reel-video"
+            );
 
-            savedContainer.innerHTML = "";
+        const playButton =
+            card.querySelector(
+                ".saved-play-button"
+            );
 
+        if (video && playButton) {
 
-            if (
-                savedReels.length === 0
-            ) {
+            playButton.addEventListener(
+                "click",
+                (event) => {
 
-                showEmptyState();
+                    event.stopPropagation();
 
-                return;
+                    if (video.paused) {
 
-            }
+                        video.play()
+                            .then(() => {
 
+                                playButton.textContent =
+                                    "❚❚";
 
-            emptyState.style.display =
-                "none";
+                            })
+                            .catch(() => {});
 
-            savedContainer.style.display =
-                "grid";
+                    } else {
 
+                        video.pause();
 
-            savedReels.forEach(
-                function (number) {
-
-                    const reel =
-                        createSavedReel(
-                            number
-                        );
-
-                    savedContainer.appendChild(
-                        reel
-                    );
-
+                        playButton.textContent =
+                            "▶";
+                    }
                 }
             );
 
-        }
+            video.addEventListener(
+                "play",
+                () => {
 
+                    playButton.textContent =
+                        "❚❚";
+                }
+            );
+
+            video.addEventListener(
+                "pause",
+                () => {
+
+                    playButton.textContent =
+                        "▶";
+                }
+            );
+
+            video.addEventListener(
+                "ended",
+                () => {
+
+                    playButton.textContent =
+                        "▶";
+                }
+            );
+        }
 
         // =====================================================
         // UNSAVE
         // =====================================================
 
-        savedContainer.addEventListener(
-            "click",
-            function (event) {
+        const unsaveButton =
+            card.querySelector(
+                ".unsave-button"
+            );
 
-                const button =
-                    event.target.closest(
-                        ".unsave-button"
+        if (unsaveButton) {
+
+            unsaveButton.addEventListener(
+                "click",
+                (event) => {
+
+                    event.stopPropagation();
+
+                    savedReels =
+                        savedReels.filter(
+                            (id) =>
+                                id !== reelId
+                        );
+
+                    localStorage.setItem(
+                        SAVED_KEY,
+                        JSON.stringify(
+                            savedReels
+                        )
                     );
 
+                    card.remove();
 
-                if (!button) {
-                    return;
+                    updateCount();
+                    updateEmptyState();
+
+                    showToast(
+                        "Removed from saved reels"
+                    );
                 }
+            );
+        }
 
+        // =====================================================
+        // WATCH REEL
+        // =====================================================
 
-                const reel =
-                    button.closest(
-                        ".saved-reel"
-                    );
+        const watchButton =
+            card.querySelector(
+                ".saved-view-button"
+            );
 
+        if (watchButton) {
 
-                if (!reel) {
-                    return;
+            watchButton.addEventListener(
+                "click",
+                () => {
+
+                    window.location.href =
+                        `/reels#${reelId}`;
                 }
+            );
+        }
 
+        return card;
+    }
 
-                const number =
-                    Number(
-                        reel.dataset.reelNumber
+    // =========================================================
+    // RENDER SAVED REELS
+    // =========================================================
+
+    function renderSavedReels() {
+
+        savedContainer.innerHTML = "";
+
+        if (savedReels.length === 0) {
+
+            updateCount();
+            updateEmptyState();
+
+            return;
+        }
+
+        savedReels.forEach(
+            (reelId) => {
+
+                const card =
+                    createSavedReelCard(
+                        reelId
                     );
 
-
-                savedReels =
-                    savedReels.filter(
-                        id => id !== number
+                if (card) {
+                    savedContainer.appendChild(
+                        card
                     );
-
-
-                localStorage.setItem(
-                    MALE_SAVED_REELS_KEY,
-                    JSON.stringify(
-                        savedReels
-                    )
-                );
-
-
-                loadSavedReels();
-
+                }
             }
         );
 
-
-        // =====================================================
-        // LOAD PAGE
-        // =====================================================
-
-        loadSavedReels();
-
+        updateCount();
+        updateEmptyState();
     }
-);
+
+    // =========================================================
+    // TOAST
+    // =========================================================
+
+    function showToast(message) {
+
+        let toast =
+            document.getElementById(
+                "savedReelToast"
+            );
+
+        if (!toast) {
+
+            toast =
+                document.createElement(
+                    "div"
+                );
+
+            toast.id =
+                "savedReelToast";
+
+            toast.style.position =
+                "fixed";
+
+            toast.style.left =
+                "50%";
+
+            toast.style.bottom =
+                "30px";
+
+            toast.style.transform =
+                "translateX(-50%)";
+
+            toast.style.padding =
+                "12px 20px";
+
+            toast.style.background =
+                "rgba(0,0,0,0.82)";
+
+            toast.style.color =
+                "#fff";
+
+            toast.style.borderRadius =
+                "25px";
+
+            toast.style.fontSize =
+                "14px";
+
+            toast.style.zIndex =
+                "99999";
+
+            document.body.appendChild(
+                toast
+            );
+        }
+
+        toast.textContent =
+            message;
+
+        toast.style.opacity =
+            "1";
+
+        clearTimeout(
+            toast._timer
+        );
+
+        toast._timer =
+            setTimeout(
+                () => {
+
+                    toast.style.opacity =
+                        "0";
+
+                },
+                1800
+            );
+    }
+
+    // =========================================================
+    // ESCAPE HTML
+    // =========================================================
+
+    function escapeHTML(value) {
+
+        const div =
+            document.createElement(
+                "div"
+            );
+
+        div.textContent =
+            value;
+
+        return div.innerHTML;
+    }
+
+    // =========================================================
+    // INITIALIZE
+    // =========================================================
+
+    renderSavedReels();
+
+});

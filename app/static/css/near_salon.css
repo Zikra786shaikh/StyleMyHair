@@ -1,0 +1,1338 @@
+/* =========================================================
+   STYLEMYHAIR
+   FEMALE NEARBY SALONS
+   PAGE-SPECIFIC CSS
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE MAIN AREA
+   ========================================================= */
+
+.female-nearby-main {
+    padding-top: 45px;
+    padding-bottom: 100px;
+}
+
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+
+.nearby-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 30px 0 45px;
+}
+
+.nearby-hero-copy {
+    max-width: 760px;
+}
+
+.nearby-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 13px;
+
+    border-radius: 30px;
+
+    background: var(--accent-light);
+    color: var(--accent-dark);
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+}
+
+.nearby-eyebrow::before {
+    content: "✦";
+    color: var(--accent);
+}
+
+.nearby-hero h2 {
+    margin-top: 18px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(46px, 6vw, 72px);
+    line-height: .96;
+
+    letter-spacing: -3px;
+
+    font-weight: 600;
+
+    color: var(--text);
+}
+
+.nearby-hero h2 span {
+    color: var(--accent);
+    font-style: italic;
+}
+
+.nearby-hero p {
+    max-width: 650px;
+
+    margin-top: 20px;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.nearby-hero-icon {
+    width: 145px;
+    height: 145px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--accent-light);
+
+    border: 1px solid var(--accent-soft);
+
+    color: var(--accent);
+
+    font-size: 52px;
+
+    box-shadow: var(--shadow-small);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.nearby-hero-icon:hover {
+    transform: translateY(-5px) rotate(3deg);
+    box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
+   SEARCH PANEL
+   ========================================================= */
+
+.salon-search-panel {
+    width: 100%;
+
+    padding: 30px;
+
+    margin-bottom: 60px;
+
+    border-radius: var(--radius-large);
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow-small);
+}
+
+
+/* =========================================================
+   SEARCH PANEL HEADING
+   ========================================================= */
+
+.search-panel-heading > div > span {
+    display: block;
+
+    color: var(--accent);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.search-panel-heading h2 {
+    margin-top: 6px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 31px;
+    line-height: 1.15;
+
+    color: var(--text);
+}
+
+.search-panel-heading p {
+    margin-top: 7px;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   SEARCH INPUT GRID
+   ========================================================= */
+
+.salon-search-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 16px;
+
+    margin-top: 25px;
+}
+
+.salon-input-group {
+    min-width: 0;
+}
+
+.salon-input-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--text-soft);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   INPUT BOX
+   ========================================================= */
+
+.salon-input {
+    height: 53px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: var(--surface-soft);
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.salon-input:focus-within {
+    border-color: var(--accent-soft);
+
+    background: var(--surface);
+
+    box-shadow:
+        0 0 0 4px var(--accent-light);
+}
+
+.salon-input > span {
+    flex-shrink: 0;
+
+    color: var(--accent);
+
+    font-size: 20px;
+}
+
+.salon-input input {
+    flex: 1;
+
+    min-width: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 12px;
+}
+
+.salon-input input::placeholder {
+    color: var(--text-muted);
+}
+
+
+/* =========================================================
+   LOCATION BUTTON
+   ========================================================= */
+
+.location-input button {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: var(--accent-light);
+
+    color: var(--accent);
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease;
+}
+
+.location-input button:hover {
+    transform: scale(1.06);
+
+    background: var(--accent);
+
+    color: #ffffff;
+}
+
+.location-input button:active {
+    transform: scale(.96);
+}
+
+
+/* =========================================================
+   BUDGET SECTION
+   ========================================================= */
+
+.budget-row {
+    display: flex;
+    align-items: flex-end;
+
+    gap: 18px;
+
+    margin-top: 22px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--border);
+}
+
+.budget-title {
+    min-width: 145px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.budget-title span {
+    color: var(--accent);
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 1.6px;
+}
+
+.budget-title strong {
+    margin-top: 5px;
+
+    color: var(--text);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   BUDGET INPUTS
+   ========================================================= */
+
+.budget-inputs {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.price-input {
+    width: 115px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 0 10px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    background: var(--surface-soft);
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.price-input:focus-within {
+    border-color: var(--accent-soft);
+
+    box-shadow:
+        0 0 0 3px var(--accent-light);
+}
+
+.price-input span {
+    color: var(--accent);
+
+    font-weight: 700;
+
+    font-size: 12px;
+}
+
+.price-input input {
+    width: 100%;
+    min-width: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 11px;
+}
+
+.price-input input::placeholder {
+    color: var(--text-muted);
+}
+
+.budget-separator {
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   FIND SALONS BUTTON
+   ========================================================= */
+
+.find-salons-button {
+    min-height: 45px;
+
+    margin-left: auto;
+
+    padding: 0 20px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: var(--accent);
+
+    color: #ffffff;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: .5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px
+        color-mix(
+            in srgb,
+            var(--accent) 25%,
+            transparent
+        );
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.find-salons-button span {
+    font-size: 16px;
+}
+
+.find-salons-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 30px
+        color-mix(
+            in srgb,
+            var(--accent) 32%,
+            transparent
+        );
+}
+
+.find-salons-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   LOCATION STATUS
+   ========================================================= */
+
+.location-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 18px;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    transition:
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+.location-status.success .status-dot {
+    box-shadow:
+        0 0 0 4px var(--accent-light);
+}
+
+.location-status.error .status-dot {
+    background: #c75a67;
+}
+
+
+/* =========================================================
+   RESULTS SECTION
+   ========================================================= */
+
+.salon-results-section {
+    margin-bottom: 65px;
+}
+
+.results-header {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.results-header > div:first-child > span {
+    display: block;
+
+    color: var(--accent);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.results-header h2 {
+    margin-top: 5px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(32px, 4vw, 45px);
+
+    line-height: 1;
+
+    color: var(--text);
+}
+
+.results-count {
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   SALON RESULTS GRID
+   ========================================================= */
+
+.salon-results {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   SALON CARD
+   ========================================================= */
+
+.female-salon-card {
+    overflow: hidden;
+
+    border-radius: var(--radius-medium);
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow-small);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+}
+
+.female-salon-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow: var(--shadow);
+
+    border-color: var(--accent-soft);
+}
+
+
+/* =========================================================
+   SALON IMAGE
+   ========================================================= */
+
+.female-salon-image {
+    position: relative;
+
+    height: 235px;
+
+    overflow: hidden;
+
+    background: var(--surface-soft);
+}
+
+.female-salon-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform .6s ease;
+}
+
+.female-salon-card:hover
+.female-salon-image img {
+    transform: scale(1.06);
+}
+
+
+/* =========================================================
+   DISTANCE BADGE
+   ========================================================= */
+
+.female-salon-distance {
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+
+    padding: 6px 9px;
+
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, .94);
+
+    color: var(--accent-dark);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, .08);
+}
+
+
+/* =========================================================
+   RATING BADGE
+   ========================================================= */
+
+.female-salon-rating {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    padding: 6px 9px;
+
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, .94);
+
+    color: #a27623;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, .08);
+}
+
+
+/* =========================================================
+   SALON CONTENT
+   ========================================================= */
+
+.female-salon-content {
+    padding: 18px;
+}
+
+.female-salon-content h3 {
+    color: var(--text);
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 21px;
+
+    line-height: 1.15;
+}
+
+
+/* =========================================================
+   SALON LOCATION
+   ========================================================= */
+
+.female-salon-location {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 5px;
+
+    margin-top: 8px;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+.female-salon-location span:first-child {
+    flex-shrink: 0;
+
+    color: var(--accent);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   SERVICE TAGS
+   ========================================================= */
+
+.female-salon-services {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-top: 14px;
+}
+
+.female-service-tag {
+    padding: 6px 8px;
+
+    border-radius: 7px;
+
+    background: var(--accent-light);
+
+    color: var(--accent-dark);
+
+    font-size: 8px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   CARD BOTTOM
+   ========================================================= */
+
+.female-salon-bottom {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-top: 17px;
+
+    padding-top: 14px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   PRICE
+   ========================================================= */
+
+.female-price {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.female-price span {
+    color: var(--text-muted);
+
+    font-size: 8px;
+}
+
+.female-price strong {
+    margin-top: 3px;
+
+    color: var(--accent-dark);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   DIRECTIONS BUTTON
+   ========================================================= */
+
+.female-directions-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 9px 11px;
+
+    border-radius: 10px;
+
+    background: var(--accent);
+
+    color: #ffffff;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+.female-directions-button span {
+    font-size: 11px;
+}
+
+.female-directions-button:hover {
+    transform: translateY(-2px);
+
+    background: var(--accent-dark);
+
+    color: #ffffff;
+
+    box-shadow:
+        0 6px 15px
+        color-mix(
+            in srgb,
+            var(--accent) 25%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   EMPTY RESULTS
+   ========================================================= */
+
+.salon-empty {
+    min-height: 280px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 35px;
+
+    border-radius: var(--radius-medium);
+
+    background: var(--surface);
+
+    border: 1px dashed var(--accent-soft);
+}
+
+.empty-salon-icon {
+    width: 65px;
+    height: 65px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--accent-light);
+
+    color: var(--accent);
+
+    font-size: 28px;
+}
+
+.salon-empty h3 {
+    margin-top: 15px;
+
+    color: var(--text);
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 24px;
+}
+
+.salon-empty p {
+    margin-top: 6px;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   STYLEMYHAIR TIP
+   ========================================================= */
+
+.nearby-tip {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 24px 28px;
+
+    margin-bottom: 60px;
+
+    border-radius: var(--radius-medium);
+
+    background:
+        linear-gradient(
+            120deg,
+            var(--accent-light),
+            var(--surface)
+        );
+
+    border: 1px solid var(--accent-soft);
+}
+
+.tip-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    background: var(--surface);
+
+    color: var(--accent);
+
+    font-size: 21px;
+
+    box-shadow: var(--shadow-small);
+}
+
+.nearby-tip span {
+    color: var(--accent);
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+.nearby-tip h3 {
+    margin-top: 4px;
+
+    color: var(--text);
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 19px;
+}
+
+.nearby-tip p {
+    margin-top: 4px;
+
+    color: var(--text-soft);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .salon-results {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .nearby-hero h2 {
+        font-size: 58px;
+    }
+
+    .nearby-hero-icon {
+        width: 120px;
+        height: 120px;
+
+        font-size: 44px;
+    }
+
+    .budget-row {
+        flex-wrap: wrap;
+    }
+
+    .find-salons-button {
+        margin-left: 0;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .female-nearby-main {
+        padding-top: 30px;
+        padding-bottom: 90px;
+    }
+
+
+    /* HERO */
+
+    .nearby-hero {
+        padding: 25px 0 35px;
+
+        gap: 25px;
+    }
+
+    .nearby-hero h2 {
+        font-size: 50px;
+
+        letter-spacing: -2px;
+    }
+
+    .nearby-hero p {
+        font-size: 12px;
+    }
+
+    .nearby-hero-icon {
+        width: 100px;
+        height: 100px;
+
+        font-size: 38px;
+    }
+
+
+    /* SEARCH */
+
+    .salon-search-panel {
+        padding: 22px;
+
+        border-radius: 22px;
+    }
+
+    .salon-search-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* BUDGET */
+
+    .budget-row {
+        align-items: stretch;
+
+        flex-direction: column;
+
+        gap: 14px;
+    }
+
+    .budget-title {
+        min-width: 0;
+    }
+
+    .budget-inputs {
+        width: 100%;
+    }
+
+    .price-input {
+        flex: 1;
+
+        width: auto;
+    }
+
+    .find-salons-button {
+        width: 100%;
+
+        margin-left: 0;
+    }
+
+
+    /* RESULTS */
+
+    .results-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .salon-results {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* CARD */
+
+    .female-salon-image {
+        height: 280px;
+    }
+
+
+    /* TIP */
+
+    .nearby-tip {
+        align-items: flex-start;
+
+        padding: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .female-nearby-main {
+        padding-top: 25px;
+    }
+
+
+    /* HERO */
+
+    .nearby-hero {
+        display: block;
+
+        padding-top: 20px;
+    }
+
+    .nearby-hero-icon {
+        display: none;
+    }
+
+    .nearby-hero h2 {
+        font-size: 43px;
+
+        letter-spacing: -2px;
+    }
+
+    .nearby-hero p {
+        font-size: 11px;
+
+        line-height: 1.7;
+    }
+
+
+    /* SEARCH */
+
+    .salon-search-panel {
+        padding: 18px;
+
+        border-radius: 19px;
+    }
+
+    .search-panel-heading h2 {
+        font-size: 25px;
+    }
+
+    .search-panel-heading p {
+        line-height: 1.5;
+    }
+
+
+    /* INPUTS */
+
+    .salon-input {
+        height: 50px;
+    }
+
+
+    /* BUDGET */
+
+    .budget-inputs {
+        gap: 6px;
+    }
+
+    .price-input {
+        height: 42px;
+    }
+
+
+    /* RESULTS */
+
+    .results-header h2 {
+        font-size: 34px;
+    }
+
+    .female-salon-image {
+        height: 250px;
+    }
+
+    .female-salon-content {
+        padding: 16px;
+    }
+
+    .female-salon-content h3 {
+        font-size: 20px;
+    }
+
+
+    /* TIP */
+
+    .nearby-tip {
+        gap: 12px;
+
+        padding: 18px;
+    }
+
+    .tip-icon {
+        width: 42px;
+        height: 42px;
+
+        font-size: 18px;
+    }
+
+    .nearby-tip h3 {
+        font-size: 17px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .nearby-hero h2 {
+        font-size: 38px;
+    }
+
+    .salon-search-panel {
+        padding: 15px;
+    }
+
+    .female-salon-bottom {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .female-directions-button {
+        width: 100%;
+    }
+
+}

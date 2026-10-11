@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const savedTheme =
         localStorage.getItem(
-            "stylemyhair-female-theme"
+            "styleMyHairTheme"
         );
 
 

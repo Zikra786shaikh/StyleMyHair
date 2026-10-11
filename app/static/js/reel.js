@@ -1,458 +1,1286 @@
+/* =========================================================
+   STYLEMYHAIR
+   FEMALE REELS JAVASCRIPT
+   File: static/js/reel.js
+========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
+    "use strict";
 
-    // =========================================================
-    // SETTINGS
-    // =========================================================
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
 
-    const TOTAL_REELS = 20;
+    const feed = document.getElementById("reelsFeed");
+    const reelItems = Array.from(
+        document.querySelectorAll(".reel-item")
+    );
 
-    const reelsContainer =
-        document.getElementById("reelsContainer");
+    const videos = reelItems.map(
+        reel => reel.querySelector(".reel-video")
+    );
 
-    const searchBox =
-        document.getElementById("searchBox");
-
-    const reelSearch =
-        document.getElementById("reelSearch");
-
-    const openSearch =
-        document.getElementById("openSearch");
-
-    const closeSearch =
-        document.getElementById("closeSearch");
-
-    const commentsOverlay =
-        document.getElementById("commentsOverlay");
-
-    const commentsList =
-        document.getElementById("commentsList");
-
-    const commentInput =
-        document.getElementById("commentInput");
-
-    const commentForm =
-        document.getElementById("commentForm");
-
-    const closeComments =
-        document.getElementById("closeComments");
-
-    const toast =
-        document.getElementById("toast");
-
-    if (!reelsContainer) {
-        console.error("reelsContainer not found");
+    if (!feed || !reelItems.length) {
         return;
     }
 
-    // =========================================================
-    // STORAGE
-    // =========================================================
 
-    const MALE_SAVED_REELS_KEY =
-        "stylemyhair-male-saved-reels";
+    /* =====================================================
+       LOCAL STORAGE KEYS
+       FEMALE REELS ONLY
+    ===================================================== */
 
-    const MALE_LIKED_REELS_KEY =
-        "stylemyhair-liked-reels";
+    const SAVED_KEY = "styleMyHairFemaleSavedReels";
+    const LIKED_KEY = "styleMyHairLikedReels";
+    const COMMENTS_KEY = "styleMyHairReelComments";
 
-    const MALE_COMMENTS_KEY =
-        "stylemyhair-comments";
 
-    let savedReels =
-        JSON.parse(
-            localStorage.getItem(MALE_SAVED_REELS_KEY) || "[]"
-        );
+    /* =====================================================
+       STATE
+    ===================================================== */
 
-    let likedReels =
-        JSON.parse(
-            localStorage.getItem(MALE_LIKED_REELS_KEY) || "[]"
-        );
-
-    let comments =
-        JSON.parse(
-            localStorage.getItem(MALE_COMMENTS_KEY) || "{}"
-        );
-
-    // =========================================================
-    // CURRENT REEL
-    // =========================================================
-
-    let currentReelNumber = 1;
+    let currentIndex = 0;
     let currentCommentReel = null;
 
-    // =========================================================
-    // HAIRSTYLE DATA
-    // =========================================================
+    let savedReels = loadArray(SAVED_KEY);
+    let likedReels = loadArray(LIKED_KEY);
+    let reelComments = loadObject(COMMENTS_KEY);
 
-    const hairstyles = [
-        {
-            title: "Elegant Long Layers",
-            description:
-                "Soft layered hairstyle for a stylish everyday look.",
-            hashtags:
-                "#LongHair #Layers #Hairstyle"
-        },
-        {
-            title: "Modern Bob",
-            description:
-                "A clean modern bob hairstyle with an elegant finish.",
-            hashtags:
-                "#Bob #BobCut #WomensHair"
-        },
-        {
-            title: "Elegant Braids",
-            description:
-                "Beautiful braided hairstyle for a graceful look.",
-            hashtags:
-                "#Braids #BraidedHair #Hairstyle"
-        },
-        {
-            title: "Soft Curls",
-            description:
-                "Soft curls for a beautiful and natural appearance.",
-            hashtags:
-                "#Curls #CurlyHair #HairStyle"
-        },
-        {
-            title: "Classic Ponytail",
-            description:
-                "A simple and stylish ponytail for everyday looks.",
-            hashtags:
-                "#Ponytail #LongHair #Style"
-        },
-        {
-            title: "Beach Waves",
-            description:
-                "Relaxed beach waves with a soft modern finish.",
-            hashtags:
-                "#BeachWaves #Waves #Hair"
-        },
-        {
-            title: "Layered Bob",
-            description:
-                "A stylish layered bob with a modern appearance.",
-            hashtags:
-                "#LayeredBob #Bob #HairStyle"
-        },
-        {
-            title: "French Braid",
-            description:
-                "A classic French braid for an elegant hairstyle.",
-            hashtags:
-                "#FrenchBraid #Braids #Hair"
+    let wheelLocked = false;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    let pendingVideoClick = null;
+
+
+    /* =====================================================
+       STORAGE HELPERS
+    ===================================================== */
+
+    function loadArray(key) {
+        try {
+            const data = JSON.parse(
+                localStorage.getItem(key)
+            );
+
+            return Array.isArray(data) ? data : [];
+        } catch (error) {
+            return [];
         }
-    ];
-
-    // =========================================================
-    // GET STYLE DATA
-    // =========================================================
-
-    function getStyleData(number) {
-        const index =
-            (number - 1) % hairstyles.length;
-
-        return hairstyles[index];
     }
 
-    // =========================================================
-    // CREATE REEL
-    // =========================================================
 
-    function createReel(number) {
+    function loadObject(key) {
+        try {
+            const data = JSON.parse(
+                localStorage.getItem(key)
+            );
 
-        const style =
-            getStyleData(number);
-
-        const reel =
-            document.createElement("article");
-
-        reel.className = "reel";
-
-        reel.dataset.reelId =
-            `reel-${number}`;
-
-        reel.dataset.reelNumber =
-            number;
-
-        reel.dataset.title =
-            style.title;
-
-        reel.dataset.description =
-            style.description;
-
-        reel.dataset.hashtags =
-            style.hashtags;
-
-        reel.innerHTML = `
-
-            <video
-                class="reel-video"
-                src="/static/videos/reel${number}.mp4"
-                loop
-                muted
-                playsinline
-                preload="metadata"
-            ></video>
-
-            <div class="video-dark"></div>
-
-            <button
-                type="button"
-                class="mute-button"
-            >
-                🔇
-            </button>
-
-            <div class="reel-info">
-
-                <h2>${style.title}</h2>
-
-                <p>
-                    ${style.description}
-                </p>
-
-                <strong>
-                    ${style.hashtags}
-                </strong>
-
-            </div>
-
-            <div class="reel-actions">
-
-                <button
-                    type="button"
-                    class="reel-action like-button"
-                >
-                    <span class="action-icon like-icon">♡</span>
-                    <small>Like</small>
-                </button>
-
-                <button
-                    type="button"
-                    class="reel-action comment-button"
-                >
-                    <span class="action-icon">💬</span>
-                    <small>Comment</small>
-                </button>
-
-                <button
-                    type="button"
-                    class="reel-action share-button"
-                >
-                    <span class="action-icon">↗</span>
-                    <small>Share</small>
-                </button>
-
-                <button
-                    type="button"
-                    class="reel-action save-button"
-                >
-                    <span class="action-icon save-icon">🔖</span>
-                    <small>Save</small>
-                </button>
-
-            </div>
-        `;
-
-        updateReelButtons(reel);
-
-        return reel;
+            return data && typeof data === "object"
+                ? data
+                : {};
+        } catch (error) {
+            return {};
+        }
     }
 
-    // =========================================================
-    // UPDATE LIKE / SAVE BUTTONS
-    // =========================================================
 
-    function updateReelButtons(reel) {
+    function saveArray(key, data) {
+        localStorage.setItem(
+            key,
+            JSON.stringify(data)
+        );
+    }
 
-        const reelNumber =
-            Number(reel.dataset.reelNumber);
 
-        const likeIcon =
-            reel.querySelector(".like-icon");
+    function saveObject(key, data) {
+        localStorage.setItem(
+            key,
+            JSON.stringify(data)
+        );
+    }
 
-        const saveIcon =
-            reel.querySelector(".save-icon");
 
-        const saveText =
-            reel.querySelector(".save-button small");
+    /* =====================================================
+       REEL ID
+    ===================================================== */
 
-        if (likedReels.includes(reelNumber)) {
+    function getReelId(index) {
+        const reel = reelItems[index];
 
-            likeIcon.textContent = "♥";
-            reel.classList.add("liked");
-
-        } else {
-
-            likeIcon.textContent = "♡";
-            reel.classList.remove("liked");
+        if (!reel) {
+            return `reel${index + 1}`;
         }
 
-        if (savedReels.includes(reelNumber)) {
+        return (
+            reel.dataset.reelId ||
+            `reel${index + 1}`
+        );
+    }
 
-            saveIcon.textContent = "🔖";
-            reel.classList.add("saved");
 
-            if (saveText) {
-                saveText.textContent = "Saved";
+    /* =====================================================
+       TOAST
+    ===================================================== */
+
+    function showToast(message) {
+
+        let toast = document.querySelector(
+            ".reel-toast"
+        );
+
+        if (!toast) {
+            toast = document.createElement("div");
+
+            toast.className = "reel-toast";
+
+            document.body.appendChild(toast);
+        }
+
+        toast.textContent = message;
+
+        toast.classList.add("show");
+
+        clearTimeout(toast.hideTimer);
+
+        toast.hideTimer = setTimeout(() => {
+            toast.classList.remove("show");
+        }, 1800);
+    }
+
+
+    /* =====================================================
+       STOP ALL VIDEOS
+       IMPORTANT:
+       PREVIOUS REEL MUST STOP COMPLETELY
+    ===================================================== */
+
+    function stopAllVideos(resetTime = true) {
+
+        videos.forEach(video => {
+
+            if (!video) {
+                return;
             }
 
-        } else {
+            video.pause();
 
-            saveIcon.textContent = "🔖";
-            reel.classList.remove("saved");
-
-            if (saveText) {
-                saveText.textContent = "Save";
+            if (resetTime) {
+                try {
+                    video.currentTime = 0;
+                } catch (error) {
+                    // Ignore
+                }
             }
+
+            video.muted = true;
+        });
+    }
+
+
+    /* =====================================================
+       UPDATE PLAY BUTTON
+    ===================================================== */
+
+    function updatePlayButton(video) {
+
+        if (!video) {
+            return;
+        }
+
+        const reel = video.closest(".reel-item");
+
+        if (!reel) {
+            return;
+        }
+
+        const button = reel.querySelector(
+            ".video-play, .play-button"
+        );
+
+        if (!button) {
+            return;
+        }
+
+        if (video.paused) {
+            button.textContent = "▶";
+            button.setAttribute(
+                "aria-label",
+                "Play video"
+            );
+        } else {
+            button.textContent = "❚❚";
+            button.setAttribute(
+                "aria-label",
+                "Pause video"
+            );
         }
     }
 
-    // =========================================================
-    // EXISTING REELS
-    // =========================================================
 
-    const existingReels =
-        reelsContainer.querySelectorAll(".reel");
+    /* =====================================================
+       UPDATE MUTE BUTTON
+    ===================================================== */
 
-    existingReels.forEach(function (reel, index) {
+    function updateMuteButton(video) {
 
-        const number = index + 1;
+        if (!video) {
+            return;
+        }
 
-        reel.dataset.reelNumber = number;
+        const reel = video.closest(".reel-item");
 
-        updateReelButtons(reel);
-    });
+        if (!reel) {
+            return;
+        }
 
-    // =========================================================
-    // ADD REELS UP TO REEL 20
-    // =========================================================
+        const button = reel.querySelector(
+            ".reel-mute, .mute-button"
+        );
 
-    for (
-        let number = existingReels.length + 1;
-        number <= TOTAL_REELS;
-        number++
-    ) {
+        if (!button) {
+            return;
+        }
 
-        const reel =
-            createReel(number);
-
-        reelsContainer.appendChild(reel);
+        if (video.muted) {
+            button.textContent = "🔇";
+            button.setAttribute(
+                "aria-label",
+                "Unmute video"
+            );
+        } else {
+            button.textContent = "🔊";
+            button.setAttribute(
+                "aria-label",
+                "Mute video"
+            );
+        }
     }
 
-    // =========================================================
-    // AUTOPLAY OBSERVER
-    // =========================================================
 
-    const observer =
-        new IntersectionObserver(
-            function (entries) {
+    /* =====================================================
+       UPDATE LIKE / SAVE BUTTONS
+    ===================================================== */
 
-                entries.forEach(function (entry) {
+    function updateButtonStates() {
 
-                    const video =
-                        entry.target.querySelector(".reel-video");
+        reelItems.forEach((reel, index) => {
 
-                    if (!video) {
-                        return;
-                    }
+            const reelId = getReelId(index);
 
-                    if (entry.isIntersecting) {
+            const likeButton = reel.querySelector(
+                ".action-like, .like-button"
+            );
 
-                        currentReelNumber =
-                            Number(
-                                entry.target.dataset.reelNumber
-                            );
+            const saveButton = reel.querySelector(
+                ".action-save, .save-button"
+            );
 
-                        document
-                            .querySelectorAll(".reel-video")
-                            .forEach(function (otherVideo) {
 
-                                if (otherVideo !== video) {
-                                    otherVideo.pause();
-                                }
-                            });
+            /* =================================================
+               LIKE BUTTON
+            ================================================= */
 
-                        video.play().catch(function () {});
+            if (likeButton) {
 
-                    } else {
+                const liked =
+                    likedReels.includes(reelId);
 
-                        video.pause();
-                    }
+                likeButton.classList.toggle(
+                    "liked",
+                    liked
+                );
+
+                likeButton.setAttribute(
+                    "aria-pressed",
+                    liked ? "true" : "false"
+                );
+
+                if (liked) {
+                    likeButton.textContent = "❤️";
+                } else {
+                    likeButton.textContent = "♡";
+                }
+            }
+
+
+            /* =================================================
+               SAVE BUTTON
+            ================================================= */
+
+            if (saveButton) {
+
+                const saved =
+                    savedReels.includes(reelId);
+
+                saveButton.classList.toggle(
+                    "saved",
+                    saved
+                );
+
+                saveButton.setAttribute(
+                    "aria-pressed",
+                    saved ? "true" : "false"
+                );
+
+                saveButton.textContent =
+                    saved ? "Saved" : "Save";
+            }
+        });
+    }
+
+
+    /* =====================================================
+       PLAY ACTIVE REEL
+    ===================================================== */
+
+    async function playActiveReel() {
+
+        stopAllVideos(true);
+
+        const video = videos[currentIndex];
+
+        if (!video) {
+            return;
+        }
+
+        video.muted = false;
+
+        updateMuteButton(video);
+
+        try {
+
+            await video.play();
+
+        } catch (error) {
+
+            video.muted = true;
+
+            updateMuteButton(video);
+
+            try {
+                await video.play();
+            } catch (secondError) {
+                // User can press play manually.
+            }
+        }
+
+        updatePlayButton(video);
+    }
+
+
+    /* =====================================================
+       SHOW REEL
+    ===================================================== */
+
+    function showReel(index, userAction = false) {
+
+        if (!reelItems.length) {
+            return;
+        }
+
+        if (index < 0) {
+            index = 0;
+        }
+
+        if (index >= reelItems.length) {
+            index = reelItems.length - 1;
+        }
+
+        currentIndex = index;
+
+        feed.style.transform =
+            `translateY(-${currentIndex * 100}%)`;
+
+        stopAllVideos(true);
+
+        updateButtonStates();
+
+        const reelId = getReelId(currentIndex);
+
+        try {
+            history.replaceState(
+                null,
+                "",
+                `#${reelId}`
+            );
+        } catch (error) {
+            // Ignore
+        }
+
+        playActiveReel();
+    }
+
+
+    /* =====================================================
+       NEXT REEL
+    ===================================================== */
+
+    function nextReel() {
+
+        if (
+            currentIndex <
+            reelItems.length - 1
+        ) {
+            showReel(
+                currentIndex + 1,
+                true
+            );
+        }
+    }
+
+
+    /* =====================================================
+       PREVIOUS REEL
+    ===================================================== */
+
+    function previousReel() {
+
+        if (currentIndex > 0) {
+            showReel(
+                currentIndex - 1,
+                true
+            );
+        }
+    }
+
+
+    /* =====================================================
+       PLAY / PAUSE
+    ===================================================== */
+
+    function togglePlay(video) {
+
+        if (!video) {
+            return;
+        }
+
+        videos.forEach(otherVideo => {
+
+            if (
+                otherVideo &&
+                otherVideo !== video
+            ) {
+                otherVideo.pause();
+                otherVideo.muted = true;
+            }
+        });
+
+        if (video.paused) {
+
+            video.play()
+                .then(() => {
+                    updatePlayButton(video);
+                })
+                .catch(() => {
+
+                    video.muted = true;
+
+                    video.play()
+                        .then(() => {
+                            updatePlayButton(video);
+                        })
+                        .catch(() => {});
                 });
-            },
-            {
-                threshold: 0.7
+
+        } else {
+
+            video.pause();
+
+            updatePlayButton(video);
+        }
+    }
+
+
+    /* =====================================================
+       MUTE / UNMUTE
+    ===================================================== */
+
+    function toggleMute(video) {
+
+        if (!video) {
+            return;
+        }
+
+        video.muted = !video.muted;
+
+        updateMuteButton(video);
+    }
+
+
+    /* =====================================================
+       LIKE
+    ===================================================== */
+
+    function likeReel(index) {
+
+        const reelId = getReelId(index);
+
+        const existingIndex =
+            likedReels.indexOf(reelId);
+
+        if (existingIndex === -1) {
+
+            likedReels.push(reelId);
+
+            showToast("Liked ❤️");
+
+        } else {
+
+            likedReels.splice(
+                existingIndex,
+                1
+            );
+
+            showToast("Like removed");
+        }
+
+        saveArray(
+            LIKED_KEY,
+            likedReels
+        );
+
+        updateButtonStates();
+    }
+
+
+    /* =====================================================
+       SAVE
+    ===================================================== */
+
+    function saveReel(index) {
+
+        const reelId = getReelId(index);
+
+        const existingIndex =
+            savedReels.indexOf(reelId);
+
+        if (existingIndex === -1) {
+
+            savedReels.push(reelId);
+
+            showToast("Reel saved 🔖");
+
+        } else {
+
+            savedReels.splice(
+                existingIndex,
+                1
+            );
+
+            showToast("Removed from saved");
+        }
+
+        saveArray(
+            SAVED_KEY,
+            savedReels
+        );
+
+        updateButtonStates();
+    }
+
+
+    /* =====================================================
+       SHARE
+    ===================================================== */
+
+    async function shareReel(index) {
+
+        const reelId =
+            getReelId(index);
+
+        const shareUrl =
+            `${window.location.origin}${window.location.pathname}#${reelId}`;
+
+        const shareData = {
+            title: "StyleMyHair",
+            text: "Check out this hairstyle Reel on StyleMyHair.",
+            url: shareUrl
+        };
+
+        if (
+            navigator.share &&
+            typeof navigator.share === "function"
+        ) {
+
+            try {
+
+                await navigator.share(
+                    shareData
+                );
+
+                return;
+
+            } catch (error) {
+
+                if (
+                    error &&
+                    error.name ===
+                    "AbortError"
+                ) {
+                    return;
+                }
+            }
+        }
+
+
+        /* =================================================
+           FALLBACK COPY
+        ================================================= */
+
+        try {
+
+            await navigator.clipboard.writeText(
+                shareUrl
+            );
+
+            showToast(
+                "Reel link copied 🔗"
+            );
+
+        } catch (error) {
+
+            showToast(
+                "Share link ready"
+            );
+        }
+    }
+
+
+    /* =====================================================
+       COMMENTS
+    ===================================================== */
+
+    function getComments(reelId) {
+
+        if (
+            !Array.isArray(
+                reelComments[reelId]
+            )
+        ) {
+            reelComments[reelId] = [];
+        }
+
+        return reelComments[reelId];
+    }
+
+
+    function renderComments(reelId) {
+
+        const commentsList =
+            document.getElementById(
+                "commentsList"
+            );
+
+        const commentsTotal =
+            document.getElementById(
+                "commentsTotal"
+            );
+
+        if (!commentsList) {
+            return;
+        }
+
+        const comments =
+            getComments(reelId);
+
+        commentsList.innerHTML = "";
+
+        if (commentsTotal) {
+            commentsTotal.textContent =
+                comments.length;
+        }
+
+        comments.forEach(comment => {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "comment-item";
+
+            const avatar =
+                document.createElement("div");
+
+            avatar.className =
+                "comment-avatar";
+
+            avatar.textContent =
+                (comment.username || "You")
+                    .charAt(0)
+                    .toUpperCase();
+
+            const content =
+                document.createElement("div");
+
+            content.className =
+                "comment-content";
+
+            const username =
+                document.createElement("strong");
+
+            username.textContent =
+                comment.username ||
+                "You";
+
+            const text =
+                document.createElement("p");
+
+            text.textContent =
+                comment.text || "";
+
+            content.appendChild(
+                username
+            );
+
+            content.appendChild(
+                text
+            );
+
+            item.appendChild(
+                avatar
+            );
+
+            item.appendChild(
+                content
+            );
+
+            commentsList.appendChild(
+                item
+            );
+        });
+    }
+
+
+    function openComments(index) {
+
+        const modal =
+            document.getElementById(
+                "commentsModal"
+            );
+
+        if (!modal) {
+            return;
+        }
+
+        currentCommentReel =
+            getReelId(index);
+
+        renderComments(
+            currentCommentReel
+        );
+
+        modal.classList.add("open");
+
+        modal.classList.add("active");
+
+        document.body.style.overflow =
+            "hidden";
+    }
+
+
+    function closeComments() {
+
+        const modal =
+            document.getElementById(
+                "commentsModal"
+            );
+
+        if (!modal) {
+            return;
+        }
+
+        modal.classList.remove("open");
+
+        modal.classList.remove("active");
+
+        document.body.style.overflow =
+            "";
+    }
+
+
+    function postComment() {
+
+        const input =
+            document.getElementById(
+                "commentInput"
+            );
+
+        if (
+            !input ||
+            !currentCommentReel
+        ) {
+            return;
+        }
+
+        const text =
+            input.value.trim();
+
+        if (!text) {
+            return;
+        }
+
+        if (text.length > 300) {
+
+            showToast(
+                "Comment is too long"
+            );
+
+            return;
+        }
+
+        const comments =
+            getComments(
+                currentCommentReel
+            );
+
+        comments.push({
+            username: "You",
+            text: text,
+            time: Date.now()
+        });
+
+        saveObject(
+            COMMENTS_KEY,
+            reelComments
+        );
+
+        input.value = "";
+
+        renderComments(
+            currentCommentReel
+        );
+
+        showToast(
+            "Comment posted"
+        );
+    }
+
+
+    /* =====================================================
+       REEL BUTTON EVENTS
+    ===================================================== */
+
+    reelItems.forEach((reel, index) => {
+
+        const video =
+            reel.querySelector(
+                ".reel-video"
+            );
+
+        if (!video) {
+            return;
+        }
+
+
+        /* PLAY BUTTON */
+
+        const playButton =
+            reel.querySelector(
+                ".video-play, .play-button"
+            );
+
+        if (playButton) {
+
+            playButton.addEventListener(
+                "click",
+                event => {
+
+                    event.stopPropagation();
+
+                    togglePlay(video);
+                }
+            );
+        }
+
+
+        /* MUTE BUTTON */
+
+        const muteButton =
+            reel.querySelector(
+                ".reel-mute, .mute-button"
+            );
+
+        if (muteButton) {
+
+            muteButton.addEventListener(
+                "click",
+                event => {
+
+                    event.stopPropagation();
+
+                    toggleMute(video);
+                }
+            );
+        }
+
+
+        /* LIKE */
+
+        const likeButton =
+            reel.querySelector(
+                ".action-like, .like-button"
+            );
+
+        if (likeButton) {
+
+            likeButton.addEventListener(
+                "click",
+                event => {
+
+                    event.stopPropagation();
+
+                    likeReel(index);
+                }
+            );
+        }
+
+
+        /* COMMENT */
+
+        const commentButton =
+            reel.querySelector(
+                ".action-comment, .comment-button"
+            );
+
+        if (commentButton) {
+
+            commentButton.addEventListener(
+                "click",
+                event => {
+
+                    event.stopPropagation();
+
+                    openComments(index);
+                }
+            );
+        }
+
+
+        /* SHARE */
+
+        const shareButton =
+            reel.querySelector(
+                ".action-share, .share-button"
+            );
+
+        if (shareButton) {
+
+            shareButton.addEventListener(
+                "click",
+                event => {
+
+                    event.stopPropagation();
+
+                    shareReel(index);
+                }
+            );
+        }
+
+
+        /* SAVE */
+
+        const saveButton =
+            reel.querySelector(
+                ".action-save, .save-button"
+            );
+
+        if (saveButton) {
+
+            saveButton.addEventListener(
+                "click",
+                event => {
+
+                    event.stopPropagation();
+
+                    saveReel(index);
+                }
+            );
+        }
+
+
+        /* VIDEO CLICK */
+
+        video.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+                if (pendingVideoClick) {
+                    clearTimeout(
+                        pendingVideoClick
+                    );
+                }
+
+                pendingVideoClick =
+                    setTimeout(() => {
+
+                        togglePlay(video);
+
+                        pendingVideoClick =
+                            null;
+
+                    }, 220);
             }
         );
 
-    document
-        .querySelectorAll(".reel")
-        .forEach(function (reel) {
-            observer.observe(reel);
-        });
 
-    // =========================================================
-    // LOOP: REEL 20 → REEL 1
-    // =========================================================
+        /* DOUBLE CLICK / DOUBLE TAP LIKE */
 
-    let isJumping = false;
+        video.addEventListener(
+            "dblclick",
+            event => {
 
-    reelsContainer.addEventListener(
-        "scroll",
-        function () {
+                event.preventDefault();
 
-            if (isJumping) {
-                return;
+                if (pendingVideoClick) {
+                    clearTimeout(
+                        pendingVideoClick
+                    );
+
+                    pendingVideoClick =
+                        null;
+                }
+
+                likeReel(index);
             }
+        );
 
-            const reels =
-                reelsContainer.querySelectorAll(".reel");
 
-            if (!reels.length) {
-                return;
+        /* VIDEO EVENTS */
+
+        video.addEventListener(
+            "play",
+            () => {
+
+                videos.forEach(
+                    otherVideo => {
+
+                        if (
+                            otherVideo &&
+                            otherVideo !== video
+                        ) {
+                            otherVideo.pause();
+
+                            otherVideo.muted =
+                                true;
+                        }
+                    }
+                );
+
+                updatePlayButton(video);
             }
+        );
 
-            const lastReel =
-                reels[reels.length - 1];
 
-            const rect =
-                lastReel.getBoundingClientRect();
+        video.addEventListener(
+            "pause",
+            () => {
+                updatePlayButton(video);
+            }
+        );
 
-            const containerRect =
-                reelsContainer.getBoundingClientRect();
+
+        video.addEventListener(
+            "volumechange",
+            () => {
+                updateMuteButton(video);
+            }
+        );
+
+
+        /* AUTO NEXT WHEN VIDEO ENDS */
+
+        video.addEventListener(
+            "ended",
+            () => {
+
+                if (
+                    index <
+                    reelItems.length - 1
+                ) {
+                    nextReel();
+                }
+            }
+        );
+    });
+
+
+    /* =====================================================
+       KEYBOARD NAVIGATION
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            const tag =
+                document.activeElement?.tagName;
 
             if (
-                rect.top <= containerRect.top + 20 &&
-                Math.abs(
-                    rect.top - containerRect.top
-                ) < 100
+                tag === "INPUT" ||
+                tag === "TEXTAREA"
+            ) {
+                return;
+            }
+
+
+            if (event.key === "ArrowDown") {
+
+                event.preventDefault();
+
+                nextReel();
+            }
+
+
+            if (event.key === "ArrowUp") {
+
+                event.preventDefault();
+
+                previousReel();
+            }
+
+
+            if (
+                event.key === " " ||
+                event.key === "Spacebar"
             ) {
 
-                isJumping = true;
+                event.preventDefault();
 
-                setTimeout(function () {
+                togglePlay(
+                    videos[currentIndex]
+                );
+            }
 
-                    const firstReel =
-                        reelsContainer.querySelector(
-                            ".reel[data-reel-number='1']"
-                        );
 
-                    if (firstReel) {
+            if (
+                event.key === "m" ||
+                event.key === "M"
+            ) {
 
-                        firstReel.scrollIntoView({
-                            behavior: "auto",
-                            block: "start"
-                        });
+                toggleMute(
+                    videos[currentIndex]
+                );
+            }
 
-                        currentReelNumber = 1;
-                    }
 
-                    setTimeout(function () {
-                        isJumping = false;
-                    }, 300);
+            if (event.key === "Escape") {
+                closeComments();
+            }
+        }
+    );
 
-                }, 100);
+
+    /* =====================================================
+       MOUSE WHEEL
+    ===================================================== */
+
+    document.addEventListener(
+        "wheel",
+        event => {
+
+            if (wheelLocked) {
+                return;
+            }
+
+            const modal =
+                document.getElementById(
+                    "commentsModal"
+                );
+
+            if (
+                modal &&
+                (
+                    modal.classList.contains(
+                        "open"
+                    ) ||
+                    modal.classList.contains(
+                        "active"
+                    )
+                )
+            ) {
+                return;
+            }
+
+            if (
+                Math.abs(event.deltaY) < 25
+            ) {
+                return;
+            }
+
+            wheelLocked = true;
+
+            if (event.deltaY > 0) {
+                nextReel();
+            } else {
+                previousReel();
+            }
+
+            setTimeout(() => {
+                wheelLocked = false;
+            }, 500);
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /* =====================================================
+       TOUCH SWIPE
+    ===================================================== */
+
+    feed.addEventListener(
+        "touchstart",
+        event => {
+
+            const touch =
+                event.changedTouches[0];
+
+            touchStartX =
+                touch.clientX;
+
+            touchStartY =
+                touch.clientY;
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    feed.addEventListener(
+        "touchend",
+        event => {
+
+            const touch =
+                event.changedTouches[0];
+
+            const diffX =
+                touch.clientX -
+                touchStartX;
+
+            const diffY =
+                touch.clientY -
+                touchStartY;
+
+            if (
+                Math.abs(diffY) <
+                Math.abs(diffX)
+            ) {
+                return;
+            }
+
+            if (Math.abs(diffY) < 50) {
+                return;
+            }
+
+            if (diffY < 0) {
+                nextReel();
+            } else {
+                previousReel();
             }
         },
         {
@@ -460,482 +1288,168 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     );
 
-    // =========================================================
-    // LIKE
-    // =========================================================
 
-    reelsContainer.addEventListener(
-        "click",
-        function (event) {
+    /* =====================================================
+       COMMENTS BUTTONS
+    ===================================================== */
 
-            const button =
-                event.target.closest(".like-button");
+    const closeCommentsButton =
+        document.getElementById(
+            "closeComments"
+        );
 
-            if (!button) {
-                return;
-            }
+    if (closeCommentsButton) {
 
-            const reel =
-                button.closest(".reel");
-
-            if (!reel) {
-                return;
-            }
-
-            const number =
-                Number(reel.dataset.reelNumber);
-
-            if (likedReels.includes(number)) {
-
-                likedReels =
-                    likedReels.filter(
-                        id => id !== number
-                    );
-
-            } else {
-
-                likedReels.push(number);
-            }
-
-            localStorage.setItem(
-                MALE_LIKED_REELS_KEY,
-                JSON.stringify(likedReels)
-            );
-
-            updateReelButtons(reel);
-        }
-    );
-
-    // =========================================================
-    // SAVE
-    // =========================================================
-
-    reelsContainer.addEventListener(
-        "click",
-        function (event) {
-
-            const button =
-                event.target.closest(".save-button");
-
-            if (!button) {
-                return;
-            }
-
-            const reel =
-                button.closest(".reel");
-
-            if (!reel) {
-                return;
-            }
-
-            const number =
-                Number(reel.dataset.reelNumber);
-
-            if (savedReels.includes(number)) {
-
-                savedReels =
-                    savedReels.filter(
-                        id => id !== number
-                    );
-
-                reel.classList.remove("saved");
-
-                button.querySelector("small").textContent =
-                    "Save";
-
-                showToast("Removed from saved");
-
-            } else {
-
-                savedReels.push(number);
-
-                reel.classList.add("saved");
-
-                button.querySelector("small").textContent =
-                    "Saved";
-
-                showToast("Reel saved");
-            }
-
-            localStorage.setItem(
-                MALE_SAVED_REELS_KEY,
-                JSON.stringify(savedReels)
-            );
-        }
-    );
-
-    // =========================================================
-    // MUTE / UNMUTE
-    // =========================================================
-
-    reelsContainer.addEventListener(
-        "click",
-        function (event) {
-
-            const button =
-                event.target.closest(".mute-button");
-
-            if (!button) {
-                return;
-            }
-
-            const reel =
-                button.closest(".reel");
-
-            const video =
-                reel.querySelector(".reel-video");
-
-            video.muted = !video.muted;
-
-            button.textContent =
-                video.muted ? "🔇" : "🔊";
-        }
-    );
-
-    // =========================================================
-    // TAP VIDEO → PLAY / PAUSE
-    // =========================================================
-
-    reelsContainer.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                event.target.closest(".reel-action") ||
-                event.target.closest(".mute-button")
-            ) {
-                return;
-            }
-
-            const video =
-                event.target.closest(".reel-video");
-
-            if (!video) {
-                return;
-            }
-
-            if (video.paused) {
-
-                video.play().catch(function () {});
-
-            } else {
-
-                video.pause();
-            }
-        }
-    );
-
-    // =========================================================
-    // COMMENTS
-    // =========================================================
-
-    reelsContainer.addEventListener(
-        "click",
-        function (event) {
-
-            const button =
-                event.target.closest(".comment-button");
-
-            if (!button) {
-                return;
-            }
-
-            const reel =
-                button.closest(".reel");
-
-            currentCommentReel =
-                Number(reel.dataset.reelNumber);
-
-            openComments(currentCommentReel);
-        }
-    );
-
-    function openComments(number) {
-
-        if (!commentsOverlay) return;
-
-        commentsOverlay.classList.add("active");
-
-        renderComments(number);
-
-        setTimeout(function () {
-
-            if (commentInput) {
-                commentInput.focus();
-            }
-
-        }, 100);
+        closeCommentsButton.addEventListener(
+            "click",
+            closeComments
+        );
     }
 
-    function renderComments(number) {
 
-        if (!commentsList) return;
+    const postCommentButton =
+        document.getElementById(
+            "postComment"
+        );
 
-        commentsList.innerHTML = "";
+    if (postCommentButton) {
 
-        const reelComments =
-            comments[number] || [];
-
-        if (reelComments.length === 0) {
-
-            commentsList.innerHTML = `
-                <p class="no-comments">
-                    No comments yet. Be the first!
-                </p>
-            `;
-
-            return;
-        }
-
-        reelComments.forEach(function (comment) {
-
-            const item =
-                document.createElement("div");
-
-            item.className = "comment-item";
-            item.textContent = comment;
-
-            commentsList.appendChild(item);
-        });
+        postCommentButton.addEventListener(
+            "click",
+            postComment
+        );
     }
 
-    // =========================================================
-    // POST COMMENT
-    // =========================================================
 
-    if (commentForm) {
+    const commentInput =
+        document.getElementById(
+            "commentInput"
+        );
 
-        commentForm.addEventListener(
-            "submit",
-            function (event) {
+    if (commentInput) {
 
-                event.preventDefault();
-
-                if (!commentInput) return;
-
-                const text =
-                    commentInput.value.trim();
+        commentInput.addEventListener(
+            "keydown",
+            event => {
 
                 if (
-                    !text ||
-                    currentCommentReel === null
+                    event.key === "Enter" &&
+                    !event.shiftKey
                 ) {
-                    return;
+
+                    event.preventDefault();
+
+                    postComment();
                 }
-
-                if (!comments[currentCommentReel]) {
-                    comments[currentCommentReel] = [];
-                }
-
-                comments[currentCommentReel].push(text);
-
-                localStorage.setItem(
-                    MALE_COMMENTS_KEY,
-                    JSON.stringify(comments)
-                );
-
-                commentInput.value = "";
-
-                renderComments(currentCommentReel);
             }
         );
     }
 
-    // =========================================================
-    // CLOSE COMMENTS
-    // =========================================================
 
-    if (closeComments) {
+    const commentsModal =
+        document.getElementById(
+            "commentsModal"
+        );
 
-        closeComments.addEventListener(
+    if (commentsModal) {
+
+        commentsModal.addEventListener(
             "click",
-            function () {
+            event => {
 
-                commentsOverlay?.classList.remove("active");
-            }
-        );
-    }
-
-    if (commentsOverlay) {
-
-        commentsOverlay.addEventListener(
-            "click",
-            function (event) {
-
-                if (event.target === commentsOverlay) {
-
-                    commentsOverlay.classList.remove("active");
+                if (
+                    event.target ===
+                    commentsModal
+                ) {
+                    closeComments();
                 }
             }
         );
     }
 
-    // =========================================================
-    // SHARE
-    // =========================================================
 
-    reelsContainer.addEventListener(
-        "click",
-        async function (event) {
+    /* =====================================================
+       VISIBILITY CHANGE
+       STOP SOUND WHEN USER LEAVES TAB
+    ===================================================== */
 
-            const button =
-                event.target.closest(".share-button");
+    document.addEventListener(
+        "visibilitychange",
+        () => {
 
-            if (!button) {
-                return;
-            }
+            if (document.hidden) {
 
-            const reel =
-                button.closest(".reel");
+                videos.forEach(video => {
 
-            const title =
-                reel.dataset.title;
+                    if (video) {
+                        video.pause();
+                    }
+                });
 
-            const url =
-                window.location.href;
+            } else {
 
-            try {
+                const activeVideo =
+                    videos[currentIndex];
 
-                if (navigator.share) {
+                if (
+                    activeVideo &&
+                    activeVideo.paused
+                ) {
 
-                    await navigator.share({
-                        title: `StyleMyHair - ${title}`,
-                        text: "Check out this hairstyle reel on StyleMyHair!",
-                        url: url
-                    });
+                    activeVideo.play()
+                        .catch(() => {
+                            activeVideo.muted = true;
 
-                } else {
-
-                    await navigator.clipboard.writeText(url);
-
-                    showToast("Reel link copied!");
+                            activeVideo.play()
+                                .catch(() => {});
+                        });
                 }
-
-            } catch (error) {
-                // User cancelled share.
             }
         }
     );
 
-    // =========================================================
-    // SEARCH OPEN
-    // =========================================================
 
-    if (openSearch) {
+    /* =====================================================
+       HASH / SAVED REEL SUPPORT
+    ===================================================== */
 
-        openSearch.addEventListener(
-            "click",
-            function () {
+    function getIndexFromHash() {
 
-                searchBox?.classList.add("active");
-                reelSearch?.focus();
-            }
-        );
-    }
+        const hash =
+            window.location.hash
+                .replace("#", "")
+                .trim();
 
-    // =========================================================
-    // SEARCH CLOSE
-    // =========================================================
-
-    if (closeSearch) {
-
-        closeSearch.addEventListener(
-            "click",
-            function () {
-
-                searchBox?.classList.remove("active");
-
-                if (reelSearch) {
-                    reelSearch.value = "";
-                }
-
-                showAllReels();
-            }
-        );
-    }
-
-    // =========================================================
-    // SEARCH
-    // =========================================================
-
-    if (reelSearch) {
-
-        reelSearch.addEventListener(
-            "input",
-            function () {
-
-                const query =
-                    reelSearch.value.trim().toLowerCase();
-
-                const reels =
-                    reelsContainer.querySelectorAll(".reel");
-
-                reels.forEach(function (reel) {
-
-                    const title =
-                        reel.dataset.title.toLowerCase();
-
-                    const description =
-                        reel.dataset.description.toLowerCase();
-
-                    const hashtags =
-                        reel.dataset.hashtags.toLowerCase();
-
-                    const matches =
-                        title.includes(query) ||
-                        description.includes(query) ||
-                        hashtags.includes(query);
-
-                    reel.style.display =
-                        matches ? "" : "none";
-                });
-            }
-        );
-    }
-
-    function showAllReels() {
-
-        reelsContainer
-            .querySelectorAll(".reel")
-            .forEach(function (reel) {
-                reel.style.display = "";
-            });
-    }
-
-    // =========================================================
-    // TOAST
-    // =========================================================
-
-    function showToast(message) {
-
-        if (!toast) {
-            return;
+        if (!hash) {
+            return 0;
         }
 
-        toast.textContent = message;
+        const index =
+            reelItems.findIndex(
+                reel =>
+                    getReelId(
+                        reelItems.indexOf(reel)
+                    ) === hash
+            );
 
-        toast.classList.add("show");
-
-        setTimeout(function () {
-            toast.classList.remove("show");
-        }, 2000);
+        return index >= 0
+            ? index
+            : 0;
     }
 
-    // =========================================================
-    // START FROM REEL 1
-    // =========================================================
 
-    const firstReel =
-        reelsContainer.querySelector(
-            ".reel[data-reel-number='1']"
-        );
+    /* =====================================================
+       INITIALISE
+    ===================================================== */
 
-    if (firstReel) {
+    updateButtonStates();
 
-        firstReel.scrollIntoView({
-            behavior: "auto",
-            block: "start"
-        });
-    }
+    currentIndex =
+        getIndexFromHash();
+
+    showReel(
+        currentIndex,
+        false
+    );
 
 });

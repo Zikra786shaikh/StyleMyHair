@@ -294,7 +294,7 @@ function applyTheme(themeKey) {
 
 
     localStorage.setItem(
-        "stylemyhair-male-theme",
+        "styleMyHairTheme",
         themeKey
     );
 
@@ -307,7 +307,7 @@ function applyTheme(themeKey) {
 
 const savedTheme =
     localStorage.getItem(
-        "stylemyhair-male-theme"
+        "styleMyHairTheme"
     );
 
 

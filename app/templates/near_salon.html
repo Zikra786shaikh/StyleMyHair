@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="rose">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StyleMyHair | Nearby Salons</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- YOUR EXISTING FEMALE DESIGN SYSTEM -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/female.css') }}"
+    >
+
+    <!-- ONLY FOR THIS PAGE -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/near_salon.css') }}"
+    >
+</head>
+
+<body class="female-page">
+
+    <!-- =====================================================
+         FEMALE BACKGROUND
+    ====================================================== -->
+
+    <div class="female-background">
+
+        <div class="background-orb orb-one"></div>
+        <div class="background-orb orb-two"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SIDEBAR OVERLAY
+    ====================================================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay">
+    </div>
+
+
+    <!-- =====================================================
+         FEMALE SIDEBAR
+         SAME DESIGN AS FEMALE MAIN PAGE
+    ====================================================== -->
+
+    <aside
+        class="female-sidebar"
+        id="femaleSidebar">
+
+        <!-- LOGO -->
+
+        <a
+            href="{{ url_for('main.choose_style') }}"
+            class="sidebar-logo">
+
+            <span class="logo-style">Style</span>
+            <span class="logo-myhair">MyHair</span>
+
+        </a>
+
+
+        <!-- PROFILE -->
+
+        <div class="sidebar-profile">
+
+            <div class="profile-avatar">
+                ♀
+            </div>
+
+            <div class="profile-text">
+
+                <strong>
+                    Style Explorer
+                </strong>
+
+                <span>
+                    Female Studio
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-navigation">
+
+            <div class="nav-label">
+                DISCOVER
+            </div>
+
+
+            <a
+                href="{{ url_for('main.female') }}#home"
+                class="sidebar-link">
+
+                <span class="sidebar-icon">
+                    ⌂
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.female_hairstyles') }}"
+                class="sidebar-link">
+
+                <span class="sidebar-icon">
+                    ✂
+                </span>
+
+                <span>
+                    Hair Styles
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.haircuts') }}"
+                class="sidebar-link">
+
+                <span class="sidebar-icon">
+                    ◇
+                </span>
+
+                <span>
+                    Hair Cutting
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.reels') }}"
+                class="sidebar-link">
+
+                <span class="sidebar-icon">
+                    ▶
+                </span>
+
+                <span>
+                    Reels
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.saved_reels') }}"
+                class="sidebar-link">
+
+                <span class="sidebar-icon">
+                    ♡
+                </span>
+
+                <span>
+                    Saved Reels
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.accessories') }}"
+                class="sidebar-link">
+
+                <span class="sidebar-icon">
+                    ✦
+                </span>
+
+                <span>
+                    Accessories
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.hair_products') }}"
+                class="sidebar-link">
+
+                <span class="sidebar-icon">
+                    ✿
+                </span>
+
+                <span>
+                    Hair Products
+                </span>
+
+            </a>
+
+           <a
+    href="{{ url_for('main.female_nearby_salons') }}"
+    class="sidebar-link active">
+
+    <span class="sidebar-icon">⌖</span>
+
+    <span class="sidebar-link-text">
+        Nearby Salons
+    </span>
+
+</a>
+
+            <a
+                href="{{ url_for('main.favorites') }}"
+                class="sidebar-link">
+
+                <span class="sidebar-icon">
+                    ♥
+                </span>
+
+                <span>
+                    Favorites
+                </span>
+
+            </a>
+
+
+            <!-- NEARBY -->
+
+            <div class="nav-label nav-label-space">
+                EXPLORE
+            </div>
+
+
+        </nav>
+
+
+        <!-- THEME PANEL -->
+
+        <div class="theme-panel">
+
+            <div class="theme-panel-heading">
+
+                <div>
+
+                    <span class="theme-small-label">
+                        PERSONALIZE
+                    </span>
+
+                    <strong>
+                        Choose Theme
+                    </strong>
+
+                </div>
+
+                <div class="palette-icon">
+                    ✦
+                </div>
+
+            </div>
+
+
+            <p class="theme-description">
+                Choose a color that matches your style.
+            </p>
+
+
+            <div class="theme-colors">
+
+                <button class="theme-color" data-theme="rose">
+                    <span></span>
+                </button>
+
+                <button class="theme-color" data-theme="lavender">
+                    <span></span>
+                </button>
+
+                <button class="theme-color" data-theme="peach">
+                    <span></span>
+                </button>
+
+                <button class="theme-color" data-theme="sky">
+                    <span></span>
+                </button>
+
+                <button class="theme-color" data-theme="mint">
+                    <span></span>
+                </button>
+
+                <button class="theme-color" data-theme="sage">
+                    <span></span>
+                </button>
+
+                <button class="theme-color" data-theme="butter">
+                    <span></span>
+                </button>
+
+                <button class="theme-color" data-theme="coral">
+                    <span></span>
+                </button>
+
+                <button class="theme-color" data-theme="plum">
+                    <span></span>
+                </button>
+
+                <button class="theme-color" data-theme="ocean">
+                    <span></span>
+                </button>
+
+                <button class="theme-color" data-theme="cocoa">
+                    <span></span>
+                </button>
+
+                <button class="theme-color" data-theme="midnight">
+                    <span></span>
+                </button>
+
+            </div>
+
+
+            <div class="selected-theme-name" id="selectedThemeName">
+                Theme:
+                <span>Rose</span>
+            </div>
+
+        </div>
+
+
+        <!-- SIDEBAR FOOTER -->
+
+        <div class="sidebar-footer">
+
+            <a
+                href="{{ url_for('main.settings') }}"
+                class="sidebar-footer-link">
+
+                ⚙ Settings
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN APPLICATION
+    ====================================================== -->
+
+    <div class="female-app">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="female-header">
+
+
+            <!-- MOBILE MENU -->
+
+            <button
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open menu">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <!-- MOBILE LOGO -->
+
+            <a
+                href="{{ url_for('main.female') }}"
+                class="mobile-logo">
+
+                Style
+                <span>MyHair</span>
+
+            </a>
+
+
+            <!-- HEADER TITLE -->
+
+            <div class="header-title">
+
+                <span>
+                    FEMALE STYLE STUDIO
+                </span>
+
+                <h1>
+                    Nearby Salons
+                </h1>
+
+            </div>
+
+
+            <!-- HEADER ACTIONS -->
+
+            <div class="header-actions">
+
+
+                <!-- GO TO MALE -->
+
+                <a
+                    href="{{ url_for('main.male') }}"
+                    class="header-icon-button"
+                    title="Men's Studio">
+
+                    ♂
+
+                </a>
+
+
+                <!-- DARK MODE -->
+
+                <button
+                    class="header-icon-button"
+                    id="darkModeButton"
+                    title="Toggle dark mode">
+
+                    ◐
+
+                </button>
+
+
+                <!-- PROFILE -->
+
+                <div class="header-profile">
+                    ♀
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             BACK BUTTON
+        ================================================== -->
+
+        <a
+            href="{{ url_for('main.female') }}"
+            class="female-back-button">
+
+            <span class="female-back-icon">
+                ←
+            </span>
+
+            <span class="back-text">
+                Back
+            </span>
+
+        </a>
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="female-main female-nearby-main">
+
+
+            <!-- =================================================
+                 PAGE INTRO
+            ================================================== -->
+
+            <section class="nearby-hero">
+
+                <div class="nearby-hero-copy">
+
+                    <span class="nearby-eyebrow">
+                        FIND YOUR PERFECT PLACE
+                    </span>
+
+                    <h2>
+                        Nearby
+                        <span>Salons</span>
+                    </h2>
+
+                    <p>
+                        Discover salons around you for haircuts,
+                        styling, coloring, bridal looks and more.
+                        Find a place that fits your style and budget.
+                    </p>
+
+                </div>
+
+
+                <div class="nearby-hero-icon">
+                    ♡
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SEARCH / LOCATION PANEL
+            ================================================== -->
+
+            <section class="salon-search-panel">
+
+                <div class="search-panel-heading">
+
+                    <div>
+
+                        <span>
+                            SEARCH
+                        </span>
+
+                        <h2>
+                            Find a Salon Near You
+                        </h2>
+
+                        <p>
+                            Search by salon name, location or service.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SEARCH -->
+
+                <div class="salon-search-grid">
+
+
+                    <div class="salon-input-group">
+
+                        <label for="salonSearch">
+                            Salon or Service
+                        </label>
+
+                        <div class="salon-input">
+
+                            <span>
+                                ⌕
+                            </span>
+
+                            <input
+                                type="text"
+                                id="salonSearch"
+                                placeholder="Search salons, styling, coloring..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="salon-input-group">
+
+                        <label for="locationInput">
+                            Location
+                        </label>
+
+                        <div class="salon-input location-input">
+
+                            <span>
+                                ⌖
+                            </span>
+
+                            <input
+                                type="text"
+                                id="locationInput"
+                                placeholder="Enter your location"
+                                autocomplete="off"
+                            >
+
+                            <button
+                                type="button"
+                                id="useLocationButton"
+                                title="Use my location">
+
+                                ◎
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUDGET -->
+
+                <div class="budget-row">
+
+                    <div class="budget-title">
+
+                        <span>
+                            BUDGET
+                        </span>
+
+                        <strong>
+                            Starting price
+                        </strong>
+
+                    </div>
+
+
+                    <div class="budget-inputs">
+
+                        <div class="price-input">
+
+                            <span>₹</span>
+
+                            <input
+                                type="number"
+                                id="minBudget"
+                                min="0"
+                                placeholder="Min"
+                            >
+
+                        </div>
+
+
+                        <span class="budget-separator">
+                            to
+                        </span>
+
+
+                        <div class="price-input">
+
+                            <span>₹</span>
+
+                            <input
+                                type="number"
+                                id="maxBudget"
+                                min="0"
+                                placeholder="Max"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="findSalonsButton"
+                        class="find-salons-button">
+
+                        Find Salons
+                        <span>→</span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- LOCATION STATUS -->
+
+                <div
+                    class="location-status"
+                    id="locationStatus">
+
+                    <span class="status-dot"></span>
+
+                    <span id="locationStatusText">
+                        Enter a location or use your current location.
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 RESULTS
+            ================================================== -->
+
+            <section class="salon-results-section">
+
+
+                <div class="results-header">
+
+                    <div>
+
+                        <span>
+                            RESULTS
+                        </span>
+
+                        <h2>
+                            Salons For You
+                        </h2>
+
+                    </div>
+
+
+                    <div
+                        class="results-count"
+                        id="resultsCount">
+
+                        0 salons found
+
+                    </div>
+
+                </div>
+
+
+                <!-- RESULTS CONTAINER -->
+
+                <div
+                    class="salon-results"
+                    id="salonResults">
+                </div>
+
+
+                <!-- EMPTY STATE -->
+
+                <div
+                    class="salon-empty"
+                    id="salonEmpty"
+                    style="display: none;">
+
+                    <div class="empty-salon-icon">
+                        ♡
+                    </div>
+
+                    <h3>
+                        No salons found
+                    </h3>
+
+                    <p>
+                        Try changing your search, location or budget.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 TIP
+            ================================================== -->
+
+            <section class="nearby-tip">
+
+                <div class="tip-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <span>
+                        STYLEMYHAIR TIP
+                    </span>
+
+                    <h3>
+                        Choose a salon that matches your style.
+                    </h3>
+
+                    <p>
+                        Check the services, ratings and starting
+                        prices before visiting.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+
+        <!-- =================================================
+             MOBILE BOTTOM NAV
+        ================================================== -->
+
+        <nav class="mobile-bottom-nav">
+
+
+            <a href="{{ url_for('main.female') }}#home">
+
+                <span>⌂</span>
+
+                <small>
+                    Home
+                </small>
+
+            </a>
+
+
+            <a href="{{ url_for('main.female_hairstyles') }}">
+
+                <span>✂</span>
+
+                <small>
+                    Styles
+                </small>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.female_nearby_salons') }}"
+                class="active">
+
+                <span>⌖</span>
+
+                <small>
+                    Nearby
+                </small>
+
+            </a>
+
+
+            <a href="{{ url_for('main.reels') }}">
+
+                <span>▶</span>
+
+                <small>
+                    Reels
+                </small>
+
+            </a>
+
+
+            <a href="{{ url_for('main.favorites') }}">
+
+                <span>♥</span>
+
+                <small>
+                    Saved
+                </small>
+
+            </a>
+
+        </nav>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="{{ url_for('static', filename='js/female.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/near_salon.js') }}"></script>
+
+</body>
+
+</html>

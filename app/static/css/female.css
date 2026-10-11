@@ -909,152 +909,105 @@ input:focus-visible {
     color:
         var(--text-muted);
 }
+/* =====================================================
+   THEME COLOR GRID
+===================================================== */
 
+.theme-grid {
+    display: grid;
 
-.theme-colors {
+    /* 3 colours in each row */
+    grid-template-columns: repeat(3, 48px);
 
-    display:
-        grid;
+    gap: 12px;
 
-    grid-template-columns:
-        repeat(6, 1fr);
+    width: max-content;
 
-    gap:
-        7px;
+    align-items: center;
+    justify-items: center;
 }
 
+/* =====================================================
+   FEMALE DASHBOARD THEME COLOR CIRCLES
+===================================================== */
 
 .theme-color {
-
-    width:
-        24px;
-
-    height:
-        24px;
-
-    padding:
-        3px;
-
-    border-radius:
-        50%;
-
-    background:
-        var(--surface);
-
-    border:
-        1px solid var(--border);
-
-    transition:
-        transform var(--transition);
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    padding: 0;
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Individual theme colors */
+
+.theme-color[data-theme="rose"] {
+    background: #e8a0b8;
+}
+
+.theme-color[data-theme="lavender"] {
+    background: #b9a7dc;
+}
+
+.theme-color[data-theme="peach"] {
+    background: #f3b28f;
+}
+
+.theme-color[data-theme="sky"] {
+    background: #9fc9e8;
+}
+
+.theme-color[data-theme="mint"] {
+    background: #9ed8c1;
+}
+
+.theme-color[data-theme="sage"] {
+    background: #aabd9d;
+}
+
+.theme-color[data-theme="butter"] {
+    background: #eadb91;
+}
+
+.theme-color[data-theme="coral"] {
+    background: #e99487;
+}
+
+.theme-color[data-theme="plum"] {
+    background: #b58bad;
+}
+
+.theme-color[data-theme="ocean"] {
+    background: #72b6c8;
+}
+
+.theme-color[data-theme="cocoa"] {
+    background: #a9826d;
+}
+
+.theme-color[data-theme="midnight"] {
+    background: #39415c;
+}
+
+/* Hover */
 
 .theme-color:hover {
-
-    transform:
-        scale(1.15);
+    transform: scale(1.08);
 }
 
+/* Selected theme */
 
 .theme-color.active {
-
+    border-color: #ffffff;
     box-shadow:
-        0 0 0 2px var(--surface),
-        0 0 0 4px var(--accent);
+        0 0 0 2px rgba(80, 80, 80, 0.35);
+    transform: scale(1.08);
 }
-
-
-.theme-color span {
-
-    display:
-        block;
-
-    width:
-        100%;
-
-    height:
-        100%;
-
-    border-radius:
-        50%;
-}
-
-
-.theme-color[data-theme="rose"] span {
-    background: #d66b91;
-}
-
-.theme-color[data-theme="lavender"] span {
-    background: #9b7ed8;
-}
-
-.theme-color[data-theme="peach"] span {
-    background: #e99070;
-}
-
-.theme-color[data-theme="sky"] span {
-    background: #5799d2;
-}
-
-.theme-color[data-theme="mint"] span {
-    background: #55aa91;
-}
-
-.theme-color[data-theme="sage"] span {
-    background: #82966c;
-}
-
-.theme-color[data-theme="butter"] span {
-    background: #d5a947;
-}
-
-.theme-color[data-theme="coral"] span {
-    background: #df6f72;
-}
-
-.theme-color[data-theme="plum"] span {
-    background: #9a5f86;
-}
-
-.theme-color[data-theme="ocean"] span {
-    background: #3c9b9f;
-}
-
-.theme-color[data-theme="cocoa"] span {
-    background: #9b725e;
-}
-
-.theme-color[data-theme="midnight"] span {
-    background: #6979d7;
-}
-
-
-.selected-theme-name {
-
-    margin-top:
-        10px;
-
-    text-align:
-        center;
-
-    font-size:
-        9px;
-
-    color:
-        var(--text-muted);
-}
-
-
-.selected-theme-name span {
-
-    color:
-        var(--accent);
-
-    font-weight:
-        700;
-}
-
-
 /* =========================================================
    SIDEBAR FOOTER
 ========================================================= */

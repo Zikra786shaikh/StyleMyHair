@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StyleMyHair | Nearby Salons</title>
+
+    <!-- SAME MALE CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/male.css') }}"
+    >
+
+    <!-- NEARBY SALONS CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/nearest_salons.css') }}"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MOBILE OVERLAY
+====================================================== -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>
+
+
+<!-- =====================================================
+     SIDEBAR
+     SAME STRUCTURE AS MALE PAGE
+====================================================== -->
+
+<aside
+    class="male-sidebar"
+    id="maleSidebar"
+>
+
+    <div class="sidebar-top">
+
+        <div class="brand">
+
+            <div class="brand-symbol">
+                SM
+            </div>
+
+            <div class="brand-text">
+
+                <a
+                    href="{{ url_for('main.choose_style') }}"
+                    class="sidebar-logo"
+                >
+
+                    <strong>StyleMyHair</strong>
+
+                    <span>MEN'S STUDIO</span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="mobile-close"
+            id="mobileClose"
+            type="button"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <div class="sidebar-profile">
+
+        <div class="profile-avatar">
+            👤
+        </div>
+
+        <div class="profile-info">
+
+            <strong>My Profile</strong>
+
+            <span>Style Explorer</span>
+
+        </div>
+
+        <button
+            class="profile-arrow"
+            type="button"
+            id="profileButton"
+        >
+            →
+        </button>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-navigation">
+
+        <span class="nav-heading">
+            EXPLORE
+        </span>
+
+
+        <!-- DASHBOARD -->
+
+        <a
+            class="side-link"
+            href="{{ url_for('main.male') }}"
+        >
+
+            <span>⌂</span>
+
+            <label>Dashboard</label>
+
+        </a>
+
+
+        <!-- HAIRSTYLES -->
+
+        <a
+            class="side-link"
+            href="{{ url_for('main.hairstyles') }}"
+        >
+
+            <span>✂</span>
+
+            <label>Hairstyles</label>
+
+        </a>
+
+
+        <!-- REELS -->
+
+        <button
+            class="side-link"
+            id="reelsButton"
+            type="button"
+            onclick="window.location.href='/reel';"
+        >
+
+            <span>▶</span>
+
+            <label>Reels</label>
+
+        </button>
+
+
+        <!-- SAVED REELS -->
+
+        <button
+            class="side-link"
+            id="savedReelsButton"
+            type="button"
+            onclick="window.location.href='/saved-reel';"
+        >
+
+            <span>🔖</span>
+
+            <label>Saved Reels</label>
+
+        </button>
+
+
+        <!-- NEAREST -->
+
+        <a
+            class="side-link"
+            href="{{ url_for('main.nearest') }}"
+        >
+
+            <span>📍</span>
+
+            <label>Nearest</label>
+
+        </a>
+
+
+        <!-- NEARBY SALONS -->
+
+        <a
+            class="side-link active"
+            href="{{ url_for('main.nearby_salons') }}"
+        >
+
+            <span>✂</span>
+
+            <label>Nearby Salons</label>
+
+        </a>
+
+
+        <!-- HAIR PRODUCTS -->
+
+        <a
+            class="side-link"
+            href="{{ url_for('main.male_products') }}"
+        >
+
+            <span>♙</span>
+
+            <label>Hair Products</label>
+
+        </a>
+
+
+        <!-- FAVORITES -->
+
+        <a
+            href="{{ url_for('main.favourites') }}"
+            class="side-link"
+            id="favoritesNavButton"
+        >
+
+            <span>♥</span>
+
+            <label>Favorites</label>
+
+            <b id="favoriteCount">0</b>
+
+        </a>
+
+    </nav>
+
+
+    <!-- THEME -->
+
+    <div class="theme-panel">
+
+        <div class="theme-title">
+
+            <span>THEME</span>
+
+            <small id="themeName">
+                Graphite
+            </small>
+
+        </div>
+
+
+        <div
+            class="theme-grid"
+            id="themeGrid"
+        >
+
+            <button
+                class="theme-dot graphite active"
+                data-theme="graphite"
+                title="Graphite"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot navy"
+                data-theme="navy"
+                title="Navy"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot steel"
+                data-theme="steel"
+                title="Steel"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot ocean"
+                data-theme="ocean"
+                title="Ocean"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot emerald"
+                data-theme="emerald"
+                title="Emerald"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot forest"
+                data-theme="forest"
+                title="Forest"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot burgundy"
+                data-theme="burgundy"
+                title="Burgundy"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot copper"
+                data-theme="copper"
+                title="Copper"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot charcoal"
+                data-theme="charcoal"
+                title="Charcoal"
+                type="button"
+            ></button>
+
+            <button
+                class="theme-dot midnight"
+                data-theme="midnight"
+                title="Midnight"
+                type="button"
+            ></button>
+
+        </div>
+
+    </div>
+
+
+    <!-- BOTTOM CONTROLS -->
+
+    <div class="sidebar-bottom">
+
+        <button
+            class="bottom-control"
+            id="modeToggle"
+            type="button"
+        >
+
+            <span id="modeIcon">
+                ☀
+            </span>
+
+            <label id="modeText">
+                Light Mode
+            </label>
+
+        </button>
+
+
+        <a
+            href="{{ url_for('main.settings') }}"
+            class="bottom-control"
+        >
+
+            <span>⚙</span>
+
+            <label>Settings</label>
+
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
+
+<main class="male-main">
+
+
+    <!-- =================================================
+         SAME MALE TOP BAR
+    ================================================== -->
+
+    <header class="male-topbar">
+
+        <button
+            class="mobile-menu"
+            id="mobileMenu"
+            type="button"
+        >
+            ☰
+        </button>
+
+
+        <a
+            href="{{ url_for('main.male') }}"
+            class="back-button"
+        >
+
+            <span>←</span>
+
+            <label>Back</label>
+
+        </a>
+
+
+        <div class="topbar-title">
+
+            <span>MEN'S STYLE STUDIO</span>
+
+            <strong>Nearby Salons</strong>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+            <a
+                href="{{ url_for('main.female') }}"
+                class="sidebar-link"
+            >
+
+                <span class="sidebar-icon">
+                    👤
+                </span>
+
+                <span>
+                    FEMALE
+                </span>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         NEARBY SALONS MAIN CONTENT
+    ================================================== -->
+
+    <section class="salons-page">
+
+
+        <!-- PAGE INTRO -->
+
+        <div class="salons-heading">
+
+            <div>
+
+                <span class="eyebrow">
+                    FIND YOUR NEXT LOOK
+                </span>
+
+                <h1>
+                    Nearby Salons
+                </h1>
+
+                <p>
+                    Discover men's salons around you,
+                    compare prices and find a place
+                    that fits your budget.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEARCH / FILTER PANEL
+        ================================================== -->
+
+        <div class="salon-search-panel">
+
+
+            <!-- SEARCH -->
+
+            <div class="salon-field salon-search-field">
+
+                <label>
+                    SEARCH
+                </label>
+
+                <div class="salon-input-wrap">
+
+                    <span>
+                        🔍
+                    </span>
+
+                    <input
+                        type="text"
+                        id="salonSearch"
+                        placeholder="Search salon, haircut, fade, beard..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- LOCATION -->
+
+            <div class="salon-field">
+
+                <label>
+                    LOCATION
+                </label>
+
+                <div class="location-row">
+
+                    <div class="salon-input-wrap">
+
+                        <span>
+                            📍
+                        </span>
+
+                        <input
+                            type="text"
+                            id="locationInput"
+                            placeholder="Enter your location"
+                        >
+
+                    </div>
+
+                    <button
+    type="button"
+    class="location-button"
+    id="useLocationButton"
+>
+    📍 Use My Location
+</button>
+                </div>
+
+                <small id="locationStatus">
+                    Location not selected
+                </small>
+
+            </div>
+
+
+            <!-- BUDGET -->
+
+            <div class="budget-fields">
+
+                <div class="salon-field">
+
+                    <label>
+                        MIN BUDGET
+                    </label>
+
+                    <div class="salon-input-wrap">
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            id="minBudget"
+                            min="0"
+                            placeholder="300"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="salon-field">
+
+                    <label>
+                        MAX BUDGET
+                    </label>
+
+                    <div class="salon-input-wrap">
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            id="maxBudget"
+                            min="0"
+                            placeholder="1500"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SEARCH BUTTON -->
+
+            <button
+                type="button"
+                class="find-salons-button"
+                id="findSalonsButton"
+            >
+
+                <span>⌕</span>
+
+                Find Salons
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LOCATION STATUS CARD
+        ================================================== -->
+
+        <div
+            class="location-card"
+            id="locationCard"
+        >
+
+            <div class="location-icon">
+                📍
+            </div>
+
+            <div>
+
+                <strong>
+                    Find salons near you
+                </strong>
+
+                <p id="locationText">
+                    Enter a location or use your current location.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             RESULTS HEADER
+        ================================================== -->
+
+        <div class="results-heading">
+
+            <div>
+
+                <span>
+                    SALON DISCOVERY
+                </span>
+
+                <h2>
+                    Nearby Salons
+                </h2>
+
+            </div>
+
+            <strong id="resultsCount">
+                0 salons
+            </strong>
+
+        </div>
+
+
+
+        <!-- =================================================
+             RESULTS
+        ================================================== -->
+
+        <div
+            class="salon-results"
+            id="salonResults"
+        >
+
+            <div class="empty-salons">
+
+                <div>
+                    📍
+                </div>
+
+                <h3>
+                    Search for salons
+                </h3>
+
+                <p>
+                    Choose your location and budget,
+                    then click <strong>Find Salons</strong>.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="male-footer">
+
+        <div class="footer-brand">
+
+            <div class="brand-symbol">
+                SM
+            </div>
+
+            <div>
+
+                <strong>
+                    StyleMyHair
+                </strong>
+
+                <span>
+                    MEN'S STYLE STUDIO
+                </span>
+
+            </div>
+
+        </div>
+
+        <p>
+            Your style. Your choice. Your identity.
+        </p>
+
+        <span>
+            © 2026 StyleMyHair
+        </span>
+
+    </footer>
+
+
+</main>
+
+
+<!-- SAME MALE THEME JS -->
+
+<script
+    src="{{ url_for('static', filename='js/theme.js') }}"
+></script>
+
+
+<!-- SAME MALE NAVIGATION JS -->
+
+<script
+    src="{{ url_for('static', filename='js/male.js') }}"
+></script>
+
+
+<!-- NEARBY SALON JS -->
+
+<script
+    src="{{ url_for('static', filename='js/nearest_salons.js') }}"
+></script>
+
+<script
+    src="{{ url_for('static', filename='js/theme.js') }}"
+></script>
+</body>
+
+</html>
